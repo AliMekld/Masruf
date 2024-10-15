@@ -1,5 +1,5 @@
 /// todo :
-/// step 1- intializing app with its configurations this configutation can be used for other projects if it don will 
+/// step 1- intializing app with its configurations this configutation can be used for other projects if it done will 
 /// 1-core 
 ///   1-theming 
 ///     1-color_palette
