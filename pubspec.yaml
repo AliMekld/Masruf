@@ -19,6 +19,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   build_runner: ^2.4.13
   flutter_gen: ^5.8.0
+  # state managment
+  provider: ^6.1.2
 
 
   cupertino_icons: ^1.0.8
@@ -26,7 +28,6 @@ dependencies:
 dev_dependencies:
 
   flutter_gen_runner:
-
   flutter_test:
     sdk: flutter
 
@@ -40,10 +41,14 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/fonts/Agbalumo-Regular.ttf
+    - assets/fonts/NotoSans-Regular.ttf
 
   fonts:
    - family: Agbalumo
      fonts:
        - asset: assets/fonts/Agbalumo-Regular.ttf
+   - family: NotoSans
+     fonts:
+       - asset: assets/fonts/NotoSans-Regular.ttf
 
 

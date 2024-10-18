@@ -12,4 +12,7 @@ class FontFamily {
 
   /// Font family: Agbalumo
   static const String agbalumo = 'Agbalumo';
+
+  /// Font family: NotoSans
+  static const String notoSans = 'NotoSans';
 }

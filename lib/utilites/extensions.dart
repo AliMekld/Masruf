@@ -60,7 +60,7 @@ extension DoubleExtension on double {
 
 extension ContextExtensions on BuildContext {
   double get _appWidth => MediaQuery.of(this).size.width;
-  bool get isMobile => _appWidth <= 760;
-  bool get isTablet => _appWidth > 760 && _appWidth <= 1200;
+  bool get isMobile => _appWidth <= 600;
+  bool get isTablet => _appWidth > 600 && _appWidth <= 1024;
   bool get isDeskTop => (!isTablet && !isMobile);
 }

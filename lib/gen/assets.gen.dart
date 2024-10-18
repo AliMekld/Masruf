@@ -13,8 +13,11 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Agbalumo-Regular.ttf
   String get agbalumoRegular => 'assets/fonts/Agbalumo-Regular.ttf';
 
+  /// File path: assets/fonts/NotoSans-Regular.ttf
+  String get notoSansRegular => 'assets/fonts/NotoSans-Regular.ttf';
+
   /// List of all assets
-  List<String> get values => [agbalumoRegular];
+  List<String> get values => [agbalumoRegular, notoSansRegular];
 }
 
 class $AssetsImagesGen {

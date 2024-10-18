@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masrof/utilites/extensions.dart';
 
 class WalletScreen extends StatefulWidget {
   static const String routerName='WalletScreen';
@@ -11,6 +12,7 @@ class WalletScreen extends StatefulWidget {
 class _WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+     return Container(child: const Text("WalletScreen").center,);
+
   }
 }

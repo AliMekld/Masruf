@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masrof/utilites/extensions.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String routerName='ProfileScreen';
@@ -11,6 +12,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(child: const Text("Profile").center,);
   }
 }
