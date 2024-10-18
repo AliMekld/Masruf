@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
@@ -10,7 +11,11 @@ final GoRouter _router = GoRouter(
     ///==============>> [Splash]
     GoRoute(
       path: '/',
-      builder: (context, state) => const SplashScreen(),
+      pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+        context: context,
+        state: state,
+        child: const SplashScreen(),
+      ),
     ),
 
     ///==============>> [onBoarding]
@@ -19,29 +24,75 @@ final GoRouter _router = GoRouter(
     ///==============>> [ShellRoute]
     ShellRoute(
       redirect: (context, state) {},
-      builder: (context, state, child) {
-        return MainLayout(routeName: state.fullPath!, child: child);
+      pageBuilder: (context, state, child) {
+       return _buildPageWithDefaultTransition(
+          context: context,
+          state: state,
+          child: MainLayout(
+            routeName: state.fullPath!,
+            child: child,
+          ),
+        );
       },
       routes: [
         ///==============>> [Home]
         GoRoute(
           path: "/${HomeScreen.routerName}",
           name: HomeScreen.routerName,
-          builder: (context, state) => const HomeScreen(),
+          pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const HomeScreen(),
+          ),
         ),
+
+        ///==============>> [Wallet]
         GoRoute(
           path: "/${WalletScreen.routerName}",
           name: WalletScreen.routerName,
-          builder: (context, state) => const WalletScreen(),
+          pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const WalletScreen(),
+          ),
         ),
+
+        ///==============>> [Profile]
         GoRoute(
           path: "/${ProfileScreen.routerName}",
           name: ProfileScreen.routerName,
-          builder: (context, state) => const ProfileScreen(),
+          pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const ProfileScreen(),
+          ),
         ),
       ],
     )
   ],
 );
 GoRouter get router => _router;
-///todo create custom transation 
+
+///todo create custom transation
+CustomTransitionPage _buildPageWithDefaultTransition({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.easeInOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+      return SlideTransition(transformHitTests: false,
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
+}

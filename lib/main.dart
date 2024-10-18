@@ -47,8 +47,13 @@ library;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/utilites/router_config.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
-void main(List<String> args) {
+
+void main(List<String> args) async{
+await WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
+
 runApp(const EntryPoint());
 }
 class EntryPoint extends StatelessWidget {

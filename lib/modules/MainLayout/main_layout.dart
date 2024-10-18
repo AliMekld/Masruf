@@ -108,8 +108,8 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               16.h.heightBox,
             ],
           ).expand,
-          minWidth: 40,
-          minExtendedWidth: 120,
+      
+          minExtendedWidth: 80,
           extended: isExpanded,
           elevation: 20,
           onDestinationSelected: widget.onSelectItem,
