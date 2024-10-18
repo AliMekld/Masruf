@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/utilites/extensions.dart';
 
 import '../../gen/assets.gen.dart';
@@ -15,6 +17,14 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      context.goNamed(HomeScreen.routerName);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xffCB96FF).withOpacity(0.2),
@@ -25,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-               const Spacer(),
+                const Spacer(),
                 SvgPicture.asset(
                   Assets.images.appLogo,
                   width: 240.r,
@@ -45,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 16.h.heightBox,
                 CircularProgressIndicator(
-                  color:const Color(0xffCB96FF),
+                  color: const Color(0xffCB96FF),
                   strokeWidth: 6.r,
                   strokeAlign: 0.2.r,
                   strokeCap: StrokeCap.round,

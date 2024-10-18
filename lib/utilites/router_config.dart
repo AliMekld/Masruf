@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
+import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Splash/splash_screen.dart';
+import 'package:masrof/modules/Wallet/wallet_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
@@ -25,7 +27,17 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: "/${HomeScreen.routerName}",
           name: HomeScreen.routerName,
-          builder: (context, state) => const SplashScreen(),
+          builder: (context, state) => const HomeScreen(),
+        ),
+        GoRoute(
+          path: "/${WalletScreen.routerName}",
+          name: WalletScreen.routerName,
+          builder: (context, state) => const WalletScreen(),
+        ),
+        GoRoute(
+          path: "/${ProfileScreen.routerName}",
+          name: ProfileScreen.routerName,
+          builder: (context, state) => const ProfileScreen(),
         ),
       ],
     )
