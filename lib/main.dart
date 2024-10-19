@@ -2,9 +2,9 @@
 /// step 1- intializing app with its configurations this configutation can be used for other projects if it done will
 /// 1-core
 ///   1-theming
-///     1-color_palette
-///     2-theme_provier
-///     3-theme_model
+///     1-color_palette[done]
+///     2-theme_provier[done]
+///     3-theme_model[done]
 ///   2-localization
 //
 ///   3-api
@@ -94,8 +94,7 @@ class EntryPoint extends StatelessWidget {
       }
       return ScreenUtilInit(
         enableScaleText: () => true,
-        ensureScreenSize: true,
-        enableScaleWH: () => true,
+  
         designSize: appSize,
         child: MaterialApp.router(
           theme: theme.themeData.copyWith(

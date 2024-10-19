@@ -9,6 +9,7 @@ import 'package:masrof/gen/assets.gen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Wallet/wallet_screen.dart';
+import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
 import 'package:provider/provider.dart';
@@ -33,24 +34,71 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, theme, w) {
       return Scaffold(
+        backgroundColor: ColorsPalette.of(context).primaryColor,
         body: context.isMobile
-            ? widget.child
+            ? Container(
+                margin: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 1.5,
+                      spreadRadius: 1.5,
+                      blurStyle: BlurStyle.outer,
+                      color: ColorsPalette.of(context).iconColor,
+                    )
+                  ],
+                  borderRadius: Constants.kBorderRaduis8,
+                  color: ColorsPalette.of(context).backgroundColor,
+                ),
+                child: widget.child,
+              )
             : Row(
-                children: [ CustomNavigationRail(currentIndex: currentIndex,), widget.child.expand],
+                children: [
+                  CustomNavigationRail(
+                    currentIndex: currentIndex,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 1.5,
+                            spreadRadius: 1.5,
+                            blurStyle: BlurStyle.outer,
+                            color:ColorsPalette.of(context).primaryColor,)
+                      ],
+                      borderRadius: Constants.kBorderRaduis8,
+                      color: ColorsPalette.of(context).backgroundColor,
+                    ),
+                    child: widget.child,
+                  ).expand
+                ],
               ),
+        floatingActionButtonLocation:
+            context.isMobile ? FloatingActionButtonLocation.centerDocked : null,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
-              currentIndex: currentIndex,
-              unselectedLabelStyle: TextStyleHelper.of(context).bodySmall12R.copyWith(color: ColorsPalette.of(context).dividerColor),
-              selectedLabelStyle: TextStyleHelper.of(context).bodyMedium14R.copyWith(color: ColorsPalette.of(context).primaryColor),
+              elevation: 0.5,
+                backgroundColor: ColorsPalette.of(context).primaryColor.withOpacity(0.5),
+                currentIndex: currentIndex,
+                unselectedLabelStyle: TextStyleHelper.of(context)
+                    .bodySmall12R
+                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
+                selectedLabelStyle: TextStyleHelper.of(context)
+                    .bodyMedium14R
+                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
                 onTap: (_) {
                   setState(() {
                     currentIndex = _;
                   });
-                  context.goNamed(_menuList[currentIndex].route);
+                  context.goNamed(menuList[currentIndex].route);
                 },
                 items: [
-                  ..._menuList.map(
+                  ...menuList.map(
                     (e) => BottomNavigationBarItem(
                       icon: SvgPicture.asset(
                         e.imgSvg,
@@ -64,7 +112,6 @@ class _MainLayoutState extends State<MainLayout> {
                         ),
                       ),
                       label: e.title,
-
                     ),
                   ),
                 ],
@@ -75,26 +122,25 @@ class _MainLayoutState extends State<MainLayout> {
   }
 }
 
-
- List<MenuModel> get menuList=>_menuList;
+List<MenuModel> get menuList => _menuList;
 List<MenuModel> _menuList = [
-  ///TODO :FIX ASSETS GENERATING LOGIC 
+  ///TODO :FIX ASSETS GENERATING LOGIC
   MenuModel(
     index: 0,
     title: 'Home',
-    imgSvg: Assets.images.appLogo,
+    imgSvg: Assets.images.home,
     route: HomeScreen.routerName,
   ),
   MenuModel(
     index: 1,
     title: 'Wallet',
-    imgSvg: Assets.images.appLogo,
+    imgSvg: Assets.images.messages,
     route: WalletScreen.routerName,
   ),
   MenuModel(
     index: 2,
     title: 'Profile',
-    imgSvg: Assets.images.appLogo,
+    imgSvg: Assets.images.profile,
     route: ProfileScreen.routerName,
   ),
 ];
