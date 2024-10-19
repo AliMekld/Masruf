@@ -28,11 +28,13 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
     return NavigationRail(
       leading: SizedBox(
         height: 60,
-        child: Text("MASRUF",style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
-          fontSize: isExpanded?24:12,
-          fontFamily: Constants.agbalumoFontFamily,
-          color: Colors.white),).center.addPaddingAll(padding: 4),
-       
+        child: Text(
+          "MASRUF",
+          style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
+              fontSize: isExpanded ? 24 : 12,
+              fontFamily: Constants.agbalumoFontFamily,
+              color: Colors.white),
+        ).center.addPaddingAll(padding: 4),
       ),
       backgroundColor: ColorsPalette.of(context).primaryColor,
       selectedIconTheme:
@@ -53,22 +55,35 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               });
             },
             icon: Icon(
+              
+              Icons.settings,
+              size: 28,
+              color: ColorsPalette.of(context).iconColor,
+            ),
+          ),
+          24.h.heightBox,
+          IconButton(
+            onPressed: () {
+              setState(
+                () {
+                  isExpanded = !isExpanded;
+                },
+              );
+            },
+            icon: Icon(
               isExpanded
                   ? Icons.arrow_back_ios_new
                   : Icons.arrow_forward_ios_outlined,
-                  color: ColorsPalette.of(context).iconColor,
+              color: ColorsPalette.of(context).iconColor,
             ),
           ),
           16.h.heightBox,
         ],
       ).expand,
-      // minWidth: 80,
+      minWidth: 48,
       minExtendedWidth: 116,
-elevation: 0.1,
       unselectedIconTheme:
           IconThemeData(color: ColorsPalette.of(context).iconColor),
-      // extended: isExpanded,
-     
       onDestinationSelected: (_) {
         setState(() {
           currentIndex = _;
@@ -77,34 +92,31 @@ elevation: 0.1,
       },
       destinations: menuList
           .map((e) => NavigationRailDestination(
-            
-              selectedIcon: SvgPicture.asset(
-                e.imgSvg,
-                height: 24.h,
-                width: 24.w,
-                colorFilter: ColorFilter.mode(
-                  ColorsPalette.of(context).buttonDisabledColor,
-                  BlendMode.srcIn,
+                selectedIcon: SvgPicture.asset(
+                  e.imgSvg,
+                  height: 24.h,
+                  width: 24.w,
+                  colorFilter: ColorFilter.mode(
+                    ColorsPalette.of(context).buttonDisabledColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-              icon: SvgPicture.asset(
-                e.imgSvg,
-                height: 24.h,
-                width: 24.w,
-                colorFilter: ColorFilter.mode(
-                  ColorsPalette.of(context).backgroundColor.withOpacity(0.5),
-                  BlendMode.srcIn,
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                icon: SvgPicture.asset(
+                  e.imgSvg,
+                  height: 24.h,
+                  width: 24.w,
+                  colorFilter: ColorFilter.mode(
+                    ColorsPalette.of(context).backgroundColor.withOpacity(0.5),
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              indicatorColor: ColorsPalette.of(context).primaryColor,
-              label: Text(e.title),
-              
+                indicatorColor: ColorsPalette.of(context).primaryColor,
+                label: Text(e.title),
               ))
           .toList(),
       selectedIndex: currentIndex,
-      labelType:NavigationRailLabelType.selected ,
-
+      labelType: NavigationRailLabelType.selected,
     );
   }
 }

@@ -62,10 +62,11 @@ class _MainLayoutState extends State<MainLayout> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            blurRadius: 1.5,
-                            spreadRadius: 1.5,
-                            blurStyle: BlurStyle.outer,
-                            color:ColorsPalette.of(context).primaryColor,)
+                          blurRadius: 1.5,
+                          spreadRadius: 1.5,
+                          blurStyle: BlurStyle.outer,
+                          color: ColorsPalette.of(context).primaryColor,
+                        )
                       ],
                       borderRadius: Constants.kBorderRaduis8,
                       color: ColorsPalette.of(context).backgroundColor,
@@ -82,8 +83,9 @@ class _MainLayoutState extends State<MainLayout> {
         ),
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
-              elevation: 0.5,
-                backgroundColor: ColorsPalette.of(context).primaryColor.withOpacity(0.5),
+                elevation: 0.5,
+                backgroundColor:
+                    ColorsPalette.of(context).primaryColor.withOpacity(0.5),
                 currentIndex: currentIndex,
                 unselectedLabelStyle: TextStyleHelper.of(context)
                     .bodySmall12R
