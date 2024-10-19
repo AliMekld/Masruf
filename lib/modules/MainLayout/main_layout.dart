@@ -43,8 +43,8 @@ class _MainLayoutState extends State<MainLayout> {
                     BoxShadow(
                       blurRadius: 1.5,
                       spreadRadius: 1.5,
-                      blurStyle: BlurStyle.outer,
-                      color: ColorsPalette.of(context).iconColor,
+                      blurStyle: BlurStyle.normal,
+                      color: ColorsPalette.of(context).dividerColor,
                     )
                   ],
                   borderRadius: Constants.kBorderRaduis8,
@@ -58,13 +58,14 @@ class _MainLayoutState extends State<MainLayout> {
                     currentIndex: currentIndex,
                   ),
                   Container(
-                    margin: const EdgeInsets.all(6),
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 1.5,
                           spreadRadius: 1.5,
-                          blurStyle: BlurStyle.outer,
+                          blurStyle: BlurStyle.normal,
                           color: ColorsPalette.of(context).primaryColor,
                         )
                       ],
@@ -83,16 +84,17 @@ class _MainLayoutState extends State<MainLayout> {
         ),
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
-                elevation: 0.5,
-                backgroundColor:
-                    ColorsPalette.of(context).primaryColor.withOpacity(0.5),
+                // elevation: 0.5,
+                backgroundColor: ColorsPalette.of(context).primaryColor,
                 currentIndex: currentIndex,
-                unselectedLabelStyle: TextStyleHelper.of(context)
-                    .bodySmall12R
-                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
-                selectedLabelStyle: TextStyleHelper.of(context)
-                    .bodyMedium14R
-                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
+                selectedItemColor: ColorsPalette.of(context).backgroundColor,
+                unselectedItemColor:ColorsPalette.of(context).dividerColor ,
+                 unselectedLabelStyle: TextStyleHelper.of(context)
+                     .bodySmall12R
+                     .copyWith(color: ColorsPalette.of(context).iconColor),
+                 selectedLabelStyle: TextStyleHelper.of(context)
+                     .bodyMedium14R
+                     .copyWith(color: ColorsPalette.of(context).backgroundColor),
                 onTap: (_) {
                   setState(() {
                     currentIndex = _;
@@ -107,9 +109,7 @@ class _MainLayoutState extends State<MainLayout> {
                         height: 24.h,
                         width: 24.w,
                         colorFilter: ColorFilter.mode(
-                          widget.routeName.contains(e.route)
-                              ? ColorsPalette.of(context).primaryColor
-                              : ColorsPalette.of(context).dividerColor,
+                          ColorsPalette.of(context).iconColor,
                           BlendMode.srcIn,
                         ),
                       ),

@@ -45,12 +45,9 @@ extension WidgetExtensions on Widget {
   Padding addPaddingAll({required double padding}) =>
       Padding(padding: EdgeInsetsDirectional.all(padding), child: this);
   Padding addPaddingHorizontal({required double padding}) => Padding(
-      padding: EdgeInsetsDirectional.symmetric(horizontal: padding),
-      child: this);
-  // ClipRRect roundedEdges({BorderRadius? borderRadius}) => ClipRRect(
-  //   borderRadius: borderRadius ?? Constants.kBorderRadius16,
-  //   child: this,
-  // );
+        padding: EdgeInsetsDirectional.symmetric(horizontal: padding),
+        child: this,
+      );
 }
 
 extension DoubleExtension on double {

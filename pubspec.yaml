@@ -21,6 +21,8 @@ dependencies:
   flutter_gen: ^5.8.0
   # state managment
   provider: ^6.1.2
+  syncfusion_flutter_charts: ^27.1.53
+
 
 
   cupertino_icons: ^1.0.8

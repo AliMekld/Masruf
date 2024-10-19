@@ -23,7 +23,6 @@ final GoRouter _router = GoRouter(
 
     ///==============>> [ShellRoute]
     ShellRoute(
-      redirect: (context, state) {},
       pageBuilder: (context, state, child) {
        return _buildPageWithDefaultTransition(
           context: context,
