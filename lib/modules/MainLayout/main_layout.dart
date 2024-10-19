@@ -97,6 +97,7 @@ class _MainLayoutState extends State<MainLayout> {
                      .copyWith(color: ColorsPalette.of(context).backgroundColor),
                 onTap: (_) {
                   setState(() {
+                    // ignore: no_wildcard_variable_uses
                     currentIndex = _;
                   });
                   context.goNamed(menuList[currentIndex].route);

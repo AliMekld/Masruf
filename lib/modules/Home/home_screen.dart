@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 632.h,
                 child:Column(children: [
 
-                   ...[1,2,3,4,5,6,7].map( (e)=> ListTile(title:Text(e.toString()),)).toList()
+                   ...[1,2,3,4,5,6,7].map( (e)=> ListTile(title:Text(e.toString()),))
 
                 ],),
               ),
@@ -198,7 +198,7 @@ List<LineSeries<SalesData, num>> getDefaultData() {
             shape: DataMarkerType.circle,
             borderWidth: 3,
             borderColor: Colors.red),
-        dataLabelSettings: DataLabelSettings(
+        dataLabelSettings:const DataLabelSettings(
             isVisible: isDataLabelVisible,
             labelAlignment: ChartDataLabelAlignment.auto)),
     LineSeries<SalesData, num>(
@@ -214,7 +214,7 @@ List<LineSeries<SalesData, num>> getDefaultData() {
             shape: DataMarkerType.circle,
             borderWidth: 3,
             borderColor: Colors.black),
-        dataLabelSettings: DataLabelSettings(
+        dataLabelSettings: const DataLabelSettings(
             isVisible: isDataLabelVisible,
             labelAlignment: ChartDataLabelAlignment.auto))
   ];
