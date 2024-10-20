@@ -200,6 +200,12 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///C:/src/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "flutter_screenutil",
       "rootUri": "file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.9.3",
       "packageUri": "lib/",
@@ -446,6 +452,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "state_extended",
+      "rootUri": "file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/state_extended-5.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "stream_channel",
       "rootUri": "file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/stream_channel-2.1.2",
       "packageUri": "lib/",
@@ -504,6 +516,12 @@
       "rootUri": "file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "universal_platform",
+      "rootUri": "file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "vector_graphics",
@@ -578,7 +596,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-19T18:04:31.897442Z",
+  "generated": "2024-10-20T19:16:01.322171Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///C:/src/flutter",

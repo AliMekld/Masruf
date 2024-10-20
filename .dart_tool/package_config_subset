@@ -274,6 +274,10 @@ stack_trace
 2.18
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.11.1/
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.11.1/lib/
+state_extended
+3.0
+file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/state_extended-5.5.0/
+file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/state_extended-5.5.0/lib/
 stream_channel
 2.19
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/stream_channel-2.1.2/
@@ -314,6 +318,10 @@ typed_data
 3.5
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0/
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0/lib/
+universal_platform
+2.12
+file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.1.0/
+file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.1.0/lib/
 vector_graphics
 2.17
 file:///C:/Users/Ali%20Mekld/AppData/Local/Pub/Cache/hosted/pub.dev/vector_graphics-1.1.11+1/
@@ -374,6 +382,10 @@ flutter
 3.3
 file:///C:/src/flutter/packages/flutter/
 file:///C:/src/flutter/packages/flutter/lib/
+flutter_localizations
+3.2
+file:///C:/src/flutter/packages/flutter_localizations/
+file:///C:/src/flutter/packages/flutter_localizations/lib/
 flutter_test
 3.3
 file:///C:/src/flutter/packages/flutter_test/

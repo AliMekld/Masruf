@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 
@@ -12,7 +11,7 @@ class TextStyleHelper {
   TextStyle getTextStyle(double fontSize, FontWeight fontWeight) {
     return TextStyle(
       fontFamily: Constants.notoSansFontFamily,
-      fontSize: fontSize.sp, 
+      fontSize: fontSize, 
       fontWeight: fontWeight,
       color: ColorsPalette.of(context).primaryTextColor,
     );

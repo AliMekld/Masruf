@@ -21,11 +21,12 @@ class CustomNavigationRail extends StatefulWidget {
 }
 
 class _CustomNavigationRailState extends State<CustomNavigationRail> {
-  bool isExpanded = true;
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return NavigationRail(
+
       leading: SizedBox(
         height: 60,
         child: Text(
@@ -45,6 +46,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
       unselectedLabelTextStyle: TextStyleHelper.of(context)
           .bodyMedium14R
           .copyWith(color: ColorsPalette.of(context).backgroundColor),
+     
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -55,7 +57,6 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               });
             },
             icon: Icon(
-              
               Icons.settings,
               size: 28,
               color: ColorsPalette.of(context).iconColor,
@@ -92,6 +93,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
       },
       destinations: menuList
           .map((e) => NavigationRailDestination(
+
                 selectedIcon: SvgPicture.asset(
                   e.imgSvg,
                   height: 24.h,
@@ -101,7 +103,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                     BlendMode.srcIn,
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                // padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                 icon: SvgPicture.asset(
                   e.imgSvg,
                   height: 24.h,
@@ -111,11 +113,12 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                     BlendMode.srcIn,
                   ),
                 ),
-                indicatorColor: ColorsPalette.of(context).primaryColor,
+                // indicatorColor: ColorsPalette.of(context).primaryColor,
                 label: Text(e.title),
               ))
           .toList(),
       selectedIndex: currentIndex,
+      // extended:isExpanded,
       labelType: NavigationRailLabelType.selected,
     );
   }

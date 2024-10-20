@@ -34,24 +34,9 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, theme, w) {
       return Scaffold(
-        backgroundColor: ColorsPalette.of(context).primaryColor,
+        backgroundColor: !context.isMobile? ColorsPalette.of(context).primaryColor:null,
         body: context.isMobile
-            ? Container(
-                margin: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 1.5,
-                      spreadRadius: 1.5,
-                      blurStyle: BlurStyle.normal,
-                      color: ColorsPalette.of(context).dividerColor,
-                    )
-                  ],
-                  borderRadius: Constants.kBorderRaduis8,
-                  color: ColorsPalette.of(context).backgroundColor,
-                ),
-                child: widget.child,
-              )
+            ? widget.child.expand
             : Row(
                 children: [
                   CustomNavigationRail(
