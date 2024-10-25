@@ -6,7 +6,6 @@ import 'package:masrof/modules/Home/ScreenLayouts/s_home_screen.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/constants/mixins.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import 'ScreenLayouts/l_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
