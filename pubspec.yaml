@@ -23,6 +23,15 @@ dependencies:
   provider: ^6.1.2
   syncfusion_flutter_charts: ^27.1.53
   state_extended: ^5.5.0
+  data_table_2: ^2.5.15
+  # serializing models 
+  json_serializable: ^6.8.0
+  json_annotation: ^4.9.0
+  copy_with_extension: ^5.0.4
+  copy_with_extension_gen: ^5.0.4
+  collection: 
+  intl: ^0.20.0
+
 
 
 

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:masrof/modules/Wallet/wallet_controller.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/tables/expense_table.dart';
 
 class WalletScreen extends StatefulWidget {
-  static const String routerName='WalletScreen';
+  static const String routerName = 'WalletScreen';
   const WalletScreen({super.key});
 
   @override
@@ -12,7 +14,16 @@ class WalletScreen extends StatefulWidget {
 class _WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
-     return Container(child: const Text("WalletScreen").center,);
-
+    return Column(
+      children: [
+        ExpenseTable(
+          onDoubleTap: (_){
+            print("sssssssssssssssssss$_");
+          },
+          dataList: WalletController().tableList,
+          context: context,
+        ).expand,
+      ],
+    );
   }
 }

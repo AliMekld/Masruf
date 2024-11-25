@@ -94,7 +94,6 @@ class EntryPoint extends StatelessWidget {
       }
       return ScreenUtilInit(
         enableScaleText: () => true,
-  
         designSize: appSize,
         child: MaterialApp.router(
           theme: theme.themeData.copyWith(
