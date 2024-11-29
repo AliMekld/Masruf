@@ -36,7 +36,10 @@ class _MainLayoutState extends State<MainLayout> {
       return Scaffold(
         backgroundColor: !context.isMobile? ColorsPalette.of(context).primaryColor:null,
         body: context.isMobile
-            ? widget.child.expand
+            ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: widget.child.expand,
+            )
             : Row(
                 children: [
                   CustomNavigationRail(

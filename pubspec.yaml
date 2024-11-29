@@ -30,7 +30,8 @@ dependencies:
   copy_with_extension: ^5.0.4
   copy_with_extension_gen: ^5.0.4
   collection: 
-  intl: ^0.20.0
+  intl:
+  sqflite:
 
 
 
