@@ -13,5 +13,11 @@
     "appName": "مصروفي",
     "home": "الرئيسية",
     "wallet": "المحفظة",
-    "profile": "بروفايل"
+    "profile": "بروفايل",
+    "expenseDetails": "بيانات المصروف",
+    "expenseName": "اسم المصروف",
+    "expenseNumber": "رقم المصروف",
+    "expenseValue": "قيمة المصروف",
+    "expenseDate": "تاريح المصروف",
+    "expenseCategory": "فئه المصروف"
 }

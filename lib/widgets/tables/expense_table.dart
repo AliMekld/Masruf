@@ -2,9 +2,11 @@ import 'package:collection/collection.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
-import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
+import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/GenericTable/table_helper.dart';
 import 'package:masrof/widgets/GenericTable/table_widget.dart';
@@ -15,11 +17,13 @@ class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
   /// todo nrmy da fe el zebala wncreate table ndeef b3d manzakr ezay el tables bttcreate
   List<ExpensesModel> expensesList;
   final BuildContext context;
+  final Function(ExpensesModel) onEditExpense;
 
   ExpenseTable({
     required this.context,
     super.key,
     required this.expensesList,
+    required this.onEditExpense,
   });
 
   @override
@@ -29,9 +33,11 @@ class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
 class _ExpenseTableState<T extends ExpensesModel>
     extends State<ExpenseTable<T>> {
   /// a columns List
-  List<CustomDataColumn> get culumnsList => [
+  List<CustomDataColumn> getCulumnsList(BuildContext context) => [
         CustomDataColumn(
-          title: "id",
+          title:
+              AppLocalizations.of(context)?.translate(Strings.expenseNumber) ??
+                  "",
           columnSize: ColumnSize.S,
           numeric: true,
           onSort: (index, asend) {
@@ -44,10 +50,14 @@ class _ExpenseTableState<T extends ExpensesModel>
             });
           },
         ),
-        CustomDataColumn(title: "expenseName", columnSize: ColumnSize.L),
-        CustomDataColumn(title: "expenseValue", columnSize: ColumnSize.L),
-        CustomDataColumn(title: "expenseDate", columnSize: ColumnSize.L),
-        CustomDataColumn(title: "category", columnSize: ColumnSize.L),
+        CustomDataColumn(
+            title: Strings.expenseName.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(
+            title: Strings.expenseValue.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(
+            title: Strings.expenseDate.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(
+            title: Strings.expenseCategory.tr, columnSize: ColumnSize.L),
       ];
 
   @override
@@ -59,7 +69,7 @@ class _ExpenseTableState<T extends ExpensesModel>
             widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
         setState(() {});
       },
-      columnsList: culumnsList,
+      columnsList: getCulumnsList(context),
       rowsList: _getRows(),
     );
   }
@@ -69,7 +79,11 @@ class _ExpenseTableState<T extends ExpensesModel>
         .mapIndexed((i, e) => TableHelper<ExpensesModel>(
               context: context,
               onDoubleTap: (index) {
-                const DialogHelper.customDialog(child: SettingsDialog())
+                DialogHelper.customDialog(
+                        child: ExpensesDialogDetailWidget(
+                            onEditExpense: (model) =>
+                                widget.onEditExpense(model),
+                            model: widget.expensesList[index]))
                     .showDialog(context);
               },
               isSelected: widget.expensesList[i].isSelected,

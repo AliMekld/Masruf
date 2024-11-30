@@ -11,10 +11,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-
-
 ///--------------->DOCUMENTATION----------------------//
 enum ButtonTypes { primary, secondary, outlined, disabled }
+
+///todo refactor colors of this widget
 
 class CustomButtonWidget extends StatelessWidget {
   final ButtonTypes buttonTypes;
@@ -25,7 +25,7 @@ class CustomButtonWidget extends StatelessWidget {
   final Function()? onTap;
   final bool isLoading;
   final double? height, width;
-  final BuildContext currentContext;
+  final BuildContext context;
 
   const CustomButtonWidget.custom({
     super.key,
@@ -38,7 +38,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.isLoading = false,
     this.height,
     this.width,
-    required this.currentContext,
+    required this.context,
   });
 
   /// NAMED CONSTRUCTORS FOR ALL BUTTON TYPES
@@ -51,16 +51,14 @@ class CustomButtonWidget extends StatelessWidget {
     this.titleStyle,
     this.isLoading = false,
     this.height,
-        required this.currentContext,
-
+    required this.context,
     this.width,
   }) : buttonTypes = ButtonTypes.primary;
 
   const CustomButtonWidget.secondary({
     super.key,
     this.child,
-        required this.currentContext,
-
+    required this.context,
     this.color,
     this.titleStyle,
     this.onTap,
@@ -74,8 +72,7 @@ class CustomButtonWidget extends StatelessWidget {
     super.key,
     this.buttonTitle,
     this.child,
-        required this.currentContext,
-
+    required this.context,
     this.color,
     this.titleStyle,
     this.onTap,
@@ -87,8 +84,7 @@ class CustomButtonWidget extends StatelessWidget {
     super.key,
     this.buttonTitle,
     this.child,
-        required this.currentContext,
-
+    required this.context,
     this.color,
     this.titleStyle,
     this.onTap,
@@ -98,18 +94,21 @@ class CustomButtonWidget extends StatelessWidget {
   }) : buttonTypes = ButtonTypes.disabled;
 
   /// GET DECORATIONS BASED ON BUTTON TYPE
-  BoxDecoration get primaryDecoration =>
-      BoxDecoration(color: color ?? ColorsPalette.of(currentContext).primaryColor, borderRadius: Constants.kBorderRaduis16);
+  BoxDecoration get primaryDecoration => BoxDecoration(
+      color: color ?? ColorsPalette.of(context).primaryColor,
+      borderRadius: Constants.kBorderRaduis16);
   BoxDecoration get outlineDecoration => BoxDecoration(
       color: color ?? Colors.transparent,
-      borderRadius: Constants.kBorderRaduis16 ,
+      borderRadius: Constants.kBorderRaduis16,
       border: Border.all(
-        color: ColorsPalette.of(currentContext).secondaryTextColor,
+        color: ColorsPalette.of(context).secondaryTextColor,
       ));
-  BoxDecoration get secondaryDecoration =>
-      BoxDecoration(color: color ?? ColorsPalette.of(currentContext).secondaryColor, borderRadius: Constants.kBorderRaduis16);
-  BoxDecoration get disabledDecoration =>
-      BoxDecoration(color: color ?? ColorsPalette.of(currentContext).buttonColor, borderRadius: Constants.kBorderRaduis16);
+  BoxDecoration get secondaryDecoration => BoxDecoration(
+      color: color ?? ColorsPalette.of(context).secondaryColor,
+      borderRadius: Constants.kBorderRaduis16);
+  BoxDecoration get disabledDecoration => BoxDecoration(
+      color: color ?? ColorsPalette.of(context).buttonColor,
+      borderRadius: Constants.kBorderRaduis16);
   BoxDecoration _getDecoration() {
     switch (buttonTypes) {
       case ButtonTypes.primary:
@@ -123,9 +122,10 @@ class CustomButtonWidget extends StatelessWidget {
     }
   }
 
-  static CustomButtonWidget backButton(BuildContext context, {double? width}) => CustomButtonWidget.outlined(
-      
-      currentContext: context, width: width ?? 1.sw,
+  static CustomButtonWidget backButton(BuildContext context, {double? width}) =>
+      CustomButtonWidget.outlined(
+        context: context,
+        width: width ?? 1.sw,
         buttonTitle: Strings.back.tr,
         onTap: () {
           context.pop();
@@ -148,7 +148,10 @@ class CustomButtonWidget extends StatelessWidget {
             : child ??
                 Text(
                   buttonTitle ?? "",
-                  style: titleStyle ?? TextStyleHelper.of(context).titleMedium16M.copyWith(color: ColorsPalette.of(context).buttonColor),
+                  style: titleStyle ??
+                      TextStyleHelper.of(context)
+                          .titleMedium16M
+                          .copyWith(color: Colors.white),
                 ).center,
       ),
     );
@@ -171,7 +174,8 @@ class SaveButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(title ?? Strings.save.tr, style: TextStyleHelper.of(context).bodyLarge16R),
+        Text(title ?? Strings.save.tr,
+            style: TextStyleHelper.of(context).bodyLarge16R),
         if (img != null) ...{
           8.w.widthBox,
           SvgPicture.asset(
@@ -203,7 +207,7 @@ class CreateButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text( title ?? Strings.save.tr),
+            Text(title ?? Strings.save.tr),
             8.w.widthBox,
             SvgPicture.asset(
               ///todo add this asset  imagesPlus

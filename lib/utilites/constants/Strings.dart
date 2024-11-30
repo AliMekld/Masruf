@@ -15,6 +15,17 @@ class Strings {
   static const String home =    "home";
   static const String wallet =  "wallet";
   static const String profile = "profile";
+  static const String expenseDetails = "expenseDetails";
+  static const String expenseName = "expenseName";
+  static const String expenseNumber = "expenseNumber";
+  static const String expenseValue = "expenseValue";
+  static const String expenseDate = "expenseDate";
+  static const String expenseCategory = "expenseCategory";
+
+
+
+
+
 
 
 

@@ -49,10 +49,10 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               Strings.appName.tr.toUpperCase(),
               style: TextStyle(
-                fontFamily: Constants.agbalumoFontFamily,
-                letterSpacing: 8,
+                fontFamily: Constants.notoSansKoufyFontFamily,
+                // letterSpacing: 8,
                 color: ColorsPalette.of(context).primaryColor,
-                fontSize: 24.sp,
+                fontSize: 24,
               ),
             ),
             16.h.heightBox,

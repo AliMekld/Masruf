@@ -85,7 +85,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
                 selectedItem: SystemBrightness.values
                     .firstWhereOrNull((e) => e.name == theme.brightness?.name)),
           ],
-        ).addPaddingAll(padding: 16.r),
+        ),
       ),
     );
   }

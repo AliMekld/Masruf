@@ -7,12 +7,15 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/models/expense_model.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
+import 'package:masrof/modules/Wallet/wallet_controller.dart';
 import 'package:masrof/modules/Wallet/wallet_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
@@ -42,7 +45,6 @@ class _MainLayoutState extends State<MainLayout> {
     return Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, theme, lang, w) {
       return Scaffold(
-        
         appBar: context.isMobile
             ? AppBar(
                 actions: [
@@ -92,10 +94,19 @@ class _MainLayoutState extends State<MainLayout> {
               ),
         floatingActionButtonLocation:
             context.isMobile ? FloatingActionButtonLocation.centerDocked : null,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
-        ),
+        floatingActionButton: currentIndex == 1
+            ? FloatingActionButton(
+                onPressed: () {
+                  DialogHelper.customDialog(
+                      child: ExpensesDialogDetailWidget(
+                    model: ExpensesModel(),
+                    onEditExpense: (model) =>
+                        WalletController().onAddUpdateExpense(model),
+                  )).showDialog(context);
+                },
+                child: const Icon(Icons.add),
+              )
+            : null,
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
                 elevation: 0.5,

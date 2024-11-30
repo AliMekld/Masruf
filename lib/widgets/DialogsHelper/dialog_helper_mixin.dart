@@ -115,7 +115,7 @@ mixin DialogsMixin {
             ).heightBox(120.h),
             24.h.heightBox,
             CustomButtonWidget.primary(
-              currentContext: context,
+              context: context,
               buttonTitle: Strings.save.tr,
               onTap: () {
                 if (onSuccess != null) onSuccess();
@@ -181,7 +181,7 @@ mixin DialogsMixin {
                 CustomButtonWidget.backButton(context, width: 112.w),
                 CustomButtonWidget.primary(
                   width: 120.w,
-                  currentContext: context,
+                  context: context,
                   buttonTitle: Strings.confirm.tr,
                   onTap: onConfirm,
                 ),
@@ -208,7 +208,6 @@ mixin DialogsMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              ///todo add this asset  imagesWarningCircle
               Assets.images.app_logo_svg,
               width: 112.w,
               height: 112.h,
@@ -242,7 +241,7 @@ mixin DialogsMixin {
               children: [
                 CustomButtonWidget.backButton(context, width: 112.w),
                 CustomButtonWidget.primary(
-                  currentContext: context,
+                  context: context,
                   width: 120.w,
                   color: ColorsPalette.of(context).errorColor,
                   buttonTitle: Strings.delete.tr,
@@ -264,13 +263,13 @@ mixin DialogsMixin {
       width}) {
     return Dialog(
       elevation: 6,
-      // alignment: AlignmentDirectional.bottomStart,
-      surfaceTintColor: ColorsPalette.of(context).backgroundColor.withOpacity(0.1),
+      surfaceTintColor:
+          ColorsPalette.of(context).backgroundColor.withOpacity(0.1),
       shadowColor: ColorsPalette.of(context).buttonColor,
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRaduis16),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       backgroundColor: ColorsPalette.of(context).backgroundColor,
-      child: child,
+      child: child?.addPaddingAll(padding: 24.r),
     );
   }
 }
