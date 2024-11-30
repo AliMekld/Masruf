@@ -19,6 +19,7 @@ abstract class _$ExpensesModelCWProxy {
     double? expenseValue,
     DateTime? expenseDate,
     String? category,
+    bool? isSelected,
   });
 }
 
@@ -42,6 +43,7 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
     Object? expenseValue = const $CopyWithPlaceholder(),
     Object? expenseDate = const $CopyWithPlaceholder(),
     Object? category = const $CopyWithPlaceholder(),
+    Object? isSelected = const $CopyWithPlaceholder(),
   }) {
     return ExpensesModel(
       id: id == const $CopyWithPlaceholder()
@@ -64,6 +66,11 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
           ? _value.category
           // ignore: cast_nullable_to_non_nullable
           : category as String?,
+      isSelected:
+          isSelected == const $CopyWithPlaceholder() || isSelected == null
+              ? _value.isSelected
+              // ignore: cast_nullable_to_non_nullable
+              : isSelected as bool,
     );
   }
 }
@@ -87,10 +94,12 @@ ExpensesModel _$ExpensesModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['expenseDate'] as String),
       category: json['category'] as String?,
+      isSelected: json['isSelected'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ExpensesModelToJson(ExpensesModel instance) =>
     <String, dynamic>{
+      'isSelected': instance.isSelected,
       'id': instance.id,
       'expenseName': instance.expenseName,
       'expenseValue': instance.expenseValue,

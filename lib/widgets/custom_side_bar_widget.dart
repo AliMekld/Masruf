@@ -7,6 +7,8 @@ import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 
 // ignore: must_be_immutable
 class CustomNavigationRail extends StatefulWidget {
@@ -22,11 +24,10 @@ class CustomNavigationRail extends StatefulWidget {
 
 class _CustomNavigationRailState extends State<CustomNavigationRail> {
   bool isExpanded = false;
-
+  bool isSettingsExpanded = false;
   @override
   Widget build(BuildContext context) {
     return NavigationRail(
-
       leading: SizedBox(
         height: 60,
         child: Text(
@@ -39,22 +40,21 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
       ),
       backgroundColor: ColorsPalette.of(context).primaryColor,
       selectedIconTheme:
-          IconThemeData(color: ColorsPalette.of(context).backgroundColor),
+          IconThemeData(color: ColorsPalette.of(context).primaryTextColor),
       selectedLabelTextStyle: TextStyleHelper.of(context)
           .bodyLarge16R
-          .copyWith(color: ColorsPalette.of(context).backgroundColor),
+          .copyWith(color: ColorsPalette.of(context).primaryTextColor),
       unselectedLabelTextStyle: TextStyleHelper.of(context)
           .bodyMedium14R
-          .copyWith(color: ColorsPalette.of(context).backgroundColor),
-     
+          .copyWith(color: ColorsPalette.of(context).secondaryTextColor),
+
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
             onPressed: () {
-              setState(() {
-                isExpanded = !isExpanded;
-              });
+              const DialogHelper.customDialog(child: SettingsDialog())
+                  .showDialog(context);
             },
             icon: Icon(
               Icons.settings,
@@ -93,7 +93,6 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
       },
       destinations: menuList
           .map((e) => NavigationRailDestination(
-
                 selectedIcon: SvgPicture.asset(
                   e.imgSvg,
                   height: 24.h,

@@ -39,7 +39,6 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
               spacing: 16,
               runSpacing: 16,
               children: [
-                ///TODO Make Custom Widgets For Those Charts
                 CardWidget(
                   width: !context.isDeskTop ? 0.7.sw : 320.w,
                   height: 300.h,

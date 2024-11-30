@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
@@ -11,6 +12,8 @@ import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Wallet/wallet_screen.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -32,14 +35,32 @@ int currentIndex = 0;
 class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(builder: (context, theme, w) {
+    return Consumer2<ThemeProvider, LanguageProvider>(
+        builder: (context, theme, lang, w) {
       return Scaffold(
-        backgroundColor: !context.isMobile? ColorsPalette.of(context).primaryColor:null,
+        appBar: context.isMobile
+            ? AppBar(
+                actions: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.settings,
+                      size: 28.r,
+                    ),
+                    onPressed: () {
+                      const DialogHelper.customDialog(child: SettingsDialog())
+                          .showDialog(context);
+                    },
+                  )
+                ],
+              )
+            : null,
+        backgroundColor:
+            !context.isMobile ? ColorsPalette.of(context).primaryColor : null,
         body: context.isMobile
             ? Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: widget.child.expand,
-            )
+                padding: const EdgeInsets.all(8.0),
+                child: widget.child,
+              )
             : Row(
                 children: [
                   CustomNavigationRail(
@@ -48,6 +69,8 @@ class _MainLayoutState extends State<MainLayout> {
                   Container(
                     margin: const EdgeInsets.all(8),
                     padding: const EdgeInsets.all(16),
+                    // width: 1.sw,
+                    // height: 1.sh-16,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -60,7 +83,7 @@ class _MainLayoutState extends State<MainLayout> {
                       borderRadius: Constants.kBorderRaduis8,
                       color: ColorsPalette.of(context).backgroundColor,
                     ),
-                    child: widget.child,
+                    child: widget.child.expand,
                   ).expand
                 ],
               ),
@@ -72,17 +95,18 @@ class _MainLayoutState extends State<MainLayout> {
         ),
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
-                // elevation: 0.5,
+                elevation: 0.5,
                 backgroundColor: ColorsPalette.of(context).primaryColor,
                 currentIndex: currentIndex,
-                selectedItemColor: ColorsPalette.of(context).backgroundColor,
-                unselectedItemColor:ColorsPalette.of(context).dividerColor ,
-                 unselectedLabelStyle: TextStyleHelper.of(context)
-                     .bodySmall12R
-                     .copyWith(color: ColorsPalette.of(context).iconColor),
-                 selectedLabelStyle: TextStyleHelper.of(context)
-                     .bodyMedium14R
-                     .copyWith(color: ColorsPalette.of(context).backgroundColor),
+                selectedItemColor: ColorsPalette.of(context).primaryTextColor,
+                unselectedItemColor:
+                    ColorsPalette.of(context).secondaryTextColor,
+                unselectedLabelStyle: TextStyleHelper.of(context)
+                    .bodySmall12R
+                    .copyWith(color: ColorsPalette.of(context).iconColor),
+                selectedLabelStyle: TextStyleHelper.of(context)
+                    .bodyMedium14R
+                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
                 onTap: (_) {
                   setState(() {
                     // ignore: no_wildcard_variable_uses
@@ -93,6 +117,7 @@ class _MainLayoutState extends State<MainLayout> {
                 items: [
                   ...menuList.map(
                     (e) => BottomNavigationBarItem(
+                      backgroundColor: ColorsPalette.of(context).buttonColor,
                       icon: SvgPicture.asset(
                         e.imgSvg,
                         height: 24.h,

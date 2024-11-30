@@ -31,7 +31,7 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData(dataTableTheme: DataTableThemeData()),
+      data: ThemeData(dataTableTheme: const DataTableThemeData()),
       child: DataTable2(
         scrollController: ScrollController(),
         showBottomBorder: false,
