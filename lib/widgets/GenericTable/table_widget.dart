@@ -1,6 +1,5 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/utilites/extensions.dart';
@@ -14,13 +13,17 @@ import 'package:masrof/utilites/extensions.dart';
 /// 3-decoration of table
 /// 4-maybe pagination
 class GenericTableWidget<T> extends StatefulWidget {
-  final List<DataRow> rowsList;
+  final List<DataRow2> rowsList;
+  final double? minWidth;
   final List<CustomDataColumn> columnsList;
+  final Function(bool? v)? onSelectAll;
 
   const GenericTableWidget({
     super.key,
     required this.rowsList,
     required this.columnsList,
+    this.minWidth,
+    this.onSelectAll,
   });
 
   @override
@@ -33,20 +36,25 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
     return Theme(
       data: ThemeData(dataTableTheme: const DataTableThemeData()),
       child: DataTable2(
-        scrollController: ScrollController(),
-        showBottomBorder: false,
-        showHeadingCheckBox: false,
+        showBottomBorder: true,
+        showHeadingCheckBox: widget.onSelectAll != null,
         columnSpacing: 4,
         empty: Text(
           "Empty!",
           style: TextStyleHelper.of(context).bodyLarge16R,
         ),
-
-        /// Decorations
-        isHorizontalScrollBarVisible: true,
-
-        // headingRowHeight: 60.h,
-        minWidth: ((widget.columnsList.length - 1) * 120.w),
+        onSelectAll: widget.onSelectAll,
+        headingCheckboxTheme: CheckboxThemeData(
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          checkColor: WidgetStatePropertyAll(
+            ColorsPalette.of(context).secondaryColor,
+          ),
+          fillColor: WidgetStatePropertyAll(
+            ColorsPalette.of(context).primaryColor,
+          ),
+        ),
+        clipBehavior: Clip.antiAlias,
+        minWidth: widget.minWidth ?? 1200,
         headingRowDecoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16), topRight: Radius.circular(16))),
@@ -65,7 +73,6 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
         columns: widget.columnsList
             .map(
               (e) => DataColumn2(
-
                 label: Text(
                   e.title,
                   style: TextStyleHelper.of(context)
@@ -76,11 +83,25 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
                 numeric: e.numeric ?? false,
                 fixedWidth: e.fixedWidth,
                 size: e.columnSize ?? ColumnSize.M,
-                onSort: e.onSort,
+                onSort: (i, b) => e.onSort != null ? e.onSort!(i, b) : null,
               ),
             )
             .toList(),
+
         rows: widget.rowsList,
+        sortColumnIndex: 0,
+        sortArrowBuilder: (ascending, sorted) {
+          return Icon(
+            ascending
+                ? Icons.keyboard_arrow_down_rounded
+                : Icons.arrow_upward_rounded,
+            color: sorted
+                ? ColorsPalette.of(context).secondaryColor
+                : ColorsPalette.of(context).secondaryTextColor,
+            applyTextScaling: true,
+            size: 24,
+          );
+        },
       ),
     );
   }

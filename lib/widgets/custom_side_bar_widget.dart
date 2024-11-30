@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
@@ -32,14 +33,25 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
     AppLocalizations.of(context)?.translate(Strings.appName);
     return NavigationRail(
       leading: SizedBox(
-        height: 60,
-        child: Text(
-          Strings.appName.tr,
-          style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
-              fontSize: isExpanded ? 24 : 12,
-              fontFamily: Constants.notoSansKoufyFontFamily,
-              color: Colors.white),
-        ).center.addPaddingAll(padding: 4),
+        child: Column(
+          children: [
+            16.h.heightBox,
+            Text(
+              Strings.appName.tr,
+              style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
+                  fontSize: isExpanded ? 24 : 20,
+                  fontFamily: Constants.notoSansKoufyFontFamily,
+                  color: Colors.white),
+            ).center.addPaddingAll(padding: 4),
+            16.h.heightBox,
+            SvgPicture.asset(
+              Assets.images.app_logo_svg,
+              width: isExpanded ? 48 : 40.w,
+              height: isExpanded ? 48 : 40.h,
+              fit: BoxFit.cover,
+            ).addPaddingAll(padding: 4),
+          ],
+        ),
       ),
       backgroundColor: ColorsPalette.of(context).primaryColor,
       selectedIconTheme:

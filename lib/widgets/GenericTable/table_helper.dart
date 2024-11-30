@@ -1,37 +1,57 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:masrof/core/theme/color_pallete.dart';
 
 class TableHelper<T> extends DataTableSource {
   final Function(bool value)? onSelect;
+  BuildContext context;
   final TextStyle? style;
   final bool isSelected;
   final List<T> dataList;
   final List<DataCell> Function(T item) getCells;
-
+  final Function(int index)? onDoubleTap;
   TableHelper({
     this.onSelect,
     required this.dataList,
     required this.getCells,
     this.style,
     this.isSelected = false,
+    this.onDoubleTap,
+    required this.context,
   });
   @override
-  DataRow getRow(int index) {
-    return DataRow.byIndex(
-
-      selected: isSelected,
-      color: WidgetStatePropertyAll(
-        isSelected ? Colors.amber : Colors.transparent,
-      ),
-      onSelectChanged: (v) {
-        if (onSelect != null) {
-          onSelect!(v!);
+  DataRow2 getRow(int index) {
+    return DataRow2.byIndex(
+      onDoubleTap: () {
+        if (onDoubleTap != null) {
+          onDoubleTap!(index);
         }
       },
+      selected: isSelected,
+      color: index.isEven
+          ? WidgetStatePropertyAll(
+              isSelected
+                  ? ColorsPalette.of(context).watingColor.withOpacity(0.2)
+                  : ColorsPalette.of(context)
+                      .secondaryTextColor
+                      .withOpacity(0.4),
+            )
+          : WidgetStatePropertyAll(
+              isSelected
+                  ? ColorsPalette.of(context).watingColor.withOpacity(0.2)
+                  : ColorsPalette.of(context)
+                      .secondaryTextColor
+                      .withOpacity(0.8),
+            ),
+      onSelectChanged: onSelect != null
+          ? (v) {
+              onSelect!(v!);
+            }
+          : null,
+      // decoration: BoxDecoration(color: Colors.white),
       index: index,
-      cells: getCells(
-
-        dataList[index],
-      ),
+      onLongPress: null,
+      cells: getCells(dataList[index]),
     );
   }
 

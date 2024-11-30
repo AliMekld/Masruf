@@ -42,6 +42,7 @@ class _MainLayoutState extends State<MainLayout> {
     return Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, theme, lang, w) {
       return Scaffold(
+        
         appBar: context.isMobile
             ? AppBar(
                 actions: [
@@ -73,21 +74,19 @@ class _MainLayoutState extends State<MainLayout> {
                   Container(
                     margin: const EdgeInsets.all(8),
                     padding: const EdgeInsets.all(16),
-                    // width: 1.sw,
-                    // height: 1.sh-16,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          blurRadius: 1.5,
-                          spreadRadius: 1.5,
-                          blurStyle: BlurStyle.normal,
-                          color: ColorsPalette.of(context).primaryColor,
+                          blurRadius: 0.5,
+                          spreadRadius: 0.5,
+                          blurStyle: BlurStyle.outer,
+                          color: ColorsPalette.of(context).dividerColor,
                         )
                       ],
                       borderRadius: Constants.kBorderRaduis8,
-                      color: ColorsPalette.of(context).backgroundColor,
+                      color: ColorsPalette.of(context).buttonDisabledColor,
                     ),
-                    child: widget.child.expand,
+                    child: widget.child..addPaddingAll(padding: 40).expand,
                   ).expand
                 ],
               ),
@@ -110,7 +109,8 @@ class _MainLayoutState extends State<MainLayout> {
                     .copyWith(color: ColorsPalette.of(context).iconColor),
                 selectedLabelStyle: TextStyleHelper.of(context)
                     .bodyMedium14R
-                    .copyWith(color: ColorsPalette.of(context).backgroundColor),
+                    .copyWith(
+                        color: ColorsPalette.of(context).primaryTextColor),
                 onTap: (_) {
                   setState(() {
                     // ignore: no_wildcard_variable_uses
@@ -146,7 +146,7 @@ List<MenuModel> get menuList => _menuList;
 List<MenuModel> _menuList = [
   MenuModel(
     index: 0,
-    title:Strings.home,
+    title: Strings.home,
     imgSvg: Assets.images.home_svg,
     route: HomeScreen.routerName,
   ),

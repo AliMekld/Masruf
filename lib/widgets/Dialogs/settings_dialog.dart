@@ -22,11 +22,11 @@ class _SettingsDialogState extends State<SettingsDialog> {
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.save);
     return SizedBox(
-      height: context.isMobile ? 360.h : 400.h,
-      width: context.isMobile ? 220.w : 300.w,
+      height: context.isTabletOrMobile ? 348.h : 400.h,
+      width: context.isTabletOrMobile ? 220.w : 280.w,
       child: Consumer2<LanguageProvider, ThemeProvider>(
         builder: (context, lang, theme, child) => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: context.isTabletOrMobile? CrossAxisAlignment.center:CrossAxisAlignment.start,
           children: [
             Text(
               Strings.settings.tr,

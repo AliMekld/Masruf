@@ -17,10 +17,7 @@ class _WalletScreenState extends State<WalletScreen> {
     return Column(
       children: [
         ExpenseTable(
-          onDoubleTap: (_){
-            print("sssssssssssssssssss$_");
-          },
-          dataList: WalletController().tableList,
+          expensesList: WalletController().tableList,
           context: context,
         ).expand,
       ],

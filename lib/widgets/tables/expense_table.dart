@@ -4,26 +4,46 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/GenericTable/table_helper.dart';
 import 'package:masrof/widgets/GenericTable/table_widget.dart';
 import 'package:masrof/models/expense_model.dart';
 
-class ExpenseTable<T extends ExpensesModel> extends StatelessWidget {
-  final List<ExpensesModel> dataList;
+// ignore: must_be_immutable
+class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
+  /// todo nrmy da fe el zebala wncreate table ndeef b3d manzakr ezay el tables bttcreate
+  List<ExpensesModel> expensesList;
   final BuildContext context;
 
-  final Function(int)? onDoubleTap;
-
-  const ExpenseTable({
+  ExpenseTable({
     required this.context,
     super.key,
-    this.onDoubleTap,
-    required this.dataList,
+    required this.expensesList,
   });
 
+  @override
+  State<ExpenseTable> createState() => _ExpenseTableState();
+}
+
+class _ExpenseTableState<T extends ExpensesModel>
+    extends State<ExpenseTable<T>> {
   /// a columns List
-  static List<CustomDataColumn> get culumnsList => [
-        CustomDataColumn(title: "id", columnSize: ColumnSize.S, numeric: true),
+  List<CustomDataColumn> get culumnsList => [
+        CustomDataColumn(
+          title: "id",
+          columnSize: ColumnSize.S,
+          numeric: true,
+          onSort: (index, asend) {
+            setState(() {
+              widget.expensesList.sort.call((a, b) {
+                final aId = a.id ?? 0;
+                final bId = b.id ?? 0;
+                return asend ? aId.compareTo(bId) : bId.compareTo(aId);
+              });
+            });
+          },
+        ),
         CustomDataColumn(title: "expenseName", columnSize: ColumnSize.L),
         CustomDataColumn(title: "expenseValue", columnSize: ColumnSize.L),
         CustomDataColumn(title: "expenseDate", columnSize: ColumnSize.L),
@@ -33,53 +53,65 @@ class ExpenseTable<T extends ExpensesModel> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GenericTableWidget<ExpensesModel>(
+      minWidth: widget.expensesList.length * 180,
+      onSelectAll: (v) {
+        widget.expensesList =
+            widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
+        setState(() {});
+      },
       columnsList: culumnsList,
       rowsList: _getRows(),
     );
   }
 
-  List<DataRow> _getRows() {
-    return dataList
+  List<DataRow2> _getRows() {
+    return widget.expensesList
         .mapIndexed((i, e) => TableHelper<ExpensesModel>(
-              // isSelected: e.isSelected,
-              // onSelect: (v) {
-              //   dataList[i].isSelected = !dataList[i].isSelected;
-              // },
-              dataList: dataList,
-              getCells: (w) => _getCells(w, context),
+              context: context,
+              onDoubleTap: (index) {
+                const DialogHelper.customDialog(child: SettingsDialog())
+                    .showDialog(context);
+              },
+              isSelected: widget.expensesList[i].isSelected,
+              onSelect: (v) {
+                widget.expensesList[i].isSelected = v;
+                setState(() {});
+              },
+              dataList: widget.expensesList,
+              getCells: (w) => _getCells(w, widget.context),
             ).getRow(i))
         .toList();
   }
 
-  List<DataCell> _getCells(ExpensesModel s, BuildContext context) {
+  List<DataCell> _getCells(ExpensesModel expenseModel, BuildContext context) {
     return [
       DataCell(
         Text(
-          "${s.id?.toString().trim()}",
+          "${expenseModel.id?.toString().trim()}",
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),
       ),
       DataCell(
-        Text(s.expenseName?.trim() ?? "",
+        Text(expenseModel.expenseName?.trim() ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text("${s.expenseValue?.toString().trim()}",
+        Text("${expenseModel.expenseValue?.toString().trim()}",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text(s.expenseDate?.dmy.toString() ?? "",
+        Text(expenseModel.expenseDate?.dmy.toString() ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text(s.category?.trim() ?? "",
+        Text(expenseModel.category?.trim() ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),

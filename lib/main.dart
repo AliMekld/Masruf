@@ -85,9 +85,7 @@ class EntryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeProvider>(
-      context,
-    );
+    final theme = Provider.of<ThemeProvider>(context );
     final lang = Provider.of<LanguageProvider>(context);
 
     lang.fetchLocale();
