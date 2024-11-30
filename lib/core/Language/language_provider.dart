@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:masrof/utilites/shared_pref.dart';
 import 'package:provider/provider.dart';
 
-
 ///-> Languages Enum
 enum Languages { en, ar }
 
@@ -21,13 +20,13 @@ class LanguageProvider extends ChangeNotifier {
 
   ///-> FETCH LOCAL
   ///-> 1 FROM DEVICE IF NULL ?? FROM INITIAL VALUE [Languages.ar]
-  fetchLocale(BuildContext context) async {
-    String sharedLocal = await SharedPref.getLanguage() ?? "";
+  fetchLocale() {
+    String sharedLocal = SharedPref.getLanguage() ?? "";
 
     ///-> CHECK IF SHARED PREFS HASN'T A LANG VALUE
     if (sharedLocal.isEmpty) {
       //Fetch From Device First
-      _appLanguage = _appLanguage;
+      _appLanguage = const Locale("ar");
     } else {
       _appLanguage = Locale(sharedLocal);
     }
@@ -41,7 +40,9 @@ class LanguageProvider extends ChangeNotifier {
     } else if (language?.languageCode == Languages.ar.name) {
       _appLanguage = Locale(Languages.ar.name);
     } else {
-      _appLanguage = _appLanguage == Locale(Languages.ar.name) ? Locale(Languages.en.name) : Locale(Languages.ar.name);
+      _appLanguage = _appLanguage == Locale(Languages.ar.name)
+          ? Locale(Languages.en.name)
+          : Locale(Languages.ar.name);
     }
     await SharedPref.setLanguage(lan: _appLanguage.languageCode);
     notifyListeners();

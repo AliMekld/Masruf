@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
+import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
@@ -27,11 +29,12 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
   bool isSettingsExpanded = false;
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context)?.translate(Strings.appName);
     return NavigationRail(
       leading: SizedBox(
         height: 60,
         child: Text(
-          "MASRUF",
+          Strings.appName.tr,
           style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
               fontSize: isExpanded ? 24 : 12,
               fontFamily: Constants.agbalumoFontFamily,
@@ -113,7 +116,10 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                   ),
                 ),
                 // indicatorColor: ColorsPalette.of(context).primaryColor,
-                label: Text(e.title),
+                label: Text(
+                  e.title.tr,
+                  style: TextStyleHelper.of(context).bodyLarge16R,
+                ),
               ))
           .toList(),
       selectedIndex: currentIndex,

@@ -9,5 +9,9 @@
     "settings": "Settings",
     "theme": "Theme",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "appName": "MASRUFY",
+    "home": "Home",
+    "wallet": "Wallet",
+    "profile": "Profile"
 }

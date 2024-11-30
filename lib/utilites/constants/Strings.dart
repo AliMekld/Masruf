@@ -11,4 +11,11 @@ class Strings {
   static const String theme = "theme";
   static const String light = "light";
   static const String dark = "dark";
+  static const String appName = "appName";
+  static const String home =    "home";
+  static const String wallet =  "wallet";
+  static const String profile = "profile";
+
+
+
 }

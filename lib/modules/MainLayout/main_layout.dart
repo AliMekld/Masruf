@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
@@ -10,6 +11,7 @@ import 'package:masrof/gen/assets.gen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Wallet/wallet_screen.dart';
+import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
@@ -35,6 +37,7 @@ int currentIndex = 0;
 class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context)?.translate(Strings.appName);
     return Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, theme, lang, w) {
       return Scaffold(
@@ -127,7 +130,7 @@ class _MainLayoutState extends State<MainLayout> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      label: e.title,
+                      label: e.title.tr,
                     ),
                   ),
                 ],
@@ -140,22 +143,21 @@ class _MainLayoutState extends State<MainLayout> {
 
 List<MenuModel> get menuList => _menuList;
 List<MenuModel> _menuList = [
-  ///TODO :FIX ASSETS GENERATING LOGIC
   MenuModel(
     index: 0,
-    title: 'Home',
+    title:Strings.home,
     imgSvg: Assets.images.home,
     route: HomeScreen.routerName,
   ),
   MenuModel(
     index: 1,
-    title: 'Wallet',
+    title: Strings.wallet,
     imgSvg: Assets.images.messages,
     route: WalletScreen.routerName,
   ),
   MenuModel(
     index: 2,
-    title: 'Profile',
+    title: Strings.profile,
     imgSvg: Assets.images.profile,
     route: ProfileScreen.routerName,
   ),

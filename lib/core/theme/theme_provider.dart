@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_model.dart';
+import 'package:masrof/utilites/shared_pref.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeModel get appTheme => _appTheme;
@@ -15,6 +16,10 @@ class ThemeProvider extends ChangeNotifier {
       ).copyWith(extensions: <ThemeExtension<ThemeModel>>[_appTheme]);
 
   ThemeData themeData = _appTheme.isDark ? _darkTheme : _lightTheme;
+  void fetchTheme() {
+    _appTheme = SharedPref.getTheme() ?? ThemeModel.defultTheme;
+    notifyListeners();
+  }
 
   void changeTheme(SystemBrightness brightness) {
     switch (brightness) {
@@ -22,16 +27,15 @@ class ThemeProvider extends ChangeNotifier {
         _appTheme = ColorsPalette.dark();
         this.brightness = brightness;
         notifyListeners();
-
         break;
       case SystemBrightness.light:
         _appTheme = ColorsPalette.light();
         this.brightness = brightness;
         notifyListeners();
-
         break;
     }
     debugPrint(_appTheme.toJson().toString());
+    SharedPref.setTheme(theme: _appTheme);
   }
 }
 

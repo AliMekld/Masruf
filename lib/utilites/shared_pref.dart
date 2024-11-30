@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:masrof/utilites/git_it.dart';
-
 import '../core/theme/theme_model.dart';
 
 // ignore: unused_import
@@ -25,17 +23,22 @@ class SharedPref {
   }
 
   ///GET LANGUAGE
-  static Future<String?> getLanguage() async => prefs.getString(_languageCode) ?? "";
+  static String? getLanguage() => prefs.getString(_languageCode) ?? "";
 
   ///SET THEME
-  static Future<void> setTheme({required ThemeModel theme}) async {
-    await prefs.setString(_appTheme, jsonEncode(theme));
+  static void setTheme({required ThemeModel theme}) {
+    prefs.setString(_appTheme, jsonEncode(theme.toJson()));
   }
 
   ///GET THEME
-  static Future<ThemeModel>? getTheme() async {
-    Map<String, dynamic> json = await jsonDecode(prefs.getString(_appTheme) ?? "");
-    return ThemeModel.fromJson(json);
+  static ThemeModel? getTheme() {
+    String? encodedString = prefs.getString(_appTheme);
+    if (encodedString != null && (encodedString.isNotEmpty)) {
+      Map<String, dynamic> json = jsonDecode(prefs.getString(_appTheme) ?? "");
+      return ThemeModel.fromJson(json);
+    } else {
+      return null;
+    }
   }
 
   /// SET IS FIRST TIME OPEN APP
@@ -45,7 +48,6 @@ class SharedPref {
 
   /// GET IS FIRST TIME OPEN APP
   static Future<bool?> getIsFistTimeOpenApp() async {
-    debugPrint("_isFirstTimeOpenApp ${prefs.getBool(_isFirstTimeOpenApp) ?? true}");
     return prefs.getBool(_isFirstTimeOpenApp) ?? true;
   }
 
@@ -63,8 +65,6 @@ class SharedPref {
   static Future<bool?> getIsLogin() async {
     return prefs.getBool(_isLogin) ?? false;
   }
-
-
 
   void clearData() {
     prefs.clear();

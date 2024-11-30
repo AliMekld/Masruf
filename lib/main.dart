@@ -59,9 +59,9 @@ import 'package:provider/provider.dart';
 
 import 'core/Language/app_localization.dart';
 
-const Size mobileSize = Size(375, 812); 
-const Size tabletSize = Size(768, 1024); 
-const Size desktopSize = Size(1440, 900); 
+const Size mobileSize = Size(375, 812);
+const Size tabletSize = Size(768, 1024);
+const Size desktopSize = Size(1440, 900);
 const Size fullHdDesktopSize = Size(1920, 1080);
 
 void main(List<String> args) async {
@@ -85,8 +85,13 @@ class EntryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeProvider>(context);
+    final theme = Provider.of<ThemeProvider>(
+      context,
+    );
     final lang = Provider.of<LanguageProvider>(context);
+
+    lang.fetchLocale();
+    theme.fetchTheme();
 
     return LayoutBuilder(builder: (context, constaints) {
       Size appSize = const Size(375, 812);

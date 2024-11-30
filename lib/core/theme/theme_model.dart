@@ -4,7 +4,7 @@ import 'package:masrof/core/theme/color_pallete.dart';
 
 class ThemeModel extends ThemeExtension<ThemeModel> {
   /// get defult theme from device
-static  ThemeModel get defultTheme =>
+  static ThemeModel get defultTheme =>
       SchedulerBinding.instance.platformDispatcher.platformBrightness ==
               Brightness.dark
           ? ColorsPalette.dark()
@@ -83,22 +83,22 @@ static  ThemeModel get defultTheme =>
 
   factory ThemeModel.fromJson(Map<String, dynamic> json) => ThemeModel(
         isDark: json['isDark'],
-        backgroundColor: json['backgroundColor'],
-        primaryColor: json['primaryColor'],
-        secondaryColor: json['secondaryColor'],
-        buttonColor: json['buttonColor'],
-        buttonDisabledColor: json['buttonDisabledColor'],
-        dividerColor: json['dividerColor'],
-        errorColor: json['errorColor'],
-        iconColor: json['iconColor'],
-        primaryTextColor: json['primaryTextColor'],
-        secondaryTextColor: json['secondaryTextColor'],
-        successColor: json['successColor'],
-        surfaceColor: json['surfaceColor'],
-        watingColor: json['watingColor'],
+        backgroundColor: Color(json['backgroundColor']),
+        primaryColor: Color(json['primaryColor']),
+        secondaryColor: Color(json['secondaryColor']),
+        buttonColor: Color(json['buttonColor']),
+        buttonDisabledColor: Color(json['buttonDisabledColor']),
+        dividerColor: Color(json['dividerColor']),
+        errorColor: Color(json['errorColor']),
+        iconColor: Color(json['iconColor']),
+        primaryTextColor: Color(json['primaryTextColor']),
+        secondaryTextColor: Color(json['secondaryTextColor']),
+        successColor: Color(json['successColor']),
+        surfaceColor: Color(json['surfaceColor']),
+        watingColor: Color(json['watingColor']),
       );
   Map<String, dynamic> toJson() => {
-        'isDark:': isDark,
+        'isDark': isDark,
         'backgroundColor': backgroundColor.value,
         'primaryColor': primaryColor.value,
         'secondaryColor': secondaryColor.value,

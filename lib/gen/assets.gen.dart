@@ -7,6 +7,19 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
+class $I18nGen {
+  const $I18nGen();
+
+  /// File path: i18n/ar.json
+  String get ar => 'i18n/ar.json';
+
+  /// File path: i18n/en.json
+  String get en => 'i18n/en.json';
+
+  /// List of all assets
+  List<String> get values => [ar, en];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -60,4 +73,5 @@ class Assets {
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $I18nGen i18n = $I18nGen();
 }
