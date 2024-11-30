@@ -1,7 +1,7 @@
+import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/gen/assets.gen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
@@ -31,7 +31,7 @@ mixin DialogsMixin {
           children: [
             SvgPicture.asset(
               //todo add this asset
-              Assets.images.appLogo,
+              Assets.images.app_logo2_svg,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(
@@ -86,7 +86,7 @@ mixin DialogsMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              Assets.images.appLogo,
+              Assets.images.app_logo_svg,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(
@@ -148,7 +148,7 @@ mixin DialogsMixin {
           children: [
             SvgPicture.asset(
               ///todo add this asset
-              Assets.images.appLogo,
+              Assets.images.app_logo_svg,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(
@@ -209,7 +209,7 @@ mixin DialogsMixin {
           children: [
             SvgPicture.asset(
               ///todo add this asset  imagesWarningCircle
-              Assets.images.appLogo,
+              Assets.images.app_logo_svg,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(

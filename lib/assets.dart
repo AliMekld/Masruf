@@ -22,6 +22,7 @@ final class _Fonts {
   _Fonts._();
 
   final String agbalumo_regular_ttf = 'assets/fonts/Agbalumo-Regular.ttf';
+  final String notokufiarabic_variablefont_wght_ttf = 'assets/fonts/NotoKufiArabic-VariableFont_wght.ttf';
   final String notosans_regular_ttf = 'assets/fonts/NotoSans-Regular.ttf';
 
 }

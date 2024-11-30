@@ -7,7 +7,6 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/gen/assets.gen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Wallet/wallet_screen.dart';
@@ -18,6 +17,8 @@ import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
 import 'package:provider/provider.dart';
+
+import '../../assets.dart';
 
 class MainLayout extends StatefulWidget {
   final String routeName;
@@ -146,19 +147,19 @@ List<MenuModel> _menuList = [
   MenuModel(
     index: 0,
     title:Strings.home,
-    imgSvg: Assets.images.home,
+    imgSvg: Assets.images.home_svg,
     route: HomeScreen.routerName,
   ),
   MenuModel(
     index: 1,
     title: Strings.wallet,
-    imgSvg: Assets.images.messages,
+    imgSvg: Assets.images.messages_svg,
     route: WalletScreen.routerName,
   ),
   MenuModel(
     index: 2,
     title: Strings.profile,
-    imgSvg: Assets.images.profile,
+    imgSvg: Assets.images.profile_svg,
     route: ProfileScreen.routerName,
   ),
 ];

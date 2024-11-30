@@ -13,7 +13,7 @@ class TextStyleHelper {
 
   TextStyle getTextStyle(double fontSize, FontWeight fontWeight) {
     return TextStyle(
-      fontFamily: Constants.notoSansFontFamily,
+      fontFamily: Constants.notoSansKoufyFontFamily,
       fontSize: fontSize,
       fontStyle: FontStyle.normal,
       locale: Provider.of<LanguageProvider>(context).appLang,

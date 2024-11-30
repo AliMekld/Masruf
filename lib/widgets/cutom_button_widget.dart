@@ -4,13 +4,13 @@ import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
 
+import '../assets.dart';
 import '../core/Language/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../gen/assets.gen.dart';
 
 
 ///--------------->DOCUMENTATION----------------------//
@@ -176,7 +176,7 @@ class SaveButton extends StatelessWidget {
           8.w.widthBox,
           SvgPicture.asset(
             /// todo add this asset  imagesCheckDuotone
-            img ?? Assets.images.appLogo,
+            img ?? Assets.images.app_logo_svg,
           )
         }
       ],
@@ -207,7 +207,7 @@ class CreateButton extends StatelessWidget {
             8.w.widthBox,
             SvgPicture.asset(
               ///todo add this asset  imagesPlus
-              Assets.images.appLogo,
+              Assets.images.app_logo_svg,
               colorFilter: ColorFilter.mode(
                 ColorsPalette.of(context).primaryTextColor,
                 BlendMode.srcIn,

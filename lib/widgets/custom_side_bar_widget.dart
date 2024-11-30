@@ -37,7 +37,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
           Strings.appName.tr,
           style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
               fontSize: isExpanded ? 24 : 12,
-              fontFamily: Constants.agbalumoFontFamily,
+              fontFamily: Constants.notoSansKoufyFontFamily,
               color: Colors.white),
         ).center.addPaddingAll(padding: 4),
       ),
