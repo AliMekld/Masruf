@@ -149,7 +149,7 @@ class _ExpensesDialogDetailWidgetState
             context: context,
             buttonTitle: Strings.confirm.tr,
             onTap: () {
-              // model ??= ExpensesModel();
+              model ??= ExpensesModel();
               model = model?.copyWith(
                 id: int.tryParse(expenseNumberController.text),
                 category: expenseCategoryConroller.text,
