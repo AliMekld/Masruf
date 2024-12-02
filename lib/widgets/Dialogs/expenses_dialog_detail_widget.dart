@@ -9,6 +9,7 @@ import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/models/expense_model.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/custom_date_text_field.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
 import 'package:masrof/widgets/tables/expense_table.dart';
@@ -117,9 +118,9 @@ class _ExpensesDialogDetailWidgetState
                   controller: expenseValueController,
                   lableText: Strings.expenseValue.tr,
                 ),
-                CustomTextFieldWidget(
+                CustomDateTextField(
                   controller: expenseDateController,
-                  lableText: Strings.expenseDate.tr,
+                  label: Strings.expenseDate.tr,
                 ),
                 CustomTextFieldWidget(
                   controller: expenseCategoryConroller,
@@ -136,7 +137,7 @@ class _ExpensesDialogDetailWidgetState
               widget.model = widget.model.copyWith(
                 id: int.tryParse(expenseNumberController.text),
                 category: expenseCategoryConroller.text,
-                expenseDate: DateTime.tryParse(expenseDateController.text),
+                expenseDate: expenseDateController.text.toDateTime(),
                 expenseName: expenseNameController.text,
                 expenseValue: double.tryParse(expenseValueController.text),
                 // id:

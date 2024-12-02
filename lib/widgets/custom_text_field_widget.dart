@@ -117,7 +117,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
   bool get isValidate =>
       widget.validator != null && widget.controller.text.isNotEmpty;
 
-  InputDecoration get getDecoration => InputDecoration(
+  InputDecoration get getDecoration => InputDecoration(  
         errorStyle: const TextStyle(fontSize: 0, height: 0),
         labelStyle: TextStyleHelper.of(context).titleMedium16M,
         enabled: widget.enabled ?? true,

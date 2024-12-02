@@ -71,7 +71,8 @@ class _ExpenseTableState<T extends ExpensesModel>
   @override
   Widget build(BuildContext context) {
     return GenericTableWidget<ExpensesModel>(
-      minWidth: widget.expensesList.length * 180,
+
+      minWidth: widget.expensesList.length * 80,
       onSelectAll: (v) {
         widget.expensesList =
             widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
@@ -88,11 +89,10 @@ class _ExpenseTableState<T extends ExpensesModel>
               context: context,
               onDoubleTap: (index) {
                 DialogHelper.customDialog(
-                        child: ExpensesDialogDetailWidget(
-                            onEditExpense: (model) =>
-                                widget.onEditExpense(model),
-                            model: widget.expensesList[index]))
-                    .showDialog(context);
+                    child: ExpensesDialogDetailWidget(
+                  onEditExpense: (model) => widget.onEditExpense(model),
+                  model: widget.expensesList[index],
+                )).showDialog(context);
               },
               isSelected: widget.expensesList[i].isSelected,
               onSelect: (v) {
@@ -144,8 +144,7 @@ class _ExpenseTableState<T extends ExpensesModel>
           onPressed: () {
             if (expenseModel.id != null) {
               DialogHelper.delete(
-                  message:
-                      Strings.deleteExpensesWarningMessage.tr,
+                  message: Strings.deleteExpensesWarningMessage.tr,
                   onConfirm: () {
                     widget.onDeleteExpense(expenseModel.id!);
                     context.pop();

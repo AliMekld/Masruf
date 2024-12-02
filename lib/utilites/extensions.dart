@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 extension WidgetExtensions on Widget {
   SliverToBoxAdapter get toSliver => SliverToBoxAdapter(
@@ -62,4 +63,24 @@ extension ContextExtensions on BuildContext {
   bool get isTabletOrMobile => _appWidth <= 1024;
 
   bool get isDeskTop => (!isTablet && !isMobile);
+}
+/// Extension on String to parse into DateTime
+extension DateStringParsing on String {
+  /// Converts a `dd/MM/yyyy` string into a `DateTime`
+  /// Returns `null` if parsing fails.
+  DateTime? toDateTime() {
+    try {
+      return DateFormat('dd/MM/yyyy').parse(this);
+    } catch (e) {
+      return null; // Return null if parsing fails
+    }
+  }
+}
+
+/// Extension on DateTime to format for display
+extension DateTimeFormatting on DateTime {
+  /// Formats `DateTime` into `dd/MM/yyyy` string
+  String toDisplayFormat() {
+    return DateFormat('dd/MM/yyyy').format(this);
+  }
 }

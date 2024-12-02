@@ -68,7 +68,7 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   ///TOOD deside using databaseFactoryFfi or sqFlite3 to fix platform not support linux or widows
-  /// for now using databaseFactoryFfi
+  /// for now using databaseFactoryFfi it works correctly but must be intialed twise if 
   if (!kIsWeb) {
     await DatabaseHelper().initDataBase();
   }
