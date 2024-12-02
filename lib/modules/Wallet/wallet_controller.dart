@@ -25,8 +25,6 @@ class WalletController extends StateXController {
 
   onAddUpdateExpense(ExpensesModel model) async {
     DatabaseHelper databaseHelper = DatabaseHelper();
-    print(await databaseHelper.database);
-    // return;
     int currentIndex = tableList.indexWhere((e) => e.id == model.id);
     if (currentIndex != -1) {
       int response = await databaseHelper.update(
@@ -54,18 +52,13 @@ class WalletController extends StateXController {
 
   ///get data
   Future getExpensesTableList(BuildContext context) async {
-    print("from Get List");
     final result = await WalletDataHadler.getExpensesFromLocalDataBase();
     result.fold((l) {
-      print("$l errror");
-
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {
-      print("$r ssssssssssssssssss");
       tableList = r;
     });
 
     setState(() {});
   }
-  // insert
 }

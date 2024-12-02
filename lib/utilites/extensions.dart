@@ -70,7 +70,7 @@ extension DateStringParsing on String {
   /// Returns `null` if parsing fails.
   DateTime? toDateTime() {
     try {
-      return DateFormat('dd/MM/yyyy').parse(this);
+      return DateFormat('dd/MM/yyyy').tryParse(this);
     } catch (e) {
       return null; // Return null if parsing fails
     }

@@ -151,4 +151,25 @@ class DatabaseHelper {
       rethrow;
     }
   }
+
+  ///========================>> onSearch item
+  Future<Map<String, dynamic>> searchIn({
+    required String tableName,
+    required String whereKey,
+    required int whereValue,
+  }) async {
+    List<Map<String, dynamic>> list;
+    try {
+      Database db = await database;
+      list = await db.query(
+        tableName,
+        where: '$whereKey = ?',
+        whereArgs: [whereValue],
+        limit: 1,
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+    return list.first;
+  }
 }

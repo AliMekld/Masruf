@@ -7,20 +7,21 @@ import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/models/expense_model.dart';
+import 'package:masrof/modules/Wallet/wallet_data_hadler.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_date_text_field.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
 
 class ExpensesDialogDetailWidget extends StatefulWidget {
   /// todo get this model from local storage and pass only id
-  ExpensesModel model;
+  final int? id;
   final Function(ExpensesModel) onEditExpense;
-  ExpensesDialogDetailWidget({
+  const ExpensesDialogDetailWidget({
     super.key,
-    required this.model,
+    this.id,
     required this.onEditExpense,
   });
 
@@ -44,15 +45,29 @@ class _ExpensesDialogDetailWidgetState
     expenseValueController = TextEditingController();
     expenseDateController = TextEditingController();
     expenseCategoryConroller = TextEditingController();
-    setExpenseData();
+    Future.microtask(() async => await getExpenseById());
   }
 
-  setExpenseData() {
-    expenseNumberController.text = widget.model.id?.toString() ?? "";
-    expenseNameController.text = widget.model.expenseName ?? "";
-    expenseValueController.text = widget.model.expenseValue?.toString() ?? "";
-    expenseDateController.text = widget.model.expenseDate?.dmy ?? "";
-    expenseCategoryConroller.text = widget.model.category?.toString() ?? "";
+  Future getExpenseById() async {
+    if (widget.id == null) return;
+    final result = await WalletDataHadler.onSearchItem(widget.id!);
+    result.fold((l) {
+      DialogHelper.error(message: l.toString()).showDialog(context);
+    }, (r) {
+      model = r;
+      setExpenseData(r);
+    });
+    setState(() {});
+  }
+  // on SearchItem
+
+  ExpensesModel? model;
+  setExpenseData(ExpensesModel m) {
+    expenseNumberController.text = m.id?.toString() ?? "";
+    expenseNameController.text = m.expenseName ?? "";
+    expenseValueController.text = m.expenseValue?.toString() ?? "";
+    expenseDateController.text = m.expenseDate?.toDisplayFormat() ?? "";
+    expenseCategoryConroller.text = m.category?.toString() ?? "";
     setState(() {});
   }
 
@@ -134,7 +149,8 @@ class _ExpensesDialogDetailWidgetState
             context: context,
             buttonTitle: Strings.confirm.tr,
             onTap: () {
-              widget.model = widget.model.copyWith(
+              // model ??= ExpensesModel();
+              model = model?.copyWith(
                 id: int.tryParse(expenseNumberController.text),
                 category: expenseCategoryConroller.text,
                 expenseDate: expenseDateController.text.toDateTime(),
@@ -142,9 +158,8 @@ class _ExpensesDialogDetailWidgetState
                 expenseValue: double.tryParse(expenseValueController.text),
                 // id:
               );
-              widget.onEditExpense(widget.model);
+              widget.onEditExpense(model!);
               context.pop();
-              print(widget.model.toJson());
             },
           )
         ],

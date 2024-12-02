@@ -18,5 +18,20 @@ class WalletDataHadler {
       return Left(Exception(e));
     }
   }
-  
+
+  static Future<Either<Exception, ExpensesModel>> onSearchItem(
+      int id) async {
+    try {
+      final response = await GenericLocalCrudMethods<ExpensesModel>(
+        fromMap: (json) => ExpensesModel.fromJson(json),
+      ).onSearchItem(
+        tableName: DatabaseHelper.expensesTable,
+        key: "id",
+        value: id,
+      );
+      return Right(response);
+    } catch (e) {
+      return Left(Exception(e));
+    }
+  }
 }

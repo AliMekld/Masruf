@@ -71,7 +71,6 @@ class _ExpenseTableState<T extends ExpensesModel>
   @override
   Widget build(BuildContext context) {
     return GenericTableWidget<ExpensesModel>(
-
       minWidth: widget.expensesList.length * 80,
       onSelectAll: (v) {
         widget.expensesList =
@@ -88,11 +87,13 @@ class _ExpenseTableState<T extends ExpensesModel>
         .mapIndexed((i, e) => TableHelper<ExpensesModel>(
               context: context,
               onDoubleTap: (index) {
-                DialogHelper.customDialog(
-                    child: ExpensesDialogDetailWidget(
-                  onEditExpense: (model) => widget.onEditExpense(model),
-                  model: widget.expensesList[index],
-                )).showDialog(context);
+                if (widget.expensesList[index].id != null) {
+                  DialogHelper.customDialog(
+                      child: ExpensesDialogDetailWidget(
+                    onEditExpense: (model) => widget.onEditExpense(model),
+                    id: widget.expensesList[index].id,
+                  )).showDialog(context);
+                }
               },
               isSelected: widget.expensesList[i].isSelected,
               onSelect: (v) {
@@ -121,13 +122,13 @@ class _ExpenseTableState<T extends ExpensesModel>
             .centerWhen(true),
       ),
       DataCell(
-        Text("${expenseModel.expenseValue?.toString().trim()}",
+        Text("${expenseModel.expenseValue?.toString()}",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.expenseDate?.dmy.toString() ?? "",
+        Text(expenseModel.expenseDate?.toDisplayFormat() ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),

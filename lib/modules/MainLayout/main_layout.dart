@@ -7,7 +7,6 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/expense_model.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Wallet/wallet_controller.dart';
@@ -99,7 +98,6 @@ class _MainLayoutState extends State<MainLayout> {
                 onPressed: () {
                   DialogHelper.customDialog(
                       child: ExpensesDialogDetailWidget(
-                    model: ExpensesModel(),
                     onEditExpense: (model) =>
                         WalletController().onAddUpdateExpense(model),
                   )).showDialog(context);

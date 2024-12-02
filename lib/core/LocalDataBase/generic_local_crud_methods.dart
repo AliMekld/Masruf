@@ -19,4 +19,20 @@ class GenericLocalCrudMethods<T> {
       throw Exception(e);
     }
   }
+
+  Future<T> onSearchItem(
+      {required String tableName,
+      required String key,
+      required int value}) async {
+    T item;
+    try {
+      DatabaseHelper databaseHelper = DatabaseHelper();
+      Map<String, dynamic> dynamicItem = await databaseHelper.searchIn(
+          tableName: tableName, whereKey: key, whereValue: value);
+      item = fromMap(dynamicItem);
+      return item;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }
