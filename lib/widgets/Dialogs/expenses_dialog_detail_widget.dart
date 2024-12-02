@@ -125,9 +125,6 @@ class _ExpensesDialogDetailWidgetState
                   controller: expenseCategoryConroller,
                   lableText: Strings.expenseCategory.tr,
                 ),
-
-                ///TODO create CustomCheckBox Widget
-                /// and refator model to has this bool
               ],
             ),
           ).expand,
@@ -137,6 +134,7 @@ class _ExpensesDialogDetailWidgetState
             buttonTitle: Strings.confirm.tr,
             onTap: () {
               widget.model = widget.model.copyWith(
+                id: int.tryParse(expenseNumberController.text),
                 category: expenseCategoryConroller.text,
                 expenseDate: DateTime.tryParse(expenseDateController.text),
                 expenseName: expenseNameController.text,

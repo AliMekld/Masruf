@@ -23,12 +23,10 @@
 ///     2-
 ///
 ///   2-git_locator
-///
 ///   3-isolates ?????????
 ///     1-study event loop
 ///     2-how isolates communicate with eventloop
 ///     3-
-///
 ///   4-router configuration
 ///
 ///   5-constants
@@ -46,10 +44,12 @@
 
 library;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/language_provider.dart';
+import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/utilites/git_it.dart';
@@ -66,6 +66,13 @@ const Size fullHdDesktopSize = Size(1920, 1080);
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  ///TOOD deside using databaseFactoryFfi or sqFlite3 to fix platform not support linux or widows
+  /// for now using databaseFactoryFfi
+  if (!kIsWeb) {
+    await DatabaseHelper().initDataBase();
+  }
+
   usePathUrlStrategy();
   await GitIt.initGitIt();
 
@@ -85,7 +92,7 @@ class EntryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeProvider>(context );
+    final theme = Provider.of<ThemeProvider>(context);
     final lang = Provider.of<LanguageProvider>(context);
 
     lang.fetchLocale();

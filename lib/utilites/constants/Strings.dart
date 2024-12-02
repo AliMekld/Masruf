@@ -21,6 +21,8 @@ class Strings {
   static const String expenseValue = "expenseValue";
   static const String expenseDate = "expenseDate";
   static const String expenseCategory = "expenseCategory";
+  static const String deleteExpensesWarningMessage = "deleteExpensesWarningMessage";
+
 
 
 

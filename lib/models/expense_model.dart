@@ -24,4 +24,11 @@ class ExpensesModel {
       _$ExpensesModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExpensesModelToJson(this);
+  Map<String, dynamic> toLocalJson() => {
+        'id': id,
+        'expenseName': expenseName,
+        'expenseValue': expenseValue,
+        'expenseDate': expenseDate?.toIso8601String(),
+        'category': category,
+      };
 }

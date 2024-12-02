@@ -1,8 +1,13 @@
+import 'dart:ui';
+
 import 'package:collection/collection.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:masrof/core/Language/app_localization.dart';
+import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
@@ -18,12 +23,14 @@ class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
   List<ExpensesModel> expensesList;
   final BuildContext context;
   final Function(ExpensesModel) onEditExpense;
+  final Function(int) onDeleteExpense;
 
   ExpenseTable({
     required this.context,
     super.key,
     required this.expensesList,
     required this.onEditExpense,
+    required this.onDeleteExpense,
   });
 
   @override
@@ -58,6 +65,7 @@ class _ExpenseTableState<T extends ExpensesModel>
             title: Strings.expenseDate.tr, columnSize: ColumnSize.L),
         CustomDataColumn(
             title: Strings.expenseCategory.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(title: Strings.delete.tr, columnSize: ColumnSize.S),
       ];
 
   @override
@@ -129,6 +137,27 @@ class _ExpenseTableState<T extends ExpensesModel>
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
+      ),
+      DataCell(
+        IconButton(
+          hoverColor: ColorsPalette.of(context).errorColor,
+          onPressed: () {
+            if (expenseModel.id != null) {
+              DialogHelper.delete(
+                  message:
+                      Strings.deleteExpensesWarningMessage.tr,
+                  onConfirm: () {
+                    widget.onDeleteExpense(expenseModel.id!);
+                    context.pop();
+                  }).showDialog(context);
+            }
+          },
+          icon: Icon(
+            Icons.delete,
+            size: 28.r,
+            color: ColorsPalette.of(context).iconColor,
+          ),
+        ).centerWhen(true),
       )
     ];
   }

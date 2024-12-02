@@ -164,6 +164,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "dartz",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/dartz-0.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "data_table_2",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/data_table_2-2.5.15",
       "packageUri": "lib/",
@@ -422,6 +428,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/path_provider-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/path_provider_android-2.2.14",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "path_provider_foundation",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "path_provider_linux",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1",
       "packageUri": "lib/",
@@ -578,6 +602,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "sqflite_common_ffi",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/sqflite_common_ffi-2.3.4+3",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "sqflite_darwin",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.1",
       "packageUri": "lib/",
@@ -586,6 +616,12 @@
     {
       "name": "sqflite_platform_interface",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/sqflite_platform_interface-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "sqlite3",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/sqlite3-2.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -752,7 +788,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-11-30T17:34:19.163223Z",
+  "generated": "2024-12-01T23:09:14.571646Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///home/alimekld/Downloads/flutter_linux_3.24.5-stable/flutter",

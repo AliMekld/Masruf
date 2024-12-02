@@ -13,17 +13,27 @@ class WalletScreen extends StatefulWidget {
 }
 
 class _WalletScreenState extends StateX<WalletScreen> {
-  
   _WalletScreenState() : super(controller: WalletController()) {
     con = WalletController();
   }
+  @override
+  initState() {
+    super.initState();
+    Future.microtask(() async {
+      if (mounted) {
+        await con.getExpensesTableList(context);
+      }
+    });
+  }
+
   late WalletController con;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ExpenseTable(
-          onEditExpense: (model) => con.onAddUpdateExpense(model),
+          onDeleteExpense: (id) async => await con.onDeleteExpense(id),
+          onEditExpense: (model) async => await con.onAddUpdateExpense(model),
           expensesList: con.tableList,
           context: context,
         ).expand,
