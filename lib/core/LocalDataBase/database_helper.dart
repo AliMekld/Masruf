@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -74,7 +75,7 @@ class DatabaseHelper {
   Future onDeleteeDataBase() async {
     if (_database != null && _database!.isOpen) await _database!.close();
     await deleteDatabase(_database!.path);
-    print("$database delete");
+    log("$database delete");
   }
 
   ///===============>> Close Database

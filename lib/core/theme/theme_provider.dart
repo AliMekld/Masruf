@@ -18,7 +18,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData themeData = _appTheme.isDark ? _darkTheme : _lightTheme;
   void fetchTheme() {
     _appTheme = SharedPref.getTheme() ?? ThemeModel.defultTheme;
-    notifyListeners();
+    // notifyListeners();
   }
 
   void changeTheme(SystemBrightness brightness) {

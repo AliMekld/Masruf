@@ -113,7 +113,11 @@ class _MyWidgetState extends State<CustomDateTextField> {
         suffixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: GestureDetector(
-              onTap: _pickDate, child:  Icon(Icons.calendar_today,color: ColorsPalette.of(context).secondaryTextColor,)),
+              onTap: _pickDate,
+              child: Icon(
+                Icons.calendar_today,
+                color: ColorsPalette.of(context).secondaryTextColor,
+              )),
         ),
         prefixIconConstraints: const BoxConstraints(
             maxHeight: 32, maxWidth: 32, minHeight: 32, minWidth: 32),
@@ -197,23 +201,5 @@ class DateInputFormatter extends TextInputFormatter {
     } catch (e) {
       return false;
     }
-  }
-}
-
-bool _isValidDate(String input) {
-  try {
-    final parts = input.split('/');
-    if (parts.length != 3) return false;
-
-    final day = int.parse(parts[0]);
-    final month = int.parse(parts[1]);
-    final year = int.parse(parts[2]);
-
-    final date = DateTime(year, month, day);
-
-    // Ensure day and month match input (e.g., no 30th February)
-    return date.day == day && date.month == month && date.year == year;
-  } catch (e) {
-    return false;
   }
 }

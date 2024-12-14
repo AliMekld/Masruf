@@ -149,9 +149,10 @@ class CustomButtonWidget extends StatelessWidget {
                 Text(
                   buttonTitle ?? "",
                   style: titleStyle ??
-                      TextStyleHelper.of(context)
-                          .titleMedium16M
-                          .copyWith(color: Colors.white),
+                      TextStyleHelper.of(context).titleMedium16M.copyWith(
+                          color: buttonTypes == ButtonTypes.outlined
+                              ? ColorsPalette.of(context).secondaryTextColor
+                              : Colors.white),
                 ).center,
       ),
     );

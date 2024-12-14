@@ -30,7 +30,7 @@ class LanguageProvider extends ChangeNotifier {
     } else {
       _appLanguage = Locale(sharedLocal);
     }
-    notifyListeners();
+    // notifyListeners();
   }
 
   Future changeLanguage({Locale? language}) async {

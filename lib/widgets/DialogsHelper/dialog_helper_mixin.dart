@@ -207,30 +207,40 @@ mixin DialogsMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              Assets.images.app_logo_svg,
-              width: 112.w,
-              height: 112.h,
-              colorFilter: ColorFilter.mode(
-                  ColorsPalette.of(context).errorColor, BlendMode.srcIn),
+            Icon(
+              Icons.dangerous_outlined,
+              size: 72,
+              color: ColorsPalette.of(context).errorColor,
             ),
+            // SvgPicture.asset(
+            //   Assets.images.app_logo_svg,
+            //   width: 112.w,
+            //   height: 112.h,
+            //   colorFilter: ColorFilter.mode(
+            //     BlendMode.srcIn,
+            //   ),
+            // ),
             24.h.heightBox,
             Row(
               children: [
                 Container(
                   width: 16,
-                  color:
-                      ColorsPalette.of(context).secondaryColor.withOpacity(0.8),
+                  color: ColorsPalette.of(context).errorColor.withOpacity(0.8),
                 ),
                 Container(
                   padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color:
-                        ColorsPalette.of(context).watingColor.withOpacity(0.1),
+                        ColorsPalette.of(context).errorColor.withOpacity(0.1),
                   ),
                   child: Text(
                     message,
-                    style: TextStyleHelper.of(context).titleMedium16M,
+                    style: TextStyleHelper.of(context)
+                        .titleMedium16M
+                        .copyWith(height: 1.5),
+                    maxLines: 6,
+                    locale: AppLocalizations.of(context)?.locale,
+                    textAlign: TextAlign.center,
                   ),
                 ).heightBox(120.h).expand,
               ],

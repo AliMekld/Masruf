@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
@@ -117,7 +116,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
   bool get isValidate =>
       widget.validator != null && widget.controller.text.isNotEmpty;
 
-  InputDecoration get getDecoration => InputDecoration(  
+  InputDecoration get getDecoration => InputDecoration(
         errorStyle: const TextStyle(fontSize: 0, height: 0),
         labelStyle: TextStyleHelper.of(context).titleMedium16M,
         enabled: widget.enabled ?? true,

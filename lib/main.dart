@@ -68,13 +68,15 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   ///TOOD deside using databaseFactoryFfi or sqFlite3 to fix platform not support linux or widows
-  /// for now using databaseFactoryFfi it works correctly but must be intialed twise if 
+  /// for now using databaseFactoryFfi it works correctly but must be intialed twise if
+  await GitIt.initGitIt();
+
   if (!kIsWeb) {
     await DatabaseHelper().initDataBase();
   }
-
-  usePathUrlStrategy();
-  await GitIt.initGitIt();
+  if (kIsWeb) {
+    usePathUrlStrategy();
+  }
 
   runApp(
     MultiProvider(

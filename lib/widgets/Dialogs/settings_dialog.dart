@@ -26,7 +26,9 @@ class _SettingsDialogState extends State<SettingsDialog> {
       width: context.isTabletOrMobile ? 220.w : 280.w,
       child: Consumer2<LanguageProvider, ThemeProvider>(
         builder: (context, lang, theme, child) => Column(
-          crossAxisAlignment: context.isTabletOrMobile? CrossAxisAlignment.center:CrossAxisAlignment.start,
+          crossAxisAlignment: context.isTabletOrMobile
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
             Text(
               Strings.settings.tr,
@@ -54,7 +56,6 @@ class _SettingsDialogState extends State<SettingsDialog> {
                     .toList(),
                 onChanged: (v) async {
                   await lang.changeLanguage(language: Locale(v!.name));
-                  setState(() {});
                 },
                 selectedItem: Languages.values.firstWhereOrNull(
                     (e) => e.name == lang.appLang.languageCode)),
@@ -80,7 +81,6 @@ class _SettingsDialogState extends State<SettingsDialog> {
                     .toList(),
                 onChanged: (v) {
                   theme.changeTheme(v ?? SystemBrightness.dark);
-                  setState(() {});
                 },
                 selectedItem: SystemBrightness.values
                     .firstWhereOrNull((e) => e.name == theme.brightness?.name)),

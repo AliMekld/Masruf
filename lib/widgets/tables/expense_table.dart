@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:collection/collection.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +69,7 @@ class _ExpenseTableState<T extends ExpensesModel>
   @override
   Widget build(BuildContext context) {
     return GenericTableWidget<ExpensesModel>(
-      minWidth: widget.expensesList.length * 80,
+      minWidth: getCulumnsList(context).length * 96.w,
       onSelectAll: (v) {
         widget.expensesList =
             widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
