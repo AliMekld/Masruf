@@ -12,8 +12,8 @@ class Strings {
   static const String light = "light";
   static const String dark = "dark";
   static const String appName = "appName";
-  static const String home =    "home";
-  static const String wallet =  "wallet";
+  static const String home = "home";
+  static const String wallet = "wallet";
   static const String profile = "profile";
   static const String expenseDetails = "expenseDetails";
   static const String expenseName = "expenseName";
@@ -21,14 +21,7 @@ class Strings {
   static const String expenseValue = "expenseValue";
   static const String expenseDate = "expenseDate";
   static const String expenseCategory = "expenseCategory";
-  static const String deleteExpensesWarningMessage = "deleteExpensesWarningMessage";
-
-
-
-
-
-
-
-
-
+  static const String deleteExpensesWarningMessage =
+      "deleteExpensesWarningMessage";
+  static const String expenses = "expenses";
 }

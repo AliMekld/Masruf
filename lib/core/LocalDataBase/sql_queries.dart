@@ -15,6 +15,6 @@ class SqlQueries {
     )
     ''';
   }
-  ///TODO
+
   ///===========================================[select_query_for_filtering]
 }

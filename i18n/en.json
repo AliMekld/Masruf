@@ -20,5 +20,7 @@
     "expenseValue": "Expense Value",
     "expenseDate": "Expense Date",
     "expenseCategory": "Expense Category",
-    "deleteExpensesWarningMessage":"Are You Sure That You Want TO Delete This Expense !"
+    "deleteExpensesWarningMessage":"Are You Sure That You Want TO Delete This Expense !",
+    "expenses":"Expenses"
+
 }

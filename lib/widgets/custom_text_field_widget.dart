@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
@@ -9,8 +12,11 @@ import '../utilites/constants/constamts.dart';
 enum _DecorationType { focused, error, enabled, disabled, validated }
 
 class CustomTextFieldWidget extends StatefulWidget {
+  static List<TextInputFormatter> get decimalFormatters =>
+      [FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))];
   final TextEditingController controller;
   final String? Function(String?)? validator;
+
   final double? width, height;
   final bool? autoFocus,
       enabled,
@@ -28,6 +34,7 @@ class CustomTextFieldWidget extends StatefulWidget {
   final TextInputType? textInputType;
   final String? lableText, hintText;
   final Widget? suffix, prefix;
+  final List<TextInputFormatter>? formatters;
   const CustomTextFieldWidget({
     super.key,
     required this.controller,
@@ -56,6 +63,7 @@ class CustomTextFieldWidget extends StatefulWidget {
     this.onSuffixTap,
     this.width,
     this.height,
+    this.formatters,
   });
 
   @override
@@ -148,6 +156,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       child: TextFormField(
         controller: widget.controller,
         focusNode: widget.focusNode,
+        inputFormatters: widget.formatters,
         autofocus: widget.autoFocus ?? false,
         decoration: getDecoration,
         enabled: widget.enabled ?? true,

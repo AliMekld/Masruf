@@ -9,8 +9,8 @@ import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
-import 'package:masrof/modules/Wallet/wallet_controller.dart';
-import 'package:masrof/modules/Wallet/wallet_screen.dart';
+import 'package:masrof/modules/Expenses/expenses_controller.dart';
+import 'package:masrof/modules/Expenses/expenses_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
@@ -99,7 +99,7 @@ class _MainLayoutState extends State<MainLayout> {
                   DialogHelper.customDialog(
                       child: ExpensesDialogDetailWidget(
                     onEditExpense: (model) =>
-                        WalletController().onAddUpdateExpense(model),
+                        ExpensesController().onAddUpdateExpense(model),
                   )).showDialog(context);
                 },
                 child: const Icon(Icons.add),
@@ -161,9 +161,9 @@ List<MenuModel> _menuList = [
   ),
   MenuModel(
     index: 1,
-    title: Strings.wallet,
+    title: Strings.expenses,
     imgSvg: Assets.images.messages_svg,
-    route: WalletScreen.routerName,
+    route: ExpensesScreen.routerName,
   ),
   MenuModel(
     index: 2,

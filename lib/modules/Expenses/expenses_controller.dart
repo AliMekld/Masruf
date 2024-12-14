@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/modules/Wallet/wallet_data_hadler.dart';
+import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
-class WalletController extends StateXController {
+class ExpensesController extends StateXController {
   ///singleTone
-  WalletController._();
-  static final WalletController _instance = WalletController._();
-  factory WalletController() => _instance;
+  ExpensesController._();
+  static final ExpensesController _instance = ExpensesController._();
+  factory ExpensesController() => _instance;
   onDeleteExpense(int id) async {
     if (id == -1) return;
     DatabaseHelper databaseHelper = DatabaseHelper();
@@ -52,7 +52,7 @@ class WalletController extends StateXController {
 
   ///get data
   Future getExpensesTableList(BuildContext context) async {
-    final result = await WalletDataHadler.getExpensesFromLocalDataBase();
+    final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {

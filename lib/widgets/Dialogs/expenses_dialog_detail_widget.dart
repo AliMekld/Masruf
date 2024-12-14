@@ -7,7 +7,7 @@ import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/modules/Wallet/wallet_data_hadler.dart';
+import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
@@ -50,7 +50,7 @@ class _ExpensesDialogDetailWidgetState
 
   Future getExpenseById() async {
     if (widget.id == null) return;
-    final result = await WalletDataHadler.onSearchItem(widget.id!);
+    final result = await ExpensesDataHadler.onSearchItem(widget.id!);
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {
@@ -130,6 +130,9 @@ class _ExpensesDialogDetailWidgetState
                   lableText: Strings.expenseName.tr,
                 ),
                 CustomTextFieldWidget(
+                  formatters: CustomTextFieldWidget.decimalFormatters,
+                  textInputType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   controller: expenseValueController,
                   lableText: Strings.expenseValue.tr,
                 ),

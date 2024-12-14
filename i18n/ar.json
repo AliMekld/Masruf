@@ -20,5 +20,6 @@
     "expenseValue": "قيمة المصروف",
     "expenseDate": "تاريح المصروف",
     "expenseCategory": "فئه المصروف",
-    "deleteExpensesWarningMessage": "هل أنت متأكد من رغبتك في حذف هذا المصروف ؟"
+    "deleteExpensesWarningMessage": "هل أنت متأكد من رغبتك في حذف هذا المصروف ؟",
+    "expenses":"المصروفات"
 }

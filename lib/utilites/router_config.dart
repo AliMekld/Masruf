@@ -4,7 +4,7 @@ import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Splash/splash_screen.dart';
-import 'package:masrof/modules/Wallet/wallet_screen.dart';
+import 'package:masrof/modules/Expenses/expenses_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
@@ -24,7 +24,7 @@ final GoRouter _router = GoRouter(
     ///==============>> [ShellRoute]
     ShellRoute(
       pageBuilder: (context, state, child) {
-       return _buildPageWithDefaultTransition(
+        return _buildPageWithDefaultTransition(
           context: context,
           state: state,
           child: MainLayout(
@@ -47,12 +47,12 @@ final GoRouter _router = GoRouter(
 
         ///==============>> [Wallet]
         GoRoute(
-          path: "/${WalletScreen.routerName}",
-          name: WalletScreen.routerName,
+          path: "/${ExpensesScreen.routerName}",
+          name: ExpensesScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,
             state: state,
-            child: const WalletScreen(),
+            child: const ExpensesScreen(),
           ),
         ),
 
@@ -88,7 +88,8 @@ CustomTransitionPage _buildPageWithDefaultTransition({
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
       var offsetAnimation = animation.drive(tween);
-      return SlideTransition(transformHitTests: false,
+      return SlideTransition(
+        transformHitTests: false,
         position: offsetAnimation,
         child: child,
       );

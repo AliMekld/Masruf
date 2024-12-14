@@ -45,6 +45,7 @@
 library;
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -125,6 +126,7 @@ class EntryPoint extends StatelessWidget {
           routerConfig: router,
           supportedLocales: Languages.values.map((e) => Locale(e.name)),
           locale: lang.appLang,
+          scrollBehavior: MyCustomScrollBehavior(),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -135,4 +137,14 @@ class EntryPoint extends StatelessWidget {
       );
     });
   }
+}
+
+// Enable scrolling with mouse dragging
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }
