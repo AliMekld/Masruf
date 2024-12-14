@@ -57,7 +57,7 @@ class CustomDropdownWidget<T> extends StatelessWidget {
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
-              color: ColorsPalette.of(context).buttonColor,
+              color: ColorsPalette.of(context).secondaryTextColor,
             ));
       case DecorationType.disabled:
         return OutlineInputBorder(
@@ -97,12 +97,12 @@ class CustomDropdownWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 48,
-      width: width ?? 328.r,
+      height: height ?? 58.h,
+      width: width ?? 328.w,
       child: DropdownButtonFormField(
         iconEnabledColor: ColorsPalette.of(context).secondaryTextColor,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        itemHeight:58,
+        itemHeight: 58,
         borderRadius: Constants.kBorderRaduis16,
         decoration: getDecoration(context),
         style: TextStyleHelper.of(context).titleSmall14M,

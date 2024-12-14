@@ -10,6 +10,9 @@ class ExpensesController extends StateXController {
   ExpensesController._();
   static final ExpensesController _instance = ExpensesController._();
   factory ExpensesController() => _instance;
+  late TextEditingController searchController;
+  List<ExpensesModel> tableList = [];
+
   onDeleteExpense(int id) async {
     if (id == -1) return;
     DatabaseHelper databaseHelper = DatabaseHelper();
@@ -21,6 +24,18 @@ class ExpensesController extends StateXController {
       tableList.removeWhere((e) => e.id == id);
     }
     setState(() {});
+  }
+
+  @override
+  initState() {
+    super.initState();
+    searchController = TextEditingController();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    searchController.dispose();
   }
 
   onAddUpdateExpense(ExpensesModel model) async {
@@ -48,17 +63,62 @@ class ExpensesController extends StateXController {
     setState(() {});
   }
 
-  List<ExpensesModel> tableList = [];
-
-  ///get data
-  Future getExpensesTableList(BuildContext context) async {
+  /// get all data
+  Future getExpensesTableList(
+    BuildContext context,
+  ) async {
     final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
     result.fold((l) {
-      DialogHelper.error(message: l.toString()).showDialog(context);
+      DialogHelper.error(
+        message: l.toString(),
+      ).showDialog(
+        context,
+      );
     }, (r) {
+      tableList = r;
+      print(tableList.map((e) => e.toJson()));
+    });
+
+    setState(() {});
+  }
+
+  KeyType type = KeyType.id;
+
+  /// onsearch
+  Future getFilteredTableList(
+    BuildContext context,
+    dynamic value,
+  ) async {
+    final result = await ExpensesDataHadler.onSearch(
+      key: type.keyName,
+      value: value,
+    );
+    print(type.keyName);
+    print(value);
+
+    result.fold((l) {
+      DialogHelper.error(
+        message: l.toString(),
+      ).showDialog(
+        context,
+      );
+    }, (r) {
+      print(r);
       tableList = r;
     });
 
     setState(() {});
   }
+}
+
+enum KeyType {
+  id(keyName: "id"),
+  name(keyName: "expenseName"),
+  value(keyName: "expenseValue"),
+  date(keyName: "expenseDate"),
+  category(keyName: "category");
+
+  final String keyName;
+
+  const KeyType({required this.keyName});
 }

@@ -50,7 +50,7 @@ class _ExpensesDialogDetailWidgetState
 
   Future getExpenseById() async {
     if (widget.id == null) return;
-    final result = await ExpensesDataHadler.onSearchItem(widget.id!);
+    final result = await ExpensesDataHadler.getItemByID(widget.id!);
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {

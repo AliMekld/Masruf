@@ -156,21 +156,40 @@ class DatabaseHelper {
   ///========================>> onSearch item
   Future<Map<String, dynamic>> searchIn({
     required String tableName,
-    required String whereKey,
-    required int whereValue,
+    String? whereKey,
+    int? whereValue,
   }) async {
     List<Map<String, dynamic>> list;
     try {
       Database db = await database;
       list = await db.query(
         tableName,
-        where: '$whereKey = ?',
-        whereArgs: [whereValue],
+        where: whereKey == null ? null : '$whereKey = ?',
+        whereArgs: whereKey == null ? null : [whereValue],
         limit: 1,
       );
     } catch (e) {
       throw Exception(e);
     }
     return list.first;
+  }
+
+  Future<List<Map<String, dynamic>>> onFilterList({
+    required String tableName,
+    String? whereKey,
+    dynamic whereValue,
+  }) async {
+    List<Map<String, dynamic>> list;
+    try {
+      Database db = await database;
+      list = await db.query(
+        tableName,
+        where: whereKey == null ? null : '$whereKey LIKE ?',
+        whereArgs: whereKey == null ? null : [whereValue],
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+    return list;
   }
 }

@@ -85,7 +85,7 @@ class _MainLayoutState extends State<MainLayout> {
                         )
                       ],
                       borderRadius: Constants.kBorderRaduis8,
-                      color: ColorsPalette.of(context).buttonDisabledColor,
+                      color: ColorsPalette.of(context).backgroundColor,
                     ),
                     child: widget.child..addPaddingAll(padding: 40).expand,
                   ).expand

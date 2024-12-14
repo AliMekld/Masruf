@@ -21,5 +21,9 @@
     "expenseDate": "تاريح المصروف",
     "expenseCategory": "فئه المصروف",
     "deleteExpensesWarningMessage": "هل أنت متأكد من رغبتك في حذف هذا المصروف ؟",
-    "expenses":"المصروفات"
+    "expenses":"المصروفات",
+    "search":"بحث",
+    "id":"الرقم التعريفي",
+    "category":"الفئه"
+
 }
