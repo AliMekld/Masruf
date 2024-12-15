@@ -1,17 +1,21 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/models/drop_down_model.dart';
 import 'package:masrof/models/expense_model.dart';
+import 'package:masrof/modules/Categories/categories_data_hadler.dart';
 import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_date_text_field.dart';
+import 'package:masrof/widgets/custom_drop_down_widget.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
 
@@ -32,6 +36,8 @@ class ExpensesDialogDetailWidget extends StatefulWidget {
 
 class _ExpensesDialogDetailWidgetState
     extends State<ExpensesDialogDetailWidget> {
+  DropdownModel? selectedCategory;
+  List<DropdownModel> categoryesList = [];
   late TextEditingController expenseNumberController,
       expenseNameController,
       expenseValueController,
@@ -45,7 +51,17 @@ class _ExpensesDialogDetailWidgetState
     expenseValueController = TextEditingController();
     expenseDateController = TextEditingController();
     expenseCategoryConroller = TextEditingController();
-    Future.microtask(() async => await getExpenseById());
+    Future.microtask(
+        () async => getCategoryList().then((v) => getExpenseById()));
+  }
+
+  Future getCategoryList() async {
+    if (widget.id == null) return;
+    final result = await CategoriesDataHadler.getCategoriesFromLocalDataBase();
+    result.fold(
+        (l) => DialogHelper.error(message: l.toString()).showDialog(context),
+        (r) => categoryesList = r);
+    setState(() {});
   }
 
   Future getExpenseById() async {
@@ -67,7 +83,9 @@ class _ExpensesDialogDetailWidgetState
     expenseNameController.text = m.expenseName ?? "";
     expenseValueController.text = m.expenseValue?.toString() ?? "";
     expenseDateController.text = m.expenseDate?.toDisplayFormat() ?? "";
-    expenseCategoryConroller.text = m.category?.toString() ?? "";
+    expenseCategoryConroller.text = m.categoryID?.toString() ?? "";
+    selectedCategory =
+        categoryesList.firstWhereOrNull((e) => e.id == model?.categoryID);
     setState(() {});
   }
 
@@ -140,9 +158,17 @@ class _ExpensesDialogDetailWidgetState
                   controller: expenseDateController,
                   label: Strings.expenseDate.tr,
                 ),
-                CustomTextFieldWidget(
-                  controller: expenseCategoryConroller,
-                  lableText: Strings.expenseCategory.tr,
+                CustomDropdownWidget(
+                  onChanged: (v) {
+                    selectedCategory = v;
+                    setState(() {});
+                  },
+                  items: categoryesList
+                      .map((e) =>
+                          DropdownMenuItem(value: e, child: Text(e.name ?? "")))
+                      .toList(),
+                  selectedItem: selectedCategory,
+                  hint: Strings.expenseCategory.tr,
                 ),
               ],
             ),
@@ -155,7 +181,7 @@ class _ExpensesDialogDetailWidgetState
               model ??= ExpensesModel();
               model = model?.copyWith(
                 id: int.tryParse(expenseNumberController.text),
-                category: expenseCategoryConroller.text,
+                categoryID: selectedCategory?.id,
                 expenseDate: expenseDateController.text.toDateTime(),
                 expenseName: expenseNameController.text,
                 expenseValue: double.tryParse(expenseValueController.text),

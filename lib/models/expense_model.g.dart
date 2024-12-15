@@ -18,7 +18,7 @@ abstract class _$ExpensesModelCWProxy {
     String? expenseName,
     double? expenseValue,
     DateTime? expenseDate,
-    String? category,
+    int? categoryID,
     bool? isSelected,
   });
 }
@@ -42,7 +42,7 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
     Object? expenseName = const $CopyWithPlaceholder(),
     Object? expenseValue = const $CopyWithPlaceholder(),
     Object? expenseDate = const $CopyWithPlaceholder(),
-    Object? category = const $CopyWithPlaceholder(),
+    Object? categoryID = const $CopyWithPlaceholder(),
     Object? isSelected = const $CopyWithPlaceholder(),
   }) {
     return ExpensesModel(
@@ -62,10 +62,10 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
           ? _value.expenseDate
           // ignore: cast_nullable_to_non_nullable
           : expenseDate as DateTime?,
-      category: category == const $CopyWithPlaceholder()
-          ? _value.category
+      categoryID: categoryID == const $CopyWithPlaceholder()
+          ? _value.categoryID
           // ignore: cast_nullable_to_non_nullable
-          : category as String?,
+          : categoryID as int?,
       isSelected:
           isSelected == const $CopyWithPlaceholder() || isSelected == null
               ? _value.isSelected
@@ -93,16 +93,14 @@ ExpensesModel _$ExpensesModelFromJson(Map<String, dynamic> json) =>
       expenseDate: json['expenseDate'] == null
           ? null
           : DateTime.parse(json['expenseDate'] as String),
-      category: json['category'] as String?,
-      isSelected: json['isSelected'] as bool? ?? false,
+      categoryID: (json['categoryID'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ExpensesModelToJson(ExpensesModel instance) =>
     <String, dynamic>{
-      'isSelected': instance.isSelected,
       'id': instance.id,
       'expenseName': instance.expenseName,
       'expenseValue': instance.expenseValue,
       'expenseDate': instance.expenseDate?.toIso8601String(),
-      'category': instance.category,
+      'categoryID': instance.categoryID,
     };

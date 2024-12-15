@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
-import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
+import 'package:masrof/models/drop_down_model.dart';
+import 'package:masrof/modules/Categories/categories_data_hadler.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
 import '../../core/LocalDataBase/sql_queries.dart';
 
-class ExpensesController extends StateXController {
+class CategoriesController extends StateXController {
   ///singleTone
-  ExpensesController._();
-  static final ExpensesController _instance = ExpensesController._();
-  factory ExpensesController() => _instance;
+  CategoriesController._();
+  static final CategoriesController _instance = CategoriesController._();
+  factory CategoriesController() => _instance;
   late TextEditingController searchController;
-  List<ExpensesModel> tableList = [];
+  List<DropdownModel> tableList = [];
 
-  onDeleteExpense(int id) async {
+  onDeleteCategory(int id) async {
     if (id == -1) return;
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int response = await databaseHelper.deleteFrom(
-        tableName: SqlQueries.expensesTable, whereKey: "id", whereValue: id);
+      tableName: SqlQueries.categoriesTable,
+      whereKey: "id",
+      whereValue: id,
+    );
     if (response != 0) {
       tableList.removeWhere((e) => e.id == id);
     }
     setState(() {});
   }
 
+  CategoresKeyType keyType = CategoresKeyType.id;
   @override
   initState() {
     super.initState();
@@ -38,8 +43,9 @@ class ExpensesController extends StateXController {
     searchController.dispose();
   }
 
-  onAddUpdateExpense(ExpensesModel model) async {
+  onAddUpdateCategory(DropdownModel model) async {
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int currentIndex = tableList.indexWhere((e) => e.id == model.id);
     if (currentIndex != -1) {
       setState(() => loading = true);
@@ -47,16 +53,16 @@ class ExpensesController extends StateXController {
       int response = await databaseHelper.update(
         whereKey: "id",
         whereValue: "${model.id!}",
-        model: model.toLocalJson(),
-        tableName: SqlQueries.expensesTable,
+        model: model.toJson(),
+        tableName: SqlQueries.categoriesTable,
       );
       if (response != 0) {
         tableList[currentIndex] = model;
       }
     } else {
       int response = await databaseHelper.insert(
-        model: model.toLocalJson(),
-        tableName: SqlQueries.expensesTable,
+        model: model.toJson(),
+        tableName: SqlQueries.categoriesTable,
       );
       if (response != 0) {
         tableList.add(model.copyWith(id: response));
@@ -68,11 +74,11 @@ class ExpensesController extends StateXController {
   bool loading = false;
 
   /// get all data
-  Future getExpensesTableList(
+  Future getCategoriesTableList(
     BuildContext context,
   ) async {
     setState(() => loading = true);
-    final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
+    final result = await CategoriesDataHadler.getCategoriesFromLocalDataBase();
     result.fold((l) {
       DialogHelper.error(
         message: l.toString(),
@@ -81,12 +87,9 @@ class ExpensesController extends StateXController {
       );
     }, (r) {
       tableList = r;
-      print(tableList.map((e) => e.toJson()));
     });
     setState(() => loading = false);
   }
-
-  KeyType type = KeyType.id;
 
   /// onsearch
   Future getFilteredTableList(
@@ -95,12 +98,10 @@ class ExpensesController extends StateXController {
   ) async {
     setState(() => loading = true);
 
-    final result = await ExpensesDataHadler.onSearch(
-      key: type.keyName,
+    final result = await CategoriesDataHadler.onSearch(
+      key: keyType.keyName,
       value: value,
     );
-    print(type.keyName);
-    print(value);
 
     result.fold((l) {
       DialogHelper.error(
@@ -117,15 +118,12 @@ class ExpensesController extends StateXController {
   }
 }
 
-/// todo
-enum KeyType {
+enum CategoresKeyType {
   id(keyName: "id"),
-  name(keyName: "expenseName"),
-  value(keyName: "expenseValue"),
-  date(keyName: "expenseDate"),
-  category(keyName: "categoryID");
+  name(keyName: "name"),
+  eName(keyName: "eName");
 
   final String keyName;
 
-  const KeyType({required this.keyName});
+  const CategoresKeyType({required this.keyName});
 }

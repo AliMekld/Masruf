@@ -18,7 +18,7 @@ class DatabaseHelper {
 
   ///=======================[constants]============================================//
   static const String _databaseName = "masruf.db";
-  static const String expensesTable = "expensesTable";
+
   static const int _version = 1;
   bool get isWidowsOrLinux => Platform.isWindows || Platform.isLinux;
 
@@ -65,7 +65,9 @@ class DatabaseHelper {
   ///===============>> Create Database
   Future onCreateDataBase(Database database, int? version) async {
     /// create expenses table
-    await database.execute(SqlQueries.createExpensesTable(expensesTable));
+    await database.execute(SqlQueries.createExpensesTable);
+    await database.execute(SqlQueries.createCategoriesTable);
+
     debugPrint("$database : Created SuccessFully version $version");
 
     /// todo crate more tables in future
@@ -184,8 +186,8 @@ class DatabaseHelper {
       Database db = await database;
       list = await db.query(
         tableName,
-        where: whereKey == null ? null : '$whereKey LIKE ?',
-        whereArgs: whereKey == null ? null : [whereValue],
+        where: '$whereKey LIKE ?',
+        whereArgs: whereKey == null ? [] : [whereValue],
       );
     } catch (e) {
       throw Exception(e);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:masrof/modules/Categories/categores_screen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
@@ -64,6 +65,17 @@ final GoRouter _router = GoRouter(
             context: context,
             state: state,
             child: const ProfileScreen(),
+          ),
+        ),
+
+        ///==============>> [categores_Screen]
+        GoRoute(
+          path: "/${CategoriesScreen.routerName}",
+          name: CategoriesScreen.routerName,
+          pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const CategoriesScreen(),
           ),
         ),
       ],

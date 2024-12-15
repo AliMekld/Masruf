@@ -7,6 +7,8 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/modules/Categories/categores_screen.dart';
+import 'package:masrof/modules/Categories/categories_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Expenses/expenses_controller.dart';
@@ -14,6 +16,7 @@ import 'package:masrof/modules/Expenses/expenses_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/Dialogs/categoty_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
@@ -93,14 +96,25 @@ class _MainLayoutState extends State<MainLayout> {
               ),
         floatingActionButtonLocation:
             context.isMobile ? FloatingActionButtonLocation.centerDocked : null,
-        floatingActionButton: currentIndex == 1
+        floatingActionButton: currentIndex == 1 || currentIndex == 2
             ? FloatingActionButton(
                 onPressed: () {
-                  DialogHelper.customDialog(
-                      child: ExpensesDialogDetailWidget(
-                    onEditExpense: (model) =>
-                        ExpensesController().onAddUpdateExpense(model),
-                  )).showDialog(context);
+                  if (currentIndex == 1) {
+                    DialogHelper.customDialog(
+                        child: ExpensesDialogDetailWidget(
+                      onEditExpense: (model) =>
+                          ExpensesController().onAddUpdateExpense(model),
+                    )).showDialog(context);
+                    return;
+                  }
+                  if (currentIndex == 2) {
+                    DialogHelper.customDialog(
+                        child: CategoryDialogDetailWidget(
+                      onEditCategory: (model) =>
+                          CategoriesController().onAddUpdateCategory(model),
+                    )).showDialog(context);
+                    return;
+                  }
                 },
                 child: const Icon(Icons.add),
               )
@@ -167,6 +181,12 @@ List<MenuModel> _menuList = [
   ),
   MenuModel(
     index: 2,
+    title: Strings.category,
+    imgSvg: Assets.images.profile_svg,
+    route: CategoriesScreen.routerName,
+  ),
+  MenuModel(
+    index: 3,
     title: Strings.profile,
     imgSvg: Assets.images.profile_svg,
     route: ProfileScreen.routerName,

@@ -98,7 +98,7 @@ class CustomDropdownWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 58.h,
-      width: width ?? 328.w,
+      width: width ?? 320.w,
       child: DropdownButtonFormField(
         iconEnabledColor: ColorsPalette.of(context).secondaryTextColor,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -121,11 +121,4 @@ class CustomDropdownWidget<T> extends StatelessWidget {
       ),
     );
   }
-}
-
-class DropdownModel {
-  final int? id;
-  final String? name;
-  final String? eName;
-  DropdownModel({this.name, this.id, this.eName});
 }

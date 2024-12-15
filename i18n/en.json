@@ -21,11 +21,13 @@
     "expenseDate": "Expense Date",
     "expenseCategory": "Expense Category",
     "deleteExpensesWarningMessage":"Are You Sure That You Want TO Delete This Expense !",
+    "deleteCategoryWarningMessage":"Are You Sure That You Want TO Delete This Category !",
     "expenses":"Expenses",
     "search":"Search",
     "id":"ID",
-    "category":"Category"
-    
-
+    "category":"Category",
+    "name":"Name",
+    "eName":"English Name",
+    "categoryData":"Category Data"
 
 }

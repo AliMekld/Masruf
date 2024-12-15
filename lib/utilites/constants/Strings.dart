@@ -27,4 +27,9 @@ class Strings {
   static const String search = "search";
   static const String id = "id";
   static const String category = "category";
+  static const String name = "name";
+  static const String eName = "eName";
+  static const String deleteCategoryWarningMessage =
+      "deleteCategoryWarningMessage";
+  static const String categoryData = "categoryData";
 }

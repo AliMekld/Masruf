@@ -2,44 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/modules/Expenses/expenses_controller.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
+import 'package:masrof/modules/Categories/categories_controller.dart';
 import 'package:masrof/utilites/extensions.dart';
-import 'package:masrof/widgets/custom_drop_down_widget.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/loading_widget.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
+import 'package:masrof/widgets/tables/categories_table.dart';
 import 'package:state_extended/state_extended.dart';
 
-class ExpensesScreen extends StatefulWidget {
-  static const String routerName = 'expensesScreen';
-  const ExpensesScreen({super.key});
+import '../../utilites/constants/Strings.dart';
+import '../../widgets/custom_drop_down_widget.dart';
+
+class CategoriesScreen extends StatefulWidget {
+  static const String routerName = 'CategoriesScreen';
+  const CategoriesScreen({super.key});
 
   @override
-  StateX<ExpensesScreen> createState() => _ExpensesScreenState();
+  StateX<CategoriesScreen> createState() => _CategoriesScreenState();
 }
 
-class _ExpensesScreenState extends StateX<ExpensesScreen> {
-  _ExpensesScreenState() : super(controller: ExpensesController()) {
-    con = ExpensesController();
+class _CategoriesScreenState extends StateX<CategoriesScreen> {
+  _CategoriesScreenState() : super(controller: CategoriesController()) {
+    con = CategoriesController();
   }
   @override
   initState() {
     super.initState();
     Future.microtask(() async {
       if (mounted) {
-        await con.getExpensesTableList(context);
+        await con.getCategoriesTableList(context);
       }
     });
   }
 
-  late ExpensesController con;
+  late CategoriesController con;
+
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context)?.translate(Strings.appName);
     return LoadingWidget(
       isLoading: con.loading,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           context.isTabletOrMobile
               ? Wrap(
@@ -50,7 +52,7 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                   alignment: WrapAlignment.center,
                   children: [
                     Text(
-                      Strings.expenses.tr,
+                      Strings.expenseCategory.tr,
                       style: TextStyleHelper.of(context).bodyLarge16R,
                     ),
                     CustomTextFieldWidget(
@@ -59,7 +61,7 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                       controller: con.searchController,
                       onSaved: (_) async {
                         if (_?.isEmpty ?? false) {
-                          await con.getExpensesTableList(context);
+                          await con.getCategoriesTableList(context);
                         } else {
                           await con.getFilteredTableList(context, _);
                         }
@@ -67,7 +69,7 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                     ),
                     CustomDropdownWidget(
                       width: 220,
-                      items: KeyType.values
+                      items: CategoresKeyType.values
                           .map((e) => DropdownMenuItem(
                               value: e,
                               child: Text(
@@ -75,10 +77,10 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                               )))
                           .toList(),
                       onChanged: (v) {
-                        con.type = v!;
+                        con.keyType = v!;
                         setState(() {});
                       },
-                      selectedItem: con.type,
+                      selectedItem: con.keyType,
                       bgColor: Colors.white,
                     ),
                   ],
@@ -87,7 +89,7 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      Strings.expenses.tr,
+                      Strings.expenseCategory.tr,
                       style: TextStyleHelper.of(context).headlineSmall24R,
                     ),
                     const Spacer(),
@@ -97,7 +99,7 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                       controller: con.searchController,
                       onChanged: (_) async {
                         if (_?.isEmpty ?? false) {
-                          await con.getExpensesTableList(context);
+                          await con.getCategoriesTableList(context);
                         } else {
                           await con.getFilteredTableList(context, _);
                         }
@@ -105,8 +107,8 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                     ),
                     16.0.widthBox,
                     CustomDropdownWidget(
-                      width: 160.w,
-                      items: KeyType.values
+                      width: 180.w,
+                      items: CategoresKeyType.values
                           .map((e) => DropdownMenuItem(
                               value: e,
                               child: Text(
@@ -114,19 +116,20 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                               )))
                           .toList(),
                       onChanged: (v) {
-                        con.type = v!;
+                        con.keyType = v!;
                         setState(() {});
                       },
-                      selectedItem: con.type,
+                      selectedItem: con.keyType,
                       bgColor: Colors.white,
                     ),
                   ],
                 ),
           16.0.heightBox,
-          ExpenseTable(
-            onDeleteExpense: (id) async => await con.onDeleteExpense(id),
-            onEditExpense: (model) async => await con.onAddUpdateExpense(model),
-            expensesList: con.tableList,
+          CategoriesTable(
+            onDeleteCategory: (id) async => await con.onDeleteCategory(id),
+            onEditCategory: (model) async =>
+                await con.onAddUpdateCategory(model),
+            categoriesList: con.tableList,
             context: context,
           ).expand,
         ],

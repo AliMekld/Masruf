@@ -3,51 +3,49 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/models/drop_down_model.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
-import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
+import 'package:masrof/widgets/Dialogs/categoty_dialog_detail_widget.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/GenericTable/table_helper.dart';
 import 'package:masrof/widgets/GenericTable/table_widget.dart';
 import 'package:masrof/models/expense_model.dart';
 
 // ignore: must_be_immutable
-class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
+class CategoriesTable<T extends DropdownModel> extends StatefulWidget {
   /// todo nrmy da fe el zebala wncreate table ndeef b3d manzakr ezay el tables bttcreate
-  List<ExpensesModel> expensesList;
+  List<DropdownModel> categoriesList;
   final BuildContext context;
-  final Function(ExpensesModel) onEditExpense;
-  final Function(int) onDeleteExpense;
+  final Function(DropdownModel) onEditCategory;
+  final Function(int) onDeleteCategory;
 
-  ExpenseTable({
+  CategoriesTable({
     required this.context,
     super.key,
-    required this.expensesList,
-    required this.onEditExpense,
-    required this.onDeleteExpense,
+    required this.categoriesList,
+    required this.onEditCategory,
+    required this.onDeleteCategory,
   });
 
   @override
-  State<ExpenseTable> createState() => _ExpenseTableState();
+  State<CategoriesTable> createState() => _CategoriesTableState();
 }
 
-class _ExpenseTableState<T extends ExpensesModel>
-    extends State<ExpenseTable<T>> {
+class _CategoriesTableState<T extends DropdownModel>
+    extends State<CategoriesTable<T>> {
   /// a columns List
   List<CustomDataColumn> getCulumnsList(BuildContext context) => [
         CustomDataColumn(
-          title:
-              AppLocalizations.of(context)?.translate(Strings.expenseNumber) ??
-                  "",
+          title: AppLocalizations.of(context)?.translate(Strings.id) ?? "",
           columnSize: ColumnSize.S,
           numeric: true,
           onSort: (index, asend) {
             setState(() {
-              widget.expensesList.sort.call((a, b) {
+              widget.categoriesList.sort.call((a, b) {
                 final aId = a.id ?? 0;
                 final bId = b.id ?? 0;
                 return asend ? aId.compareTo(bId) : bId.compareTo(aId);
@@ -55,14 +53,8 @@ class _ExpenseTableState<T extends ExpensesModel>
             });
           },
         ),
-        CustomDataColumn(
-            title: Strings.expenseName.tr, columnSize: ColumnSize.L),
-        CustomDataColumn(
-            title: Strings.expenseValue.tr, columnSize: ColumnSize.L),
-        CustomDataColumn(
-            title: Strings.expenseDate.tr, columnSize: ColumnSize.L),
-        CustomDataColumn(
-            title: Strings.expenseCategory.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(title: Strings.name.tr, columnSize: ColumnSize.L),
+        CustomDataColumn(title: Strings.eName.tr, columnSize: ColumnSize.L),
         CustomDataColumn(title: Strings.delete.tr, columnSize: ColumnSize.S),
       ];
 
@@ -71,8 +63,8 @@ class _ExpenseTableState<T extends ExpensesModel>
     return GenericTableWidget<ExpensesModel>(
       minWidth: getCulumnsList(context).length * 96.w,
       onSelectAll: (v) {
-        widget.expensesList =
-            widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
+        widget.categoriesList =
+            widget.categoriesList.map((e) => e.copyWith(selected: v)).toList();
         setState(() {});
       },
       columnsList: getCulumnsList(context),
@@ -81,30 +73,30 @@ class _ExpenseTableState<T extends ExpensesModel>
   }
 
   List<DataRow2> _getRows() {
-    return widget.expensesList
-        .mapIndexed((i, e) => TableHelper<ExpensesModel>(
+    return widget.categoriesList
+        .mapIndexed((i, e) => TableHelper<DropdownModel>(
               context: context,
               onDoubleTap: (index) {
-                if (widget.expensesList[index].id != null) {
+                if (widget.categoriesList[index].id != null) {
                   DialogHelper.customDialog(
-                      child: ExpensesDialogDetailWidget(
-                    onEditExpense: (model) => widget.onEditExpense(model),
-                    id: widget.expensesList[index].id,
+                      child: CategoryDialogDetailWidget(
+                    onEditCategory: (model) => widget.onEditCategory(model),
+                    id: widget.categoriesList[index].id,
                   )).showDialog(context);
                 }
               },
-              isSelected: widget.expensesList[i].isSelected,
+              isSelected: widget.categoriesList[i].selected,
               onSelect: (v) {
-                widget.expensesList[i].isSelected = v;
+                widget.categoriesList[i].selected = v;
                 setState(() {});
               },
-              dataList: widget.expensesList,
+              dataList: widget.categoriesList,
               getCells: (w) => _getCells(w, widget.context),
             ).getRow(i))
         .toList();
   }
 
-  List<DataCell> _getCells(ExpensesModel expenseModel, BuildContext context) {
+  List<DataCell> _getCells(DropdownModel expenseModel, BuildContext context) {
     return [
       DataCell(
         Text(
@@ -114,28 +106,13 @@ class _ExpenseTableState<T extends ExpensesModel>
         ).centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.expenseName?.trim() ?? "",
+        Text(expenseModel.name ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text("${expenseModel.expenseValue?.toString()}",
-                style: TextStyleHelper.of(context).bodyLarge16R,
-                textAlign: TextAlign.center)
-            .centerWhen(true),
-      ),
-      DataCell(
-        Text(expenseModel.expenseDate?.toDisplayFormat() ?? "",
-                style: TextStyleHelper.of(context).bodyLarge16R,
-                textAlign: TextAlign.center)
-            .centerWhen(true),
-      ),
-      DataCell(
-        ///Tdoo make this as a dropdown model
-        ///and create local serialization
-        /// or configure a way to send an object as to a tabke for sqlflite
-        Text(expenseModel.categoryID?.toString() ?? "",
+        Text(expenseModel.eName ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
@@ -146,9 +123,9 @@ class _ExpenseTableState<T extends ExpensesModel>
           onPressed: () {
             if (expenseModel.id != null) {
               DialogHelper.delete(
-                  message: Strings.deleteExpensesWarningMessage.tr,
+                  message: Strings.deleteCategoryWarningMessage.tr,
                   onConfirm: () {
-                    widget.onDeleteExpense(expenseModel.id!);
+                    widget.onDeleteCategory(expenseModel.id!);
                     context.pop();
                   }).showDialog(context);
             }
@@ -162,8 +139,4 @@ class _ExpenseTableState<T extends ExpensesModel>
       )
     ];
   }
-}
-
-extension DateFormter on DateTime {
-  String get dmy => DateFormat('yyyy-MM-dd').format(this);
 }
