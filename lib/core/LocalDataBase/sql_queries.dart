@@ -14,6 +14,10 @@ class SqlQueries {
     expenseValue REAL,
     expenseDate TEXT,
     categoryID INTEGER,
+    categoryName TEXT,
+    categoryEname TEXT,
+    FOREIGN KEY (categoryName) REFERENCES $categoriesTable (name),
+    FOREIGN KEY (categoryEname) REFERENCES $categoriesTable (eName),
     FOREIGN KEY (categoryID) REFERENCES $categoriesTable (id)
     )
     ''';

@@ -5,7 +5,6 @@ import 'package:masrof/core/LocalDataBase/database_helper.dart';
 
 class GenericLocalCrudMethods<T> {
   final T Function(Map<String, dynamic>) fromMap;
-
   GenericLocalCrudMethods({required this.fromMap});
 
   Future<List<T>> getListFrom({required String tableName}) async {

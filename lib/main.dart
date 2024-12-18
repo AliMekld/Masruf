@@ -13,9 +13,9 @@
 ///
 ///
 ///   4-local storage
-///     1-crud manger
-///     2-sqflite_hlper
-///     3-sql_queries
+///     1-crud manger[done ]
+///     2-sqflite_hlper[done]
+///     3-sql_queries[done]
 /// ============================================================================================///
 /// 2-utilties
 ///   1-helpers
@@ -30,14 +30,14 @@
 ///   4-router configuration
 ///
 ///   5-constants
-///     1-Strings
-///     2-enums
-///     3-constants
-///     4-mixins
-///   6-generic table data
+///     1-Strings[done]
+///     2-enums[done]
+///     3-constants[done]
+///     4-mixins[done]
+///   6-generic table data[done]
 /// step 2- creating design with its modules and models
 /// step 3 integrating with api if needed
-/// step 4 integrating with local database to store large amount of data
+/// step 4 integrating with local database to store large amount of data[done]
 ///
 ///
 // ignore_for_file: depend_on_referenced_packages
@@ -53,6 +53,7 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
+import 'package:masrof/utilites/PDFHelper/pdf_widgets.dart';
 import 'package:masrof/utilites/git_it.dart';
 import 'package:masrof/utilites/router_config.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -67,10 +68,11 @@ const Size fullHdDesktopSize = Size(1920, 1080);
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GitIt.initGitIt();
+  await PDFConfig.loadFont();
 
   ///TOOD deside using databaseFactoryFfi or sqFlite3 to fix platform not support linux or widows
   /// for now using databaseFactoryFfi it works correctly but must be intialed twise if
-  await GitIt.initGitIt();
 
   if (!kIsWeb) {
     await DatabaseHelper().initDataBase();

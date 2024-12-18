@@ -187,7 +187,7 @@ class DatabaseHelper {
       list = await db.query(
         tableName,
         where: '$whereKey LIKE ?',
-        whereArgs: whereKey == null ? [] : [whereValue],
+        whereArgs: whereKey == null ? [] : ['%$whereValue%'],
       );
     } catch (e) {
       throw Exception(e);

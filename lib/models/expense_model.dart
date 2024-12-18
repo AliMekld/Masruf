@@ -13,6 +13,8 @@ class ExpensesModel {
   final double? expenseValue;
   final DateTime? expenseDate;
   final int? categoryID;
+  final String? categoryName;
+  final String? categoryEname;
 
   ExpensesModel({
     this.id,
@@ -21,6 +23,8 @@ class ExpensesModel {
     this.expenseDate,
     this.categoryID,
     this.isSelected = false,
+    this.categoryEname,
+    this.categoryName,
   });
 
   ///
@@ -36,5 +40,7 @@ class ExpensesModel {
         'expenseValue': expenseValue?.toString(),
         'expenseDate': expenseDate?.toIso8601String(),
         'categoryID': categoryID?.toString(),
+        'categoryName': categoryName?.toString(),
+        'categoryEname': categoryEname?.toString(),
       };
 }

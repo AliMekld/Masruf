@@ -51,16 +51,16 @@ class _ExpensesDialogDetailWidgetState
     expenseValueController = TextEditingController();
     expenseDateController = TextEditingController();
     expenseCategoryConroller = TextEditingController();
-    Future.microtask(
-        () async => getCategoryList().then((v) => getExpenseById()));
+    Future(() async =>
+        getCategoryList().then((v) async => await getExpenseById()));
   }
 
   Future getCategoryList() async {
-    if (widget.id == null) return;
     final result = await CategoriesDataHadler.getCategoriesFromLocalDataBase();
     result.fold(
         (l) => DialogHelper.error(message: l.toString()).showDialog(context),
         (r) => categoryesList = r);
+    print(categoryesList.map((e) => e.toJson()));
     setState(() {});
   }
 
@@ -184,6 +184,8 @@ class _ExpensesDialogDetailWidgetState
                 categoryID: selectedCategory?.id,
                 expenseDate: expenseDateController.text.toDateTime(),
                 expenseName: expenseNameController.text,
+                categoryEname: selectedCategory?.eName,
+                categoryName: selectedCategory?.name,
                 expenseValue: double.tryParse(expenseValueController.text),
                 // id:
               );

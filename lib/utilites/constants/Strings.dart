@@ -32,4 +32,5 @@ class Strings {
   static const String deleteCategoryWarningMessage =
       "deleteCategoryWarningMessage";
   static const String categoryData = "categoryData";
+  static const String expensesCategories = "expensesCategories";
 }

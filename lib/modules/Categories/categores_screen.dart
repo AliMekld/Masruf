@@ -52,7 +52,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                   alignment: WrapAlignment.center,
                   children: [
                     Text(
-                      Strings.expenseCategory.tr,
+                      Strings.expensesCategories.tr,
                       style: TextStyleHelper.of(context).bodyLarge16R,
                     ),
                     CustomTextFieldWidget(
@@ -89,7 +89,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      Strings.expenseCategory.tr,
+                      Strings.expensesCategories.tr,
                       style: TextStyleHelper.of(context).headlineSmall24R,
                     ),
                     const Spacer(),

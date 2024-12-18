@@ -176,13 +176,13 @@ List<MenuModel> _menuList = [
   MenuModel(
     index: 1,
     title: Strings.expenses,
-    imgSvg: Assets.images.messages_svg,
+    imgSvg: Assets.images.save_svg,
     route: ExpensesScreen.routerName,
   ),
   MenuModel(
     index: 2,
     title: Strings.category,
-    imgSvg: Assets.images.profile_svg,
+    imgSvg: Assets.images.menu_svg,
     route: CategoriesScreen.routerName,
   ),
   MenuModel(

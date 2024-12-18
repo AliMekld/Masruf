@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
+import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/Expenses/expenses_controller.dart';
+import 'package:masrof/utilites/PDFHelper/pdf_builder.dart';
+import 'package:masrof/utilites/Reports/expenses_reports.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/custom_drop_down_widget.dart';
@@ -91,6 +94,19 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                       style: TextStyleHelper.of(context).headlineSmall24R,
                     ),
                     const Spacer(),
+                    IconButton(
+                        onPressed: () async {
+                          ExpensesReportsBuilder expensesReportsBuilder =
+                              ExpensesReportsBuilder(
+                                  expensesList: con.tableList);
+                          final page =
+                              await expensesReportsBuilder.buildReportPage();
+                          await PdfBuilder.createPDF(page);
+                        },
+                        icon: Icon(
+                          Icons.print,
+                          color: ColorsPalette.of(context).secondaryColor,
+                        )),
                     CustomTextFieldWidget(
                       hintText: Strings.search.tr,
                       width: 320.w,

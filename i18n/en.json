@@ -28,6 +28,6 @@
     "category":"Category",
     "name":"Name",
     "eName":"English Name",
-    "categoryData":"Category Data"
-
+    "categoryData":"Category Data",
+    "expensesCategories":"Expenses Categories"
 }

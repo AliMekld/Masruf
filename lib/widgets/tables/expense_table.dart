@@ -135,7 +135,7 @@ class _ExpenseTableState<T extends ExpensesModel>
         ///Tdoo make this as a dropdown model
         ///and create local serialization
         /// or configure a way to send an object as to a tabke for sqlflite
-        Text(expenseModel.categoryID?.toString() ?? "",
+        Text(expenseModel.categoryName ?? "",
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),

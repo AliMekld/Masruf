@@ -20,6 +20,8 @@ abstract class _$ExpensesModelCWProxy {
     DateTime? expenseDate,
     int? categoryID,
     bool? isSelected,
+    String? categoryEname,
+    String? categoryName,
   });
 }
 
@@ -44,6 +46,8 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
     Object? expenseDate = const $CopyWithPlaceholder(),
     Object? categoryID = const $CopyWithPlaceholder(),
     Object? isSelected = const $CopyWithPlaceholder(),
+    Object? categoryEname = const $CopyWithPlaceholder(),
+    Object? categoryName = const $CopyWithPlaceholder(),
   }) {
     return ExpensesModel(
       id: id == const $CopyWithPlaceholder()
@@ -71,6 +75,14 @@ class _$ExpensesModelCWProxyImpl implements _$ExpensesModelCWProxy {
               ? _value.isSelected
               // ignore: cast_nullable_to_non_nullable
               : isSelected as bool,
+      categoryEname: categoryEname == const $CopyWithPlaceholder()
+          ? _value.categoryEname
+          // ignore: cast_nullable_to_non_nullable
+          : categoryEname as String?,
+      categoryName: categoryName == const $CopyWithPlaceholder()
+          ? _value.categoryName
+          // ignore: cast_nullable_to_non_nullable
+          : categoryName as String?,
     );
   }
 }
@@ -94,6 +106,8 @@ ExpensesModel _$ExpensesModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['expenseDate'] as String),
       categoryID: (json['categoryID'] as num?)?.toInt(),
+      categoryEname: json['categoryEname'] as String?,
+      categoryName: json['categoryName'] as String?,
     );
 
 Map<String, dynamic> _$ExpensesModelToJson(ExpensesModel instance) =>
@@ -103,4 +117,6 @@ Map<String, dynamic> _$ExpensesModelToJson(ExpensesModel instance) =>
       'expenseValue': instance.expenseValue,
       'expenseDate': instance.expenseDate?.toIso8601String(),
       'categoryID': instance.categoryID,
+      'categoryName': instance.categoryName,
+      'categoryEname': instance.categoryEname,
     };
