@@ -20,47 +20,50 @@ mixin DialogsMixin {
     return Dialog(
       elevation: 16,
       shadowColor: ColorsPalette.of(context).buttonDisabledColor,
-      shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRaduis16),
+      shape: RoundedRectangleBorder(
+        borderRadius: Constants.kBorderRaduis16,
+      ),
       backgroundColor: ColorsPalette.of(context).backgroundColor,
       child: SizedBox(
-        height: 400.h,
+        height: 600.h,
         width: 400.w,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              //todo add this asset
-              Assets.images.app_logo2_svg,
-              width: 112.w,
-              height: 112.h,
-              colorFilter: ColorFilter.mode(
-                  ColorsPalette.of(context).errorColor, BlendMode.srcIn),
-            ),
+            Icon(
+              Icons.error_outline,
+              size: 80.r,
+              color: ColorsPalette.of(context).errorColor,
+            ).fit,
             24.h.heightBox,
             Row(
               children: [
                 Container(
                   width: 16,
-                  height: 1.sh,
+                  height: 360.h,
                   padding: const EdgeInsets.symmetric(horizontal: 1),
                   color:
                       ColorsPalette.of(context).secondaryColor.withOpacity(0.8),
                 ),
                 Container(
+                    height: 360.h,
+                    width: 320,
                     padding: EdgeInsets.all(16.r),
                     decoration: BoxDecoration(
                       color:
                           ColorsPalette.of(context).errorColor.withOpacity(0.1),
                     ),
                     child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
                       child: Text(
                         message,
                         style: TextStyleHelper.of(context).titleMedium16M,
+                        maxLines: 16,
                       ),
-                    )).heightBox(120.h).expand,
+                    )),
               ],
-            ).heightBox(120.h),
+            ).heightBox(360.h).expand,
             24.h.heightBox,
             CustomButtonWidget.backButton(context),
           ],
@@ -193,10 +196,11 @@ mixin DialogsMixin {
     );
   }
 
-  Dialog deleteDialog(
-      {required BuildContext context,
-      required String message,
-      required Function() onDelete}) {
+  Dialog deleteDialog({
+    required BuildContext context,
+    required String message,
+    required Function() onDelete,
+  }) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRaduis16),
       backgroundColor: ColorsPalette.of(context).backgroundColor,
@@ -209,22 +213,14 @@ mixin DialogsMixin {
           children: [
             Icon(
               Icons.dangerous_outlined,
-              size: 72,
+              size: 44,
               color: ColorsPalette.of(context).errorColor,
             ),
-            // SvgPicture.asset(
-            //   Assets.images.app_logo_svg,
-            //   width: 112.w,
-            //   height: 112.h,
-            //   colorFilter: ColorFilter.mode(
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
             24.h.heightBox,
             Row(
               children: [
                 Container(
-                  width: 16,
+                  width: 8,
                   color: ColorsPalette.of(context).errorColor.withOpacity(0.8),
                 ),
                 Container(

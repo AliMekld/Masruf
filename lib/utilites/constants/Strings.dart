@@ -31,6 +31,11 @@ class Strings {
   static const String eName = "eName";
   static const String deleteCategoryWarningMessage =
       "deleteCategoryWarningMessage";
+  static const String deleteIncomeWarningMessage = "deleteIncomeWarningMessage";
   static const String categoryData = "categoryData";
   static const String expensesCategories = "expensesCategories";
+  static const String income = "income";
+  static const String incomeName = "incomeName";
+  static const String incomeValue = "incomeValue";
+  static const String incomeDate = "incomeDate";
 }

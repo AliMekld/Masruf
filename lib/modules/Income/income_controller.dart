@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
-import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
+import 'package:masrof/models/income_model.dart';
+import 'package:masrof/modules/Income/income_data_hadler.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
 import '../../core/LocalDataBase/sql_queries.dart';
 
-class ExpensesController extends StateXController {
+class IncomeController extends StateXController {
   ///singleTone
-  ExpensesController._();
-  static final ExpensesController _instance = ExpensesController._();
-  factory ExpensesController() => _instance;
+  IncomeController._();
+  static final IncomeController _instance = IncomeController._();
+  factory IncomeController() => _instance;
   late TextEditingController searchController;
-  List<ExpensesModel> tableList = [];
+  List<IncomeModel> tableList = [];
 
-  onDeleteExpense(int id) async {
+  onDeleteIncome(int id) async {
     if (id == -1) return;
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int response = await databaseHelper.deleteFrom(
-        tableName: SqlQueries.expensesTable, whereKey: "id", whereValue: id);
+      tableName: SqlQueries.incomeTable,
+      whereKey: "id",
+      whereValue: id,
+    );
     if (response != 0) {
       tableList.removeWhere((e) => e.id == id);
     }
     setState(() {});
   }
 
+  IncomeKeyType keyType = IncomeKeyType.id;
   @override
   initState() {
     super.initState();
@@ -38,8 +43,9 @@ class ExpensesController extends StateXController {
     searchController.dispose();
   }
 
-  onAddUpdateExpense(ExpensesModel model) async {
+  onAddUpdateIncom(IncomeModel model) async {
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int currentIndex = tableList.indexWhere((e) => e.id == model.id);
     if (currentIndex != -1) {
       setState(() => loading = true);
@@ -47,16 +53,16 @@ class ExpensesController extends StateXController {
       int response = await databaseHelper.update(
         whereKey: "id",
         whereValue: "${model.id!}",
-        model: model.toLocalJson(),
-        tableName: SqlQueries.expensesTable,
+        model: model.toJson(),
+        tableName: SqlQueries.incomeTable,
       );
       if (response != 0) {
         tableList[currentIndex] = model;
       }
     } else {
       int response = await databaseHelper.insert(
-        model: model.toLocalJson(),
-        tableName: SqlQueries.expensesTable,
+        model: model.toJson(),
+        tableName: SqlQueries.incomeTable,
       );
       if (response != 0) {
         tableList.add(model.copyWith(id: response));
@@ -68,22 +74,22 @@ class ExpensesController extends StateXController {
   bool loading = false;
 
   /// get all data
-  Future getExpensesTableList(
+  Future getIncomeTableList(
     BuildContext context,
   ) async {
     setState(() => loading = true);
-    final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
+    final result = await IncomeDataHadler.getIncomeFromLocalDataBase();
     result.fold((l) {
       DialogHelper.error(
         message: l.toString(),
       ).showDialog(
         context,
       );
-    }, (r) => tableList = r);
+    }, (r) {
+      tableList = r;
+    });
     setState(() => loading = false);
   }
-
-  KeyType type = KeyType.id;
 
   /// onsearch
   Future getFilteredTableList(
@@ -92,8 +98,8 @@ class ExpensesController extends StateXController {
   ) async {
     setState(() => loading = true);
 
-    final result = await ExpensesDataHadler.onSearch(
-      key: type.keyName,
+    final result = await IncomeDataHadler.onSearch(
+      key: keyType.keyName,
       value: value,
     );
 
@@ -109,15 +115,13 @@ class ExpensesController extends StateXController {
   }
 }
 
-/// todo
-enum KeyType {
+enum IncomeKeyType {
   id(keyName: "id"),
-  name(keyName: "expenseName"),
-  value(keyName: "expenseValue"),
-  date(keyName: "expenseDate"),
-  category(keyName: "categoryID");
+  incomeName(keyName: "incomeName"),
+  incomeDate(keyName: "incomeDate"),
+  incomeValue(keyName: "incomeValue");
 
   final String keyName;
 
-  const KeyType({required this.keyName});
+  const IncomeKeyType({required this.keyName});
 }

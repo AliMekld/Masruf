@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrof/modules/Categories/categores_screen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
+import 'package:masrof/modules/Income/income_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Splash/splash_screen.dart';
@@ -76,6 +77,17 @@ final GoRouter _router = GoRouter(
             context: context,
             state: state,
             child: const CategoriesScreen(),
+          ),
+        ),
+
+        ///==============>> [Income_Screen]
+        GoRoute(
+          path: "/${IncomeScreen.routerName}",
+          name: IncomeScreen.routerName,
+          pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const IncomeScreen(),
           ),
         ),
       ],

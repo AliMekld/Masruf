@@ -18,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with ResponsiveStatfullMixin {
- 
   @override
   Widget build(BuildContext context) {
     return responsiveBuild(

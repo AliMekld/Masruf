@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/utilites/PDFHelper/pdf_widgets.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,11 +11,7 @@ class PdfBuilder {
   ///
   static Future openDocument(File file) async {
     final url = file.path;
-    await OpenFile.open(
-      url,
-      linuxByProcess: true,
-      linuxDesktopName: Strings.appName,
-    );
+    await OpenFile.open(url, type: "pdf");
   }
 
   ///

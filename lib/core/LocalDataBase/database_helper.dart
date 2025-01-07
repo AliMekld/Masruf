@@ -67,6 +67,7 @@ class DatabaseHelper {
     /// create expenses table
     await database.execute(SqlQueries.createExpensesTable);
     await database.execute(SqlQueries.createCategoriesTable);
+    await database.execute(SqlQueries.createIncomeTable);
 
     debugPrint("$database : Created SuccessFully version $version");
 

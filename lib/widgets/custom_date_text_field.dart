@@ -12,11 +12,14 @@ class CustomDateTextField extends StatefulWidget {
   final TextEditingController controller;
   final bool? enabled;
   final String label;
+  final double? width, height;
 
   const CustomDateTextField({
     super.key,
     required this.controller,
     required this.label,
+    this.height,
+    this.width,
     this.enabled = true,
   });
 
@@ -134,8 +137,8 @@ class _MyWidgetState extends State<CustomDateTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 58.h,
-      width: 320.w,
+      height: widget.height ?? 58.h,
+      width: widget.width ?? 320.w,
       child: TextFormField(
         style: TextStyleHelper.of(context).bodyLarge16R,
         controller: widget.controller,
@@ -188,11 +191,14 @@ class DateInputFormatter extends TextInputFormatter {
   bool _isValidDate(String input) {
     try {
       final parts = input.split('/');
+
       if (parts.length != 3) return false;
 
       final day = int.parse(parts[0]);
       final month = int.parse(parts[1]);
       final year = int.parse(parts[2]);
+      if (month > 12) return false;
+      if (int.parse(parts[1]) > 12) return false;
 
       final date = DateTime(year, month, day);
 

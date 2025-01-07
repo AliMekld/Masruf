@@ -33,13 +33,16 @@ final class _Images {
 
   final String app_logo_svg = 'assets/images/app_logo.svg';
   final String app_logo2_svg = 'assets/images/app_logo2.svg';
+  final String expenses_svg = 'assets/images/expenses.svg';
   final String home_svg = 'assets/images/home.svg';
+  final String income_svg = 'assets/images/income.svg';
   final String masruf_svg = 'assets/images/masruf.svg';
   final String menu_svg = 'assets/images/menu.svg';
   final String messages_svg = 'assets/images/messages.svg';
   final String profile_svg = 'assets/images/profile.svg';
   final String restore_svg = 'assets/images/restore.svg';
   final String save_svg = 'assets/images/save.svg';
+  final String wallet_svg = 'assets/images/wallet.svg';
 
 }
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
@@ -13,6 +15,7 @@ import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/loading_widget.dart';
 import 'package:masrof/widgets/tables/expense_table.dart';
 import 'package:state_extended/state_extended.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class ExpensesScreen extends StatefulWidget {
   static const String routerName = 'expensesScreen';
@@ -60,11 +63,11 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                       hintText: Strings.search.tr,
                       width: 220,
                       controller: con.searchController,
-                      onSaved: (_) async {
-                        if (_?.isEmpty ?? false) {
+                      onSaved: (v) async {
+                        if (v?.isEmpty ?? false) {
                           await con.getExpensesTableList(context);
                         } else {
-                          await con.getFilteredTableList(context, _);
+                          await con.getFilteredTableList(context, v);
                         }
                       },
                     ),
@@ -98,10 +101,13 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                         onPressed: () async {
                           ExpensesReportsBuilder expensesReportsBuilder =
                               ExpensesReportsBuilder(
-                                  expensesList: con.tableList);
-                          final page =
-                              await expensesReportsBuilder.buildReportPage();
-                          await PdfBuilder.createPDF(page);
+                            expensesList: con.tableList,
+                          );
+                          await expensesReportsBuilder
+                              .buildReportPage()
+                              .then((f) {
+                            PdfBuilder.createPDF(f);
+                          });
                         },
                         icon: Icon(
                           Icons.print,
@@ -111,11 +117,11 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
                       hintText: Strings.search.tr,
                       width: 320.w,
                       controller: con.searchController,
-                      onChanged: (_) async {
-                        if (_?.isEmpty ?? false) {
+                      onChanged: (v) async {
+                        if (v?.isEmpty ?? false) {
                           await con.getExpensesTableList(context);
                         } else {
-                          await con.getFilteredTableList(context, _);
+                          await con.getFilteredTableList(context, v);
                         }
                       },
                     ),
@@ -148,5 +154,15 @@ class _ExpensesScreenState extends StateX<ExpensesScreen> {
         ],
       ),
     );
+  }
+}
+
+class CustomPdfViewer extends StatelessWidget {
+  final File filePath;
+
+  const CustomPdfViewer({super.key, required this.filePath});
+  @override
+  Widget build(BuildContext context) {
+    return SfPdfViewer.file(filePath);
   }
 }

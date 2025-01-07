@@ -64,6 +64,7 @@ extension ContextExtensions on BuildContext {
 
   bool get isDeskTop => (!isTablet && !isMobile);
 }
+
 /// Extension on String to parse into DateTime
 extension DateStringParsing on String {
   /// Converts a `dd/MM/yyyy` string into a `DateTime`

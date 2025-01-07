@@ -10,14 +10,16 @@ import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/Categories/categores_screen.dart';
 import 'package:masrof/modules/Categories/categories_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
+import 'package:masrof/modules/Income/income_controller.dart';
+import 'package:masrof/modules/Income/income_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Expenses/expenses_controller.dart';
 import 'package:masrof/modules/Expenses/expenses_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/Dialogs/categoty_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
+import 'package:masrof/widgets/Dialogs/income_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
@@ -47,6 +49,7 @@ class _MainLayoutState extends State<MainLayout> {
     return Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, theme, lang, w) {
       return Scaffold(
+        backgroundColor: ColorsPalette.of(context).backgroundColor,
         appBar: context.isMobile
             ? AppBar(
                 actions: [
@@ -63,62 +66,58 @@ class _MainLayoutState extends State<MainLayout> {
                 ],
               )
             : null,
-        backgroundColor:
-            !context.isMobile ? ColorsPalette.of(context).primaryColor : null,
         body: context.isMobile
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: widget.child,
               )
             : Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomNavigationRail(
                     currentIndex: currentIndex,
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(8),
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 0.5,
-                          spreadRadius: 0.5,
-                          blurStyle: BlurStyle.outer,
-                          color: ColorsPalette.of(context).dividerColor,
-                        )
-                      ],
-                      borderRadius: Constants.kBorderRaduis8,
-                      color: ColorsPalette.of(context).backgroundColor,
-                    ),
-                    child: widget.child..addPaddingAll(padding: 40).expand,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 24, top: 24, left: 8, right: 8),
+                    child: widget.child,
                   ).expand
                 ],
               ),
         floatingActionButtonLocation:
             context.isMobile ? FloatingActionButtonLocation.centerDocked : null,
-        floatingActionButton: currentIndex == 1 || currentIndex == 2
-            ? FloatingActionButton(
-                onPressed: () {
-                  if (currentIndex == 1) {
-                    DialogHelper.customDialog(
-                        child: ExpensesDialogDetailWidget(
-                      onEditExpense: (model) =>
-                          ExpensesController().onAddUpdateExpense(model),
-                    )).showDialog(context);
-                    return;
-                  }
-                  if (currentIndex == 2) {
-                    DialogHelper.customDialog(
-                        child: CategoryDialogDetailWidget(
-                      onEditCategory: (model) =>
-                          CategoriesController().onAddUpdateCategory(model),
-                    )).showDialog(context);
-                    return;
-                  }
-                },
-                child: const Icon(Icons.add),
-              )
-            : null,
+        floatingActionButton:
+            currentIndex == 1 || currentIndex == 2 || currentIndex == 3
+                ? FloatingActionButton(
+                    onPressed: () {
+                      if (currentIndex == 1) {
+                        DialogHelper.customDialog(
+                            child: ExpensesDialogDetailWidget(
+                          onEditExpense: (model) =>
+                              ExpensesController().onAddUpdateExpense(model),
+                        )).showDialog(context);
+                        return;
+                      }
+                      if (currentIndex == 2) {
+                        DialogHelper.customDialog(
+                            child: CategoryDialogDetailWidget(
+                          onEditCategory: (model) =>
+                              CategoriesController().onAddUpdateCategory(model),
+                        )).showDialog(context);
+                        return;
+                      }
+                      if (currentIndex == 3) {
+                        DialogHelper.customDialog(
+                            child: IncomeDialogDetailWidget(
+                          onEditIcome: (model) =>
+                              IncomeController().onAddUpdateIncom(model),
+                        )).showDialog(context);
+                        return;
+                      }
+                    },
+                    child: const Icon(Icons.add),
+                  )
+                : null,
         bottomNavigationBar: context.isMobile
             ? BottomNavigationBar(
                 elevation: 0.5,
@@ -136,7 +135,6 @@ class _MainLayoutState extends State<MainLayout> {
                         color: ColorsPalette.of(context).primaryTextColor),
                 onTap: (_) {
                   setState(() {
-                    // ignore: no_wildcard_variable_uses
                     currentIndex = _;
                   });
                   context.goNamed(menuList[currentIndex].route);
@@ -150,7 +148,7 @@ class _MainLayoutState extends State<MainLayout> {
                         height: 24.h,
                         width: 24.w,
                         colorFilter: ColorFilter.mode(
-                          ColorsPalette.of(context).iconColor,
+                          ColorsPalette.of(context).buttonColor,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -176,17 +174,23 @@ List<MenuModel> _menuList = [
   MenuModel(
     index: 1,
     title: Strings.expenses,
-    imgSvg: Assets.images.save_svg,
+    imgSvg: Assets.images.expenses_svg,
     route: ExpensesScreen.routerName,
   ),
   MenuModel(
     index: 2,
-    title: Strings.category,
+    title: Strings.expensesCategories,
     imgSvg: Assets.images.menu_svg,
     route: CategoriesScreen.routerName,
   ),
   MenuModel(
     index: 3,
+    title: Strings.income,
+    imgSvg: Assets.images.income_svg,
+    route: IncomeScreen.routerName,
+  ),
+  MenuModel(
+    index: 4,
     title: Strings.profile,
     imgSvg: Assets.images.profile_svg,
     route: ProfileScreen.routerName,

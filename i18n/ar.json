@@ -29,7 +29,13 @@
     "name":"الاسم",
     "eName":"الاسم بالأنجليزيه",
     "categoryData":"بيانات فئه المصروف",
-    "expensesCategories":"فئات المصروفات"
+    "expensesCategories":"فئات المصروفات",
+    "income":"الدخل",
+    "incomeName" : "اسم الدخل",
+    "incomeValue" : "قيمة الدخل",
+    "incomeDate" : "تاريح الدخل",
+     "deleteIncomeWarningMessage" : "هل أنت متأكد من رغبتك في حذف هذا المدخل ؟"
+
 
 
 

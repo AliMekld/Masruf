@@ -29,5 +29,12 @@
     "name":"Name",
     "eName":"English Name",
     "categoryData":"Category Data",
-    "expensesCategories":"Expenses Categories"
+    "expensesCategories":"Expenses Categories",
+    "income":"Income",
+    "incomeName" : "Income Name",
+    "incomeValue" : "Income Value",
+    "incomeDate" : "Income Date",
+    "deleteIncomeWarningMessage":"Are You Sure That You Want TO Delete This Income !"
+
+
 }

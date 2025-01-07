@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/modules/Categories/categories_controller.dart';
+import 'package:masrof/modules/Income/income_controller.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/loading_widget.dart';
-import 'package:masrof/widgets/tables/categories_table.dart';
+import 'package:masrof/widgets/tables/income_table.dart';
 import 'package:state_extended/state_extended.dart';
 
 import '../../utilites/constants/Strings.dart';
 import '../../widgets/custom_drop_down_widget.dart';
 
-class CategoriesScreen extends StatefulWidget {
-  static const String routerName = 'CategoriesScreen';
-  const CategoriesScreen({super.key});
+class IncomeScreen extends StatefulWidget {
+  static const String routerName = 'IncomeScreen';
+  const IncomeScreen({super.key});
 
   @override
-  StateX<CategoriesScreen> createState() => _CategoriesScreenState();
+  StateX<IncomeScreen> createState() => _IncomeScreenState();
 }
 
-class _CategoriesScreenState extends StateX<CategoriesScreen> {
-  _CategoriesScreenState() : super(controller: CategoriesController()) {
-    con = CategoriesController();
+class _IncomeScreenState extends StateX<IncomeScreen> {
+  _IncomeScreenState() : super(controller: IncomeController()) {
+    con = IncomeController();
   }
   @override
   initState() {
@@ -34,7 +34,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
     });
   }
 
-  late CategoriesController con;
+  late IncomeController con;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                   alignment: WrapAlignment.center,
                   children: [
                     Text(
-                      Strings.expensesCategories.tr,
+                      Strings.income.tr,
                       style: TextStyleHelper.of(context).bodyLarge16R,
                     ),
                     CustomTextFieldWidget(
@@ -69,7 +69,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                     ),
                     CustomDropdownWidget(
                       width: 220,
-                      items: CategoresKeyType.values
+                      items: IncomeKeyType.values
                           .map((e) => DropdownMenuItem(
                               value: e,
                               child: Text(
@@ -89,7 +89,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      Strings.expensesCategories.tr,
+                      Strings.income.tr,
                       style: TextStyleHelper.of(context).headlineSmall24R,
                     ),
                     const Spacer(),
@@ -108,7 +108,7 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                     16.0.widthBox,
                     CustomDropdownWidget(
                       width: 180.w,
-                      items: CategoresKeyType.values
+                      items: IncomeKeyType.values
                           .map((e) => DropdownMenuItem(
                               value: e,
                               child: Text(
@@ -125,11 +125,10 @@ class _CategoriesScreenState extends StateX<CategoriesScreen> {
                   ],
                 ),
           16.0.heightBox,
-          CategoriesTable(
-            onDeleteCategory: (id) async => await con.onDeleteCategory(id),
-            onEditCategory: (model) async =>
-                await con.onAddUpdateCategory(model),
-            categoriesList: con.tableList,
+          IncomeTable(
+            onDeleteIncome: (id) async => await con.onDeleteIncome(id),
+            onEditIncome: (model) async => await con.onAddUpdateIncom(model),
+            incomeList: con.tableList,
             context: context,
           ).expand,
         ],

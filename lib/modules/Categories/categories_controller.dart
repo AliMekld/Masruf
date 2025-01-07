@@ -74,7 +74,7 @@ class CategoriesController extends StateXController {
   bool loading = false;
 
   /// get all data
-  Future getCategoriesTableList(
+  Future getIncomeTableList(
     BuildContext context,
   ) async {
     setState(() => loading = true);
@@ -109,10 +109,7 @@ class CategoriesController extends StateXController {
       ).showDialog(
         context,
       );
-    }, (r) {
-      print(r);
-      tableList = r;
-    });
+    }, (r) => tableList = r);
 
     setState(() => loading = false);
   }

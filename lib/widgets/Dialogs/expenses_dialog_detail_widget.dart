@@ -60,7 +60,6 @@ class _ExpensesDialogDetailWidgetState
     result.fold(
         (l) => DialogHelper.error(message: l.toString()).showDialog(context),
         (r) => categoryesList = r);
-    print(categoryesList.map((e) => e.toJson()));
     setState(() {});
   }
 
