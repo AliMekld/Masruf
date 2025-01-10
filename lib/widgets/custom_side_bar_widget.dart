@@ -38,7 +38,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
           borderRadius: Constants.kBorderRaduis16),
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
-      width: isExpanded ? 180 : 60,
+      width: isExpanded ? 196 : 64,
       height: 1.sh,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
