@@ -61,13 +61,7 @@ class _SmallHomeScreenState extends StateX<SmallHomeScreen> {
             CardWidget(
               width: 1.sw,
               height: 300.h,
-              child: Center(
-                  child: SfCartesianChart(
-                title: const ChartTitle(text: 'Flutter Chart'),
-                legend: const Legend(isVisible: true),
-                series: getDefaultData(),
-                // tooltipBehavior: _tooltipBehavior,
-              )),
+              child: Center(child: SizedBox()),
             ),
             CardWidget(
               width: 1.sw,

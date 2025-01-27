@@ -34,7 +34,9 @@
     "incomeName" : "اسم الدخل",
     "incomeValue" : "قيمة الدخل",
     "incomeDate" : "تاريح الدخل",
-     "deleteIncomeWarningMessage" : "هل أنت متأكد من رغبتك في حذف هذا المدخل ؟"
+     "deleteIncomeWarningMessage" : "هل أنت متأكد من رغبتك في حذف هذا المدخل ؟",
+     "dashboard":"لوحة التحكم"
+
 
 
 

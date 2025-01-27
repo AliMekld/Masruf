@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
+import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/gen/assets.gen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/widgets/tables/expense_table.dart';
 import 'package:pdf/pdf.dart';
@@ -11,12 +11,15 @@ class PDFConfig {
   static Uint8List? iconImage;
   static Future<void> loadFont() async {
     // Wait for the font data to load
-    final fontData =
-        await rootBundle.load(Assets.fonts.notoKufiArabicVariableFontWght);
+    final fontData = await rootBundle
+        .load(Assets.fonts.notokufiarabic_variablefont_wght_ttf);
     // Convert the font data to a Font object
     _ttf = Font.ttf(fontData.buffer.asByteData());
-    iconImage =
-        (await rootBundle.load(Assets.images.appLogo)).buffer.asUint8List();
+    iconImage = (await rootBundle.load(
+      Assets.images.app_logo_svg,
+    ))
+        .buffer
+        .asUint8List();
   }
 
   ///
@@ -105,14 +108,6 @@ class PdfWidgets {
         textDirection: TextDirection.rtl,
       ),
       Divider().expand,
-      // ...list.map(
-      //   (e) => Text(
-      //     e.title ?? "",
-      //     style: e.textStyle ?? PDFConfig.k16TextStyle,
-      //     textAlign: e.textAlign ?? TextAlign.center,
-      //     textDirection: e.textDirection ?? TextDirection.rtl,
-      //   ).expandFlex(e.flex),
-      // )
     ]);
   }
 

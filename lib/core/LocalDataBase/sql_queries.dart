@@ -5,6 +5,7 @@ class SqlQueries {
   static const String expensesTable = "expensesTable";
   static const String categoriesTable = "categoryTable";
   static const String incomeTable = "incomeTable";
+  static const String statisticsDetail = "statisticsDetail";
 
   ///==========>> CREATE EXPENSES TABLE <<================
   static String get createExpensesTable {
@@ -45,5 +46,20 @@ class SqlQueries {
     ''';
   }
 
-  ///===========================================[select_query_for_filtering]
+  ///===========================================[create_statistics_model]
+  static String get createstatisticsDetailTable {
+    ;
+    return '''
+    CREATE TABLE $statisticsDetail (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    label TEXT,
+    value REAL DEFAULT 0.0,
+    qty INTEGER DEFAULT 1,
+    totalQty INTEGER DEFAULT 1,
+    parent_id INTEGER,
+    FOREIGN KEY (parent_id) REFERENCES $statisticsDetail (id),
+    totalValue REAL DEFAULT 0.0
+    )
+    ''';
+  }
 }

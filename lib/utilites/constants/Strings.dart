@@ -38,4 +38,5 @@ class Strings {
   static const String incomeName = "incomeName";
   static const String incomeValue = "incomeValue";
   static const String incomeDate = "incomeDate";
+  static const String dashboard = "dashboard";
 }

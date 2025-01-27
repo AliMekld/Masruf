@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/modules/Home/home_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
 import 'package:state_extended/state_extended.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -16,7 +17,7 @@ class MediumHomeScreen extends StatefulWidget {
 }
 
 class _MediumHomeScreenState extends StateX<MediumHomeScreen> {
-    _MediumHomeScreenState() : super(controller: HomeController()) {
+  _MediumHomeScreenState() : super(controller: HomeController()) {
     con = HomeController();
   }
   late HomeController con;
@@ -41,35 +42,23 @@ class _MediumHomeScreenState extends StateX<MediumHomeScreen> {
               width: 0.39.sw,
               height: 300.h,
               child: Center(
-                child: SfCircularChart(
-                  title: const ChartTitle(text: 'Expensses Tracker'),
-                  legend: const Legend(isVisible: true),
-                  series: <PieSeries<PieData, String>>[
-                    PieSeries<PieData, String>(
-                        explode: true,
-                        explodeIndex: 0,
-                        dataSource: dataList,
-                        xValueMapper: (PieData data, _) => data.xData,
-                        yValueMapper: (PieData data, _) => data.yData,
-                        dataLabelMapper: (PieData data, _) => data.text,
-                        dataLabelSettings: const DataLabelSettings(
-                            isVisible: true,
-                            labelPosition: ChartDataLabelPosition.outside)),
-                  ],
-                ),
-              ),
-            ),
-            CardWidget(
-              width: 0.39.sw,
-              height: 300.h,
-              child: Center(
-                  child: SfCartesianChart(
-                title: const ChartTitle(text: 'Flutter Chart'),
-                legend: const Legend(isVisible: true),
-                series: getDefaultData(),
-                // tooltipBehavior: _tooltipBehavior,
+                  child: LinerAnalyticsWidget(
+                tooltipBehavior: TooltipBehavior(),
+                series: [],
+                titles: [],
               )),
             ),
+            // CardWidget(
+            //   width: 0.39.sw,
+            //   height: 300.h,
+            //   child: Center(
+            //       child: SfCartesianChart(
+            //     title: const ChartTitle(text: 'Flutter Chart'),
+            //     legend: const Legend(isVisible: true),
+            //     series: getDefaultData(),
+            //     // tooltipBehavior: _tooltipBehavior,
+            //   )),
+            // ),
             CardWidget(
               width: 0.39.sw,
               height: 300.h,

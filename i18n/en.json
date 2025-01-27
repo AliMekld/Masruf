@@ -34,7 +34,8 @@
     "incomeName" : "Income Name",
     "incomeValue" : "Income Value",
     "incomeDate" : "Income Date",
-    "deleteIncomeWarningMessage":"Are You Sure That You Want TO Delete This Income !"
+    "deleteIncomeWarningMessage":"Are You Sure That You Want TO Delete This Income !",
+    "dashboard":"Dashboard"
 
 
 }

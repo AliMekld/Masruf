@@ -1,3 +1,4 @@
+import 'package:masrof/models/statistics_model.dart';
 import 'package:state_extended/state_extended.dart';
 
 class HomeController extends StateXController {
@@ -5,6 +6,7 @@ class HomeController extends StateXController {
   HomeController._();
   static final HomeController _instance = HomeController._();
   factory HomeController() => _instance;
+  List<StatisticsDetailModel> expensesData = [];
 }
 
 enum ExpensesTaps {

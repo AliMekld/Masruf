@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/modules/Home/home_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
+import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
 import 'package:state_extended/state_extended.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -29,48 +32,24 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Large Dashboard",
+              Strings.dashboard.tr,
               style: TextStyleHelper.of(context).headlinelarge32R,
             ),
             16.h.heightBox,
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 16,
-              runSpacing: 16,
+              spacing: 32.r,
+              runSpacing: 32.r,
               children: [
                 CardWidget(
-                  width: !context.isDeskTop ? 0.7.sw : 320.w,
-                  height: 300.h,
-                  child: Center(
-                    child: SfCircularChart(
-                      title: const ChartTitle(text: 'Expensses Tracker'),
-                      legend: const Legend(isVisible: true),
-                      series: <PieSeries<PieData, String>>[
-                        PieSeries<PieData, String>(
-                            explode: true,
-                            explodeIndex: 0,
-                            dataSource: dataList,
-                            xValueMapper: (PieData data, _) => data.xData,
-                            yValueMapper: (PieData data, _) => data.yData,
-                            dataLabelMapper: (PieData data, _) => data.text,
-                            dataLabelSettings: const DataLabelSettings(
-                                isVisible: true,
-                                labelPosition: ChartDataLabelPosition.outside)),
-                      ],
-                    ),
-                  ),
-                ),
-                CardWidget(
-                  width: !context.isDeskTop ? 0.7.sw * 1 : 500.w,
-                  height: 300.h,
-                  child: Center(
-                      child: SfCartesianChart(
-                    title: const ChartTitle(text: 'Flutter Chart'),
-                    legend: const Legend(isVisible: true),
-                    series: getDefaultData(),
-                    // tooltipBehavior: _tooltipBehavior,
-                  )),
+                  width: 0.7.sw,
+                  height: 400.h,
+                  child: LinerAnalyticsWidget(
+                    tooltipBehavior: TooltipBehavior(),
+                    series: [],
+                    titles: [],
+                  ).addPaddingAll(padding: 8),
                 ),
                 CardWidget(
                   width: !context.isDeskTop ? 0.7.sw : 500.w,
@@ -85,29 +64,30 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
               ],
             ),
           ],
-        ).widthBox(!context.isDeskTop ? 0.7.sw : 0.6.sw),
-        if (context.isDeskTop)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Expenses",
-                style: TextStyleHelper.of(context).headlinelarge32R,
+        ).widthBox(0.59.sw),
+        // if (context.isDeskTop)
+        16.0.widthBox,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              Strings.expenses.tr,
+              style: TextStyleHelper.of(context).headlinelarge32R,
+            ),
+            16.h.heightBox,
+            CardWidget(
+              width: 320.w,
+              height: 632.h,
+              child: Column(
+                children: [
+                  ...[1, 2, 3, 4, 5, 6, 7].map((e) => ListTile(
+                        title: Text(e.toString()),
+                      ))
+                ],
               ),
-              16.h.heightBox,
-              CardWidget(
-                width: 320.w,
-                height: 632.h,
-                child: Column(
-                  children: [
-                    ...[1, 2, 3, 4, 5, 6, 7].map((e) => ListTile(
-                          title: Text(e.toString()),
-                        ))
-                  ],
-                ),
-              ),
-            ],
-          )
+            ),
+          ],
+        )
       ],
     ).withVerticalScroll;
   }
