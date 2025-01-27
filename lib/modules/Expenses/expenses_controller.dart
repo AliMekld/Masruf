@@ -18,6 +18,7 @@ class ExpensesController extends StateXController {
   onDeleteExpense(int id) async {
     if (id == -1) return;
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int response = await databaseHelper.deleteFrom(
         tableName: SqlQueries.expensesTable, whereKey: "id", whereValue: id);
     if (response != 0) {
@@ -40,6 +41,7 @@ class ExpensesController extends StateXController {
 
   onAddUpdateExpense(ExpensesModel model) async {
     DatabaseHelper databaseHelper = DatabaseHelper();
+
     int currentIndex = tableList.indexWhere((e) => e.id == model.id);
     if (currentIndex != -1) {
       setState(() => loading = true);

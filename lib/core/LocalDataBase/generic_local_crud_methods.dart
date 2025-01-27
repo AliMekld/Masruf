@@ -64,4 +64,21 @@ class GenericLocalCrudMethods<T> {
       throw Exception(e);
     }
   }
+
+  Future<T> getItem({
+    required String tableName,
+  }) async {
+    T item;
+    try {
+      DatabaseHelper databaseHelper = DatabaseHelper();
+      List<Map<String, dynamic>> list = await databaseHelper.seleectFrom(
+        tableName: tableName,
+        limit: 1,
+      );
+      item = fromMap(list.last);
+      return item;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

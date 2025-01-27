@@ -57,6 +57,7 @@ class CategoriesController extends StateXController {
         tableName: SqlQueries.categoriesTable,
       );
       if (response != 0) {
+        await databaseHelper.onCloseDataBase();
         tableList[currentIndex] = model;
       }
     } else {

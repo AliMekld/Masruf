@@ -24,6 +24,12 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
   }
   late HomeController con;
   @override
+  void initState() {
+    super.initState();
+    Future.microtask(() async => await con.getStatistics());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,14 +58,16 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                   ).addPaddingAll(padding: 8),
                 ),
                 CardWidget(
-                  width: !context.isDeskTop ? 0.7.sw : 500.w,
+                  width: 500.w,
                   height: 300.h,
-                  child: const Text(''),
+                  child: Text(con.statisticsModel?.totalExpenses?.toString() ??
+                      "total Expenses"),
                 ),
                 CardWidget(
                   width: !context.isDeskTop ? 0.7.sw : 320.w,
                   height: 300.h,
-                  child: const Text(''),
+                  child: Text(con.statisticsModel?.totalIncome?.toString() ??
+                      "total Income"),
                 ),
               ],
             ),

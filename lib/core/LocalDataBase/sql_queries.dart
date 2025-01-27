@@ -5,7 +5,8 @@ class SqlQueries {
   static const String expensesTable = "expensesTable";
   static const String categoriesTable = "categoryTable";
   static const String incomeTable = "incomeTable";
-  static const String statisticsDetail = "statisticsDetail";
+  // static const String statisticsDetail = "statisticsDetail";
+  static const String statisticsTable = "statisticsTable";
 
   ///==========>> CREATE EXPENSES TABLE <<================
   static String get createExpensesTable {
@@ -46,20 +47,81 @@ class SqlQueries {
     ''';
   }
 
-  ///===========================================[create_statistics_model]
-  static String get createstatisticsDetailTable {
-    ;
+  // ///============================[create_statistics_model]
+  // static String get createstatisticsDetailTable {
+  //   return '''
+  //   CREATE TABLE $statisticsTable (
+  //   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  //   label TEXT,
+  //   value REAL DEFAULT 0.0,
+  //   qty INTEGER DEFAULT 1,
+  //   totalQty INTEGER DEFAULT 1,
+  //   parent_id INTEGER,
+  //   FOREIGN KEY (parent_id) REFERENCES $statisticsDetail (id),
+  //   totalValue REAL DEFAULT 0.0
+  //   )
+  //   ''';
+  // }
+
+  static String get createStatisticsTable {
     return '''
-    CREATE TABLE $statisticsDetail (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    label TEXT,
-    value REAL DEFAULT 0.0,
-    qty INTEGER DEFAULT 1,
-    totalQty INTEGER DEFAULT 1,
-    parent_id INTEGER,
-    FOREIGN KEY (parent_id) REFERENCES $statisticsDetail (id),
-    totalValue REAL DEFAULT 0.0
-    )
-    ''';
+  CREATE TABLE $statisticsTable (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  totalIncome REAL,
+  totalExpenses REAL,
+  netSavings REAL,
+  lastUpdated TEXT
+); 
+''';
   }
+
+  /// create triggers to notify dashboard by updates
+  /// update after crud on income
+  static String createTriggerAfterInsertIcome(CrudType type) {
+    return '''
+CREATE TRIGGER update_dashboard_income_${type.crudName}
+AFTER ${type.crudName} ON $incomeTable
+BEGIN
+  UPDATE $statisticsTable
+  SET totalIncome = (SELECT SUM(incomeValue) FROM $incomeTable),
+      netSavings = (SELECT SUM(incomeValue) FROM $incomeTable) - (SELECT SUM(expenseValue) FROM $expensesTable),
+      lastUpdated = datetime('now');
+END;
+''';
+  }
+
+  static String createTriggerAfterCrudOnExpenses(CrudType type) {
+    return '''
+CREATE TRIGGER update_dashboard_expense_${type.crudName}
+AFTER ${type.crudName} ON $expensesTable
+BEGIN
+  UPDATE $statisticsTable
+  SET totalExpenses = (SELECT SUM(expenseValue) FROM $expensesTable),
+      netSavings = (SELECT SUM(incomeValue) FROM $incomeTable) - (SELECT SUM(expenseValue) FROM $expensesTable),
+      lastUpdated = datetime('now');
+END;
+''';
+  }
+
+  static String get inializeDashboard {
+    return '''
+
+    INSERT INTO $statisticsTable (totalIncome, totalExpenses, netSavings, lastUpdated)
+    SELECT 
+      (SELECT COALESCE(SUM(incomeValue), 0) FROM $incomeTable) AS totalIncome,
+      (SELECT COALESCE(SUM(expenseValue), 0) FROM $expensesTable) AS totalExpenses,
+      (SELECT COALESCE(SUM(incomeValue), 0) FROM $incomeTable) - (SELECT COALESCE(SUM(expenseValue), 0) FROM $expensesTable) AS netSavings,
+      datetime('now') AS lastUpdated;
+''';
+  }
+}
+
+enum CrudType {
+  insert("INSERT"),
+  update("UPDATE"),
+  delete("DELETE");
+
+  final String crudName;
+
+  const CrudType(this.crudName);
 }

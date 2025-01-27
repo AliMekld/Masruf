@@ -9,7 +9,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 /// this class is reponsible for creating tables and make local methods
-
+/// [todo] add database versioning to prevent loses data
+/// after creating new tables or updating columns
 class DatabaseHelper {
   //  singleTone
   DatabaseHelper._internal();
@@ -64,14 +65,42 @@ class DatabaseHelper {
 
   ///===============>> Create Database
   Future onCreateDataBase(Database database, int? version) async {
-    /// create expenses table
-    await database.execute(SqlQueries.createExpensesTable);
-    await database.execute(SqlQueries.createCategoriesTable);
-    await database.execute(SqlQueries.createIncomeTable);
+    await database.transaction(
+      (txn) async {
+        try {
+          /// Execute table creation queries in parallel
+          await Future.wait([
+            txn.execute(SqlQueries.createExpensesTable),
+            txn.execute(SqlQueries.createCategoriesTable),
+            txn.execute(SqlQueries.createIncomeTable),
+            txn.execute(SqlQueries.createStatisticsTable),
+          ]);
 
+          /// Initialize dashboard after tables are created
+          await txn.execute(SqlQueries.inializeDashboard);
+
+          ///===================[triggers]
+          // Create triggers for expenses table
+          await txn.execute(
+              SqlQueries.createTriggerAfterCrudOnExpenses(CrudType.insert));
+          await txn.execute(
+              SqlQueries.createTriggerAfterCrudOnExpenses(CrudType.update));
+          await txn.execute(
+              SqlQueries.createTriggerAfterCrudOnExpenses(CrudType.delete));
+          // Create triggers for income table
+          await txn.execute(
+              SqlQueries.createTriggerAfterInsertIcome(CrudType.insert));
+          await txn.execute(
+              SqlQueries.createTriggerAfterInsertIcome(CrudType.update));
+          await txn.execute(
+              SqlQueries.createTriggerAfterInsertIcome(CrudType.delete));
+        } catch (e) {
+          debugPrint("Error creating database: $e");
+          rethrow; // Re-throw the error to roll back the transaction
+        }
+      },
+    );
     debugPrint("$database : Created SuccessFully version $version");
-
-    /// todo crate more tables in future
   }
 
   ///===============>> delete Database
@@ -145,11 +174,12 @@ class DatabaseHelper {
 
   /// ===============>> seleect From table  where
   Future<List<Map<String, dynamic>>> seleectFrom(
-      {required String tableName}) async {
+      {required String tableName, int? limit}) async {
     try {
       Database db = await database;
       return await db.query(
         tableName,
+        limit: limit,
       );
     } catch (e) {
       rethrow;
