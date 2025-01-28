@@ -34,13 +34,6 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
     AppLocalizations.of(context)?.translate(Strings.appName);
     return AnimatedContainer(
       decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: ColorsPalette.of(context).dividerColor.withOpacity(0.2),
-                blurRadius: 6,
-                spreadRadius: 6,
-                blurStyle: BlurStyle.outer)
-          ],
           color: ColorsPalette.of(context).backgroundColor,
           border: Border(
               left: isArabic(context)
