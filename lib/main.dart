@@ -118,6 +118,7 @@ class EntryPoint extends StatelessWidget {
         designSize: appSize,
         child: MaterialApp.router(
           theme: theme.themeData.copyWith(
+              cardColor: ColorsPalette.of(context).secondaryColor,
               scaffoldBackgroundColor:
                   ColorsPalette.of(context).backgroundColor,
               dialogBackgroundColor: ColorsPalette.of(context).backgroundColor),

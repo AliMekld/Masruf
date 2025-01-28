@@ -271,7 +271,7 @@ mixin DialogsMixin {
       elevation: 6,
       surfaceTintColor:
           ColorsPalette.of(context).backgroundColor.withOpacity(0.1),
-      shadowColor: ColorsPalette.of(context).buttonColor,
+      shadowColor: ColorsPalette.of(context).surfaceColor,
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRaduis16),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       backgroundColor: ColorsPalette.of(context).backgroundColor,

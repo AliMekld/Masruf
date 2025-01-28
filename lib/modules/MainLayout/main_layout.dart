@@ -79,7 +79,7 @@ class _MainLayoutState extends State<MainLayout> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        bottom: 24, top: 24, left: 8, right: 8),
+                        bottom: 24, top: 24, left: 16, right: 16),
                     child: widget.child,
                   ).expand
                 ],

@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:masrof/models/expense_model.dart';
 import 'package:masrof/models/test_statistics_model.dart';
+import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
 import 'package:masrof/modules/Home/home_dataHandler.dart';
 import 'package:state_extended/state_extended.dart';
 
@@ -20,5 +23,16 @@ class HomeController extends StateXController {
       },
     );
     setState(() {});
+  }
+
+  List<ExpensesModel> expensesList = [];
+  bool isLoading = false;
+  Future getExpensesTableList(
+    BuildContext context,
+  ) async {
+    setState(() => isLoading = true);
+    final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
+    result.fold((l) {}, (r) => expensesList = r);
+    setState(() => isLoading = false);
   }
 }

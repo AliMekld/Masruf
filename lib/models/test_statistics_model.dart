@@ -1,5 +1,6 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:masrof/models/statistics_model.dart';
 
 part 'test_statistics_model.g.dart';
 
@@ -11,6 +12,7 @@ class StatisticsModel {
   final double? totalExpenses;
   final double? netSavings;
   final DateTime? lastUpdated;
+  final List<StatisticsDetailModel> detailslist;
 
   StatisticsModel({
     this.id,
@@ -18,6 +20,7 @@ class StatisticsModel {
     this.netSavings,
     this.totalExpenses,
     this.totalIncome,
+    this.detailslist = const [],
   });
   factory StatisticsModel.fromJson(Map<String, dynamic> json) =>
       _$StatisticsModelFromJson(json);

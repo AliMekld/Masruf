@@ -19,6 +19,7 @@ abstract class _$StatisticsModelCWProxy {
     double? netSavings,
     double? totalExpenses,
     double? totalIncome,
+    List<StatisticsDetailModel>? detailslist,
   });
 }
 
@@ -42,6 +43,7 @@ class _$StatisticsModelCWProxyImpl implements _$StatisticsModelCWProxy {
     Object? netSavings = const $CopyWithPlaceholder(),
     Object? totalExpenses = const $CopyWithPlaceholder(),
     Object? totalIncome = const $CopyWithPlaceholder(),
+    Object? detailslist = const $CopyWithPlaceholder(),
   }) {
     return StatisticsModel(
       id: id == const $CopyWithPlaceholder()
@@ -64,6 +66,11 @@ class _$StatisticsModelCWProxyImpl implements _$StatisticsModelCWProxy {
           ? _value.totalIncome
           // ignore: cast_nullable_to_non_nullable
           : totalIncome as double?,
+      detailslist:
+          detailslist == const $CopyWithPlaceholder() || detailslist == null
+              ? _value.detailslist
+              // ignore: cast_nullable_to_non_nullable
+              : detailslist as List<StatisticsDetailModel>,
     );
   }
 }
@@ -87,6 +94,11 @@ StatisticsModel _$StatisticsModelFromJson(Map<String, dynamic> json) =>
       netSavings: (json['netSavings'] as num?)?.toDouble(),
       totalExpenses: (json['totalExpenses'] as num?)?.toDouble(),
       totalIncome: (json['totalIncome'] as num?)?.toDouble(),
+      detailslist: (json['detailslist'] as List<dynamic>?)
+              ?.map((e) =>
+                  StatisticsDetailModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$StatisticsModelToJson(StatisticsModel instance) =>
@@ -96,4 +108,5 @@ Map<String, dynamic> _$StatisticsModelToJson(StatisticsModel instance) =>
       'totalExpenses': instance.totalExpenses,
       'netSavings': instance.netSavings,
       'lastUpdated': instance.lastUpdated?.toIso8601String(),
+      'detailslist': instance.detailslist.map((e) => e.toJson()).toList(),
     };

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
+import 'package:masrof/models/statistics_model.dart';
+import 'package:masrof/models/test_statistics_model.dart';
 import 'package:masrof/modules/Home/home_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
+import 'package:masrof/widgets/DashboardStatisticksWidgets/pie_chart_widget.dart';
+import 'package:masrof/widgets/loading_widget.dart';
 import 'package:state_extended/state_extended.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -26,77 +30,98 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() async => await con.getStatistics());
+    Future.microtask(() async {
+      Future.wait([
+        con.getStatistics(),
+        if (mounted) con.getExpensesTableList(context),
+      ]);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              Strings.dashboard.tr,
-              style: TextStyleHelper.of(context).headlinelarge32R,
-            ),
-            16.h.heightBox,
-            Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 32.r,
-              runSpacing: 32.r,
-              children: [
-                CardWidget(
-                  width: 0.7.sw,
+    return LoadingWidget(
+      isLoading: con.isLoading,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            Strings.dashboard.tr,
+            style: TextStyleHelper.of(context).headlinelarge32R,
+          ),
+          16.h.heightBox,
+          Wrap(
+            // alignment: WrapAlignment.center,
+            // crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 24,
+            runSpacing: 24,
+            children: [
+              CardWidget(
+                  width: 0.25.sw,
                   height: 400.h,
-                  child: LinerAnalyticsWidget(
-                    tooltipBehavior: TooltipBehavior(),
-                    series: [],
-                    titles: [],
-                  ).addPaddingAll(padding: 8),
-                ),
-                CardWidget(
-                  width: 500.w,
-                  height: 300.h,
-                  child: Text(con.statisticsModel?.totalExpenses?.toString() ??
-                      "total Expenses"),
-                ),
-                CardWidget(
-                  width: !context.isDeskTop ? 0.7.sw : 320.w,
-                  height: 300.h,
-                  child: Text(con.statisticsModel?.totalIncome?.toString() ??
-                      "total Income"),
-                ),
-              ],
-            ),
-          ],
-        ).widthBox(0.59.sw),
-        // if (context.isDeskTop)
-        16.0.widthBox,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              Strings.expenses.tr,
-              style: TextStyleHelper.of(context).headlinelarge32R,
-            ),
-            16.h.heightBox,
-            CardWidget(
-              width: 320.w,
-              height: 632.h,
-              child: Column(
-                children: [
-                  ...[1, 2, 3, 4, 5, 6, 7].map((e) => ListTile(
-                        title: Text(e.toString()),
-                      ))
-                ],
+                  child: CustomPieChartWidget(
+                    data: con.statisticsModel?.copyWith(
+                          detailslist: [
+                            StatisticsDetailModel(
+                              id: 1,
+                              lable: Strings.income.tr,
+                              totalValue: con.statisticsModel?.totalIncome ?? 0,
+                            ),
+                            StatisticsDetailModel(
+                              id: 2,
+                              lable: Strings.expenses.tr,
+                              totalValue:
+                                  con.statisticsModel?.totalExpenses ?? 0,
+                            )
+                          ],
+                        ) ??
+                        StatisticsModel(),
+                  )),
+              CardWidget(
+                width: 0.55.sw,
+                height: 400.h,
+                child: LinerAnalyticsWidget(
+                  tooltipBehavior: TooltipBehavior(),
+                  series: [],
+                  titles: [],
+                ).addPaddingAll(padding: 8.r),
               ),
-            ),
-          ],
-        )
-      ],
-    ).withVerticalScroll;
+              CardWidget(
+                width: 0.55.sw,
+                height: 400.h,
+                child: LinerAnalyticsWidget(
+                  tooltipBehavior: TooltipBehavior(),
+                  series: [],
+                  titles: [],
+                ).addPaddingAll(padding: 8.r),
+              ),
+              CardWidget(
+                  width: 0.25.sw,
+                  height: 400.h,
+                  child: CustomPieChartWidget(
+                    data: con.statisticsModel?.copyWith(
+                          detailslist: [
+                            StatisticsDetailModel(
+                              id: 1,
+                              lable: Strings.income.tr,
+                              totalValue: con.statisticsModel?.totalIncome ?? 0,
+                            ),
+                            StatisticsDetailModel(
+                              id: 2,
+                              lable: Strings.expenses.tr,
+                              totalValue:
+                                  con.statisticsModel?.totalExpenses ?? 0,
+                            )
+                          ],
+                        ) ??
+                        StatisticsModel(),
+                  )),
+            ],
+          ),
+          // if (context.isDeskTop)
+          16.0.widthBox,
+        ],
+      ).withVerticalScroll,
+    );
   }
 }
