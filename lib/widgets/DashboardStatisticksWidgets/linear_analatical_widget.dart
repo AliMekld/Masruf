@@ -8,7 +8,7 @@ import 'package:masrof/models/statistics_model.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../assets.dart';
+import '../../utilites/constants/assets.dart';
 
 class LinerAnalyticsWidget extends StatefulWidget {
   final bool enableZooming, showMarkers, formatLabelToCurrency;
@@ -163,7 +163,9 @@ class _LinerAnalyticsWidgetState extends State<LinerAnalyticsWidget> {
                     setState(() {});
                   },
                   icon: SvgPicture.asset(
-                    Assets.images.menu_svg,
+                    Assets.imagesPlus,
+                    width: 24.w,
+                    height: 24.h,
                     colorFilter: ColorFilter.mode(
                       ColorsPalette.of(context).primaryColor,
                       BlendMode.srcIn,
@@ -190,7 +192,9 @@ class _LinerAnalyticsWidgetState extends State<LinerAnalyticsWidget> {
                   },
                   color: ColorsPalette.of(context).primaryColor,
                   icon: SvgPicture.asset(
-                    Assets.images.app_logo2_svg,
+                    Assets.imagesMinus,
+                    width: 24.w,
+                    height: 24.h,
                     colorFilter: ColorFilter.mode(
                       ColorsPalette.of(context).primaryColor,
                       BlendMode.srcIn,

@@ -15,6 +15,7 @@ class SharedPref {
   static const String _appTheme = "appTheme";
   static const String _isFirstTimeOpenApp = "isFirstTimeOpenApp";
   static const String _isLogin = "isLogin";
+  static const String _isSideBarExpanded = "isSideBarExpanded";
 
   ///=====================> M E T H O D S <=================================//
   ///SET LANGUAGE
@@ -49,6 +50,16 @@ class SharedPref {
   /// GET IS FIRST TIME OPEN APP
   static Future<bool?> getIsFistTimeOpenApp() async {
     return prefs.getBool(_isFirstTimeOpenApp) ?? true;
+  }
+
+  /// SET IS FIRST TIME OPEN APP
+  static void setIsSideBarExpanded({required bool value}) {
+    prefs.setBool(_isSideBarExpanded, value);
+  }
+
+  /// GET IS FIRST TIME OPEN APP
+  static bool getIsSideBarExpanded() {
+    return prefs.getBool(_isSideBarExpanded) ?? true;
   }
 
   /// SET IS LOGIN

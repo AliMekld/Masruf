@@ -69,27 +69,27 @@
     },
     {
       "name": "build_daemon",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_daemon-4.0.2",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_daemon-4.0.3",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.6"
     },
     {
       "name": "build_resolvers",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_resolvers-2.4.2",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_resolvers-2.4.3",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.6"
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_runner-2.4.13",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_runner-2.4.14",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_runner_core-7.3.2",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/build_runner_core-8.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.6"
     },
     {
       "name": "built_collection",
@@ -99,7 +99,7 @@
     },
     {
       "name": "built_value",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/built_value-8.9.2",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/built_value-8.9.3",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -297,9 +297,9 @@
     },
     {
       "name": "http_multi_server",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/http_multi_server-3.2.1",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/http_multi_server-3.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.2"
     },
     {
       "name": "http_parser",
@@ -711,9 +711,9 @@
     },
     {
       "name": "stream_transform",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/stream_transform-2.1.0",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/stream_transform-2.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.1"
     },
     {
       "name": "string_scanner",
@@ -915,7 +915,7 @@
     },
     {
       "name": "web_socket_channel",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/web_socket_channel-3.0.1",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/web_socket_channel-3.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -956,7 +956,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-01-27T20:59:29.859470Z",
+  "generated": "2025-01-29T22:10:01.513563Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///home/alimekld/development/flutter",

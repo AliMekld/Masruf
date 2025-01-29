@@ -12,19 +12,18 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  # router manger
+  # Router manager
   go_router: ^14.3.0
-  # responsive 
+  # Responsive
   flutter_screenutil: ^5.9.3
-  # Svg 
+  # SVG
   flutter_svg: ^2.0.10+1
-  build_runner: ^2.4.13
-  # state managment
+  # State management
   provider: ^6.1.2
   syncfusion_flutter_charts: ^28.1.33
   state_extended: ^5.5.0
   data_table_2: ^2.5.15
-  # serializing models 
+  # Serializing models
   json_serializable: ^6.8.0
   json_annotation: ^4.9.0
   copy_with_extension: ^5.0.4
@@ -47,31 +46,37 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  build_runner: ^2.4.13
   flutter_lints: ^4.0.0
 
-flutter:
-  
 
+flutter:
   uses-material-design: true
 
   assets:
-  - i18n/
-  - assets/images/
-  - assets/fonts/
-  - assets/fonts/Agbalumo-Regular.ttf
-  - assets/fonts/NotoSans-Regular.ttf
-  - assets/fonts/NotoKufiArabic-VariableFont_wght.ttf
+    - i18n/
+    - assets/images/
+    - assets/fonts/
+    - assets/fonts/Agbalumo-Regular.ttf
+    - assets/fonts/NotoSans-Regular.ttf
+    - assets/fonts/NotoKufiArabic-VariableFont_wght.ttf
 
   fonts:
-  - family: Agbalumo
-    fonts:
-    - asset: assets/fonts/Agbalumo-Regular.ttf
+    - family: Agbalumo
+      fonts:
+        - asset: assets/fonts/Agbalumo-Regular.ttf
 
-  - family: NotoSans
-    fonts:
-    - asset: assets/fonts/NotoSans-Regular.ttf
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
 
-  - family: NotoKufiArabic
-    fonts:
-    - asset: assets/fonts/NotoKufiArabic-VariableFont_wght.ttf
+    - family: NotoKufiArabic
+      fonts:
+        - asset: assets/fonts/NotoKufiArabic-VariableFont_wght.ttf
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/utilites/constants/
+  filename: assets.dart
+  field_prefix: 
+  ignore_comments: true

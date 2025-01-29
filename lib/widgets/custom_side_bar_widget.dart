@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
@@ -11,8 +10,11 @@ import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilites/shared_pref.dart';
 import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
+
+import '../utilites/constants/assets.dart';
 
 // ignore: must_be_immutable
 class CustomNavigationRail extends StatefulWidget {
@@ -27,7 +29,7 @@ class CustomNavigationRail extends StatefulWidget {
 }
 
 class _CustomNavigationRailState extends State<CustomNavigationRail> {
-  bool isExpanded = true;
+  bool isExpanded = SharedPref.getIsSideBarExpanded();
   bool isSettingsExpanded = false;
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                   : BorderSide.none)),
       duration: const Duration(milliseconds: 350),
       curve: Curves.easeInOut,
-      width: isExpanded ? 180 : 80,
+      width: isExpanded ? 180.w : 80.w,
       // height: 1.sh,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -60,10 +62,10 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               onTap: () {},
               child: CircleAvatar(
                 backgroundColor: ColorsPalette.of(context).surfaceColor,
-                foregroundImage: AssetImage(Assets.images.home_svg),
+                foregroundImage: AssetImage(Assets.imagesHome),
                 radius: isExpanded ? 40 : 24,
                 child: SvgPicture.asset(
-                  Assets.images.profile_svg,
+                  Assets.imagesProfile,
                   fit: BoxFit.cover,
                   width: isExpanded ? 48.w : 24.w,
                   height: isExpanded ? 48.h : 24.h,
@@ -164,6 +166,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                       isExpanded = !isExpanded;
                     },
                   );
+                  SharedPref.setIsSideBarExpanded(value: isExpanded);
                 },
                 icon: Icon(
                   isExpanded

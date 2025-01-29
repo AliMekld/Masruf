@@ -7,6 +7,7 @@ import 'package:masrof/modules/Home/home_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilites/shared_pref.dart';
 import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
 import 'package:masrof/widgets/DashboardStatisticksWidgets/pie_chart_widget.dart';
 import 'package:masrof/widgets/loading_widget.dart';
@@ -26,6 +27,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
   _LargeHomeScreenState() : super(controller: HomeController()) {
     con = HomeController();
   }
+
   late HomeController con;
   @override
   void initState() {
@@ -42,86 +44,96 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
   Widget build(BuildContext context) {
     return LoadingWidget(
       isLoading: con.isLoading,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            Strings.dashboard.tr,
-            style: TextStyleHelper.of(context).headlinelarge32R,
-          ),
-          16.h.heightBox,
-          Wrap(
-            // alignment: WrapAlignment.center,
-            // crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 24,
-            runSpacing: 24,
-            children: [
-              CardWidget(
-                  width: 0.25.sw,
+      child: LayoutBuilder(builder: (context, constraints) {
+        bool isExpended() {
+          return SharedPref.getIsSideBarExpanded();
+        }
+
+        double _width = context.appWidth - (isExpended() ? 180 : 80);
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              Strings.dashboard.tr,
+              style: TextStyleHelper.of(context).headlinelarge32R,
+            ),
+            16.h.heightBox,
+            Wrap(
+              // alignment: WrapAlignment.center,
+              // crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 24.w,
+              runSpacing: 24.h,
+              children: [
+                CardWidget(
+                    width: _width * 0.25,
+                    height: 400.h,
+                    child: CustomPieChartWidget(
+                      data: con.statisticsModel?.copyWith(
+                            detailslist: [
+                              StatisticsDetailModel(
+                                id: 1,
+                                lable: Strings.income.tr,
+                                totalValue:
+                                    con.statisticsModel?.totalIncome ?? 0,
+                              ),
+                              StatisticsDetailModel(
+                                id: 2,
+                                lable: Strings.expenses.tr,
+                                totalValue:
+                                    con.statisticsModel?.totalExpenses ?? 0,
+                              )
+                            ],
+                          ) ??
+                          StatisticsModel(),
+                    )),
+                CardWidget(
+                  width: _width * (isExpended() ? 0.63 : 0.7),
                   height: 400.h,
-                  child: CustomPieChartWidget(
-                    data: con.statisticsModel?.copyWith(
-                          detailslist: [
-                            StatisticsDetailModel(
-                              id: 1,
-                              lable: Strings.income.tr,
-                              totalValue: con.statisticsModel?.totalIncome ?? 0,
-                            ),
-                            StatisticsDetailModel(
-                              id: 2,
-                              lable: Strings.expenses.tr,
-                              totalValue:
-                                  con.statisticsModel?.totalExpenses ?? 0,
-                            )
-                          ],
-                        ) ??
-                        StatisticsModel(),
-                  )),
-              CardWidget(
-                width: 0.55.sw,
-                height: 400.h,
-                child: LinerAnalyticsWidget(
-                  tooltipBehavior: TooltipBehavior(),
-                  series: [],
-                  titles: [],
-                ).addPaddingAll(padding: 8.r),
-              ),
-              CardWidget(
-                width: 0.55.sw,
-                height: 400.h,
-                child: LinerAnalyticsWidget(
-                  tooltipBehavior: TooltipBehavior(),
-                  series: [],
-                  titles: [],
-                ).addPaddingAll(padding: 8.r),
-              ),
-              CardWidget(
-                  width: 0.25.sw,
+                  child: LinerAnalyticsWidget(
+                    tooltipBehavior: TooltipBehavior(),
+                    series: [],
+                    titles: [],
+                  ).addPaddingAll(padding: 8.r),
+                ),
+                CardWidget(
+                  width: _width * (isExpended() ? 0.63 : 0.7),
                   height: 400.h,
-                  child: CustomPieChartWidget(
-                    data: con.statisticsModel?.copyWith(
-                          detailslist: [
-                            StatisticsDetailModel(
-                              id: 1,
-                              lable: Strings.income.tr,
-                              totalValue: con.statisticsModel?.totalIncome ?? 0,
-                            ),
-                            StatisticsDetailModel(
-                              id: 2,
-                              lable: Strings.expenses.tr,
-                              totalValue:
-                                  con.statisticsModel?.totalExpenses ?? 0,
-                            )
-                          ],
-                        ) ??
-                        StatisticsModel(),
-                  )),
-            ],
-          ),
-          // if (context.isDeskTop)
-          16.0.widthBox,
-        ],
-      ).withVerticalScroll,
+                  child: LinerAnalyticsWidget(
+                    tooltipBehavior: TooltipBehavior(),
+                    series: [],
+                    titles: [],
+                  ).addPaddingAll(padding: 8.r),
+                ),
+                CardWidget(
+                    width: _width * 0.25,
+                    height: 400.h,
+                    child: CustomPieChartWidget(
+                      data: con.statisticsModel?.copyWith(
+                            detailslist: [
+                              StatisticsDetailModel(
+                                id: 1,
+                                lable: Strings.income.tr,
+                                totalValue:
+                                    con.statisticsModel?.totalIncome ?? 0,
+                              ),
+                              StatisticsDetailModel(
+                                id: 2,
+                                lable: Strings.expenses.tr,
+                                totalValue:
+                                    con.statisticsModel?.totalExpenses ?? 0,
+                              )
+                            ],
+                          ) ??
+                          StatisticsModel(),
+                    )),
+              ],
+            ),
+            // if (context.isDeskTop)
+            16.0.widthBox,
+          ],
+        ).withVerticalScroll;
+      }),
     );
   }
 }

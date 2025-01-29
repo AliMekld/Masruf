@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
+
+import '../../utilites/constants/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routerName = '/';
@@ -41,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             const Spacer(),
             SvgPicture.asset(
-              Assets.images.app_logo_svg,
+              Assets.imagesAppLogo,
               width: 240.r,
               height: 240.r,
             ),

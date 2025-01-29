@@ -25,7 +25,7 @@ import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../assets.dart';
+import '../../utilites/constants/assets.dart';
 
 class MainLayout extends StatefulWidget {
   final String routeName;
@@ -50,7 +50,7 @@ class _MainLayoutState extends State<MainLayout> {
         builder: (context, theme, lang, w) {
       return Scaffold(
         backgroundColor: ColorsPalette.of(context).backgroundColor,
-        appBar: context.isMobile
+        appBar: context.isTabletOrMobile
             ? AppBar(
                 actions: [
                   IconButton(
@@ -168,31 +168,31 @@ List<MenuModel> _menuList = [
   MenuModel(
     index: 0,
     title: Strings.home,
-    imgSvg: Assets.images.home_svg,
+    imgSvg: Assets.imagesHome,
     route: HomeScreen.routerName,
   ),
   MenuModel(
     index: 1,
     title: Strings.expenses,
-    imgSvg: Assets.images.expenses_svg,
+    imgSvg: Assets.imagesExpenses,
     route: ExpensesScreen.routerName,
   ),
   MenuModel(
     index: 2,
     title: Strings.expensesCategories,
-    imgSvg: Assets.images.menu_svg,
+    imgSvg: Assets.imagesMenu,
     route: CategoriesScreen.routerName,
   ),
   MenuModel(
     index: 3,
     title: Strings.income,
-    imgSvg: Assets.images.income_svg,
+    imgSvg: Assets.imagesIncome,
     route: IncomeScreen.routerName,
   ),
   MenuModel(
     index: 4,
     title: Strings.profile,
-    imgSvg: Assets.images.profile_svg,
+    imgSvg: Assets.imagesProfile,
     route: ProfileScreen.routerName,
   ),
 ];

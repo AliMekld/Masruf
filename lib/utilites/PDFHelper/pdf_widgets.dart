@@ -1,22 +1,23 @@
 import 'package:flutter/services.dart';
-import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/widgets/tables/expense_table.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 
+import '../constants/assets.dart';
+
 class PDFConfig {
   static Font? _ttf;
   static Uint8List? iconImage;
   static Future<void> loadFont() async {
     // Wait for the font data to load
-    final fontData = await rootBundle
-        .load(Assets.fonts.notokufiarabic_variablefont_wght_ttf);
+    final fontData =
+        await rootBundle.load(Assets.fontsNotoKufiArabicVariableFontWght);
     // Convert the font data to a Font object
     _ttf = Font.ttf(fontData.buffer.asByteData());
     iconImage = (await rootBundle.load(
-      Assets.images.app_logo_svg,
+      Assets.imagesAppLogo,
     ))
         .buffer
         .asUint8List();

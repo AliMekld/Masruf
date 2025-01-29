@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:masrof/utilites/shared_pref.dart';
 
 extension WidgetExtensions on Widget {
   SliverToBoxAdapter get toSliver => SliverToBoxAdapter(
@@ -57,10 +59,13 @@ extension DoubleExtension on double {
 }
 
 extension ContextExtensions on BuildContext {
-  double get _appWidth => MediaQuery.of(this).size.width;
-  bool get isMobile => _appWidth < 600;
-  bool get isTablet => _appWidth >= 600 && _appWidth <= 1024;
-  bool get isTabletOrMobile => _appWidth <= 1024;
+  bool get _isExpaded => SharedPref.getIsSideBarExpanded();
+  double get appWidth =>
+      MediaQuery.of(this).size.width.w + (_isExpaded ? 180.w : 80.w);
+
+  bool get isMobile => appWidth < 420.w;
+  bool get isTablet => appWidth >= 420.w && appWidth <= 1024.w;
+  bool get isTabletOrMobile => appWidth < 1024.w;
 
   bool get isDeskTop => (!isTablet && !isMobile);
 }

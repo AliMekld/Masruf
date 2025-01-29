@@ -1,4 +1,3 @@
-import 'package:masrof/assets.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
@@ -11,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../utilites/constants/assets.dart';
 
 mixin DialogsMixin {
   Dialog errorDialog(
@@ -89,7 +90,7 @@ mixin DialogsMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              Assets.images.app_logo_svg,
+              Assets.imagesAppLogo,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(
@@ -151,7 +152,7 @@ mixin DialogsMixin {
           children: [
             SvgPicture.asset(
               ///todo add this asset
-              Assets.images.app_logo_svg,
+              Assets.imagesAppLogo,
               width: 112.w,
               height: 112.h,
               colorFilter: ColorFilter.mode(
