@@ -47,22 +47,6 @@ class SqlQueries {
     ''';
   }
 
-  // ///============================[create_statistics_model]
-  // static String get createstatisticsDetailTable {
-  //   return '''
-  //   CREATE TABLE $statisticsTable (
-  //   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  //   label TEXT,
-  //   value REAL DEFAULT 0.0,
-  //   qty INTEGER DEFAULT 1,
-  //   totalQty INTEGER DEFAULT 1,
-  //   parent_id INTEGER,
-  //   FOREIGN KEY (parent_id) REFERENCES $statisticsDetail (id),
-  //   totalValue REAL DEFAULT 0.0
-  //   )
-  //   ''';
-  // }
-
   static String get createStatisticsTable {
     return '''
   CREATE TABLE $statisticsTable (

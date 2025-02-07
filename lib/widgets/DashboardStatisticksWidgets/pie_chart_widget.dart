@@ -30,9 +30,9 @@ class CustomPieChartWidget extends StatelessWidget {
       series: [
         PieSeries<StatisticsDetailModel, String>(
           explodeIndex: 0,
+
           explode: true,
-          initialSelectedDataIndexes: const [0],
-          animationDuration: 1200,
+          // radius: Strings.appName,
           xValueMapper: (item, index) => item.lable,
           yValueMapper: (item, index) => item.totalValue,
           dataLabelMapper: (StatisticsDetailModel data, _) =>

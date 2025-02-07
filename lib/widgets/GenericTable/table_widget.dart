@@ -89,7 +89,7 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
             .toList(),
 
         rows: widget.rowsList,
-        sortColumnIndex: 0,
+
         sortArrowBuilder: (ascending, sorted) {
           return Icon(
             ascending

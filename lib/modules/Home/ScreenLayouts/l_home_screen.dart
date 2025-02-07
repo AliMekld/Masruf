@@ -62,11 +62,11 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
             Wrap(
               // alignment: WrapAlignment.center,
               // crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 24.w,
-              runSpacing: 24.h,
+              spacing: 16.w,
+              runSpacing: 16.h,
               children: [
                 CardWidget(
-                    width: _width * 0.25,
+                    width: _width * (isExpended() ? 0.29 : 0.28),
                     height: 400.h,
                     child: CustomPieChartWidget(
                       data: con.statisticsModel?.copyWith(
@@ -88,7 +88,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                           StatisticsModel(),
                     )),
                 CardWidget(
-                  width: _width * (isExpended() ? 0.63 : 0.7),
+                  width: _width * (isExpended() ? 0.6 : 0.68),
                   height: 400.h,
                   child: LinerAnalyticsWidget(
                     tooltipBehavior: TooltipBehavior(),
@@ -97,7 +97,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                   ).addPaddingAll(padding: 8.r),
                 ),
                 CardWidget(
-                  width: _width * (isExpended() ? 0.63 : 0.7),
+                  width: _width * (isExpended() ? 0.6 : 0.68),
                   height: 400.h,
                   child: LinerAnalyticsWidget(
                     tooltipBehavior: TooltipBehavior(),
@@ -106,7 +106,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                   ).addPaddingAll(padding: 8.r),
                 ),
                 CardWidget(
-                    width: _width * 0.25,
+                    width: _width * (isExpended() ? 0.29 : 0.28),
                     height: 400.h,
                     child: CustomPieChartWidget(
                       data: con.statisticsModel?.copyWith(
