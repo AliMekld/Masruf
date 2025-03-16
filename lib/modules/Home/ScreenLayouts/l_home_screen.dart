@@ -49,7 +49,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
           return SharedPref.getIsSideBarExpanded();
         }
 
-        double _width = context.appWidth - (isExpended() ? 180 : 80);
+        double width = context.appWidth - (isExpended() ? 180 : 80);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
               runSpacing: 16.h,
               children: [
                 CardWidget(
-                    width: _width * (isExpended() ? 0.29 : 0.28),
+                    width: width * (isExpended() ? 0.29 : 0.28),
                     height: 400.h,
                     child: CustomPieChartWidget(
                       data: con.statisticsModel?.copyWith(
@@ -88,25 +88,25 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                           StatisticsModel(),
                     )),
                 CardWidget(
-                  width: _width * (isExpended() ? 0.6 : 0.68),
+                  width: width * (isExpended() ? 0.6 : 0.68),
                   height: 400.h,
                   child: LinerAnalyticsWidget(
                     tooltipBehavior: TooltipBehavior(),
-                    series: [],
-                    titles: [],
+                    series: const [],
+                    titles: const [],
                   ).addPaddingAll(padding: 8.r),
                 ),
                 CardWidget(
-                  width: _width * (isExpended() ? 0.6 : 0.68),
+                  width: width * (isExpended() ? 0.6 : 0.68),
                   height: 400.h,
                   child: LinerAnalyticsWidget(
                     tooltipBehavior: TooltipBehavior(),
-                    series: [],
-                    titles: [],
+                    series: const [],
+                    titles: const [],
                   ).addPaddingAll(padding: 8.r),
                 ),
                 CardWidget(
-                    width: _width * (isExpended() ? 0.29 : 0.28),
+                    width: width * (isExpended() ? 0.29 : 0.28),
                     height: 400.h,
                     child: CustomPieChartWidget(
                       data: con.statisticsModel?.copyWith(

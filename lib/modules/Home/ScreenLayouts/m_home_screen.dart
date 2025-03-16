@@ -44,8 +44,8 @@ class _MediumHomeScreenState extends StateX<MediumHomeScreen> {
               child: Center(
                   child: LinerAnalyticsWidget(
                 tooltipBehavior: TooltipBehavior(),
-                series: [],
-                titles: [],
+                series: const [],
+                titles: const [],
               )),
             ),
             // CardWidget(

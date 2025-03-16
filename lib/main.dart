@@ -38,11 +38,22 @@
 /// step 2- creating design with its modules and models
 /// step 3 integrating with api if needed
 /// step 4 integrating with local database to store large amount of data[done]
-///
-///
-// ignore_for_file: depend_on_referenced_packages
-
+///FIREBASE CONFIGURATION [DONE]
+///GIT_IT CONFIGURATION [DONE]
+///DATABASE_HELPER [DONE]
+///PDF_HELPER [DONE]
+///RESPONSIVE_DESIGN [DONE]
+///THEME_PROVIDER [DONE]
+///LOCALIZATION [DONE]
+///ROUTER [DONE]
+///SCREEN_UTIL [DONE]
+///LOCAL_DATABASE [DONE]
+///SHARED_PREFERENCES [DONE]
+///TODO :: FIREBASE_CLOUD_MESSAGING [-]
+///TODO :: FIREBASE_AUTHENTICATION [-]
 library;
+
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -58,7 +69,8 @@ import 'package:masrof/utilites/git_it.dart';
 import 'package:masrof/utilites/router_config.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'core/Language/app_localization.dart';
 
 const Size mobileSize = Size(375, 812);
@@ -68,10 +80,21 @@ const Size fullHdDesktopSize = Size(1920, 1080);
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// [initialize_firebase]
+  if (!Platform.isLinux) {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+  }
+
+  /// [initialize_git_it]
   await GitIt.initGitIt();
+
+  /// [initialize_pdf]
   await PDFConfig.loadFont();
 
   if (!kIsWeb) {
+    /// [initialize_database_helper]
     await DatabaseHelper().initDataBase();
   }
   if (kIsWeb) {
@@ -81,6 +104,7 @@ void main(List<String> args) async {
   runApp(
     MultiProvider(
       providers: [
+        /// [initialize_providers]
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
       ],
@@ -97,10 +121,13 @@ class EntryPoint extends StatelessWidget {
     final theme = Provider.of<ThemeProvider>(context);
     final lang = Provider.of<LanguageProvider>(context);
 
+    /// Fetching the theme and
+    /// language from the local storage [SHARED_PREFERENCES]
     lang.fetchLocale();
     theme.fetchTheme();
 
     return LayoutBuilder(builder: (context, constaints) {
+      /// [RESPONSIVE_DESIGN_CONFIGURATION]
       Size appSize = const Size(375, 812);
       if (constaints.maxWidth >= 1024) {
         if (constaints.maxWidth > 1440) {
@@ -114,19 +141,28 @@ class EntryPoint extends StatelessWidget {
         appSize = mobileSize;
       }
       return ScreenUtilInit(
+        ///TEXT_SCALING [ENABLED]
         enableScaleText: () => true,
+
         designSize: appSize,
         child: MaterialApp.router(
+          /// [initialize_router]
+          routerConfig: router,
+
+          ///[PASSING_THEME]
           theme: theme.themeData.copyWith(
               cardColor: ColorsPalette.of(context).secondaryColor,
               scaffoldBackgroundColor:
                   ColorsPalette.of(context).backgroundColor,
               dialogBackgroundColor: ColorsPalette.of(context).backgroundColor),
+
+          ///[OTHER_CONFIGURATION]
           debugShowCheckedModeBanner: false,
-          routerConfig: router,
+          scrollBehavior: MyCustomScrollBehavior(),
+
+          ///[MULTI_LANGUAGE_CONFIGURATION]
           supportedLocales: Languages.values.map((e) => Locale(e.name)),
           locale: lang.appLang,
-          scrollBehavior: MyCustomScrollBehavior(),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -139,7 +175,7 @@ class EntryPoint extends StatelessWidget {
   }
 }
 
-// Enable scrolling with mouse dragging
+/// Enable scrolling with mouse dragging
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {

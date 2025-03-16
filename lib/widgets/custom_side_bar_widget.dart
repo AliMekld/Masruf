@@ -62,7 +62,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               onTap: () {},
               child: CircleAvatar(
                 backgroundColor: ColorsPalette.of(context).surfaceColor,
-                foregroundImage: AssetImage(Assets.imagesHome),
+                foregroundImage: const AssetImage(Assets.imagesHome),
                 radius: isExpanded ? 40 : 24,
                 child: SvgPicture.asset(
                   Assets.imagesProfile,
