@@ -4,11 +4,14 @@ import 'dart:convert';
 import 'language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-bool isArabic(BuildContext context)=> AppLocalizations.of(context)?.locale==Locale(Languages.ar.name);
+
+bool isArabic(BuildContext context) =>
+    AppLocalizations.of(context)?.locale == Locale(Languages.ar.name);
 
 extension Translate on String {
   String get tr => AppLocalizations.instance.translate(this) ?? "";
 }
+
 class AppLocalizations {
   final Locale locale;
 
@@ -22,17 +25,16 @@ class AppLocalizations {
 
   // Static member to have a simple access to the delegate from the MaterialApp
   static const LocalizationsDelegate<AppLocalizations> delegate =
-  _AppLocalizationsDelegate();
+      _AppLocalizationsDelegate();
 
   Map<String, String> _localizedStrings = {};
 
-  static AppLocalizations get instance =>
-      _AppLocalizationsDelegate.instance;
+  static AppLocalizations get instance => _AppLocalizationsDelegate.instance;
 
   Future<bool> load() async {
     // Load the language JSON file from the "lang" folder
     String jsonString =
-    await rootBundle.loadString('i18n/${locale.languageCode}.json');
+        await rootBundle.loadString('i18n/${locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {

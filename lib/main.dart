@@ -144,6 +144,7 @@ class EntryPoint extends StatelessWidget {
 
         designSize: appSize,
         child: MaterialApp.router(
+          
           /// [initialize_router]
           routerConfig: router,
 

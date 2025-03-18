@@ -6,7 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
+import 'package:masrof/utilites/constants/Strings.dart';
+import 'package:provider/provider.dart';
 
+import '../core/Language/language_provider.dart';
 import '../utilites/constants/constamts.dart';
 
 enum _DecorationType { focused, error, enabled, disabled, validated }
@@ -132,6 +135,8 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         labelStyle: TextStyleHelper.of(context).titleMedium16M,
         enabled: widget.enabled ?? true,
         hintText: widget.hintText ?? "",
+        alignLabelWithHint: true,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
         labelText: widget.lableText ?? "",
         suffixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -153,51 +158,64 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       );
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: widget.height ?? 58.h,
-      width: widget.width ?? 320.w,
-      child: TextFormField(
-        controller: widget.controller,
-        focusNode: widget.focusNode,
-        inputFormatters: widget.formatters,
-        autofocus: widget.autoFocus ?? false,
-        decoration: getDecoration,
-        enabled: widget.enabled ?? true,
-        validator: widget.validator,
-        textInputAction: widget.textInputAction ?? TextInputAction.next,
-        textDirection:
-            isArabic(context) ? TextDirection.rtl : TextDirection.ltr,
-        textAlignVertical: TextAlignVertical.center,
-        showCursor: true,
-        scrollPhysics: const NeverScrollableScrollPhysics(),
-        style: TextStyleHelper.of(context).titleMedium16M,
-        onTapOutside: (event) {
-          FocusScope.of(context).unfocus();
-        },
-        onTap: widget.onTap,
-        restorationId: "--",
-        onSaved: widget.onSaved,
-        autocorrect: true,
-        onFieldSubmitted: widget.onFieldSubmitted ?? widget.onSaved,
-        onChanged: widget.onChanged,
-        onEditingComplete: widget.onEditingComplete,
-        cursorWidth: 2.5.w,
-        canRequestFocus: true,
-        textAlign: TextAlign.start,
-        readOnly: widget.isReadOnly ?? false,
-        clipBehavior: Clip.antiAlias,
-        cursorColor:
-            ColorsPalette.of(context).primaryTextColor.withOpacity(0.6),
-        cursorRadius: const Radius.circular(4),
-        cursorErrorColor: ColorsPalette.of(context).errorColor,
-        enableSuggestions: widget.enabled != null ? true : false,
-        enableInteractiveSelection: true,
-        expands: widget.expands ?? false,
-        onTapAlwaysCalled: false,
-        keyboardType: widget.textInputType,
-        obscureText: widget.obscureText ?? false,
-        minLines: widget.minLines ?? 1,
-        maxLines: widget.maxLines ?? 1,
+    AppLocalizations.of(context)?.translate(Strings.email);
+    return Directionality(
+      textDirection:
+          Provider.of<LanguageProvider>(context).appLang.languageCode == "ar"
+              ? TextDirection.rtl
+              : TextDirection.ltr,
+      child: SizedBox(
+        height: widget.height ?? 58.h,
+        width: widget.width ?? 320.w,
+        child: TextFormField(
+          controller: widget.controller,
+          focusNode: widget.focusNode,
+          inputFormatters: widget.formatters,
+          autofocus: widget.autoFocus ?? false,
+          decoration: getDecoration,
+          enabled: widget.enabled ?? true,
+          validator: widget.validator,
+          textInputAction: widget.textInputAction ?? TextInputAction.next,
+          textDirection:
+              Provider.of<LanguageProvider>(context).appLang.languageCode ==
+                      "ar"
+                  ? TextDirection.rtl
+                  : TextDirection.ltr,
+          showCursor: true,
+          scrollPhysics: const NeverScrollableScrollPhysics(),
+          style: TextStyleHelper.of(context).titleMedium16M,
+          onTapOutside: (event) {
+            FocusScope.of(context).unfocus();
+          },
+          onTap: widget.onTap,
+          restorationId: "--",
+          onSaved: widget.onSaved,
+          autocorrect: true,
+          onFieldSubmitted: widget.onFieldSubmitted ?? widget.onSaved,
+          onChanged: widget.onChanged,
+          onEditingComplete: widget.onEditingComplete,
+          cursorWidth: 1.5.w,
+          canRequestFocus: true,
+          textAlign:
+              Provider.of<LanguageProvider>(context).appLang.languageCode ==
+                      "ar"
+                  ? TextAlign.right
+                  : TextAlign.left,
+          readOnly: widget.isReadOnly ?? false,
+          clipBehavior: Clip.antiAlias,
+          cursorColor:
+              ColorsPalette.of(context).primaryTextColor.withOpacity(0.6),
+          cursorRadius: const Radius.circular(4),
+          cursorErrorColor: ColorsPalette.of(context).errorColor,
+          enableSuggestions: widget.enabled != null ? true : false,
+          enableInteractiveSelection: true,
+          expands: widget.expands ?? false,
+          onTapAlwaysCalled: false,
+          keyboardType: widget.textInputType,
+          obscureText: widget.obscureText ?? false,
+          minLines: widget.minLines ?? 1,
+          maxLines: widget.maxLines ?? 1,
+        ),
       ),
     );
   }
