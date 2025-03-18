@@ -77,7 +77,10 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
-                color: ColorsPalette.of(context).primaryTextColor, width: 1.5));
+                color: ColorsPalette.of(context)
+                    .primaryTextColor
+                    .withValues(alpha: 0.5),
+                width: 1.5));
       case _DecorationType.error:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
@@ -88,7 +91,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
-              color: ColorsPalette.of(context).dividerColor,
+              color: ColorsPalette.of(context).iconColor,
             ));
       case _DecorationType.disabled:
         return OutlineInputBorder(

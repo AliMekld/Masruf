@@ -18,6 +18,8 @@ class Assets {
 
   static const String imagesIncome = "assets/images/income.svg";
 
+  static const String imagesLoginBackground = "assets/images/login_background.png";
+
   static const String imagesMasruf = "assets/images/masruf.svg";
 
   static const String imagesMenu = "assets/images/menu.svg";

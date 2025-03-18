@@ -53,8 +53,6 @@
 ///TODO :: FIREBASE_AUTHENTICATION [-]
 library;
 
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +62,9 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
-import 'package:masrof/utilites/PDFHelper/pdf_widgets.dart';
 import 'package:masrof/utilites/git_it.dart';
 import 'package:masrof/utilites/router_config.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -82,7 +80,7 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// [initialize_firebase]
-  if (!Platform.isLinux) {
+  if (defaultTargetPlatform != TargetPlatform.linux) {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
   }
@@ -91,7 +89,7 @@ void main(List<String> args) async {
   await GitIt.initGitIt();
 
   /// [initialize_pdf]
-  await PDFConfig.loadFont();
+  // await PDFConfig.loadFont();
 
   if (!kIsWeb) {
     /// [initialize_database_helper]

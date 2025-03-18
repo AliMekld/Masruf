@@ -22,24 +22,28 @@
     "expenseCategory": "فئه المصروف",
     "deleteExpensesWarningMessage": "هل أنت متأكد من رغبتك في حذف هذا المصروف ؟",
     "deleteCategoryWarningMessage": "هل أنت متأكد من رغبتك في حذف فئه المصروف هذه ؟",
-    "expenses":"المصروفات",
-    "search":"بحث",
-    "id":"الرقم التعريفي",
-    "category":"الفئه",
-    "name":"الاسم",
-    "eName":"الاسم بالأنجليزيه",
-    "categoryData":"بيانات فئه المصروف",
-    "expensesCategories":"فئات المصروفات",
-    "income":"الدخل",
-    "incomeName" : "اسم الدخل",
-    "incomeValue" : "قيمة الدخل",
-    "incomeDate" : "تاريح الدخل",
-     "deleteIncomeWarningMessage" : "هل أنت متأكد من رغبتك في حذف هذا المدخل ؟",
-     "dashboard":"لوحة التحكم"
-
-
-
-
-
-
+    "expenses": "المصروفات",
+    "search": "بحث",
+    "id": "الرقم التعريفي",
+    "category": "الفئه",
+    "name": "الاسم",
+    "eName": "الاسم بالأنجليزيه",
+    "categoryData": "بيانات فئه المصروف",
+    "expensesCategories": "فئات المصروفات",
+    "income": "الدخل",
+    "incomeName": "اسم الدخل",
+    "incomeValue": "قيمة الدخل",
+    "incomeDate": "تاريح الدخل",
+    "deleteIncomeWarningMessage": "هل أنت متأكد من رغبتك في حذف هذا المدخل ؟",
+    "dashboard": "لوحة التحكم",
+    "login": "تسجيل الدخول",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "enter": "دخول",
+    "forgetPassword": "نسيت كلمة المرور",
+    "register": "تسجيل",
+    "registerNow": "سجل الان",
+    "haveAccount": "لديك حساب بالفعل",
+    "registerNewAccount": "تسجيل حساب جديد",
+    "welcomeBack": "مرحبا بعودتك"
 }

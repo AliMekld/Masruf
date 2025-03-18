@@ -39,4 +39,15 @@ class Strings {
   static const String incomeValue = "incomeValue";
   static const String incomeDate = "incomeDate";
   static const String dashboard = "dashboard";
+
+  static const String login = "login";
+  static const String email = "email";
+  static const String password = "password";
+  static const String enter = "enter";
+  static const String forgetPassword = "forgetPassword";
+  static const String register = "register";
+  static const String registerNow = "registerNow";
+  static const String haveAccount = "haveAccount";
+  static const String registerNewAccount = "registerNewAccount";
+  static const String welcomeBack = "welcomeBack";
 }

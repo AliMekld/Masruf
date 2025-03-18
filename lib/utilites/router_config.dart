@@ -7,6 +7,7 @@ import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Splash/splash_screen.dart';
 import 'package:masrof/modules/Expenses/expenses_screen.dart';
+import 'package:masrof/modules/auth/login/login_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
@@ -20,8 +21,17 @@ final GoRouter _router = GoRouter(
       ),
     ),
 
-    ///==============>> [onBoarding]
-    ///todo
+    ///==============>> [login]
+
+    GoRoute(
+      path: '/${LoginScreen.routerName}',
+      name: LoginScreen.routerName,
+      pageBuilder: (context, state) => _buildPageWithDefaultTransition(
+        context: context,
+        state: state,
+        child: const LoginScreen(),
+      ),
+    ),
 
     ///==============>> [ShellRoute]
     ShellRoute(
@@ -91,6 +101,14 @@ final GoRouter _router = GoRouter(
           ),
         ),
       ],
+      redirect: (context, state) async {
+        // bool isUserSignIn = await SharedPref.getIsLogin() ?? false;
+        // if ((state.fullPath != LoginScreen.routerName &&
+        //         state.fullPath != SplashScreen.routerName) &&
+        //     !isUserSignIn) {
+        //   return '/${SplashScreen.routerName}';
+        // }
+      },
     )
   ],
 );

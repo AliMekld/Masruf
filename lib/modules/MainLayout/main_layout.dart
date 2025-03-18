@@ -133,9 +133,9 @@ class _MainLayoutState extends State<MainLayout> {
                     .bodyMedium14R
                     .copyWith(
                         color: ColorsPalette.of(context).primaryTextColor),
-                onTap: (_) {
+                onTap: (v) {
                   setState(() {
-                    currentIndex = _;
+                    currentIndex = v;
                   });
                   context.goNamed(menuList[currentIndex].route);
                 },

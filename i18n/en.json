@@ -35,7 +35,15 @@
     "incomeValue" : "Income Value",
     "incomeDate" : "Income Date",
     "deleteIncomeWarningMessage":"Are You Sure That You Want TO Delete This Income !",
-    "dashboard":"Dashboard"
-
-
+    "dashboard":"Dashboard",
+    "login": "Login",
+    "email": "email",
+    "password": "password",
+    "enter": "Enter",
+    "forgetPassword": "Forget Password",
+    "register": "Register",
+    "registerNow": "Register Now !",
+    "haveAccount": "Have Account ?",
+    "registerNewAccount": "Register New Account !",
+    "welcomeBack": "Welcome Back !"
 }

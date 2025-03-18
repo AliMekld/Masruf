@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
+import 'package:masrof/modules/auth/login/login_screen.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/constamts.dart';
 import 'package:masrof/utilites/extensions.dart';
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.goNamed(HomeScreen.routerName);
+        context.goNamed(LoginScreen.routerName);
       }
     });
   }
