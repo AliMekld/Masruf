@@ -138,7 +138,6 @@ class EntryPoint extends StatelessWidget {
       } else {
         appSize = mobileSize;
       }
-      print("appSize: $appSize");
       return ScreenUtilInit(
         ///TEXT_SCALING [ENABLED]
         // enableScaleText: () => true,

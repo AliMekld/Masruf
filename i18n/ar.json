@@ -46,5 +46,8 @@
     "haveAccount": "لديك حساب بالفعل",
     "registerNewAccount": "تسجيل حساب جديد",
     "welcomeBack": "مرحبا بعودتك",
-    "dontHaveAccount": "ليس لديك حساب ؟"
+    "dontHaveAccount": "ليس لديك حساب ؟",
+    "or": "أو",
+    "allreadyHaveAccount": "لديك حساب بالفعل ؟",
+    "confirmPassword": "تأكيد كلمة المرور"
 }

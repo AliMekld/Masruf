@@ -7,7 +7,7 @@ import 'package:masrof/modules/MainLayout/main_layout.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Splash/splash_screen.dart';
 import 'package:masrof/modules/Expenses/expenses_screen.dart';
-import 'package:masrof/modules/auth/login/login_screen.dart';
+import 'package:masrof/modules/auth/Auth/auth_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
@@ -24,12 +24,12 @@ final GoRouter _router = GoRouter(
     ///==============>> [login]
 
     GoRoute(
-      path: '/${LoginScreen.routerName}',
-      name: LoginScreen.routerName,
+      path: '/${AuthScreen.routerName}',
+      name: AuthScreen.routerName,
       pageBuilder: (context, state) => _buildPageWithDefaultTransition(
         context: context,
         state: state,
-        child: const LoginScreen(),
+        child: const AuthScreen(),
       ),
     ),
 

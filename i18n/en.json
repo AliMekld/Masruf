@@ -47,5 +47,7 @@
     "registerNewAccount": "Register New Account !",
     "welcomeBack": "Welcome Back !",
     "dontHaveAccount": "Don't Have Account ?",
-    "or": "Or"
+    "or": "Or",
+    "allreadyHaveAccount": "Allready Have Account ?",
+    "confirmPassword": "Confirm Password"
 }

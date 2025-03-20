@@ -6,14 +6,23 @@ class LoginController extends StateXController {
   LoginController._();
   static final LoginController _instance = LoginController._();
   factory LoginController() => _instance;
-  late TextEditingController emailController, passwordController;
+  late TextEditingController emailController,
+      passwordController,
+      confirmPasswordController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isLogin = true;
+  void toggleLogin() {
+    setState(() {
+      isLogin = !isLogin;
+    });
+  }
 
   @override
   initState() {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
   }
 
   @override
@@ -21,6 +30,7 @@ class LoginController extends StateXController {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
   }
 
   bool loading = false;

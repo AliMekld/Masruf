@@ -52,4 +52,6 @@ class Strings {
   static const String welcomeBack = "welcomeBack";
   static const String dontHaveAccount = "dontHaveAccount";
   static const String or = "or";
+  static const String allreadyHaveAccount = "allreadyHaveAccount";
+  static const String confirmPassword = "confirmPassword";
 }
