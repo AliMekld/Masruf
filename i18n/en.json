@@ -45,5 +45,7 @@
     "registerNow": "Register Now !",
     "haveAccount": "Have Account ?",
     "registerNewAccount": "Register New Account !",
-    "welcomeBack": "Welcome Back !"
+    "welcomeBack": "Welcome Back !",
+    "dontHaveAccount": "Don't Have Account ?",
+    "or": "Or"
 }

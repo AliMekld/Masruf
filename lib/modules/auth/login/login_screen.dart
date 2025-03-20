@@ -8,6 +8,8 @@ import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/modules/auth/login/login_controller.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:masrof/utilites/constants/assets.dart';
+import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilites/validator.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
 import 'package:provider/provider.dart';
@@ -48,50 +50,11 @@ class _LoginScreenState extends StateX<LoginScreen> {
             color: ColorsPalette.of(context).backgroundColor,
           ),
           Row(
-            textDirection: languageProvider.appLang.languageCode == "ar"
-                ? TextDirection.rtl
-                : TextDirection.ltr,
             children: [
               Expanded(
-                flex: 7,
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(Assets.imagesLoginBackground),
-                        ),
-                      ),
-                    ),
-                    PositionedDirectional(
-                        start: 20,
-                        top: 20,
-                        child: Row(
-                          spacing: 8,
-                          children: [
-                            IconButton(
-                              onPressed: () async {
-                                await languageProvider.changeLanguage(
-                                    language: languageProvider.appLang ==
-                                            Locale(Languages.ar.name)
-                                        ? Locale(Languages.en.name)
-                                        : Locale(Languages.ar.name));
-                                setState(() {});
-                              },
-                              icon: const Icon(Icons.language),
-                            ),
-                            Text(
-                              Strings.language.tr,
-                              style: TextStyleHelper.of(context).bodyMedium14R,
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-              Expanded(
                 flex: 4,
-                child: SizedBox(
+                child: Form(
+                  key: con.formKey,
                   child: Container(
                     decoration: BoxDecoration(
                       color: ColorsPalette.of(context)
@@ -120,6 +83,14 @@ class _LoginScreenState extends StateX<LoginScreen> {
                           width: 120.r,
                           height: 120.r,
                         ),
+                        // Text(
+                        //   Strings.appName.tr,
+                        //   style: TextStyleHelper.of(context)
+                        //       .headlinelarge32R
+                        //       .copyWith(
+                        //         color: ColorsPalette.of(context).successColor,
+                        //       ),
+                        // ),
                         Text(
                           Strings.welcomeBack.tr,
                           style: TextStyleHelper.of(context)
@@ -133,32 +104,130 @@ class _LoginScreenState extends StateX<LoginScreen> {
                           style: TextStyleHelper.of(context).headlineSmall24R,
                         ),
                         CustomTextFieldWidget(
+                          textInputType: TextInputType.emailAddress,
+                          validator: (v) => Validator.validateEmail(v!),
                           lableText: Strings.email.tr,
-                          controller: con.searchController,
+                          controller: con.emailController,
                         ),
                         CustomTextFieldWidget(
+                          textInputType: TextInputType.visiblePassword,
+                          validator: (v) => Validator.validatePassword(v!),
                           lableText: Strings.password.tr,
-                          controller: con.searchController,
-                        ),
-                        CustomButtonWidget.primary(
-                          width: 160,
-                          context: context,
-                          onTap: () {},
-                          buttonTitle: Strings.login.tr,
+                          controller: con.passwordController,
                         ),
                         TextButton(
                           onPressed: () {},
                           child: Text(Strings.forgetPassword.tr,
-                              style: TextStyleHelper.of(context).bodyMedium14R),
+                              style: TextStyleHelper.of(context).bodySmall12R),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(Strings.registerNow.tr,
-                              style: TextStyleHelper.of(context).bodyMedium14R),
+                        CustomButtonWidget.primary(
+                          width: 320.w,
+                          context: context,
+                          onTap: () async => await con.login(),
+                          buttonTitle: Strings.login.tr,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Divider(
+                              color: ColorsPalette.of(context).primaryTextColor,
+                              thickness: 0.2,
+                              height: 0,
+                            ).expand,
+                            Text(Strings.or.tr,
+                                style: TextStyleHelper.of(context)
+                                    .bodyMedium14R
+                                    .copyWith(
+                                      color: ColorsPalette.of(context)
+                                          .primaryTextColor,
+                                    )).addPaddingHorizontal(padding: 4),
+                            Divider(
+                              color: ColorsPalette.of(context).primaryTextColor,
+                              thickness: 0.2,
+                              height: 0,
+                            ).expand,
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.facebook,
+                                  size: 32.r,
+                                )),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.g_translate,
+                                  size: 32.r,
+                                )),
+                          ],
+                        ).widthBox(200),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(Strings.dontHaveAccount.tr,
+                                style: TextStyleHelper.of(context)
+                                    .bodyMedium14R
+                                    .copyWith(
+                                      color: ColorsPalette.of(context)
+                                          .primaryTextColor,
+                                    )),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(Strings.registerNow.tr,
+                                  style: TextStyleHelper.of(context)
+                                      .bodyMedium14R),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
+                    ).withVerticalScroll,
                   ),
+                ),
+              ),
+              Expanded(
+                flex: 7,
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(Assets.imagesLoginBackground),
+                        ),
+                      ),
+                    ),
+                    PositionedDirectional(
+                        end: 20,
+                        top: 20,
+                        child: Row(
+                          spacing: 8,
+                          children: [
+                            IconButton(
+                              onPressed: () async {
+                                if (isArabic(context)) {
+                                  await languageProvider.changeLanguage(
+                                      language: const Locale("en"));
+                                  setState(() {});
+                                } else {
+                                  await languageProvider.changeLanguage(
+                                      language: const Locale("ar"));
+                                  setState(() {});
+                                }
+                              },
+                              icon: const Icon(Icons.language),
+                            ),
+                            Text(
+                              Strings.language.tr,
+                              style: TextStyleHelper.of(context).bodyMedium14R,
+                            ),
+                          ],
+                        )),
+                  ],
                 ),
               ),
             ],

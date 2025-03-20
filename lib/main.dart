@@ -138,13 +138,13 @@ class EntryPoint extends StatelessWidget {
       } else {
         appSize = mobileSize;
       }
+      print("appSize: $appSize");
       return ScreenUtilInit(
         ///TEXT_SCALING [ENABLED]
-        enableScaleText: () => true,
+        // enableScaleText: () => true,
 
         designSize: appSize,
         child: MaterialApp.router(
-          
           /// [initialize_router]
           routerConfig: router,
 

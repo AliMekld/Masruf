@@ -20,7 +20,7 @@ class TextStyleHelper {
       fontWeight: fontWeight,
       color: ColorsPalette.of(context).primaryTextColor,
       overflow: TextOverflow.ellipsis,
-      height: 1.35,
+      height: 1.15,
     );
   }
 

@@ -50,4 +50,6 @@ class Strings {
   static const String haveAccount = "haveAccount";
   static const String registerNewAccount = "registerNewAccount";
   static const String welcomeBack = "welcomeBack";
+  static const String dontHaveAccount = "dontHaveAccount";
+  static const String or = "or";
 }

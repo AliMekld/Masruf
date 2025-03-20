@@ -45,5 +45,6 @@
     "registerNow": "سجل الان",
     "haveAccount": "لديك حساب بالفعل",
     "registerNewAccount": "تسجيل حساب جديد",
-    "welcomeBack": "مرحبا بعودتك"
+    "welcomeBack": "مرحبا بعودتك",
+    "dontHaveAccount": "ليس لديك حساب ؟"
 }
