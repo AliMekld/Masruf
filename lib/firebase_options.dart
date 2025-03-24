@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '176779707540',
     projectId: 'masruf-9a12b',
     storageBucket: 'masruf-9a12b.firebasestorage.app',
+    iosClientId: '176779707540-94mlj8ope5tad5ransco6ucc2j02e5o6.apps.googleusercontent.com',
     iosBundleId: 'com.example.masrof',
   );
 
@@ -72,6 +73,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '176779707540',
     projectId: 'masruf-9a12b',
     storageBucket: 'masruf-9a12b.firebasestorage.app',
+    iosClientId: '176779707540-94mlj8ope5tad5ransco6ucc2j02e5o6.apps.googleusercontent.com',
     iosBundleId: 'com.example.masrof',
   );
 

@@ -54,7 +54,7 @@ class DatabaseHelper {
 
       String path = join(dataBasePath, _databaseName);
       debugPrint(
-          "$database : Created SuccessFully version $_version from linux of Widows $isWidowsOrLinux");
+          "$database : Created SuccessFully version $_version android or ios  $isWidowsOrLinux");
       return await openDatabase(
         version: _version,
         path,

@@ -17,7 +17,7 @@ dependencies:
   # Responsive
   flutter_screenutil: ^5.9.3
   # SVG
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.0.17
   # State management
   provider: ^6.1.2
   syncfusion_flutter_charts: ^28.1.33

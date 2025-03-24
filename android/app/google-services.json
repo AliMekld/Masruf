@@ -12,7 +12,12 @@
           "package_name": "com.example.masrof"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "176779707540-ah6v58gtismu8ulrqjgc3mjlt57gi08f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDHAfJA6yoyk_-Gb0lUYtSW3B6SoPvEx0o"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176779707540-ah6v58gtismu8ulrqjgc3mjlt57gi08f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "176779707540-94mlj8ope5tad5ransco6ucc2j02e5o6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.masrof"
+              }
+            }
+          ]
         }
       }
     }

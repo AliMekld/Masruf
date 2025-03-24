@@ -20,4 +20,16 @@ class Validator {
       return null;
     }
   }
+
+  static String? validateConfirmPassword(
+      String? password, String? confirmPassword) {
+    if (confirmPassword?.isEmpty ?? false) {
+      return 'Confirm Password is empty';
+    }
+    if (password != confirmPassword) {
+      return 'Password does not match';
+    } else {
+      return null;
+    }
+  }
 }

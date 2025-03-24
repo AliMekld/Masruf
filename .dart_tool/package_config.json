@@ -303,7 +303,7 @@
     },
     {
       "name": "flutter_svg",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/flutter_svg-2.0.16",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/flutter_svg-2.0.17",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -1040,7 +1040,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-03-18T00:17:15.706760Z",
+  "generated": "2025-03-24T21:18:53.033842Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///home/alimekld/development/flutter",

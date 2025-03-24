@@ -14,7 +14,7 @@ import '../utilites/constants/constamts.dart';
 
 enum _DecorationType { focused, error, enabled, disabled, validated }
 
-class CustomTextFieldWidget extends StatefulWidget {
+class CustomTextFieldWidget extends StatelessWidget {
   static List<TextInputFormatter> get decimalFormatters =>
       [FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))];
   final TextEditingController controller;
@@ -37,11 +37,13 @@ class CustomTextFieldWidget extends StatefulWidget {
   final TextInputType? textInputType;
   final String? lableText, hintText;
   final Widget? suffix, prefix;
+  final String? errorText;
   final List<TextInputFormatter>? formatters;
   const CustomTextFieldWidget({
     super.key,
     required this.controller,
     this.focusNode,
+    this.errorText,
     this.autoFocus = false,
     this.enabled = true,
     this.validator,
@@ -69,12 +71,8 @@ class CustomTextFieldWidget extends StatefulWidget {
     this.formatters,
   });
 
-  @override
-  State<CustomTextFieldWidget> createState() => _CustomTextFieldWidgetState();
-}
-
-class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
-  OutlineInputBorder getInputDecoration({required _DecorationType type}) {
+  OutlineInputBorder getInputDecoration(
+      {required _DecorationType type, required BuildContext context}) {
     switch (type) {
       case _DecorationType.focused:
         return OutlineInputBorder(
@@ -111,7 +109,8 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
     }
   }
 
-  Color getHintColor({_DecorationType? type}) {
+  // ignore: library_private_types_in_public_api
+  Color getHintColor({_DecorationType? type, required BuildContext context}) {
     //NOT WORKING
     switch (type) {
       case _DecorationType.error:
@@ -127,48 +126,51 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
     }
   }
 
-  bool get isValidate =>
-      widget.validator != null && widget.controller.text.isNotEmpty;
+  bool get isValidate => validator != null && controller.text.isNotEmpty;
 
-  InputDecoration get getDecoration => InputDecoration(
-        errorStyle: const TextStyle(fontSize: 0, height: 0),
+  InputDecoration getDecoration(BuildContext context) => InputDecoration(
+        errorText: errorText,
+        errorStyle: TextStyle(fontSize: 16.sp, height: 0),
         labelStyle: TextStyleHelper.of(context).titleMedium16M,
-        enabled: widget.enabled ?? true,
-        hintText: widget.hintText ?? "",
+        enabled: enabled ?? true,
+        hintText: hintText ?? "",
         alignLabelWithHint: true,
         floatingLabelAlignment: FloatingLabelAlignment.start,
-        labelText: widget.lableText ?? "",
-        suffixIcon: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: GestureDetector(
-              onTap: widget.onSuffixTap,
-              child: widget.suffix ?? const SizedBox()),
+        labelText: lableText ?? "",
+        suffixIcon: GestureDetector(
+          onTap: onSuffixTap,
+          child: suffix ?? const SizedBox(),
         ),
         prefixIconConstraints: const BoxConstraints(
             maxHeight: 32, maxWidth: 32, minHeight: 32, minWidth: 32),
-        suffixIconConstraints: const BoxConstraints(
-            maxHeight: 32, maxWidth: 48, minHeight: 32, minWidth: 32),
-        border: getInputDecoration(type: _DecorationType.enabled),
-        enabledBorder: getInputDecoration(type: _DecorationType.enabled),
-        errorBorder: getInputDecoration(type: _DecorationType.error),
-        focusedBorder: getInputDecoration(type: _DecorationType.focused),
-        disabledBorder: getInputDecoration(type: _DecorationType.disabled),
+        // suffixIconConstraints: const BoxConstraints(
+        //     maxHeight: 32, maxWidth: 48, minHeight: 32, minWidth: 32),
+        border:
+            getInputDecoration(type: _DecorationType.enabled, context: context),
+        enabledBorder:
+            getInputDecoration(type: _DecorationType.enabled, context: context),
+        errorBorder:
+            getInputDecoration(type: _DecorationType.error, context: context),
+        focusedBorder:
+            getInputDecoration(type: _DecorationType.focused, context: context),
+        disabledBorder: getInputDecoration(
+            type: _DecorationType.disabled, context: context),
       );
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.email);
     return SizedBox(
-      height: widget.height ?? 58.h,
-      width: widget.width ?? 320.w,
+      width: width ?? 320.w,
       child: TextFormField(
-        controller: widget.controller,
-        focusNode: widget.focusNode,
-        inputFormatters: widget.formatters,
-        autofocus: widget.autoFocus ?? false,
-        decoration: getDecoration,
-        enabled: widget.enabled ?? true,
-        validator: widget.validator,
-        textInputAction: widget.textInputAction ?? TextInputAction.next,
+        controller: controller,
+        focusNode: focusNode,
+        inputFormatters: formatters,
+        autofocus: autoFocus ?? false,
+        decoration: getDecoration(context),
+        enabled: enabled ?? true,
+        validator: validator,
+        textInputAction: textInputAction ?? TextInputAction.next,
         textDirection:
             Provider.of<LanguageProvider>(context).appLang.languageCode == "ar"
                 ? TextDirection.rtl
@@ -179,30 +181,30 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         onTapOutside: (event) {
           FocusScope.of(context).unfocus();
         },
-        onTap: widget.onTap,
+        onTap: onTap,
         restorationId: "--",
-        onSaved: widget.onSaved,
+        onSaved: onSaved,
         autocorrect: true,
-        onFieldSubmitted: widget.onFieldSubmitted ?? widget.onSaved,
-        onChanged: widget.onChanged,
-        onEditingComplete: widget.onEditingComplete,
+        onFieldSubmitted: onFieldSubmitted ?? onSaved,
+        onChanged: onChanged,
+        onEditingComplete: onEditingComplete,
         cursorWidth: 1.5.w,
         canRequestFocus: true,
         // textAlign: isArabic(context) ? TextAlign.right : TextAlign.left,
-        readOnly: widget.isReadOnly ?? false,
+        readOnly: isReadOnly ?? false,
         clipBehavior: Clip.antiAlias,
         cursorColor:
             ColorsPalette.of(context).primaryTextColor.withOpacity(0.6),
         cursorRadius: const Radius.circular(4),
         cursorErrorColor: ColorsPalette.of(context).errorColor,
-        enableSuggestions: widget.enabled != null ? true : false,
+        enableSuggestions: enabled != null ? true : false,
         enableInteractiveSelection: true,
-        expands: widget.expands ?? false,
+        expands: expands ?? false,
         onTapAlwaysCalled: false,
-        keyboardType: widget.textInputType,
-        obscureText: widget.obscureText ?? false,
-        minLines: widget.minLines ?? 1,
-        maxLines: widget.maxLines ?? 1,
+        keyboardType: textInputType,
+        obscureText: obscureText ?? false,
+        minLines: minLines ?? 1,
+        maxLines: maxLines ?? 1,
       ),
     );
   }

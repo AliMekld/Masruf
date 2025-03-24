@@ -1,57 +1,4 @@
-/// todo :
-/// step 1- intializing app with its configurations this configutation can be used for other projects if it done will
-/// 1-core
-///   1-theming
-///     1-color_palette[done]
-///     2-theme_provier[done]
-///     3-theme_model[done]
-///   2-localization[done]
-//
-///   3-api
-///     1-generic request
-///     2-api methods
-///
-///
-///   4-local storage
-///     1-crud manger[done ]
-///     2-sqflite_hlper[done]
-///     3-sql_queries[done]
-/// ============================================================================================///
-/// 2-utilties
-///   1-helpers
-///     1-file_download_helper
-///     2-
-///
-///   2-git_locator
-///   3-isolates ?????????
-///     1-study event loop
-///     2-how isolates communicate with eventloop
-///     3-
-///   4-router configuration
-///
-///   5-constants
-///     1-Strings[done]
-///     2-enums[done]
-///     3-constants[done]
-///     4-mixins[done]
-///   6-generic table data[done]
-/// step 2- creating design with its modules and models
-/// step 3 integrating with api if needed
-/// step 4 integrating with local database to store large amount of data[done]
-///FIREBASE CONFIGURATION [DONE]
-///GIT_IT CONFIGURATION [DONE]
-///DATABASE_HELPER [DONE]
-///PDF_HELPER [DONE]
-///RESPONSIVE_DESIGN [DONE]
-///THEME_PROVIDER [DONE]
-///LOCALIZATION [DONE]
-///ROUTER [DONE]
-///SCREEN_UTIL [DONE]
-///LOCAL_DATABASE [DONE]
-///SHARED_PREFERENCES [DONE]
-///TODO :: FIREBASE_CLOUD_MESSAGING [-]
-///TODO :: FIREBASE_AUTHENTICATION [-]
-library;
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -70,26 +17,33 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'core/Language/app_localization.dart';
+import 'utilites/PDFHelper/pdf_widgets.dart';
 
 const Size mobileSize = Size(375, 812);
 const Size tabletSize = Size(768, 1024);
 const Size desktopSize = Size(1440, 900);
-const Size fullHdDesktopSize = Size(1920, 1080);
+const Size fullHdDesktopSize = Size(1920, 1024);
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// [initialize_firebase]
-  if (defaultTargetPlatform != TargetPlatform.linux) {
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
+  try {
+    if (defaultTargetPlatform != TargetPlatform.linux) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
+    log("success in Firebase Initialization:");
+  } catch (e) {
+    log("Error in Firebase Initialization: $e");
   }
 
   /// [initialize_git_it]
   await GitIt.initGitIt();
 
   /// [initialize_pdf]
-  // await PDFConfig.loadFont();
+  await PDFConfig.loadFont();
 
   if (!kIsWeb) {
     /// [initialize_database_helper]
@@ -126,7 +80,7 @@ class EntryPoint extends StatelessWidget {
 
     return LayoutBuilder(builder: (context, constaints) {
       /// [RESPONSIVE_DESIGN_CONFIGURATION]
-      Size appSize = const Size(375, 812);
+      Size? appSize;
       if (constaints.maxWidth >= 1024) {
         if (constaints.maxWidth > 1440) {
           appSize = fullHdDesktopSize;
@@ -139,9 +93,6 @@ class EntryPoint extends StatelessWidget {
         appSize = mobileSize;
       }
       return ScreenUtilInit(
-        ///TEXT_SCALING [ENABLED]
-        // enableScaleText: () => true,
-
         designSize: appSize,
         child: MaterialApp.router(
           /// [initialize_router]

@@ -1,4 +1,9 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:state_extended/state_extended.dart';
 
 class LoginController extends StateXController {
@@ -14,6 +19,18 @@ class LoginController extends StateXController {
   void toggleLogin() {
     setState(() {
       isLogin = !isLogin;
+    });
+  }
+
+  void togglePasswordVisability() {
+    setState(() {
+      isPasswordVisible = !isPasswordVisible;
+    });
+  }
+
+  void toggleConfirmPasswordVisability() {
+    setState(() {
+      isConfirmPasswordVisible = !isConfirmPasswordVisible;
     });
   }
 
@@ -33,8 +50,46 @@ class LoginController extends StateXController {
     confirmPasswordController.dispose();
   }
 
+  String authMessage = '';
+  bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
+
   bool loading = false;
-  Future<void> login() async {
-    if (formKey.currentState!.validate()) {}
+  Future<void> login(BuildContext context) async {
+    if (formKey.currentState?.validate() ?? false) {
+      try {
+        final _auth = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        log("From Success ${_auth.user?.email} ");
+        if (context.mounted) {
+          context.goNamed(HomeScreen.routerName);
+        }
+      } catch (e) {
+        authMessage = e.toString();
+        log(authMessage);
+      }
+    }
+  }
+
+  /// [register]
+  Future<void> register() async {
+    if (formKey.currentState?.validate() ?? false) {
+      try {
+        final _auth =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+        log("From Success ${_auth.user?.email} ");
+      } on FirebaseAuthException catch (e) {
+        log("From FirebaseAuthException Error ${e.message} ");
+      } on FirebaseException catch (e) {
+        log("From FirebaseException Error ${e.message} ");
+      } catch (e) {
+        log("From TypeError ");
+      }
+    }
   }
 }
