@@ -20,7 +20,6 @@ class LoginPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 18.h,
       children: [
         Text(
           Strings.welcomeBack.tr,
@@ -28,12 +27,12 @@ class LoginPart extends StatelessWidget {
                 color: ColorsPalette.of(context).buttonColor,
               ),
         ),
-        0.0.heightBox,
+        18.h.heightBox,
         Text(
           Strings.login.tr,
           style: TextStyleHelper.of(context).titleLarge22R,
         ),
-        0.0.heightBox,
+        18.h.heightBox,
         CustomTextFieldWidget(
           errorText: con.authMessage.contains('email') ? con.authMessage : null,
           textInputType: TextInputType.emailAddress,
@@ -41,6 +40,7 @@ class LoginPart extends StatelessWidget {
           lableText: Strings.email.tr,
           controller: con.emailController,
         ),
+        18.h.heightBox,
         CustomTextFieldWidget(
           errorText:
               con.authMessage.contains('password') ? con.authMessage : null,
@@ -49,17 +49,20 @@ class LoginPart extends StatelessWidget {
           lableText: Strings.password.tr,
           controller: con.passwordController,
         ),
+        18.h.heightBox,
         TextButton(
           onPressed: () {},
           child: Text(Strings.forgetPassword.tr,
               style: TextStyleHelper.of(context).bodySmall12R),
         ),
+        18.h.heightBox,
         CustomButtonWidget.primary(
           width: 320.w,
           context: context,
           onTap: () async => await con.login(context),
           buttonTitle: Strings.login.tr,
         ),
+        18.h.heightBox,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,6 +82,7 @@ class LoginPart extends StatelessWidget {
             ).expand,
           ],
         ),
+        18.h.heightBox,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -97,6 +101,7 @@ class LoginPart extends StatelessWidget {
                 )),
           ],
         ).widthBox(200),
+        18.h.heightBox,
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

@@ -49,13 +49,13 @@ class _LargAuthScreenState extends StateX<LargAuthScreen> {
                     decoration: BoxDecoration(
                       color: ColorsPalette.of(context)
                           .secondaryColor
-                          .withValues(alpha: 0.2),
+                          .withOpacity(0.2),
                       boxShadow: [
                         BoxShadow(
                           blurStyle: BlurStyle.outer,
                           color: ColorsPalette.of(context)
                               .secondaryTextColor
-                              .withValues(alpha: 0.4),
+                              .withOpacity(0.4),
                           spreadRadius: 4,
                           blurRadius: 4,
                         ),
@@ -64,12 +64,13 @@ class _LargAuthScreenState extends StateX<LargAuthScreen> {
                     ),
                     margin: const EdgeInsets.all(24),
                     padding: const EdgeInsets.all(24),
-                    child: Column(spacing: 18.h, children: [
+                    child: Column(children: [
                       SvgPicture.asset(
                         Assets.imagesAppLogo,
                         width: 120.r,
                         height: 120.r,
                       ),
+                      18.h.heightBox,
                       RepaintBoundary(
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 500),
@@ -99,7 +100,6 @@ class _LargAuthScreenState extends StateX<LargAuthScreen> {
                         end: 20,
                         top: 20,
                         child: Row(
-                          spacing: 8,
                           children: [
                             IconButton(
                               onPressed: () async {
@@ -113,6 +113,7 @@ class _LargAuthScreenState extends StateX<LargAuthScreen> {
                               },
                               icon: const Icon(Icons.language),
                             ),
+                            8.w.widthBox,
                             Text(
                               Strings.language.tr,
                               style: TextStyleHelper.of(context).bodyMedium14R,

@@ -1,5 +1,5 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "cmake.sourceDirectory": "/home/alimekld/StudioProjects/Masruf/linux"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "cmake.sourceDirectory": "/home/alimekld/StudioProjects/Masruf/windows"
 }

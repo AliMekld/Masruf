@@ -41,7 +41,7 @@ mixin DialogsMixin {
             Row(
               children: [
                 Container(
-                  width: 16,
+                  width: 16.w,
                   height: 360.h,
                   padding: const EdgeInsets.symmetric(horizontal: 1),
                   color:
@@ -57,14 +57,18 @@ mixin DialogsMixin {
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
-                      child: Text(
+                      child: SelectableText(
                         message,
-                        style: TextStyleHelper.of(context).titleMedium16M,
+                        style: TextStyleHelper.of(context)
+                            .titleMedium16M
+                            .copyWith(height: 1.25),
                         maxLines: 16,
+                        textAlign: TextAlign.center,
+                        enableInteractiveSelection: true,
                       ),
                     )),
               ],
-            ).heightBox(360.h).expand,
+            ).expand,
             24.h.heightBox,
             CustomButtonWidget.backButton(context),
           ],

@@ -101,14 +101,14 @@ final GoRouter _router = GoRouter(
           ),
         ),
       ],
-      redirect: (context, state) async {
-        // bool isUserSignIn = await SharedPref.getIsLogin() ?? false;
-        // if ((state.fullPath != LoginScreen.routerName &&
-        //         state.fullPath != SplashScreen.routerName) &&
-        //     !isUserSignIn) {
-        //   return '/${SplashScreen.routerName}';
-        // }
-      },
+      // redirect: (context, state) async {
+      //   // bool isUserSignIn = await SharedPref.getIsLogin() ?? false;
+      //   // if ((state.fullPath != LoginScreen.routerName &&
+      //   //         state.fullPath != SplashScreen.routerName) &&
+      //   //     !isUserSignIn) {
+      //   //   return '/${SplashScreen.routerName}';
+      //   // }
+      // },
     )
   ],
 );
@@ -120,7 +120,7 @@ CustomTransitionPage _buildPageWithDefaultTransition({
   required GoRouterState state,
   required Widget child,
 }) {
-  return CustomTransitionPage(
+  return CustomTransitionPage<Page>(
     key: state.pageKey,
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
 class LoginController extends StateXController {
@@ -11,9 +12,9 @@ class LoginController extends StateXController {
   LoginController._();
   static final LoginController _instance = LoginController._();
   factory LoginController() => _instance;
-  late TextEditingController emailController,
-      passwordController,
-      confirmPasswordController;
+  TextEditingController emailController = TextEditingController(),
+      passwordController = TextEditingController(),
+      confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isLogin = true;
   void toggleLogin() {
@@ -34,21 +35,13 @@ class LoginController extends StateXController {
     });
   }
 
-  @override
-  initState() {
-    super.initState();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
-    confirmPasswordController = TextEditingController();
-  }
-
-  @override
-  dispose() {
-    super.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-  }
+  // @override
+  // dispose() {
+  //   super.dispose();
+  //   emailController.dispose();
+  //   passwordController.dispose();
+  //   confirmPasswordController.dispose();
+  // }
 
   String authMessage = '';
   bool isPasswordVisible = false;
@@ -58,37 +51,47 @@ class LoginController extends StateXController {
   Future<void> login(BuildContext context) async {
     if (formKey.currentState?.validate() ?? false) {
       try {
-        final _auth = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        final creadential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
-        log("From Success ${_auth.user?.email} ");
+        if (creadential.user?.email != null) {
+          log(creadential.user?.email?.toString() ?? "no email");
+        }
         if (context.mounted) {
           context.goNamed(HomeScreen.routerName);
         }
-      } catch (e) {
+      } catch (e, stacktrace) {
+        log("${e.toString()} stacktrace $stacktrace");
         authMessage = e.toString();
-        log(authMessage);
+        if (context.mounted) {
+          DialogHelper.error(
+            message: authMessage,
+          ).showDialog(context);
+        }
       }
     }
   }
 
   /// [register]
-  Future<void> register() async {
+  Future<void> register(BuildContext context) async {
     if (formKey.currentState?.validate() ?? false) {
       try {
-        final _auth =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
-        log("From Success ${_auth.user?.email} ");
-      } on FirebaseAuthException catch (e) {
-        log("From FirebaseAuthException Error ${e.message} ");
-      } on FirebaseException catch (e) {
-        log("From FirebaseException Error ${e.message} ");
+        // log("From Success ${credential.user?.email} ");
       } catch (e) {
         log("From TypeError ");
+        // authMessage = e;
+        // log(authMessage);\
+        if (context.mounted) {
+          DialogHelper.error(
+            message: "Type Error:  ${e.toString()}",
+          ).showDialog(context);
+        }
       }
     }
   }

@@ -31,11 +31,10 @@ void main(List<String> args) async {
   try {
     if (defaultTargetPlatform != TargetPlatform.linux) {
       await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+          options: DefaultFirebaseOptions.currentPlatform);
     }
     log("success in Firebase Initialization:");
-  } catch (e) {
+  } on FirebaseException catch (e) {
     log("Error in Firebase Initialization: $e");
   }
 
@@ -130,5 +129,6 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
         PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
       };
 }

@@ -21,12 +21,13 @@ class RegiserPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 18.h,
       children: [
         Text(
           Strings.registerNewAccount.tr,
           style: TextStyleHelper.of(context).titleLarge22R,
         ),
+        18.h.heightBox,
+
         CustomTextFieldWidget(
           errorText: con.authMessage.contains('email') ? con.authMessage : null,
           textInputType: TextInputType.emailAddress,
@@ -34,6 +35,7 @@ class RegiserPart extends StatelessWidget {
           lableText: Strings.email.tr,
           controller: con.emailController,
         ),
+        18.h.heightBox,
 
         ///
         CustomTextFieldWidget(
@@ -48,6 +50,8 @@ class RegiserPart extends StatelessWidget {
           lableText: Strings.password.tr,
           controller: con.passwordController,
         ),
+        18.h.heightBox,
+
         CustomTextFieldWidget(
           obscureText: !con.isConfirmPasswordVisible,
           suffix: Icon(
@@ -62,12 +66,16 @@ class RegiserPart extends StatelessWidget {
           lableText: Strings.confirmPassword.tr,
           controller: con.confirmPasswordController,
         ),
+        18.h.heightBox,
+
         CustomButtonWidget.primary(
           width: 320.w,
           context: context,
-          onTap: () async => await con.register(),
+          onTap: () async => await con.register(context),
           buttonTitle: Strings.register.tr,
         ),
+        18.h.heightBox,
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -87,6 +95,8 @@ class RegiserPart extends StatelessWidget {
             ).expand,
           ],
         ),
+        18.h.heightBox,
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -105,6 +115,8 @@ class RegiserPart extends StatelessWidget {
                 )),
           ],
         ).widthBox(200),
+        18.h.heightBox,
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

@@ -32,9 +32,9 @@
             android:name="flutterEmbedding"
             android:value="2" />
                 <!-- disable Impeller renderer for now this fixes this black screen issue -->
-        <meta-data
+        <!-- <meta-data
               android:name="io.flutter.embedding.android.EnableImpeller"
-              android:value="false" />
+              android:value="false" /> -->
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

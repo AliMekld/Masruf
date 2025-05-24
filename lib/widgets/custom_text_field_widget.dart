@@ -78,9 +78,8 @@ class CustomTextFieldWidget extends StatelessWidget {
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
-                color: ColorsPalette.of(context)
-                    .primaryTextColor
-                    .withValues(alpha: 0.5),
+                color:
+                    ColorsPalette.of(context).primaryTextColor.withOpacity(0.5),
                 width: 1.5));
       case _DecorationType.error:
         return OutlineInputBorder(

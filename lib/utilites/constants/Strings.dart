@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class Strings {
   Strings._();
   static const String save = "save";

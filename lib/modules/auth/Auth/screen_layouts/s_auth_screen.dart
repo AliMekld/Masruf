@@ -41,15 +41,14 @@ class _SmallAuthScreenState extends StateX<SmallAuthScreen> {
             key: con.formKey,
             child: Container(
               decoration: BoxDecoration(
-                color: ColorsPalette.of(context)
-                    .secondaryColor
-                    .withValues(alpha: 0.2),
+                color:
+                    ColorsPalette.of(context).secondaryColor.withOpacity(0.2),
                 boxShadow: [
                   BoxShadow(
                     blurStyle: BlurStyle.outer,
                     color: ColorsPalette.of(context)
                         .secondaryTextColor
-                        .withValues(alpha: 0.4),
+                        .withOpacity(0.4),
                     spreadRadius: 4,
                     blurRadius: 4,
                   ),
@@ -58,12 +57,13 @@ class _SmallAuthScreenState extends StateX<SmallAuthScreen> {
               ),
               margin: const EdgeInsets.all(24),
               padding: const EdgeInsets.all(24),
-              child: Column(spacing: 18.h, children: [
+              child: Column(children: [
                 SvgPicture.asset(
                   Assets.imagesAppLogo,
                   width: 120.r,
                   height: 120.r,
                 ),
+                18.h.heightBox,
                 RepaintBoundary(
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 500),
