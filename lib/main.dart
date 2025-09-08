@@ -13,6 +13,7 @@ import 'package:masrof/utilites/git_it.dart';
 import 'package:masrof/utilites/router_config.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:platform_detector/platform_detector.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -29,7 +30,7 @@ void main(List<String> args) async {
 
   /// [initialize_firebase]
   try {
-    if (defaultTargetPlatform != TargetPlatform.linux) {
+    if (!isLinuxApp() && !isWindowsApp()) {
       await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform);
     }

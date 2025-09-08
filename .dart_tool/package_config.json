@@ -116,6 +116,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "charcode",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/charcode-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "checked_yaml",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/checked_yaml-2.0.3",
       "packageUri": "lib/",
@@ -162,6 +168,12 @@
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/crypto-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "csslib",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/csslib-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
     },
     {
       "name": "cupertino_icons",
@@ -368,10 +380,16 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "http",
-      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/http-1.2.2",
+      "name": "html",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/html-0.15.6",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/http-1.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "http_multi_server",
@@ -624,6 +642,12 @@
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/platform-3.1.6",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "platform_detector",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/platform_detector-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "plugin_platform_interface",
@@ -908,6 +932,18 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "universal_html",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/universal_html-2.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "universal_io",
+      "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "universal_platform",
       "rootUri": "file:///home/alimekld/.pub-cache/hosted/pub.dev/universal_platform-1.1.0",
       "packageUri": "lib/",
@@ -1058,7 +1094,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2025-04-26T21:58:19.397110Z",
+  "generated": "2025-08-30T21:07:27.490985Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///home/alimekld/development/flutter",
