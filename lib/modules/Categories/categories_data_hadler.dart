@@ -1,9 +1,26 @@
 import 'package:dartz/dartz.dart';
+import 'package:masrof/core/Api/generic_request.dart';
+import 'package:masrof/core/Api/request_Methods.dart';
 import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
 import 'package:masrof/core/LocalDataBase/sql_queries.dart';
 import 'package:masrof/models/drop_down_model.dart';
 
+import '../../core/Api/Errors/exceptions.dart';
+
 class CategoriesDataHadler {
+  ///todo test this
+  static Future<Either<NetworkFailure, List<DropdownModel>>> getData() async {
+    try {
+      final response = await GenericRequest<DropdownModel>(
+              fromMap: DropdownModel.fromJson,
+              method: RequestMethod.get(url: ""))
+          .getList();
+      return Right(response);
+    } on NetworkFailure catch (e) {
+      return Left(ServerException(e.model));
+    }
+  }
+
   /// get All without Filtering
   static Future<Either<Exception, List<DropdownModel>>>
       getCategoriesFromLocalDataBase({

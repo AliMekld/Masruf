@@ -1,7 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:http/http.dart';
+import 'package:masrof/core/Api/Errors/error_model.dart';
+import 'package:masrof/core/Api/Errors/exceptions.dart';
 
 class RequestMethod {
   final String _method;
@@ -46,7 +47,7 @@ class RequestMethod {
   RequestMethod.postJson({
     required this.bodyJson,
     required String url,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
         uri = Uri.parse(url),
@@ -55,7 +56,7 @@ class RequestMethod {
   RequestMethod.postJsonUri({
     required this.bodyJson,
     required this.uri,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
         _method = "POST";
@@ -80,7 +81,7 @@ class RequestMethod {
   RequestMethod.putJson({
     required this.bodyJson,
     required String url,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
         uri = Uri.parse(url),
@@ -89,7 +90,7 @@ class RequestMethod {
   RequestMethod.putJsonUri({
     required this.bodyJson,
     required this.uri,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
         _method = "PUT";
@@ -97,24 +98,24 @@ class RequestMethod {
   RequestMethod.delete({
     this.body,
     required String url,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         bodyJson = null,
         files = const [],
         uri = Uri.parse(url),
-        _method = "DELTET";
+        _method = "DELETE";
 
   RequestMethod.deleteUri({
     this.body,
     required this.uri,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         files = const [],
         bodyJson = null,
-        _method = "DELTET";
+        _method = "DELETE";
 
   RequestMethod.patch({
     required this.bodyJson,
     required String url,
-  })  : headers = {},
+  })  : headers = {'Content-Type': 'application/json'},
         files = const [],
         body = null,
         uri = Uri.parse(url),
@@ -140,8 +141,8 @@ class RequestMethod {
 
   Future<dynamic> requestJson() async {
     final requst = Request(_method, uri);
-    if (bodyJson != null && requst.body.isNotEmpty) {
-      requst.body = json.encode(body);
+    if (bodyJson != null) {
+      requst.body = json.encode(bodyJson);
     }
     if (headers != null) {
       requst.headers.addAll(headers!);
@@ -160,32 +161,81 @@ class RequestMethod {
     if (headers != null) {
       requst.headers.addAll(headers!);
     }
-    return _ApiResponseHelper.getHandledResponse(request: requst, method: this);
+    if (files.isNotEmpty) {
+      requst.files.addAll(files);
+    }
+    return _ApiResponseHelper.getHandledResponse(
+        request: requst, method: this, isFile: true);
   }
 }
 
 sealed class _ApiResponseHelper {
   static Future<BaseResponseModel> getHandledResponse(
-      {required BaseRequest request, required RequestMethod method}) async {
-    /// this [do]
-    /// send request
-    /// handle errors
-    /// logging
-    /// handle response
-    ///
+      {bool isFile = false,
+      required BaseRequest request,
+      required RequestMethod method}) async {
+    final StreamedResponse response;
+    ErrorModel errorModel = ErrorModel.init(method: method, statusCode: -1);
     try {
-      final StreamedResponse response = await request.send();
-
-      final resStream = response.stream;
-      final decodedString = json.decode(await resStream.bytesToString());
-      return BaseResponseModel.fromJson(decodedString);
-    } on HttpException catch (e) {
-      throw Exception('HTTP Error: ${e.message}');
-    } on SocketException catch (e) {
-      throw Exception('Network Error: ${e.message}');
-    } catch (e) {
-      throw Exception('Error: $e');
+      response = await request.send().timeout(const Duration(seconds: 15));
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return isFile
+            ? _handleFilesRespose(response)
+            : _handleRespose(response);
+      } else {
+        errorModel =
+            ErrorModel.init(method: method, statusCode: response.statusCode);
+        throw throwError(ServerException(errorModel), errorModel);
+      }
+    } on Exception catch (e) {
+      throw throwError(e, errorModel);
     }
+  }
+}
+
+Future<BaseResponseModel> _handleRespose(StreamedResponse response) async {
+  if (response.statusCode == 204) {
+    return BaseResponseModel(
+        message: 'No Content', statusCode: 204, body: null);
+  }
+
+  final resStream = response.stream;
+  final responseBody = await resStream.bytesToString();
+
+  if (responseBody.isEmpty) {
+    return BaseResponseModel(
+        message: 'Empty response', statusCode: response.statusCode, body: null);
+  }
+
+  try {
+    final decodedString = json.decode(responseBody);
+    return BaseResponseModel.fromJson(decodedString);
+  } catch (e) {
+    // Handle malformed JSON
+    throw Exception('Failed to decode response: $responseBody');
+  }
+}
+
+Future<BaseResponseModel> _handleFilesRespose(StreamedResponse response) async {
+  if (response.statusCode == 204) {
+    return BaseResponseModel(
+        message: 'No Content', statusCode: 204, body: null);
+  }
+
+  final resStream = response.stream;
+  final responseBody = await resStream.bytesToString();
+
+  if (responseBody.isEmpty) {
+    return BaseResponseModel(
+        message: 'Empty response', statusCode: response.statusCode, body: null);
+  }
+
+  try {
+    final decodedString = json.decode(responseBody);
+    return BaseResponseModel.fromJson(decodedString);
+  } catch (e) {
+    // Handle malformed JSON
+    throw Exception('Failed to decode response: $responseBody');
   }
 }
 
