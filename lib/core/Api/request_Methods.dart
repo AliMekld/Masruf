@@ -183,8 +183,11 @@ sealed class _ApiResponseHelper {
             ? _handleFilesRespose(response)
             : _handleRespose(response);
       } else {
-        errorModel =
-            ErrorModel.init(method: method, statusCode: response.statusCode);
+        errorModel = ErrorModel.init(
+          method: method,
+          statusCode: response.statusCode,
+          message: response.reasonPhrase,
+        );
         throw throwError(ServerException(errorModel), errorModel);
       }
     } on Exception catch (e) {
