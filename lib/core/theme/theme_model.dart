@@ -78,9 +78,8 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
   }
 
   @override
-  ThemeExtension<ThemeModel> lerp(
-      covariant ThemeExtension<ThemeModel>? other, double t) {
-    return this;
+  ThemeModel lerp(covariant ThemeModel? other, double t) {
+    return (this != other) ? other ?? this : this;
   }
 
   factory ThemeModel.fromJson(Map<String, dynamic> json) => ThemeModel(

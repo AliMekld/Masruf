@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
   
+  static const String appSettings = "assets/app_settings.json";
+
   static const String fontsAgbalumoRegular = "assets/fonts/Agbalumo-Regular.ttf";
 
   static const String fontsNotoKufiArabicVariableFontWght = "assets/fonts/NotoKufiArabic-VariableFont_wght.ttf";

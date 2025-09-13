@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:masrof/core/Api/Errors/error_model.dart';
 
 sealed class NetworkFailure implements Exception {
@@ -52,6 +51,10 @@ class ServerException extends NetworkFailure {
   ServerException(super.model);
 }
 
+class DecodingException extends NetworkFailure {
+  DecodingException(super.model);
+}
+
 Exception throwError(
   Exception type,
   ErrorModel model,
@@ -70,7 +73,6 @@ Exception throwError(
       return ForbiddenException(model);
     case 404:
       return NotFoundException(model);
-
     case 409:
       return ConflictException(model);
     case 429:

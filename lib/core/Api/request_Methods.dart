@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:masrof/core/Api/Errors/error_model.dart';
 import 'package:masrof/core/Api/Errors/exceptions.dart';
@@ -19,14 +20,15 @@ class RequestMethod {
         bodyJson = null,
         files = const [],
         uri = Uri.parse(url),
-        headers = {};
+        headers = {'Content-Type': 'application/json'};
+
   RequestMethod.getUri({
     required this.uri,
   })  : _method = "GET",
         body = null,
         bodyJson = null,
         files = const [],
-        headers = {};
+        headers = {'Content-Type': 'application/json'};
 
   RequestMethod.post({
     required String url,
@@ -36,6 +38,7 @@ class RequestMethod {
         bodyJson = null,
         uri = Uri.parse(url),
         _method = "POST";
+
   RequestMethod.postUri({
     required this.body,
     this.files = const [],
@@ -140,17 +143,26 @@ class RequestMethod {
   }
 
   Future<dynamic> requestJson() async {
-    final requst = Request(_method, uri);
-    if (bodyJson != null) {
-      requst.body = json.encode(bodyJson);
+    try {
+      final requst = Request(_method, uri);
+      if (bodyJson != null) {
+        requst.body = json.encode(bodyJson);
+      }
+      requst.headers.addAll({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      });
+
+      return _ApiResponseHelper.getHandledResponse(
+        request: requst,
+        method: this,
+      );
+    } catch (e) {
+      print(e.runtimeType);
+      print(e.toString());
+
+      rethrow;
     }
-    if (headers != null) {
-      requst.headers.addAll(headers!);
-    }
-    return _ApiResponseHelper.getHandledResponse(
-      request: requst,
-      method: this,
-    );
   }
 
   Future<dynamic> requestFileStream() async {
@@ -158,9 +170,8 @@ class RequestMethod {
     if (body != null) {
       requst.fields.addAll(body!);
     }
-    if (headers != null) {
-      requst.headers.addAll(headers!);
-    }
+    requst.headers.addAll(headers!);
+
     if (files.isNotEmpty) {
       requst.files.addAll(files);
     }
@@ -178,10 +189,17 @@ sealed class _ApiResponseHelper {
     ErrorModel errorModel = ErrorModel.init(method: method, statusCode: -1);
     try {
       response = await request.send().timeout(const Duration(seconds: 15));
+      printApi(method: method, request: request, response: response);
+
       if (response.statusCode >= 200 && response.statusCode < 300) {
-        return isFile
-            ? _handleFilesRespose(response)
-            : _handleRespose(response);
+        try {
+          BaseResponseModel model = isFile
+              ? await _handleFilesRespose(response)
+              : await _handleRespose(response);
+          return model;
+        } catch (e) {
+          throw throwError(ServerException(errorModel), errorModel);
+        }
       } else {
         errorModel = ErrorModel.init(
           method: method,
@@ -213,9 +231,9 @@ Future<BaseResponseModel> _handleRespose(StreamedResponse response) async {
   try {
     final decodedString = json.decode(responseBody);
     return BaseResponseModel.fromJson(decodedString);
-  } catch (e) {
+  } on FormatException catch (e) {
     // Handle malformed JSON
-    throw Exception('Failed to decode response: $responseBody');
+    throw throwError(e, ErrorModel(statusCode: 500));
   }
 }
 
@@ -267,5 +285,29 @@ class BaseResponseModel {
       'statusCode': statusCode,
       'body': body,
     };
+  }
+}
+
+void printApi(
+    {required RequestMethod method,
+    required BaseRequest request,
+    required StreamedResponse response}) async {
+  try {
+    dynamic decoded = json.decode(await response.stream.bytesToString());
+    Map<String, dynamic> jsonPrint = {
+      'Url': request.url.toString(),
+      'Method': request.method,
+      'RequestBody': method.body ?? method.bodyJson ?? "",
+      'StatusCode': response.statusCode,
+      'Message': response.reasonPhrase,
+      'ResponseBody':
+          const JsonEncoder.withIndent(" ").convert(decoded).toString()
+    };
+
+    String beutifiedString =
+        const JsonEncoder.withIndent(" ").convert(jsonPrint);
+    debugPrint(beutifiedString);
+  } catch (e) {
+    print("error in printing ${e.toString()}");
   }
 }

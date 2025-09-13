@@ -4,6 +4,7 @@ import 'package:masrof/core/Api/request_Methods.dart';
 import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
 import 'package:masrof/core/LocalDataBase/sql_queries.dart';
 import 'package:masrof/models/drop_down_model.dart';
+import 'package:masrof/utilites/api_end_points.dart';
 
 import '../../core/Api/Errors/exceptions.dart';
 
@@ -13,7 +14,7 @@ class CategoriesDataHadler {
     try {
       final response = await GenericRequest<DropdownModel>(
               fromMap: DropdownModel.fromJson,
-              method: RequestMethod.get(url: ""))
+              method: RequestMethod.get(url: ApiEndPoint.products))
           .getList();
       return Right(response);
     } on NetworkFailure catch (e) {

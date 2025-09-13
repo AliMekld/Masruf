@@ -1,3 +1,6 @@
+import 'package:masrof/core/Api/Errors/error_model.dart';
+import 'package:masrof/core/Api/Errors/exceptions.dart';
+
 import 'request_Methods.dart';
 
 class GenericRequest<T> {
@@ -19,15 +22,22 @@ class GenericRequest<T> {
 
   Future<List<T>> getList() async {
     List<T> tList = [];
-    final BaseResponseModel response = method.body == null
+    BaseResponseModel response = method.body == null
         ? await method.requestJson()
         : await method.request();
-    final responseBody = response.body;
-    List dList = responseBody;
-    tList = List<T>.from(dList.map((e) => fromMap(e)));
+    if (response.body is List) {
+      final responseBody = response.body;
+      List dList = [];
+      tList = List<T>.from(dList.map((e) => fromMap(e)));
 
-    /// todo handle formating and serialization errors
-    return tList;
+      /// todo handle formating and serialization errors
+      return tList;
+    } else {
+      throw DecodingException(ErrorModel(
+          statusCode: 520,
+          message:
+              "data is not compitable with the expected data ${T.runtimeType}"));
+    }
   }
 
   Future<dynamic> getResponse() async {

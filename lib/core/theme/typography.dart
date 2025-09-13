@@ -17,7 +17,7 @@ class TextStyleHelper {
       fontFamily: Constants.notoSansKoufyFontFamily,
       fontSize: fontSize.sp,
       fontStyle: FontStyle.normal,
-      locale: Provider.of<LanguageProvider>(context).appLang,
+      locale: Provider.of<LanguageProvider>(context, listen: false).appLang,
       fontWeight: fontWeight,
       color: ColorsPalette.of(context).primaryTextColor,
       overflow: TextOverflow.ellipsis,

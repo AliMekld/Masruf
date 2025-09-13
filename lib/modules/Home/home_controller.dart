@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/models/expense_model.dart';
 import 'package:masrof/models/test_statistics_model.dart';
+import 'package:masrof/modules/Categories/categories_data_hadler.dart';
 import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
 import 'package:masrof/modules/Home/home_dataHandler.dart';
+import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
 class HomeController extends StateXController {
@@ -23,6 +25,17 @@ class HomeController extends StateXController {
       },
     );
     setState(() {});
+  }
+
+  Future<void> testAPI(BuildContext context) async {
+    final result = await CategoriesDataHadler.getData();
+    result.fold((l) {
+      print(l.model.message.toString());
+      DialogHelper.error(message: l.model.toString())
+          .errorDialog(context: context, message: l.model.statusMessage);
+    }, (r) {
+      debugPrint(r.toString());
+    });
   }
 
   List<ExpensesModel> expensesList = [];
