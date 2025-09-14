@@ -22,15 +22,4 @@ class DropdownModel {
       _$DropdownModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$DropdownModelToJson(this);
-
-  // factory DropdownModel.fromJson(Map<String, dynamic> json) => DropdownModel(
-  //       id: json["id"] as int?,
-  //       eName: json["eName"] as String?,
-  //       name: json["name"] as String?,
-  //     );
-  // Map<String, dynamic> toJson() => {
-  //       "id": id,
-  //       "name": name,
-  //       "eName": eName,
-  //     };
 }

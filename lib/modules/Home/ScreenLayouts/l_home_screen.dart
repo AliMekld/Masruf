@@ -54,9 +54,14 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              Strings.dashboard.tr,
-              style: TextStyleHelper.of(context).headlinelarge32R,
+            TextButton(
+              child: Text(
+                Strings.dashboard.tr,
+                style: TextStyleHelper.of(context).headlinelarge32R,
+              ),
+              onPressed: () async {
+                await con.testAPI(context);
+              },
             ),
             16.h.heightBox,
             Wrap(

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class ColorsPalette extends ThemeModel {
   /// inherted widget to get currnet app theme based on brightness
   static ThemeModel of(BuildContext context) =>
-      Provider.of<ThemeProvider>(context).appTheme;
+      Provider.of<ThemeProvider>(context, listen: false).appTheme;
 
   ///==============================>>[dark_palette]<<=================================///
   ColorsPalette.dark({

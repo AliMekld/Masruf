@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +11,8 @@ import 'package:masrof/utilites/git_it.dart';
 import 'package:masrof/utilites/router_config.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:masrof/widgets/app_settings_loader.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 import 'core/Language/app_localization.dart';
 import 'utilites/PDFHelper/pdf_widgets.dart';
 
@@ -28,15 +25,16 @@ void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// [initialize_firebase]
-  try {
-    if (defaultTargetPlatform != TargetPlatform.linux) {
-      await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.currentPlatform);
-    }
-    log("success in Firebase Initialization:");
-  } on FirebaseException catch (e) {
-    log("Error in Firebase Initialization: $e");
-  }
+  // try {
+  //   if (!isWindowsApp()) {
+  //     await Firebase.initializeApp(
+  //         options: DefaultFirebaseOptions.currentPlatform);
+  //   }
+  //   log("success in Firebase Initialization:");
+  // } on FirebaseException catch (e) {
+  //   log("Error in Firebase Initialization: $e");
+  // }
+  await AppSettingsLoader.load();
 
   /// [initialize_git_it]
   await GitIt.initGitIt();
