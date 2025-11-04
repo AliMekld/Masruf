@@ -20,7 +20,8 @@ const Size mobileSize = Size(375, 812);
 const Size tabletSize = Size(768, 1024);
 const Size desktopSize = Size(1440, 900);
 const Size fullHdDesktopSize = Size(1920, 1024);
-
+/// todo replace state mange management by bloc
+/// todo fix this error  TooltipState is a SingleTickerProviderStateMixin but multiple tickers were created.
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -100,7 +101,7 @@ class EntryPoint extends StatelessWidget {
               cardColor: ColorsPalette.of(context).secondaryColor,
               scaffoldBackgroundColor:
                   ColorsPalette.of(context).backgroundColor,
-              dialogBackgroundColor: ColorsPalette.of(context).backgroundColor),
+              /*dialogBackgroundColor: ColorsPalette.of(context).backgroundColor*/),
 
           ///[OTHER_CONFIGURATION]
           debugShowCheckedModeBanner: false,

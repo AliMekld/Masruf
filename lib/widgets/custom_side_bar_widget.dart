@@ -28,47 +28,50 @@ class CustomNavigationRail extends StatefulWidget {
   State<CustomNavigationRail> createState() => _CustomNavigationRailState();
 }
 
-class _CustomNavigationRailState extends State<CustomNavigationRail> {
-  bool isExpanded = SharedPref.getIsSideBarExpanded();
-  bool isSettingsExpanded = false;
+class _CustomNavigationRailState extends State<CustomNavigationRail> with SingleTickerProviderStateMixin {
+  ValueNotifier<bool> isExpanded = ValueNotifier(SharedPref.getIsSideBarExpanded());
   @override
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.appName);
-    return AnimatedContainer(
-      decoration: BoxDecoration(
-          color: ColorsPalette.of(context).backgroundColor,
-          border: Border(
-              left: isArabic(context)
-                  ? BorderSide(
-                      color: ColorsPalette.of(context).dividerColor,
-                      width: 1,
-                      style: BorderStyle.solid,
-                    )
-                  : BorderSide.none)),
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeInOut,
-      width: isExpanded ? 180.w : 80.w,
-      // height: 1.sh,
-      child: Column(
+    return AnimatedBuilder(
+      builder: (context, child) {
+        return AnimatedContainer(
+          decoration: BoxDecoration(
+              color: ColorsPalette.of(context).backgroundColor,
+              border: Border(
+                  left: isArabic(context)
+                      ? BorderSide(
+                          color: ColorsPalette.of(context).dividerColor,
+                          width: 1,
+                          style: BorderStyle.solid,
+                        )
+                      : BorderSide.none)),
+          duration: const Duration(milliseconds: 150),
+          curve: Curves.easeInOut,
+          width: isExpanded.value ? 180.w : 80.w,
+          child:child,
+        );
+      }, animation: isExpanded,
+      child:  Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           16.0.heightBox,
           CircleAvatar(
-            radius: isExpanded ? 42 : 26,
+            radius: isExpanded.value ? 42 : 26,
             backgroundColor: ColorsPalette.of(context).dividerColor,
             child: InkWell(
               onTap: () {},
               child: CircleAvatar(
                 backgroundColor: ColorsPalette.of(context).surfaceColor,
                 // foregroundImage: const AssetImage(Assets.imagesHome),
-                radius: isExpanded ? 40 : 24,
+                radius: (isExpanded.value ? 40 : 24).sp,
                 child: SvgPicture.asset(
                   Assets.imagesProfile,
                   fit: BoxFit.cover,
-                  width: isExpanded ? 48.w : 24.w,
-                  height: isExpanded ? 48.h : 24.h,
+                  width: isExpanded.value ? 48.w : 24.w,
+                  height: isExpanded.value ? 48.h : 24.h,
                   colorFilter: ColorFilter.mode(
                     ColorsPalette.of(context).secondaryColor,
                     BlendMode.srcIn,
@@ -81,9 +84,9 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
           Text(
             isArabic(context) ? "علي مقلد" : "Ali Mekld",
             style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
-                  fontFamily: Constants.notoSansKoufyFontFamily,
-                  fontSize: isExpanded ? 16 : 12,
-                ),
+              fontFamily: Constants.notoSansKoufyFontFamily,
+              fontSize: (isExpanded.value ? 16 : 12).sp,
+            ),
           ),
           16.0.heightBox,
           Divider(
@@ -92,7 +95,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
           ),
           16.0.heightBox,
           ...menuList.mapIndexed(
-            (i, e) => InkWell(
+                (i, e) => InkWell(
               borderRadius: Constants.kBorderRaduis8,
               onTap: () {
                 context.goNamed(e.route);
@@ -108,12 +111,12 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                       : null,
                 ),
                 height: 56.h,
-                width: isExpanded ? 160 : 40,
+                width: isExpanded.value ? 160.w : 40.w,
                 child: Row(
                   mainAxisSize:
-                      isExpanded ? MainAxisSize.max : MainAxisSize.min,
+                  isExpanded.value ? MainAxisSize.max : MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: isExpanded
+                  mainAxisAlignment: isExpanded.value
                       ? MainAxisAlignment.spaceBetween
                       : MainAxisAlignment.center,
                   children: [
@@ -128,15 +131,15 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
                         BlendMode.srcIn,
                       ),
                     ),
-                    if (isExpanded) ...[
+                    if (isExpanded.value) ...[
                       16.0.widthBox,
                       Text(
                         e.title.tr,
                         style: TextStyleHelper.of(context)
                             .bodyMedium14R
                             .copyWith(
-                              color: currentIndex == i ? Colors.white70 : null,
-                            ),
+                          color: currentIndex == i ? Colors.white70 : null,
+                        ),
                       ).expand,
                     ]
                   ],
@@ -162,14 +165,14 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               IconButton(
                 onPressed: () {
                   setState(
-                    () {
-                      isExpanded = !isExpanded;
+                        () {
+                      isExpanded.value = !isExpanded.value;
                     },
                   );
-                  SharedPref.setIsSideBarExpanded(value: isExpanded);
+                  SharedPref.setIsSideBarExpanded(value: isExpanded.value);
                 },
                 icon: Icon(
-                  isExpanded
+                  isExpanded.value
                       ? Icons.arrow_back_ios_new
                       : Icons.arrow_forward_ios_outlined,
                   color: ColorsPalette.of(context).primaryColor,

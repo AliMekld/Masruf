@@ -42,7 +42,7 @@ class MainLayout extends StatefulWidget {
 
 int currentIndex = 0;
 
-class _MainLayoutState extends State<MainLayout> {
+class _MainLayoutState extends State<MainLayout> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.appName);
