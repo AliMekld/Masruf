@@ -158,8 +158,8 @@ class RequestMethod {
         method: this,
       );
     } catch (e) {
-      print(e.runtimeType);
-      print(e.toString());
+      debugPrint(e.runtimeType.toString());
+      debugPrint(e.toString());
 
       rethrow;
     }
@@ -308,6 +308,6 @@ void printApi(
         const JsonEncoder.withIndent(" ").convert(jsonPrint);
     debugPrint(beutifiedString);
   } catch (e) {
-    print("error in printing ${e.toString()}");
+    debugPrint("error in printing ${e.toString()}");
   }
 }

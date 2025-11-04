@@ -61,7 +61,7 @@ class SqlQueries {
 
   /// create triggers to notify dashboard by updates
   /// update after crud on income
-  static String createTriggerAfterInsertIcome(CrudType type) {
+  static String createTriggerAfterInsertIncome(CrudType type) {
     return '''
 CREATE TRIGGER update_dashboard_income_${type.crudName}
 AFTER ${type.crudName} ON $incomeTable

@@ -101,7 +101,7 @@ class _CustomListRadioWidgetState<T> extends State<CustomListRadioWidget<T>> {
                 shape: const BeveledRectangleBorder(),
                 color: e == widget.groupValue
                     ? ColorsPalette.of(context).secondaryColor
-                    : ColorsPalette.of(context).surfaceColor.withOpacity(0.5),
+                    : ColorsPalette.of(context).surfaceColor .withValues(alpha:0.5),
                 onPressed: () {
                   setState(() {
                     _onChanged(e);

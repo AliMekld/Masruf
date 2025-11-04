@@ -89,11 +89,11 @@ class DatabaseHelper {
               SqlQueries.createTriggerAfterCrudOnExpenses(CrudType.delete));
           // Create triggers for income table
           await txn.execute(
-              SqlQueries.createTriggerAfterInsertIcome(CrudType.insert));
+              SqlQueries.createTriggerAfterInsertIncome(CrudType.insert));
           await txn.execute(
-              SqlQueries.createTriggerAfterInsertIcome(CrudType.update));
+              SqlQueries.createTriggerAfterInsertIncome(CrudType.update));
           await txn.execute(
-              SqlQueries.createTriggerAfterInsertIcome(CrudType.delete));
+              SqlQueries.createTriggerAfterInsertIncome(CrudType.delete));
         } catch (e) {
           debugPrint("Error creating database: $e");
           rethrow; // Re-throw the error to roll back the transaction

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/modules/Home/ScreenLayouts/m_home_screen.dart';
 import 'package:masrof/modules/Home/ScreenLayouts/s_home_screen.dart';
-import 'package:masrof/utilites/constants/constamts.dart';
+import 'package:masrof/utilites/constants/constants.dart';
 import 'package:masrof/utilites/constants/mixins.dart';
 import 'ScreenLayouts/l_home_screen.dart';
 

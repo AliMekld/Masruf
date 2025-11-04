@@ -20,7 +20,7 @@ class LoadingWidget extends StatelessWidget {
                 width: 120,
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade400.withOpacity(0.2),
+                    color: Colors.blueGrey.shade400 .withValues(alpha:0.2),
                     borderRadius: BorderRadius.circular(16.r)),
                 child: const CircularProgressIndicator(
                   strokeWidth: 4,

@@ -2,7 +2,7 @@ import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/constants/constamts.dart';
+import 'package:masrof/utilites/constants/constants.dart';
 import 'package:masrof/utilites/extensions.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
@@ -45,7 +45,7 @@ mixin DialogsMixin {
                   height: 360.h,
                   padding: const EdgeInsets.symmetric(horizontal: 1),
                   color:
-                      ColorsPalette.of(context).secondaryColor.withOpacity(0.8),
+                      ColorsPalette.of(context).secondaryColor .withValues(alpha:0.8),
                 ),
                 Container(
                     height: 360.h,
@@ -53,7 +53,7 @@ mixin DialogsMixin {
                     padding: EdgeInsets.all(16.r),
                     decoration: BoxDecoration(
                       color:
-                          ColorsPalette.of(context).errorColor.withOpacity(0.1),
+                          ColorsPalette.of(context).errorColor .withValues(alpha:0.1),
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -106,13 +106,13 @@ mixin DialogsMixin {
                 Container(
                   width: 16,
                   color:
-                      ColorsPalette.of(context).secondaryColor.withOpacity(0.8),
+                      ColorsPalette.of(context).secondaryColor .withValues(alpha:0.8),
                 ),
                 Container(
                   padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color:
-                        ColorsPalette.of(context).successColor.withOpacity(0.1),
+                        ColorsPalette.of(context).successColor .withValues(alpha:0.1),
                   ),
                   child: Text(
                     message,
@@ -173,7 +173,7 @@ mixin DialogsMixin {
                   padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color:
-                        ColorsPalette.of(context).watingColor.withOpacity(0.1),
+                        ColorsPalette.of(context).watingColor .withValues(alpha:0.1),
                   ),
                   child: Text(
                     message,
@@ -226,13 +226,13 @@ mixin DialogsMixin {
               children: [
                 Container(
                   width: 8,
-                  color: ColorsPalette.of(context).errorColor.withOpacity(0.8),
+                  color: ColorsPalette.of(context).errorColor .withValues(alpha:0.8),
                 ),
                 Container(
                   padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color:
-                        ColorsPalette.of(context).errorColor.withOpacity(0.1),
+                        ColorsPalette.of(context).errorColor .withValues(alpha:0.1),
                   ),
                   child: Text(
                     message,
@@ -275,7 +275,7 @@ mixin DialogsMixin {
     return Dialog(
       elevation: 6,
       surfaceTintColor:
-          ColorsPalette.of(context).backgroundColor.withOpacity(0.1),
+          ColorsPalette.of(context).backgroundColor .withValues(alpha:0.1),
       shadowColor: ColorsPalette.of(context).surfaceColor,
       shape: RoundedRectangleBorder(borderRadius: Constants.kBorderRaduis16),
       clipBehavior: Clip.antiAliasWithSaveLayer,

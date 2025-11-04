@@ -33,17 +33,17 @@ class TableHelper<T> extends DataTableSource {
       color: index.isEven
           ? WidgetStatePropertyAll(
               isSelected
-                  ? ColorsPalette.of(context).watingColor.withOpacity(0.2)
+                  ? ColorsPalette.of(context).watingColor .withValues(alpha:0.2)
                   : ColorsPalette.of(context)
                       .secondaryTextColor
-                      .withOpacity(0.4),
+                      .withValues(alpha:0.4),
             )
           : WidgetStatePropertyAll(
               isSelected
-                  ? ColorsPalette.of(context).watingColor.withOpacity(0.2)
+                  ? ColorsPalette.of(context).watingColor .withValues(alpha:0.2)
                   : ColorsPalette.of(context)
                       .secondaryTextColor
-                      .withOpacity(0.8),
+                      .withValues(alpha:0.8),
             ),
       onSelectChanged: onSelect != null
           ? (v) {

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/constants/constamts.dart';
+import 'package:masrof/utilites/constants/constants.dart';
 import 'package:masrof/utilites/extensions.dart';
 
 import '../../utilites/constants/assets.dart';

@@ -97,7 +97,7 @@ class _CategoryDialogDetailWidgetState
                   icon: Icon(
                     Icons.cancel,
                     color:
-                        ColorsPalette.of(context).errorColor.withOpacity(0.8),
+                        ColorsPalette.of(context).errorColor .withValues(alpha:0.8),
                     size: 32.r,
                   ))
             ],

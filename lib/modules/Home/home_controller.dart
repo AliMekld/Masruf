@@ -17,11 +17,11 @@ class HomeController extends StateXController {
     final result = await HomeDataHandler.getStatisticsData();
     result.fold(
       (l) {
-        print("from handle error in conroller $l ");
+        debugPrint("from handle error in conroller $l ");
       },
       (r) {
         statisticsModel = r;
-        print("${r.toJson()}");
+        debugPrint("${r.toJson()}");
       },
     );
     setState(() {});
@@ -30,7 +30,7 @@ class HomeController extends StateXController {
   Future<void> testAPI(BuildContext context) async {
     final result = await CategoriesDataHadler.getData();
     result.fold((l) {
-      print(l.model.message.toString());
+      debugPrint(l.model.message.toString());
       DialogHelper.error(message: l.model.toString())
           .errorDialog(context: context, message: l.model.statusMessage);
     }, (r) {

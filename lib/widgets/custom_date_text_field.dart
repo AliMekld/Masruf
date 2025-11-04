@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilites/constants/constamts.dart';
+import 'package:masrof/utilites/constants/constants.dart';
 import 'package:masrof/utilites/extensions.dart';
 
 enum _DecorationType { focused, error, enabled, disabled, validated }

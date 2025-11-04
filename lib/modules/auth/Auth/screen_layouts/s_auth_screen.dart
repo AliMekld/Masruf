@@ -42,13 +42,13 @@ class _SmallAuthScreenState extends StateX<SmallAuthScreen> {
             child: Container(
               decoration: BoxDecoration(
                 color:
-                    ColorsPalette.of(context).secondaryColor.withOpacity(0.2),
+                    ColorsPalette.of(context).secondaryColor .withValues(alpha:0.2),
                 boxShadow: [
                   BoxShadow(
                     blurStyle: BlurStyle.outer,
                     color: ColorsPalette.of(context)
                         .secondaryTextColor
-                        .withOpacity(0.4),
+                        .withValues(alpha:0.4),
                     spreadRadius: 4,
                     blurRadius: 4,
                   ),

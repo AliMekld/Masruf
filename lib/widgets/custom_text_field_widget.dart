@@ -10,7 +10,7 @@ import 'package:masrof/utilites/constants/Strings.dart';
 import 'package:provider/provider.dart';
 
 import '../core/Language/language_provider.dart';
-import '../utilites/constants/constamts.dart';
+import '../utilites/constants/constants.dart';
 
 enum _DecorationType { focused, error, enabled, disabled, validated }
 
@@ -79,7 +79,7 @@ class CustomTextFieldWidget extends StatelessWidget {
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
                 color:
-                    ColorsPalette.of(context).primaryTextColor.withOpacity(0.5),
+                    ColorsPalette.of(context).primaryTextColor .withValues(alpha:0.5),
                 width: 1.5));
       case _DecorationType.error:
         return OutlineInputBorder(
@@ -193,7 +193,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         readOnly: isReadOnly ?? false,
         clipBehavior: Clip.antiAlias,
         cursorColor:
-            ColorsPalette.of(context).primaryTextColor.withOpacity(0.6),
+            ColorsPalette.of(context).primaryTextColor .withValues(alpha:0.6),
         cursorRadius: const Radius.circular(4),
         cursorErrorColor: ColorsPalette.of(context).errorColor,
         enableSuggestions: enabled != null ? true : false,
