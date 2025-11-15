@@ -7,16 +7,16 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/modules/Categories/categores_screen.dart';
-import 'package:masrof/modules/Categories/categories_controller.dart';
+import 'package:masrof/modules/Categories/View/categores_screen.dart';
+import 'package:masrof/modules/Categories/Controller/categories_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Income/income_controller.dart';
 import 'package:masrof/modules/Income/income_screen.dart';
 import 'package:masrof/modules/Profile/profile_screen.dart';
 import 'package:masrof/modules/Expenses/expenses_controller.dart';
 import 'package:masrof/modules/Expenses/expenses_screen.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/constants/Strings.dart';
+import 'package:masrof/utilities/extensions.dart';
 import 'package:masrof/widgets/Dialogs/categoty_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/expenses_dialog_detail_widget.dart';
 import 'package:masrof/widgets/Dialogs/income_dialog_detail_widget.dart';
@@ -25,7 +25,7 @@ import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/custom_side_bar_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../utilites/constants/assets.dart';
+import '../../utilities/constants/assets.dart';
 
 class MainLayout extends StatefulWidget {
   final String routeName;

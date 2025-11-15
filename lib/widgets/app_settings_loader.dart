@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:masrof/models/app_setting_model.dart';
-import 'package:masrof/utilites/git_it.dart';
+import 'package:masrof/utilities/git_it.dart';
 
-import '../utilites/constants/assets.dart';
+import '../utilities/constants/assets.dart';
 
 class AppSettingsLoader {
   static Future<void> load() async {

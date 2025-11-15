@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/extensions.dart';
 
 import '../../../../core/theme/color_pallete.dart';
 import '../../../../core/theme/typography.dart';
-import '../../../../utilites/constants/Strings.dart';
-import '../../../../utilites/constants/assets.dart';
-import '../../../../utilites/validator.dart';
+import '../../../../utilities/constants/Strings.dart';
+import '../../../../utilities/constants/assets.dart';
+import '../../../../utilities/validator.dart';
 import '../../../../widgets/custom_text_field_widget.dart';
 import '../../../../widgets/cutom_button_widget.dart';
 import '../auth_controller.dart';

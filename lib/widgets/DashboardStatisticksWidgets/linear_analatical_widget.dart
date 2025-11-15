@@ -5,10 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/models/statistics_model.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../utilites/constants/assets.dart';
+import '../../utilities/constants/assets.dart';
 
 class LinerAnalyticsWidget extends StatefulWidget {
   final bool enableZooming, showMarkers, formatLabelToCurrency;

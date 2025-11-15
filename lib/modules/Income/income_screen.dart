@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/modules/Income/income_controller.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/extensions.dart';
 import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/loading_widget.dart';
 import 'package:masrof/widgets/tables/income_table.dart';
 import 'package:state_extended/state_extended.dart';
 
-import '../../utilites/constants/Strings.dart';
+import '../../utilities/constants/Strings.dart';
 import '../../widgets/custom_drop_down_widget.dart';
 
 class IncomeScreen extends StatefulWidget {

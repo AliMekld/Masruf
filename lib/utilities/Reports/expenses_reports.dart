@@ -1,5 +1,5 @@
 import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/utilites/PDFHelper/pdf_widgets.dart';
+import 'package:masrof/utilities/PDFHelper/pdf_widgets.dart';
 import 'package:masrof/widgets/tables/expense_table.dart';
 import 'package:pdf/widgets.dart';
 

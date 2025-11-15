@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/modules/Home/home_controller.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/extensions.dart';
 import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
 import 'package:state_extended/state_extended.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';

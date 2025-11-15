@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:masrof/utilites/git_it.dart';
+import 'package:masrof/utilities/git_it.dart';
 import '../core/theme/theme_model.dart';
 
 // ignore: unused_import

@@ -4,14 +4,64 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6c43e9-9636-415a-9a6b-db94f91873bf" name="Changes" comment="refactor: use ValueNotifier for sidebar state&#10;&#10;- Replaced `setState` with `ValueNotifier` and `AnimatedBuilder` for managing the sidebar's expanded state.&#10;- This improves performance by rebuilding only the necessary widgets when the state changes.&#10;- Mixed in `SingleTickerProviderStateMixin` to support the animation.&#10;- Removed commented-out theme property and added a TODO for state management.">
-      <change afterPath="$PROJECT_DIR$/lib/core/HiveLocalStorage/hive_constants.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/core/HiveLocalStorage/hive_helper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+    <list default="true" id="5d6c43e9-9636-415a-9a6b-db94f91873bf" name="Changes" comment="add hive package and init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/HiveLocalStorage/hive_constants.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/HiveLocalStorage/hive_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/HiveLocalStorage/hive_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/Language/language_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Language/language_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/theme/theme_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/theme_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/theme/typography.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/typography.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/categores_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/View/categores_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/categories_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/Controller/categories_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/categories_data_hadler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/Model/categories_data_hadler.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Expenses/expenses_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Expenses/expenses_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/l_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/l_home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/m_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/m_home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Home/home_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/home_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Income/income_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Income/income_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/MainLayout/main_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/MainLayout/main_layout.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Profile/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Profile/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/Splash/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Splash/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/l_auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/l_auth_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/m_auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/m_auth_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/s_auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/s_auth_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/widgets/login_part.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/widgets/login_part.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/widgets/register_part.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/widgets/register_part.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modules/auth/forgetPassword/forget_password_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/forgetPassword/forget_password_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/PDFHelper/pdf_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_builder.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/PDFHelper/pdf_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/PDFHelper/pdf_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_widgets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/Reports/expenses_reports.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/Reports/expenses_reports.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/api_end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/api_end_points.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/constants/Strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/Strings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/constants/assets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/assets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/constants/mixins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/mixins.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/extensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/extensions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/git_it.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/git_it.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/router_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/router_config.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/shared_pref.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/shared_pref.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilites/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/validator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/categoty_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/categoty_dialog_detail_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/expenses_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/expenses_dialog_detail_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/income_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/income_dialog_detail_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/settings_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/settings_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/DialogsHelper/dialog_helper_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/DialogsHelper/dialog_helper_mixin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/GenericTable/table_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/GenericTable/table_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/app_settings_loader.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/app_settings_loader.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_date_text_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_date_text_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_drop_down_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_drop_down_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_radio_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_radio_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_side_bar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_side_bar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_field_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_field_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/cutom_button_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/cutom_button_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/loading_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/loading_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/categories_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/categories_table.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/expense_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/expense_table.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/income_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/income_table.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +114,6 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.project.isFirstOpen": "true",
     "io.flutter.reload.alreadyRun": "true",
@@ -73,6 +122,13 @@
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Masruf\lib\modules\Categories\Model" />
+      <recent name="D:\Development\Masruf\lib\modules\Categories\View" />
+      <recent name="D:\Development\Masruf\lib\modules\Categories\Controller" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -95,11 +151,20 @@
       <option name="project" value="LOCAL" />
       <updated>1762294231295</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add hive package and init">
+      <option name="closed" value="true" />
+      <created>1763217603616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763217603616</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: use ValueNotifier for sidebar state&#10;&#10;- Replaced `setState` with `ValueNotifier` and `AnimatedBuilder` for managing the sidebar's expanded state.&#10;- This improves performance by rebuilding only the necessary widgets when the state changes.&#10;- Mixed in `SingleTickerProviderStateMixin` to support the animation.&#10;- Removed commented-out theme property and added a TODO for state management." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: use ValueNotifier for sidebar state&#10;&#10;- Replaced `setState` with `ValueNotifier` and `AnimatedBuilder` for managing the sidebar's expanded state.&#10;- This improves performance by rebuilding only the necessary widgets when the state changes.&#10;- Mixed in `SingleTickerProviderStateMixin` to support the animation.&#10;- Removed commented-out theme property and added a TODO for state management." />
+    <MESSAGE value="add hive package and init" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hive package and init" />
   </component>
 </project>

@@ -1,8 +1,8 @@
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/constants/constants.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/constants/Strings.dart';
+import 'package:masrof/utilities/constants/constants.dart';
+import 'package:masrof/utilities/extensions.dart';
 
 import '../core/Language/app_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../utilites/constants/assets.dart';
+import '../utilities/constants/assets.dart';
 
 ///--------------->DOCUMENTATION----------------------//
 enum ButtonTypes { primary, secondary, outlined, disabled }

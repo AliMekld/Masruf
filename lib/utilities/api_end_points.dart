@@ -1,5 +1,5 @@
 import 'package:masrof/models/app_setting_model.dart';
-import 'package:masrof/utilites/git_it.dart';
+import 'package:masrof/utilities/git_it.dart';
 
 class ApiEndPoint {
   static final AppSettings _appSettings = GitIt.appSettingsGit;
@@ -8,12 +8,12 @@ class ApiEndPoint {
 
   static Uri uri({
     required String path,
-    Map<String, dynamic>? queryParamter,
+    Map<String, dynamic>? queryParameters,
   }) =>
       Uri(
         host: GitIt.appSettingsGit.host,
         scheme: GitIt.appSettingsGit.schema,
         path: path,
-        queryParameters: queryParamter,
+        queryParameters: queryParameters,
       );
 }

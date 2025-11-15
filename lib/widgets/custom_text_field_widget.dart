@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
+import 'package:masrof/utilities/constants/Strings.dart';
 import 'package:provider/provider.dart';
 
 import '../core/Language/language_provider.dart';
-import '../utilites/constants/constants.dart';
+import '../utilities/constants/constants.dart';
 
 enum _DecorationType { focused, error, enabled, disabled, validated }
 

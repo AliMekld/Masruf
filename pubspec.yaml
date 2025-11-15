@@ -94,7 +94,7 @@ flutter:
 # for generating assets
 flutter_assets:
   assets_path: assets/
-  output_path: lib/utilites/constants/
+  output_path: lib/utilities/constants/
   filename: assets.dart
   field_prefix: 
   ignore_comments: true

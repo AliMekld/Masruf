@@ -8,14 +8,14 @@ import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
-import 'package:masrof/utilites/git_it.dart';
-import 'package:masrof/utilites/router_config.dart';
+import 'package:masrof/utilities/git_it.dart';
+import 'package:masrof/utilities/router_config.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:masrof/widgets/app_settings_loader.dart';
 import 'package:provider/provider.dart';
 import 'core/Language/app_localization.dart';
-import 'utilites/PDFHelper/pdf_widgets.dart';
+import 'utilities/PDFHelper/pdf_widgets.dart';
 
 const Size mobileSize = Size(375, 812);
 const Size tabletSize = Size(768, 1024);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/modules/Categories/categores_screen.dart';
+import 'package:masrof/modules/Categories/View/categores_screen.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Income/income_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:masrof/utilites/shared_pref.dart';
+import 'package:masrof/utilities/shared_pref.dart';
 
 extension WidgetExtensions on Widget {
   SliverToBoxAdapter get toSliver => SliverToBoxAdapter(

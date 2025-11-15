@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/models/drop_down_model.dart';
-import 'package:masrof/modules/Categories/categories_data_hadler.dart';
+import 'package:masrof/modules/Categories/Model/categories_data_hadler.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
-import '../../core/LocalDataBase/sql_queries.dart';
+import '../../../core/LocalDataBase/sql_queries.dart';
 
 class CategoriesController extends StateXController {
   ///singleTone

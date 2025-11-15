@@ -5,8 +5,8 @@ import 'package:masrof/core/Language/app_localization.dart';
 import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/theme/theme_provider.dart';
 import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilites/constants/Strings.dart';
-import 'package:masrof/utilites/extensions.dart';
+import 'package:masrof/utilities/constants/Strings.dart';
+import 'package:masrof/utilities/extensions.dart';
 import 'package:masrof/widgets/custom_drop_down_widget.dart';
 import 'package:provider/provider.dart';
 
