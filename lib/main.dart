@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:masrof/core/HiveLocalStorage/hive_helper.dart';
 import 'package:masrof/core/Language/language_provider.dart';
 import 'package:masrof/core/LocalDataBase/database_helper.dart';
 import 'package:masrof/core/theme/color_pallete.dart';
@@ -24,6 +25,7 @@ const Size fullHdDesktopSize = Size(1920, 1024);
 /// todo fix this error  TooltipState is a SingleTickerProviderStateMixin but multiple tickers were created.
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await HiveHelper.init();
 
   /// [initialize_firebase]
   // try {
