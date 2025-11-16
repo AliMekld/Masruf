@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_helper_mixin.dart';
+import 'dialog_helper_mixin.dart';
 
 enum DialogType {
   error,

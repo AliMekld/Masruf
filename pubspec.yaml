@@ -56,6 +56,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   connectivity_plus: ^7.0.0
 
+  flutter_web_plugins: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:masrof/core/theme/theme_model.dart';
-import 'package:masrof/core/theme/theme_provider.dart';
+import 'theme_model.dart';
+import 'theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class ColorsPalette extends ThemeModel {

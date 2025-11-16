@@ -25,6 +25,8 @@ linter:
      prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
      unawaited_futures: true
      avoid_annotating_with_dynamic: true
+     prefer_relative_imports: true
+     await_only_futures: true
 
 
 # Additional information about this file can be found at

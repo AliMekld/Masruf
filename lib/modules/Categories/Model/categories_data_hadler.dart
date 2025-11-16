@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:masrof/core/Api/generic_request.dart';
-import 'package:masrof/core/Api/request_Methods.dart';
-import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
-import 'package:masrof/core/LocalDataBase/sql_queries.dart';
-import 'package:masrof/models/drop_down_model.dart';
-import 'package:masrof/utilities/api_end_points.dart';
+import '../../../core/Api/generic_request.dart';
+import '../../../core/Api/request_Methods.dart';
+import '../../../core/LocalDataBase/generic_local_crud_methods.dart';
+import '../../../core/LocalDataBase/sql_queries.dart';
+import '../../../models/drop_down_model.dart';
+import '../../../utilities/api_end_points.dart';
 
 import '../../../core/Api/Errors/exceptions.dart';
 

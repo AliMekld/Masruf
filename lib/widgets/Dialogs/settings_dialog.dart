@@ -1,13 +1,13 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/Language/language_provider.dart';
-import 'package:masrof/core/theme/theme_provider.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/widgets/custom_drop_down_widget.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/Language/language_provider.dart';
+import '../../core/theme/theme_provider.dart';
+import '../../core/theme/typography.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/extensions.dart';
+import '../custom_drop_down_widget.dart';
 import 'package:provider/provider.dart';
 
 class SettingsDialog extends StatefulWidget {

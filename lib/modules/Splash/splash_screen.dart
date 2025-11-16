@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/constants/constants.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/constants/constants.dart';
+import '../../utilities/extensions.dart';
 
 import '../../utilities/constants/assets.dart';
 import '../Home/home_screen.dart';

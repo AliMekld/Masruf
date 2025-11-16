@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:masrof/core/Api/Errors/error_model.dart';
-import 'package:masrof/core/Api/Errors/exceptions.dart';
+import 'Errors/error_model.dart';
+import 'Errors/exceptions.dart';
 
 import 'request_Methods.dart';
 

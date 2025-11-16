@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/models/statistics_model.dart';
-import 'package:masrof/models/test_statistics_model.dart';
-import 'package:masrof/modules/Home/home_controller.dart';
-import 'package:masrof/modules/Home/home_screen.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/utilities/shared_pref.dart';
-import 'package:masrof/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
-import 'package:masrof/widgets/DashboardStatisticksWidgets/pie_chart_widget.dart';
-import 'package:masrof/widgets/loading_widget.dart';
+import '../../../core/Language/app_localization.dart';
+import '../../../models/statistics_model.dart';
+import '../../../models/test_statistics_model.dart';
+import '../home_controller.dart';
+import '../home_screen.dart';
+import '../../../utilities/constants/Strings.dart';
+import '../../../utilities/extensions.dart';
+import '../../../utilities/shared_pref.dart';
+import '../../../widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart';
+import '../../../widgets/DashboardStatisticksWidgets/pie_chart_widget.dart';
+import '../../../widgets/loading_widget.dart';
 import 'package:state_extended/state_extended.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

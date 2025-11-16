@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
+import '../../core/Language/app_localization.dart';
+import '../constants/Strings.dart';
+import '../../widgets/tables/expense_table.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 

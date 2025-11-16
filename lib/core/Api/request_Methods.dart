@@ -4,8 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:masrof/core/Api/Errors/error_model.dart';
-import 'package:masrof/core/Api/Errors/exceptions.dart';
+import 'Errors/error_model.dart';
+import 'Errors/exceptions.dart';
 
 class RequestMethod {
   final String _method;

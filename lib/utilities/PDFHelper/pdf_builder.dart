@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/utilities/PDFHelper/pdf_widgets.dart';
+import 'pdf_widgets.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';

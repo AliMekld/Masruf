@@ -3,17 +3,17 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/drop_down_model.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/modules/Categories/View/Widgets/categoty_dialog_detail_widget.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
-import 'package:masrof/widgets/GenericTable/table_helper.dart';
-import 'package:masrof/widgets/GenericTable/table_widget.dart';
-import 'package:masrof/models/expense_model.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../models/drop_down_model.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/extensions.dart';
+import '../../modules/Categories/View/Widgets/categoty_dialog_detail_widget.dart';
+import '../DialogsHelper/dialog_widget.dart';
+import '../GenericTable/table_helper.dart';
+import '../GenericTable/table_widget.dart';
+import '../../models/expense_model.dart';
 
 // ignore: must_be_immutable
 class CategoriesTable<T extends DropdownModel> extends StatefulWidget {

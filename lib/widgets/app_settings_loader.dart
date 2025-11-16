@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:masrof/models/app_setting_model.dart';
-import 'package:masrof/utilities/git_it.dart';
+import '../models/app_setting_model.dart';
+import '../utilities/git_it.dart';
 
 import '../utilities/constants/assets.dart';
 

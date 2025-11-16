@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/modules/Categories/View/categories_view.dart';
-import 'package:masrof/modules/Home/home_screen.dart';
-import 'package:masrof/modules/Income/income_screen.dart';
-import 'package:masrof/modules/MainLayout/main_layout.dart';
-import 'package:masrof/modules/Profile/profile_screen.dart';
-import 'package:masrof/modules/Splash/splash_screen.dart';
-import 'package:masrof/modules/Expenses/expenses_screen.dart';
-import 'package:masrof/modules/auth/Auth/auth_screen.dart';
+import '../modules/Categories/View/categories_view.dart';
+import '../modules/Home/home_screen.dart';
+import '../modules/Income/income_screen.dart';
+import '../modules/MainLayout/main_layout.dart';
+import '../modules/Profile/profile_screen.dart';
+import '../modules/Splash/splash_screen.dart';
+import '../modules/Expenses/expenses_screen.dart';
+import '../modules/auth/Auth/auth_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [

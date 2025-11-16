@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:masrof/core/Api/Errors/exceptions.dart';
+import '../../../../core/Api/Errors/exceptions.dart';
 
-import 'package:masrof/models/drop_down_model.dart';
+import '../../../../models/drop_down_model.dart';
 
 import 'categories_repository.dart';
 

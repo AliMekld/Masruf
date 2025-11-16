@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/modules/MainLayout/main_layout.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/constants/constants.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/utilities/shared_pref.dart';
-import 'package:masrof/widgets/Dialogs/settings_dialog.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
+import '../core/Language/app_localization.dart';
+import '../core/theme/color_pallete.dart';
+import '../core/theme/typography.dart';
+import '../modules/MainLayout/main_layout.dart';
+import '../utilities/constants/Strings.dart';
+import '../utilities/constants/constants.dart';
+import '../utilities/extensions.dart';
+import '../utilities/shared_pref.dart';
+import 'Dialogs/settings_dialog.dart';
+import 'DialogsHelper/dialog_widget.dart';
 
 import '../utilities/constants/assets.dart';
 

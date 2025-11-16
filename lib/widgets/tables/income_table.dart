@@ -3,17 +3,17 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/income_model.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/widgets/Dialogs/income_dialog_detail_widget.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
-import 'package:masrof/widgets/GenericTable/table_helper.dart';
-import 'package:masrof/widgets/GenericTable/table_widget.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../models/income_model.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/extensions.dart';
+import '../Dialogs/income_dialog_detail_widget.dart';
+import '../DialogsHelper/dialog_widget.dart';
+import '../GenericTable/table_helper.dart';
+import '../GenericTable/table_widget.dart';
+import 'expense_table.dart';
 
 // ignore: must_be_immutable
 class IncomeTable<T extends IncomeModel> extends StatefulWidget {

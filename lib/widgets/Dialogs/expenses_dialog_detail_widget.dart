@@ -4,20 +4,20 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/drop_down_model.dart';
-import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/modules/Categories/Model/categories_data_hadler.dart';
-import 'package:masrof/modules/Expenses/expenses_data_hadler.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
-import 'package:masrof/widgets/custom_date_text_field.dart';
-import 'package:masrof/widgets/custom_drop_down_widget.dart';
-import 'package:masrof/widgets/custom_text_field_widget.dart';
-import 'package:masrof/widgets/cutom_button_widget.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../models/drop_down_model.dart';
+import '../../models/expense_model.dart';
+import '../../modules/Categories/Model/categories_data_hadler.dart';
+import '../../modules/Expenses/expenses_data_hadler.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/extensions.dart';
+import '../DialogsHelper/dialog_widget.dart';
+import '../custom_date_text_field.dart';
+import '../custom_drop_down_widget.dart';
+import '../custom_text_field_widget.dart';
+import '../cutom_button_widget.dart';
 
 class ExpensesDialogDetailWidget extends StatefulWidget {
   /// todo get this model from local storage and pass only id

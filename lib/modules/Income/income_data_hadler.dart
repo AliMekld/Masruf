@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
-import 'package:masrof/core/LocalDataBase/sql_queries.dart';
-import 'package:masrof/models/income_model.dart';
+import '../../core/LocalDataBase/generic_local_crud_methods.dart';
+import '../../core/LocalDataBase/sql_queries.dart';
+import '../../models/income_model.dart';
 
 class IncomeDataHadler {
   /// get All without Filtering

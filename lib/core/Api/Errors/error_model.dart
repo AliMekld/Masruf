@@ -1,4 +1,4 @@
-import 'package:masrof/core/Api/request_Methods.dart';
+import '../request_Methods.dart';
 
 class ErrorModel {
   final String statusMessage;

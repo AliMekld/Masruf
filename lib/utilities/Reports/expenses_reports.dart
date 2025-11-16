@@ -1,6 +1,6 @@
-import 'package:masrof/models/expense_model.dart';
-import 'package:masrof/utilities/PDFHelper/pdf_widgets.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
+import '../../models/expense_model.dart';
+import '../PDFHelper/pdf_widgets.dart';
+import '../../widgets/tables/expense_table.dart';
 import 'package:pdf/widgets.dart';
 
 class ExpensesReportsBuilder {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/theme_model.dart';
-import 'package:masrof/utilities/shared_pref.dart';
+import 'color_pallete.dart';
+import 'theme_model.dart';
+import '../../utilities/shared_pref.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeModel get appTheme => _appTheme;

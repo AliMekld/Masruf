@@ -1,5 +1,5 @@
-import 'package:masrof/models/app_setting_model.dart';
-import 'package:masrof/utilities/git_it.dart';
+import '../models/app_setting_model.dart';
+import 'git_it.dart';
 
 class ApiEndPoint {
   static final AppSettings _appSettings = GitIt.appSettingsGit;

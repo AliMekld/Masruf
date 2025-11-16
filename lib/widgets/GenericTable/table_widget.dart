@@ -1,8 +1,8 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../utilities/extensions.dart';
 
 ///todo make this widget generic but first lets create normal one
 /// package data_table_2: ^2.5.15

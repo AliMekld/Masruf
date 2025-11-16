@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/modules/Home/ScreenLayouts/m_home_screen.dart';
-import 'package:masrof/modules/Home/ScreenLayouts/s_home_screen.dart';
-import 'package:masrof/utilities/constants/constants.dart';
-import 'package:masrof/utilities/constants/mixins.dart';
+import '../../core/theme/color_pallete.dart';
+import 'ScreenLayouts/m_home_screen.dart';
+import 'ScreenLayouts/s_home_screen.dart';
+import '../../utilities/constants/constants.dart';
+import '../../utilities/constants/mixins.dart';
 import 'ScreenLayouts/l_home_screen.dart';
 
 class HomeScreen extends StatefulWidget {

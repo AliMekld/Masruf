@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
-import 'package:masrof/utilities/shared_pref.dart';
+import '../../utilities/shared_pref.dart';
 import 'package:provider/provider.dart';
 
 ///-> Languages Enum

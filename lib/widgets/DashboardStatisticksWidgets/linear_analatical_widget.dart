@@ -2,10 +2,10 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/statistics_model.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../models/statistics_model.dart';
+import '../../utilities/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../utilities/constants/assets.dart';

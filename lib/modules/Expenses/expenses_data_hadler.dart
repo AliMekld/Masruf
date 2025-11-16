@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
-import 'package:masrof/core/LocalDataBase/sql_queries.dart';
-import 'package:masrof/models/expense_model.dart';
+import '../../core/LocalDataBase/generic_local_crud_methods.dart';
+import '../../core/LocalDataBase/sql_queries.dart';
+import '../../models/expense_model.dart';
 
 class ExpensesDataHadler {
   /// get All without Filtering

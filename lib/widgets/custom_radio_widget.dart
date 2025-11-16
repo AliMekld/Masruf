@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../core/Language/app_localization.dart';
+import '../core/theme/color_pallete.dart';
+import '../core/theme/typography.dart';
+import '../utilities/extensions.dart';
 
 /// single radio value
 class CustomRadioWidget<T> extends StatefulWidget {

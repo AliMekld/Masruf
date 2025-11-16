@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:masrof/models/app_setting_model.dart';
+import '../models/app_setting_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GitIt {

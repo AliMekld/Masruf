@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masrof/modules/auth/Auth/widgets/login_part.dart';
-import 'package:masrof/modules/auth/Auth/widgets/register_part.dart';
-import 'package:masrof/utilities/constants/assets.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../widgets/login_part.dart';
+import '../widgets/register_part.dart';
+import '../../../../utilities/constants/assets.dart';
+import '../../../../utilities/extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:state_extended/state_extended.dart';
 

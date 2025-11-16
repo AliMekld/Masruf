@@ -3,18 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/core/Language/app_localization.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/models/income_model.dart';
-import 'package:masrof/modules/Income/income_data_hadler.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
-import 'package:masrof/widgets/custom_date_text_field.dart';
-import 'package:masrof/widgets/custom_text_field_widget.dart';
-import 'package:masrof/widgets/cutom_button_widget.dart';
-import 'package:masrof/widgets/tables/expense_table.dart';
+import '../../core/Language/app_localization.dart';
+import '../../core/theme/color_pallete.dart';
+import '../../core/theme/typography.dart';
+import '../../models/income_model.dart';
+import '../../modules/Income/income_data_hadler.dart';
+import '../../utilities/constants/Strings.dart';
+import '../../utilities/extensions.dart';
+import '../DialogsHelper/dialog_widget.dart';
+import '../custom_date_text_field.dart';
+import '../custom_text_field_widget.dart';
+import '../cutom_button_widget.dart';
+import '../tables/expense_table.dart';
 
 class IncomeDialogDetailWidget extends StatefulWidget {
   /// todo get this model from local storage and pass only id

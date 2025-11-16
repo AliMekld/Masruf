@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../utilities/extensions.dart';
 
 class LoadingWidget extends StatelessWidget {
   final bool isLoading;

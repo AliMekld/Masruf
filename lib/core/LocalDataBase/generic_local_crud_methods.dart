@@ -1,7 +1,7 @@
 // this class is responsible for creating a generic crud methods on local data base
 // it works now for get / get all
 
-import 'package:masrof/core/LocalDataBase/database_helper.dart';
+import 'database_helper.dart';
 
 class GenericLocalCrudMethods<T> {
   final T Function(Map<String, dynamic>) fromMap;

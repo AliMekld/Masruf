@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:masrof/core/Api/Errors/error_model.dart';
+import 'error_model.dart';
 
 sealed class NetworkFailure implements Exception {
   final ErrorModel model;

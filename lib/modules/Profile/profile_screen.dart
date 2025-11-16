@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../../utilities/extensions.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const String routerName = 'ProfileScreen';

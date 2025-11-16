@@ -4,70 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6c43e9-9636-415a-9a6b-db94f91873bf" name="Changes" comment="solve typo">
-      <change afterPath="$PROJECT_DIR$/lib/core/network_checker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/Categories/Model/Repository/categories_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/modules/Categories/Model/Repository/categories_repository_imp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5d6c43e9-9636-415a-9a6b-db94f91873bf" name="Changes" comment="dart fix">
       <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/Api/generic_request.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Api/generic_request.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/Api/request_Methods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Api/request_Methods.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/Language/app_localization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Language/app_localization.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/Language/language_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Language/language_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/LocalDataBase/database_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/LocalDataBase/database_helper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/LocalDataBase/generic_local_crud_methods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/LocalDataBase/generic_local_crud_methods.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/LocalDataBase/sql_queries.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/LocalDataBase/sql_queries.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/Controller/categories_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/Controller/categories_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/Model/categories_data_hadler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/Model/categories_data_hadler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Categories/View/categores_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/View/categories_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Expenses/expenses_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Expenses/expenses_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Expenses/expenses_data_hadler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Expenses/expenses_data_hadler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/l_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/l_home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/m_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/ScreenLayouts/m_home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Home/home_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/home_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Home/home_dataHandler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Home/home_dataHandler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Income/income_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Income/income_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Income/income_data_hadler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Income/income_data_hadler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/MainLayout/main_layout.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/MainLayout/main_layout.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/Profile/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Profile/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/auth_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/auth_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/l_auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/l_auth_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/m_auth_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/Auth/screen_layouts/m_auth_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/modules/auth/forgetPassword/forget_password_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/auth/forgetPassword/forget_password_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_builder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_builder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/PDFHelper/pdf_widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/Reports/expenses_reports.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/Reports/expenses_reports.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/api_end_points.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/api_end_points.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/constants/Strings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/Strings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/router_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/router_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/shared_pref.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/shared_pref.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/DashboardStatisticksWidgets/linear_analatical_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/categoty_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modules/Categories/View/Widgets/categoty_dialog_detail_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/expenses_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/expenses_dialog_detail_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Dialogs/income_dialog_detail_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Dialogs/income_dialog_detail_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/DialogsHelper/dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/DialogsHelper/dialog_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/GenericTable/table_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/GenericTable/table_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_drop_down_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_drop_down_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_radio_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_radio_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_side_bar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_side_bar_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_field_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_field_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/cutom_button_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/cutom_button_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/categories_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/categories_table.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/expense_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/expense_table.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/tables/income_table.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tables/income_table.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,13 +111,22 @@
       <option name="project" value="LOCAL" />
       <updated>1763218255158</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dart fix">
+      <option name="closed" value="true" />
+      <created>1763334706973</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763334706973</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: use ValueNotifier for sidebar state&#10;&#10;- Replaced `setState` with `ValueNotifier` and `AnimatedBuilder` for managing the sidebar's expanded state.&#10;- This improves performance by rebuilding only the necessary widgets when the state changes.&#10;- Mixed in `SingleTickerProviderStateMixin` to support the animation.&#10;- Removed commented-out theme property and added a TODO for state management." />
     <MESSAGE value="add hive package and init" />
     <MESSAGE value="solve typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve typo" />
+    <MESSAGE value="dart fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="dart fix" />
   </component>
 </project>

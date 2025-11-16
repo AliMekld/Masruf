@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masrof/modules/auth/Auth/auth_controller.dart';
+import 'auth_controller.dart';
 import 'package:state_extended/state_extended.dart';
 import '../../../core/responsive_builder.dart';
 import 'screen_layouts/l_auth_screen.dart';

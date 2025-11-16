@@ -1,8 +1,8 @@
-import 'package:masrof/core/theme/color_pallete.dart';
-import 'package:masrof/core/theme/typography.dart';
-import 'package:masrof/utilities/constants/Strings.dart';
-import 'package:masrof/utilities/constants/constants.dart';
-import 'package:masrof/utilities/extensions.dart';
+import '../core/theme/color_pallete.dart';
+import '../core/theme/typography.dart';
+import '../utilities/constants/Strings.dart';
+import '../utilities/constants/constants.dart';
+import '../utilities/extensions.dart';
 
 import '../core/Language/app_localization.dart';
 import 'package:flutter/material.dart';

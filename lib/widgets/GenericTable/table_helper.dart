@@ -2,7 +2,7 @@
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
+import '../../core/theme/color_pallete.dart';
 
 class TableHelper<T> extends DataTableSource {
   final Function(bool value)? onSelect;

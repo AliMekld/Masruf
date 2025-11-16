@@ -1,6 +1,6 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:masrof/models/statistics_model.dart';
+import 'statistics_model.dart';
 
 part 'test_statistics_model.g.dart';
 

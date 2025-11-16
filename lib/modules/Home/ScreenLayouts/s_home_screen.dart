@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masrof/modules/Home/home_controller.dart';
+import '../home_controller.dart';
 import 'package:state_extended/state_extended.dart';
 
 class SmallHomeScreen extends StatefulWidget {

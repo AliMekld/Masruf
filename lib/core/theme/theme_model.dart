@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:masrof/core/theme/color_pallete.dart';
+import 'color_pallete.dart';
 
 class ThemeModel extends ThemeExtension<ThemeModel> {
   /// get defult theme from device
