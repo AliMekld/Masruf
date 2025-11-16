@@ -58,10 +58,10 @@ class _IncomeDialogDetailWidgetState extends State<IncomeDialogDetailWidget> {
 
   IncomeModel? model;
   setCategoryData(IncomeModel m) {
-    incomeNumberController.text = m.id?.toString() ?? "";
-    incomeNameController.text = m.incomeName ?? "";
-    incomeValueConroller.text = m.incomeValue?.toString() ?? "";
-    incomeDateController.text = m.incomeDate?.dmy ?? "";
+    incomeNumberController.text = m.id?.toString() ?? '';
+    incomeNameController.text = m.incomeName ?? '';
+    incomeValueConroller.text = m.incomeValue?.toString() ?? '';
+    incomeDateController.text = m.incomeDate?.dmy ?? '';
     setState(() {});
   }
 

@@ -78,11 +78,11 @@ class _ExpensesDialogDetailWidgetState
 
   ExpensesModel? model;
   setExpenseData(ExpensesModel m) {
-    expenseNumberController.text = m.id?.toString() ?? "";
-    expenseNameController.text = m.expenseName ?? "";
-    expenseValueController.text = m.expenseValue?.toString() ?? "";
-    expenseDateController.text = m.expenseDate?.toDisplayFormat() ?? "";
-    expenseCategoryConroller.text = m.categoryID?.toString() ?? "";
+    expenseNumberController.text = m.id?.toString() ?? '';
+    expenseNameController.text = m.expenseName ?? '';
+    expenseValueController.text = m.expenseValue?.toString() ?? '';
+    expenseDateController.text = m.expenseDate?.toDisplayFormat() ?? '';
+    expenseCategoryConroller.text = m.categoryID?.toString() ?? '';
     selectedCategory =
         categoryesList.firstWhereOrNull((e) => e.id == model?.categoryID);
     setState(() {});
@@ -164,7 +164,7 @@ class _ExpensesDialogDetailWidgetState
                   },
                   items: categoryesList
                       .map((e) =>
-                          DropdownMenuItem(value: e, child: Text(e.name ?? "")))
+                          DropdownMenuItem(value: e, child: Text(e.name ?? '')))
                       .toList(),
                   selectedItem: selectedCategory,
                   hint: Strings.expenseCategory.tr,

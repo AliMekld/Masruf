@@ -148,7 +148,7 @@ class CustomButtonWidget extends StatelessWidget {
               ).center
             : child ??
                 Text(
-                  buttonTitle ?? "",
+                  buttonTitle ?? '',
                   style: titleStyle ??
                       TextStyleHelper.of(context).titleMedium16M.copyWith(
                           color: buttonTypes == ButtonTypes.outlined

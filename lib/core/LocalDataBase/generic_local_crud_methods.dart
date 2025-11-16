@@ -47,7 +47,7 @@ class GenericLocalCrudMethods<T> {
   Future<List<T>> onSearch({
     required String tableName,
     String? key,
-    dynamic value,
+    required Object? value,
   }) async {
     List<T> tList = [];
     try {

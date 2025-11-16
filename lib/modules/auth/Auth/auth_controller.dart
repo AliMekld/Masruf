@@ -57,13 +57,13 @@ class LoginController extends StateXController {
           password: passwordController.text.trim(),
         );
         if (creadential.user?.email != null) {
-          log(creadential.user?.email?.toString() ?? "no email");
+          log(creadential.user?.email?.toString() ?? 'no email');
         }
         if (context.mounted) {
           context.goNamed(HomeScreen.routerName);
         }
       } catch (e, stacktrace) {
-        log("${e.toString()} stacktrace $stacktrace");
+        log('${e.toString()} stacktrace $stacktrace');
         authMessage = e.toString();
         if (context.mounted) {
           DialogHelper.error(
@@ -84,12 +84,12 @@ class LoginController extends StateXController {
         );
         // log("From Success ${credential.user?.email} ");
       } catch (e) {
-        log("From TypeError ");
+        log('From TypeError ');
         // authMessage = e;
         // log(authMessage);\
         if (context.mounted) {
           DialogHelper.error(
-            message: "Type Error:  ${e.toString()}",
+            message: 'Type Error:  ${e.toString()}',
           ).showDialog(context);
         }
       }

@@ -15,6 +15,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:masrof/widgets/app_settings_loader.dart';
 import 'package:provider/provider.dart';
 import 'core/Language/app_localization.dart';
+import 'core/network_checker.dart';
 import 'utilities/PDFHelper/pdf_widgets.dart';
 
 const Size mobileSize = Size(375, 812);
@@ -59,6 +60,7 @@ void main(List<String> args) async {
         /// [initialize_providers]
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
+        ChangeNotifierProvider(create: (context) => NetworkCheckerProvider()),
       ],
       child: const EntryPoint(),
     ),
@@ -78,16 +80,16 @@ class EntryPoint extends StatelessWidget {
     lang.fetchLocale();
     theme.fetchTheme();
 
-    return LayoutBuilder(builder: (context, constaints) {
+    return LayoutBuilder(builder: (context, constraints) {
       /// [RESPONSIVE_DESIGN_CONFIGURATION]
       Size? appSize;
-      if (constaints.maxWidth >= 1024) {
-        if (constaints.maxWidth > 1440) {
+      if (constraints.maxWidth >= 1024) {
+        if (constraints.maxWidth > 1440) {
           appSize = fullHdDesktopSize;
         } else {
           appSize = desktopSize;
         }
-      } else if (constaints.maxWidth >= 600) {
+      } else if (constraints.maxWidth >= 600) {
         appSize = tabletSize;
       } else {
         appSize = mobileSize;
@@ -103,7 +105,7 @@ class EntryPoint extends StatelessWidget {
               cardColor: ColorsPalette.of(context).secondaryColor,
               scaffoldBackgroundColor:
                   ColorsPalette.of(context).backgroundColor,
-              /*dialogBackgroundColor: ColorsPalette.of(context).backgroundColor*/),
+          ),
 
           ///[OTHER_CONFIGURATION]
           debugShowCheckedModeBanner: false,

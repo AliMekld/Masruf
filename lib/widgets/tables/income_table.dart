@@ -39,7 +39,7 @@ class _IncomeTableState<T extends IncomeModel> extends State<IncomeTable<T>> {
   /// a columns List
   List<CustomDataColumn> getCulumnsList(BuildContext context) => [
         CustomDataColumn(
-          title: AppLocalizations.of(context)?.translate(Strings.id) ?? "",
+          title: AppLocalizations.of(context)?.translate(Strings.id) ?? '',
           columnSize: ColumnSize.S,
           numeric: true,
           onSort: (index, asend) {
@@ -103,27 +103,27 @@ class _IncomeTableState<T extends IncomeModel> extends State<IncomeTable<T>> {
     return [
       DataCell(
         Text(
-          "${incomeModel.id?.toString().trim()}",
+          '${incomeModel.id?.toString().trim()}',
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),
       ),
       DataCell(
-        Text(incomeModel.incomeName ?? "",
+        Text(incomeModel.incomeName ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
         Text(
-          incomeModel.incomeValue?.toString() ?? "",
+          incomeModel.incomeValue?.toString() ?? '',
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),
       ),
       DataCell(
         Text(
-          incomeModel.incomeDate?.dmy ?? "",
+          incomeModel.incomeDate?.dmy ?? '',
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),

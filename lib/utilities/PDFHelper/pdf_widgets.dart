@@ -51,7 +51,7 @@ class PdfWidgets {
           textDirection: TextDirection.rtl,
         ),
         Text(
-          "تقرير المصروفات",
+          'تقرير المصروفات',
           style: PDFConfig.k16TextStyle.copyWith(fontSize: 12),
           textDirection: TextDirection.rtl,
         ),
@@ -77,7 +77,7 @@ class PdfWidgets {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           ...list.map((e) => Text(
-                e.title ?? "-",
+                e.title ?? '-',
                 style: PDFConfig.k16TextStyle,
                 textDirection: e.textDirection ?? TextDirection.rtl,
                 textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class PdfWidgets {
     return Row(children: [
       ...items.map(
         (e) => Text(
-          e.title ?? "",
+          e.title ?? '',
           style: e.textStyle ?? PDFConfig.k16TextStyle,
           textDirection: e.textDirection ?? TextDirection.rtl,
           textAlign: e.textAlign ?? TextAlign.center,
@@ -103,7 +103,7 @@ class PdfWidgets {
     return Row(children: [
       Divider().expand,
       Text(
-        " ( page - 1 ) ",
+        ' ( page - 1 ) ',
         style: PDFConfig.k16TextStyle,
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,

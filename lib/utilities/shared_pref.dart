@@ -11,11 +11,11 @@ class SharedPref {
   static SharedPreferences get prefs => GitIt.instance.get<SharedPreferences>();
 
   ///=======================>  K E Y S  <=================================//
-  static const String _languageCode = "language_code";
-  static const String _appTheme = "appTheme";
-  static const String _isFirstTimeOpenApp = "isFirstTimeOpenApp";
-  static const String _isLogin = "isLogin";
-  static const String _isSideBarExpanded = "isSideBarExpanded";
+  static const String _languageCode = 'language_code';
+  static const String _appTheme = 'appTheme';
+  static const String _isFirstTimeOpenApp = 'isFirstTimeOpenApp';
+  static const String _isLogin = 'isLogin';
+  static const String _isSideBarExpanded = 'isSideBarExpanded';
 
   ///=====================> M E T H O D S <=================================//
   ///SET LANGUAGE
@@ -24,7 +24,7 @@ class SharedPref {
   }
 
   ///GET LANGUAGE
-  static String? getLanguage() => prefs.getString(_languageCode) ?? "";
+  static String? getLanguage() => prefs.getString(_languageCode) ?? '';
 
   ///SET THEME
   static void setTheme({required ThemeModel theme}) {
@@ -35,7 +35,7 @@ class SharedPref {
   static ThemeModel? getTheme() {
     String? encodedString = prefs.getString(_appTheme);
     if (encodedString != null && (encodedString.isNotEmpty)) {
-      Map<String, dynamic> json = jsonDecode(prefs.getString(_appTheme) ?? "");
+      Map<String, dynamic> json = jsonDecode(prefs.getString(_appTheme) ?? '');
       return ThemeModel.fromJson(json);
     } else {
       return null;

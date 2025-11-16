@@ -9,7 +9,7 @@ bool isArabic(BuildContext context) =>
     AppLocalizations.of(context)?.locale == Locale(Languages.ar.name);
 
 extension Translate on String {
-  String get tr => AppLocalizations.instance.translate(this) ?? "";
+  String get tr => AppLocalizations.instance.translate(this) ?? '';
 }
 
 class AppLocalizations {
@@ -17,7 +17,7 @@ class AppLocalizations {
 
   AppLocalizations(this.locale);
 
-  // Helper method to keep the code in the widgets concise
+  // Helper method to keep the code in the Widgets concise
   // Localizations are accessed using an InheritedWidget "of" syntax
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);

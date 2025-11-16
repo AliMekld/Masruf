@@ -21,7 +21,7 @@ class CategoriesController extends StateXController {
 
     int response = await databaseHelper.deleteFrom(
       tableName: SqlQueries.categoriesTable,
-      whereKey: "id",
+      whereKey: 'id',
       whereValue: id,
     );
     if (response != 0) {
@@ -51,8 +51,8 @@ class CategoriesController extends StateXController {
       setState(() => loading = true);
 
       int response = await databaseHelper.update(
-        whereKey: "id",
-        whereValue: "${model.id!}",
+        whereKey: 'id',
+        whereValue: '${model.id!}',
         model: model.toJson(),
         tableName: SqlQueries.categoriesTable,
       );
@@ -95,7 +95,7 @@ class CategoriesController extends StateXController {
   /// onsearch
   Future getFilteredTableList(
     BuildContext context,
-    dynamic value,
+    Object? value,
   ) async {
     setState(() => loading = true);
 
@@ -117,9 +117,9 @@ class CategoriesController extends StateXController {
 }
 
 enum CategoresKeyType {
-  id(keyName: "id"),
-  name(keyName: "name"),
-  eName(keyName: "eName");
+  id(keyName: 'id'),
+  name(keyName: 'name'),
+  eName(keyName: 'eName');
 
   final String keyName;
 

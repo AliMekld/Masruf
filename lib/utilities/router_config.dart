@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:masrof/modules/Categories/View/categores_screen.dart';
+import 'package:masrof/modules/Categories/View/categories_view.dart';
 import 'package:masrof/modules/Home/home_screen.dart';
 import 'package:masrof/modules/Income/income_screen.dart';
 import 'package:masrof/modules/MainLayout/main_layout.dart';
@@ -48,7 +48,7 @@ final GoRouter _router = GoRouter(
       routes: [
         ///==============>> [Home]
         GoRoute(
-          path: "/${HomeScreen.routerName}",
+          path: '/${HomeScreen.routerName}',
           name: HomeScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,
@@ -59,7 +59,7 @@ final GoRouter _router = GoRouter(
 
         ///==============>> [Wallet]
         GoRoute(
-          path: "/${ExpensesScreen.routerName}",
+          path: '/${ExpensesScreen.routerName}',
           name: ExpensesScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,
@@ -70,7 +70,7 @@ final GoRouter _router = GoRouter(
 
         ///==============>> [Profile]
         GoRoute(
-          path: "/${ProfileScreen.routerName}",
+          path: '/${ProfileScreen.routerName}',
           name: ProfileScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,
@@ -81,7 +81,7 @@ final GoRouter _router = GoRouter(
 
         ///==============>> [categores_Screen]
         GoRoute(
-          path: "/${CategoriesScreen.routerName}",
+          path: '/${CategoriesScreen.routerName}',
           name: CategoriesScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,
@@ -92,7 +92,7 @@ final GoRouter _router = GoRouter(
 
         ///==============>> [Income_Screen]
         GoRoute(
-          path: "/${IncomeScreen.routerName}",
+          path: '/${IncomeScreen.routerName}',
           name: IncomeScreen.routerName,
           pageBuilder: (context, state) => _buildPageWithDefaultTransition(
             context: context,

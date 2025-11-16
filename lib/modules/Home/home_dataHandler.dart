@@ -1,4 +1,5 @@
-// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:dartz/dartz.dart';
 import 'package:masrof/core/LocalDataBase/generic_local_crud_methods.dart';
 import 'package:masrof/core/LocalDataBase/sql_queries.dart';

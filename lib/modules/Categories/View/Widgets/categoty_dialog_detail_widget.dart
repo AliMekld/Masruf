@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +14,6 @@ import 'package:masrof/widgets/custom_text_field_widget.dart';
 import 'package:masrof/widgets/cutom_button_widget.dart';
 
 class CategoryDialogDetailWidget extends StatefulWidget {
-  /// todo get this model from local storage and pass only id
   final int? id;
   final Function(DropdownModel) onEditCategory;
   const CategoryDialogDetailWidget({
@@ -33,14 +31,14 @@ class _CategoryDialogDetailWidgetState
     extends State<CategoryDialogDetailWidget> {
   late TextEditingController categoryNumberController,
       categoryNameController,
-      categoryEnameConroller;
+      categoryENameController;
 
   @override
   void initState() {
     super.initState();
     categoryNumberController = TextEditingController();
     categoryNameController = TextEditingController();
-    categoryEnameConroller = TextEditingController();
+    categoryENameController = TextEditingController();
     Future.microtask(() async => await getCategoryById());
   }
 
@@ -55,13 +53,11 @@ class _CategoryDialogDetailWidgetState
     });
     setState(() {});
   }
-  // on SearchItem
-
   DropdownModel? model;
-  setCategoryData(DropdownModel m) {
-    categoryNumberController.text = m.id?.toString() ?? "";
-    categoryNameController.text = m.name ?? "";
-    categoryEnameConroller.text = m.eName ?? "";
+  void setCategoryData(DropdownModel m) {
+    categoryNumberController.text = m.id?.toString() ?? '';
+    categoryNameController.text = m.name ?? '';
+    categoryENameController.text = m.eName ?? '';
     setState(() {});
   }
 
@@ -70,7 +66,7 @@ class _CategoryDialogDetailWidgetState
     super.dispose();
     categoryNumberController.dispose();
     categoryNameController.dispose();
-    categoryEnameConroller.dispose();
+    categoryENameController.dispose();
   }
 
   @override
@@ -83,7 +79,6 @@ class _CategoryDialogDetailWidgetState
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // alignment: AlignmentDirectional.topStart,
             children: [
               Text(
                 Strings.categoryData.tr,
@@ -124,7 +119,7 @@ class _CategoryDialogDetailWidgetState
                 ),
                 CustomTextFieldWidget(
                   width: 400.w,
-                  controller: categoryEnameConroller,
+                  controller: categoryENameController,
                   lableText: Strings.eName.tr,
                 ),
               ],
@@ -139,7 +134,7 @@ class _CategoryDialogDetailWidgetState
               model = model?.copyWith(
                 id: int.tryParse(categoryNumberController.text),
                 name: categoryNameController.text,
-                eName: categoryEnameConroller.text,
+                eName: categoryENameController.text,
                 // id:
               );
               widget.onEditCategory(model!);

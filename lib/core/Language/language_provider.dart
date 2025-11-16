@@ -21,12 +21,12 @@ class LanguageProvider extends ChangeNotifier {
   ///-> FETCH LOCAL
   ///-> 1 FROM DEVICE IF NULL ?? FROM INITIAL VALUE [Languages.ar]
   fetchLocale() {
-    String sharedLocal = SharedPref.getLanguage() ?? "";
+    String sharedLocal = SharedPref.getLanguage() ?? '';
 
     ///-> CHECK IF SHARED PREFS HASN'T A LANG VALUE
     if (sharedLocal.isEmpty) {
       //Fetch From Device First
-      _appLanguage = const Locale("ar");
+      _appLanguage = const Locale('ar');
     } else {
       _appLanguage = Locale(sharedLocal);
     }

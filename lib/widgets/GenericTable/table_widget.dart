@@ -40,7 +40,7 @@ class _GenericTableWidgetState extends State<GenericTableWidget> {
         showHeadingCheckBox: widget.onSelectAll != null,
         columnSpacing: 4,
         empty: Text(
-          "Empty!",
+          'Empty!',
           style: TextStyleHelper.of(context).bodyLarge16R,
         ),
         onSelectAll: widget.onSelectAll,

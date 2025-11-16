@@ -82,7 +82,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> with Single
           ),
           16.0.heightBox,
           Text(
-            isArabic(context) ? "علي مقلد" : "Ali Mekld",
+            isArabic(context) ? 'علي مقلد' : 'Ali Mekld',
             style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
               fontFamily: Constants.notoSansKoufyFontFamily,
               fontSize: (isExpanded.value ? 16 : 12).sp,

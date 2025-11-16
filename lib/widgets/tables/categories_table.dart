@@ -9,7 +9,7 @@ import 'package:masrof/core/theme/typography.dart';
 import 'package:masrof/models/drop_down_model.dart';
 import 'package:masrof/utilities/constants/Strings.dart';
 import 'package:masrof/utilities/extensions.dart';
-import 'package:masrof/widgets/Dialogs/categoty_dialog_detail_widget.dart';
+import 'package:masrof/modules/Categories/View/Widgets/categoty_dialog_detail_widget.dart';
 import 'package:masrof/widgets/DialogsHelper/dialog_widget.dart';
 import 'package:masrof/widgets/GenericTable/table_helper.dart';
 import 'package:masrof/widgets/GenericTable/table_widget.dart';
@@ -40,7 +40,7 @@ class _CategoriesTableState<T extends DropdownModel>
   /// a columns List
   List<CustomDataColumn> getCulumnsList(BuildContext context) => [
         CustomDataColumn(
-          title: AppLocalizations.of(context)?.translate(Strings.id) ?? "",
+          title: AppLocalizations.of(context)?.translate(Strings.id) ?? '',
           columnSize: ColumnSize.S,
           numeric: true,
           onSort: (index, asend) {
@@ -100,19 +100,19 @@ class _CategoriesTableState<T extends DropdownModel>
     return [
       DataCell(
         Text(
-          "${expenseModel.id?.toString().trim()}",
+          '${expenseModel.id?.toString().trim()}',
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.name ?? "",
+        Text(expenseModel.name ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.eName ?? "",
+        Text(expenseModel.eName ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),

@@ -1,6 +1,4 @@
-import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:masrof/core/LocalDataBase/sql_queries.dart';
@@ -18,7 +16,7 @@ class DatabaseHelper {
   factory DatabaseHelper() => _this;
 
   ///=======================[constants]============================================//
-  static const String _databaseName = "masruf.db";
+  static const String _databaseName = 'masruf.db';
 
   static const int _version = 1;
   bool get isWidowsOrLinux => Platform.isWindows || Platform.isLinux;
@@ -53,8 +51,6 @@ class DatabaseHelper {
       String dataBasePath = await getDatabasesPath();
 
       String path = join(dataBasePath, _databaseName);
-      debugPrint(
-          "$database : Created SuccessFully version $_version android or ios  $isWidowsOrLinux");
       return await openDatabase(
         version: _version,
         path,
@@ -95,19 +91,18 @@ class DatabaseHelper {
           await txn.execute(
               SqlQueries.createTriggerAfterInsertIncome(CrudType.delete));
         } catch (e) {
-          debugPrint("Error creating database: $e");
+          debugPrint('Error creating database: $e');
           rethrow; // Re-throw the error to roll back the transaction
         }
       },
     );
-    debugPrint("$database : Created SuccessFully version $version");
+    debugPrint('$database : Created SuccessFully version $version');
   }
 
   ///===============>> delete Database
   Future onDeleteeDataBase() async {
     if (_database != null && _database!.isOpen) await _database!.close();
     await deleteDatabase(_database!.path);
-    log("$database delete");
   }
 
   ///===============>> Close Database
@@ -210,7 +205,7 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> onFilterList({
     required String tableName,
     String? whereKey,
-    dynamic whereValue,
+    required Object? whereValue,
   }) async {
     List<Map<String, dynamic>> list;
     try {

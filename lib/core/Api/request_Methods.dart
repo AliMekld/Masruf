@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
@@ -15,7 +17,7 @@ class RequestMethod {
   /// http methods [CRUD]
   RequestMethod.get({
     required String url,
-  })  : _method = "GET",
+  })  : _method = 'GET',
         body = null,
         bodyJson = null,
         files = const [],
@@ -24,7 +26,7 @@ class RequestMethod {
 
   RequestMethod.getUri({
     required this.uri,
-  })  : _method = "GET",
+  })  : _method = 'GET',
         body = null,
         bodyJson = null,
         files = const [],
@@ -37,7 +39,7 @@ class RequestMethod {
   })  : headers = {},
         bodyJson = null,
         uri = Uri.parse(url),
-        _method = "POST";
+        _method = 'POST';
 
   RequestMethod.postUri({
     required this.body,
@@ -45,7 +47,7 @@ class RequestMethod {
     required this.uri,
   })  : headers = {},
         bodyJson = null,
-        _method = "POST";
+        _method = 'POST';
 
   RequestMethod.postJson({
     required this.bodyJson,
@@ -54,7 +56,7 @@ class RequestMethod {
         body = null,
         files = const [],
         uri = Uri.parse(url),
-        _method = "POST";
+        _method = 'POST';
 
   RequestMethod.postJsonUri({
     required this.bodyJson,
@@ -62,7 +64,7 @@ class RequestMethod {
   })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
-        _method = "POST";
+        _method = 'POST';
 
   RequestMethod.put({
     required this.body,
@@ -71,7 +73,7 @@ class RequestMethod {
   })  : headers = {},
         bodyJson = null,
         uri = Uri.parse(url),
-        _method = "PUT";
+        _method = 'PUT';
 
   RequestMethod.putUri({
     required this.body,
@@ -79,7 +81,7 @@ class RequestMethod {
     required this.uri,
   })  : headers = {},
         bodyJson = null,
-        _method = "PUT";
+        _method = 'PUT';
 
   RequestMethod.putJson({
     required this.bodyJson,
@@ -88,7 +90,7 @@ class RequestMethod {
         body = null,
         files = const [],
         uri = Uri.parse(url),
-        _method = "PUT";
+        _method = 'PUT';
 
   RequestMethod.putJsonUri({
     required this.bodyJson,
@@ -96,7 +98,7 @@ class RequestMethod {
   })  : headers = {'Content-Type': 'application/json'},
         body = null,
         files = const [],
-        _method = "PUT";
+        _method = 'PUT';
 
   RequestMethod.delete({
     this.body,
@@ -105,7 +107,7 @@ class RequestMethod {
         bodyJson = null,
         files = const [],
         uri = Uri.parse(url),
-        _method = "DELETE";
+        _method = 'DELETE';
 
   RequestMethod.deleteUri({
     this.body,
@@ -113,7 +115,7 @@ class RequestMethod {
   })  : headers = {'Content-Type': 'application/json'},
         files = const [],
         bodyJson = null,
-        _method = "DELETE";
+        _method = 'DELETE';
 
   RequestMethod.patch({
     required this.bodyJson,
@@ -122,7 +124,7 @@ class RequestMethod {
         files = const [],
         body = null,
         uri = Uri.parse(url),
-        _method = "PATCH";
+        _method = 'PATCH';
 
   Future<dynamic> request() async {
     final requst = MultipartRequest(_method, uri);
@@ -297,17 +299,17 @@ void printApi(
     Map<String, dynamic> jsonPrint = {
       'Url': request.url.toString(),
       'Method': request.method,
-      'RequestBody': method.body ?? method.bodyJson ?? "",
+      'RequestBody': method.body ?? method.bodyJson ?? '',
       'StatusCode': response.statusCode,
       'Message': response.reasonPhrase,
       'ResponseBody':
-          const JsonEncoder.withIndent(" ").convert(decoded).toString()
+          const JsonEncoder.withIndent(' ').convert(decoded).toString()
     };
 
     String beutifiedString =
-        const JsonEncoder.withIndent(" ").convert(jsonPrint);
+        const JsonEncoder.withIndent(' ').convert(jsonPrint);
     debugPrint(beutifiedString);
   } catch (e) {
-    debugPrint("error in printing ${e.toString()}");
+    debugPrint('error in printing ${e.toString()}');
   }
 }

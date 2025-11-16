@@ -2,11 +2,11 @@ class SqlQueries {
   SqlQueries._();
 
   ///=============================[queries]====================================
-  static const String expensesTable = "expensesTable";
-  static const String categoriesTable = "categoryTable";
-  static const String incomeTable = "incomeTable";
+  static const String expensesTable = 'expensesTable';
+  static const String categoriesTable = 'categoryTable';
+  static const String incomeTable = 'incomeTable';
   // static const String statisticsDetail = "statisticsDetail";
-  static const String statisticsTable = "statisticsTable";
+  static const String statisticsTable = 'statisticsTable';
 
   ///==========>> CREATE EXPENSES TABLE <<================
   static String get createExpensesTable {
@@ -101,9 +101,9 @@ END;
 }
 
 enum CrudType {
-  insert("INSERT"),
-  update("UPDATE"),
-  delete("DELETE");
+  insert('INSERT'),
+  update('UPDATE'),
+  delete('DELETE');
 
   final String crudName;
 

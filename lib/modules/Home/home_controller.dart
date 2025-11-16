@@ -17,11 +17,11 @@ class HomeController extends StateXController {
     final result = await HomeDataHandler.getStatisticsData();
     result.fold(
       (l) {
-        debugPrint("from handle error in conroller $l ");
+        debugPrint('from handle error in conroller $l ');
       },
       (r) {
         statisticsModel = r;
-        debugPrint("${r.toJson()}");
+        debugPrint('${r.toJson()}');
       },
     );
     setState(() {});

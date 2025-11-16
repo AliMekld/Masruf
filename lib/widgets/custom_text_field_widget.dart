@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import '../core/Language/language_provider.dart';
 import '../utilities/constants/constants.dart';
 
-enum _DecorationType { focused, error, enabled, disabled, validated }
+enum DecorationType { focused, error, enabled, disabled, validated }
 
 class CustomTextFieldWidget extends StatelessWidget {
   static List<TextInputFormatter> get decimalFormatters =>
@@ -72,34 +72,34 @@ class CustomTextFieldWidget extends StatelessWidget {
   });
 
   OutlineInputBorder getInputDecoration(
-      {required _DecorationType type, required BuildContext context}) {
+      {required DecorationType type, required BuildContext context}) {
     switch (type) {
-      case _DecorationType.focused:
+      case DecorationType.focused:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
                 color:
                     ColorsPalette.of(context).primaryTextColor .withValues(alpha:0.5),
                 width: 1.5));
-      case _DecorationType.error:
+      case DecorationType.error:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
               color: ColorsPalette.of(context).errorColor,
             ));
-      case _DecorationType.enabled:
+      case DecorationType.enabled:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
               color: ColorsPalette.of(context).iconColor,
             ));
-      case _DecorationType.disabled:
+      case DecorationType.disabled:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
               color: ColorsPalette.of(context).buttonDisabledColor,
             ));
-      case _DecorationType.validated:
+      case DecorationType.validated:
         return OutlineInputBorder(
             borderRadius: Constants.kBorderRaduis16,
             borderSide: BorderSide(
@@ -109,16 +109,16 @@ class CustomTextFieldWidget extends StatelessWidget {
   }
 
   // ignore: library_private_types_in_public_api
-  Color getHintColor({_DecorationType? type, required BuildContext context}) {
+  Color getHintColor({DecorationType? type, required BuildContext context}) {
     //NOT WORKING
     switch (type) {
-      case _DecorationType.error:
+      case DecorationType.error:
         return ColorsPalette.of(context).errorColor;
-      case _DecorationType.focused:
-      case _DecorationType.validated:
-      case _DecorationType.enabled:
+      case DecorationType.focused:
+      case DecorationType.validated:
+      case DecorationType.enabled:
         return ColorsPalette.of(context).primaryTextColor;
-      case _DecorationType.disabled:
+      case DecorationType.disabled:
         return ColorsPalette.of(context).secondaryTextColor;
       case null:
         return ColorsPalette.of(context).primaryTextColor;
@@ -132,10 +132,10 @@ class CustomTextFieldWidget extends StatelessWidget {
         errorStyle: TextStyle(fontSize: 16.sp, height: 0),
         labelStyle: TextStyleHelper.of(context).titleMedium16M,
         enabled: enabled ?? true,
-        hintText: hintText ?? "",
+        hintText: hintText ?? '',
         alignLabelWithHint: true,
         floatingLabelAlignment: FloatingLabelAlignment.start,
-        labelText: lableText ?? "",
+        labelText: lableText ?? '',
         suffixIcon: GestureDetector(
           onTap: onSuffixTap,
           child: suffix ?? const SizedBox(),
@@ -145,15 +145,15 @@ class CustomTextFieldWidget extends StatelessWidget {
         // suffixIconConstraints: const BoxConstraints(
         //     maxHeight: 32, maxWidth: 48, minHeight: 32, minWidth: 32),
         border:
-            getInputDecoration(type: _DecorationType.enabled, context: context),
+            getInputDecoration(type: DecorationType.enabled, context: context),
         enabledBorder:
-            getInputDecoration(type: _DecorationType.enabled, context: context),
+            getInputDecoration(type: DecorationType.enabled, context: context),
         errorBorder:
-            getInputDecoration(type: _DecorationType.error, context: context),
+            getInputDecoration(type: DecorationType.error, context: context),
         focusedBorder:
-            getInputDecoration(type: _DecorationType.focused, context: context),
+            getInputDecoration(type: DecorationType.focused, context: context),
         disabledBorder: getInputDecoration(
-            type: _DecorationType.disabled, context: context),
+            type: DecorationType.disabled, context: context),
       );
 
   @override
@@ -171,7 +171,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         validator: validator,
         textInputAction: textInputAction ?? TextInputAction.next,
         textDirection:
-            Provider.of<LanguageProvider>(context).appLang.languageCode == "ar"
+            Provider.of<LanguageProvider>(context).appLang.languageCode == 'ar'
                 ? TextDirection.rtl
                 : TextDirection.ltr,
         showCursor: true,
@@ -181,7 +181,7 @@ class CustomTextFieldWidget extends StatelessWidget {
           FocusScope.of(context).unfocus();
         },
         onTap: onTap,
-        restorationId: "--",
+        restorationId: '--',
         onSaved: onSaved,
         autocorrect: true,
         onFieldSubmitted: onFieldSubmitted ?? onSaved,

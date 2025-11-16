@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:masrof/core/Api/Errors/error_model.dart';
 import 'package:masrof/core/Api/Errors/exceptions.dart';
 
@@ -36,7 +38,7 @@ class GenericRequest<T> {
       throw DecodingException(ErrorModel(
           statusCode: 520,
           message:
-              "data is not compitable with the expected data ${T.runtimeType}"));
+              'data is not compitable with the expected data ${T.runtimeType}'));
     }
   }
 

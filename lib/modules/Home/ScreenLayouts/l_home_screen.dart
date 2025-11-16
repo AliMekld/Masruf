@@ -32,12 +32,12 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() async {
-      Future.wait([
-        con.getStatistics(),
-        if (mounted) con.getExpensesTableList(context),
-      ]);
-    });
+  WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
+    await Future.wait([
+      con.getStatistics(),
+      if (mounted) con.getExpensesTableList(context),
+    ]);
+  });
   }
 
   @override

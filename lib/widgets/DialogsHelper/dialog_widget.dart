@@ -59,7 +59,7 @@ class DialogHelper with DialogsMixin {
     this.onConfirm,
     required this.child,
   })  : type = DialogType.custom,
-        message = "";
+        message = '';
 
   Dialog _getDialogByType(BuildContext context) {
     switch (type) {
@@ -78,7 +78,7 @@ class DialogHelper with DialogsMixin {
         return dialogFrame(
   
           context: context,
-          message: "",
+          message: '',
           child: child,
           width: width,
           height: height,
@@ -91,7 +91,7 @@ class DialogHelper with DialogsMixin {
         useRootNavigator: false,
         barrierColor: Colors.transparent,
         barrierDismissible: true,
-        barrierLabel: "dd",
+        barrierLabel: 'dd',
         useSafeArea: true,
         context: context,
         builder: (context) {

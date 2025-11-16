@@ -4,7 +4,7 @@ import 'package:masrof/utilities/git_it.dart';
 class ApiEndPoint {
   static final AppSettings _appSettings = GitIt.appSettingsGit;
   static String get _baseUrl => _appSettings.baseUrl;
-  static String get products => "$_baseUrl/products";
+  static String get products => '$_baseUrl/products';
 
   static Uri uri({
     required String path,

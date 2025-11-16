@@ -33,6 +33,7 @@ class _CustomRadioWidgetState<T> extends State<CustomRadioWidget> {
       textDirection: isArabic(context) ? TextDirection.rtl : TextDirection.ltr,
       children: [
         Text(
+          // ignore: prefer_single_quotes
           widget.title ?? "",
           style: TextStyleHelper.of(context).bodyMedium14R,
         ),

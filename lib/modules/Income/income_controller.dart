@@ -21,7 +21,7 @@ class IncomeController extends StateXController {
 
     int response = await databaseHelper.deleteFrom(
       tableName: SqlQueries.incomeTable,
-      whereKey: "id",
+      whereKey: 'id',
       whereValue: id,
     );
     if (response != 0) {
@@ -51,8 +51,8 @@ class IncomeController extends StateXController {
       setState(() => loading = true);
 
       int response = await databaseHelper.update(
-        whereKey: "id",
-        whereValue: "${model.id!}",
+        whereKey: 'id',
+        whereValue: '${model.id!}',
         model: model.toJson(),
         tableName: SqlQueries.incomeTable,
       );
@@ -94,7 +94,7 @@ class IncomeController extends StateXController {
   /// onsearch
   Future getFilteredTableList(
     BuildContext context,
-    dynamic value,
+    Object? value,
   ) async {
     setState(() => loading = true);
 
@@ -116,10 +116,10 @@ class IncomeController extends StateXController {
 }
 
 enum IncomeKeyType {
-  id(keyName: "id"),
-  incomeName(keyName: "incomeName"),
-  incomeDate(keyName: "incomeDate"),
-  incomeValue(keyName: "incomeValue");
+  id(keyName: 'id'),
+  incomeName(keyName: 'incomeName'),
+  incomeDate(keyName: 'incomeDate'),
+  incomeValue(keyName: 'incomeValue');
 
   final String keyName;
 

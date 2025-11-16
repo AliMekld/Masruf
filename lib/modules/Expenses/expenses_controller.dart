@@ -20,7 +20,7 @@ class ExpensesController extends StateXController {
     DatabaseHelper databaseHelper = DatabaseHelper();
 
     int response = await databaseHelper.deleteFrom(
-        tableName: SqlQueries.expensesTable, whereKey: "id", whereValue: id);
+        tableName: SqlQueries.expensesTable, whereKey: 'id', whereValue: id);
     if (response != 0) {
       tableList.removeWhere((e) => e.id == id);
     }
@@ -47,8 +47,8 @@ class ExpensesController extends StateXController {
       setState(() => loading = true);
 
       int response = await databaseHelper.update(
-        whereKey: "id",
-        whereValue: "${model.id!}",
+        whereKey: 'id',
+        whereValue: '${model.id!}',
         model: model.toLocalJson(),
         tableName: SqlQueries.expensesTable,
       );
@@ -87,10 +87,10 @@ class ExpensesController extends StateXController {
 
   KeyType type = KeyType.id;
 
-  /// onsearch
+  /// onSearch
   Future getFilteredTableList(
     BuildContext context,
-    dynamic value,
+    Object? value,
   ) async {
     setState(() => loading = true);
 
@@ -113,11 +113,11 @@ class ExpensesController extends StateXController {
 
 /// todo
 enum KeyType {
-  id(keyName: "id"),
-  name(keyName: "expenseName"),
-  value(keyName: "expenseValue"),
-  date(keyName: "expenseDate"),
-  category(keyName: "categoryID");
+  id(keyName: 'id'),
+  name(keyName: 'expenseName'),
+  value(keyName: 'expenseValue'),
+  date(keyName: 'expenseDate'),
+  category(keyName: 'categoryID');
 
   final String keyName;
 

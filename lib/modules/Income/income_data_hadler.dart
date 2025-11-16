@@ -8,7 +8,7 @@ class IncomeDataHadler {
   static Future<Either<Exception, List<IncomeModel>>>
       getIncomeFromLocalDataBase({
     String? key,
-    dynamic value,
+    Object? value,
   }) async {
     try {
       final response = await GenericLocalCrudMethods<IncomeModel>(
@@ -28,7 +28,7 @@ class IncomeDataHadler {
         fromMap: (json) => IncomeModel.fromJson(json),
       ).onSearchItem(
         tableName: SqlQueries.incomeTable,
-        key: "id",
+        key: 'id',
         value: id,
       );
       return Right(response);
@@ -39,7 +39,7 @@ class IncomeDataHadler {
 
   static Future<Either<Exception, List<IncomeModel>>> onSearch({
     required String key,
-    required dynamic value,
+    required Object? value,
   }) async {
     try {
       final response = await GenericLocalCrudMethods<IncomeModel>(

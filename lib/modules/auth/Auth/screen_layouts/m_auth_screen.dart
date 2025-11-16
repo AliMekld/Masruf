@@ -105,10 +105,10 @@ class _MeduimAuthScreenState extends StateX<MeduimAuthScreen> {
                               onPressed: () async {
                                 if (isArabic(context)) {
                                   await languageProvider.changeLanguage(
-                                      language: const Locale("en"));
+                                      language: const Locale('en'));
                                 } else {
                                   await languageProvider.changeLanguage(
-                                      language: const Locale("ar"));
+                                      language: const Locale('ar'));
                                 }
                               },
                               icon: const Icon(Icons.language),

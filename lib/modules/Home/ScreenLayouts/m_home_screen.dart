@@ -27,7 +27,7 @@ class _MediumHomeScreenState extends StateX<MediumHomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Medium Dashboard",
+          'Medium Dashboard',
           style: TextStyleHelper.of(context).headlinelarge32R,
         ),
         16.h.heightBox,

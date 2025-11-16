@@ -42,7 +42,7 @@ class _ExpenseTableState<T extends ExpensesModel>
         CustomDataColumn(
           title:
               AppLocalizations.of(context)?.translate(Strings.expenseNumber) ??
-                  "",
+                  '',
           columnSize: ColumnSize.S,
           numeric: true,
           onSort: (index, asend) {
@@ -108,25 +108,25 @@ class _ExpenseTableState<T extends ExpensesModel>
     return [
       DataCell(
         Text(
-          "${expenseModel.id?.toString().trim()}",
+          '${expenseModel.id?.toString().trim()}',
           style: TextStyleHelper.of(context).bodyLarge16R,
           textAlign: TextAlign.center,
         ).centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.expenseName?.trim() ?? "",
+        Text(expenseModel.expenseName?.trim() ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text("${expenseModel.expenseValue?.toString()}",
+        Text('${expenseModel.expenseValue?.toString()}',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
       ),
       DataCell(
-        Text(expenseModel.expenseDate?.toDisplayFormat() ?? "",
+        Text(expenseModel.expenseDate?.toDisplayFormat() ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),
@@ -135,7 +135,7 @@ class _ExpenseTableState<T extends ExpensesModel>
         ///Tdoo make this as a dropdown model
         ///and create local serialization
         /// or configure a way to send an object as to a tabke for sqlflite
-        Text(expenseModel.categoryName ?? "",
+        Text(expenseModel.categoryName ?? '',
                 style: TextStyleHelper.of(context).bodyLarge16R,
                 textAlign: TextAlign.center)
             .centerWhen(true),

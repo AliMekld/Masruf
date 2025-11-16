@@ -26,7 +26,7 @@ class CategoriesDataHadler {
   static Future<Either<Exception, List<DropdownModel>>>
       getCategoriesFromLocalDataBase({
     String? key,
-    dynamic value,
+     Object? value,
   }) async {
     try {
       final response = await GenericLocalCrudMethods<DropdownModel>(
@@ -47,7 +47,7 @@ class CategoriesDataHadler {
         fromMap: (json) => DropdownModel.fromJson(json),
       ).onSearchItem(
         tableName: SqlQueries.categoriesTable,
-        key: "id",
+        key: 'id',
         value: id,
       );
       return Right(response);
@@ -58,7 +58,7 @@ class CategoriesDataHadler {
 
   static Future<Either<Exception, List<DropdownModel>>> onSearch({
     required String key,
-    required dynamic value,
+    required Object? value,
   }) async {
     try {
       final response = await GenericLocalCrudMethods<DropdownModel>(

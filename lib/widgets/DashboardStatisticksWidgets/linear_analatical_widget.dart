@@ -83,7 +83,7 @@ class _LinerAnalyticsWidgetState extends State<LinerAnalyticsWidget> {
           ),
           title: ChartTitle(
             alignment: ChartAlignment.far,
-            text: widget.chartTitle ?? "",
+            text: widget.chartTitle ?? '',
             textStyle: widget.chartTitleStyle,
           ),
           enableSideBySideSeriesPlacement: true,
@@ -174,13 +174,13 @@ class _LinerAnalyticsWidgetState extends State<LinerAnalyticsWidget> {
                 ),
                 // const Spacer(),
                 Tooltip(
-                  message: "Press To Reset Zoom",
+                  message: 'Press To Reset Zoom',
                   child: TextButton(
                     onPressed: () {
                       _zoomPanBehavior.reset();
                     },
                     child: Text(
-                      "zoom",
+                      'zoom',
                       style: TextStyleHelper.of(context).bodyLarge16R,
                     ),
                   ),

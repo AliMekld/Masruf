@@ -90,8 +90,8 @@ class CustomDropdownWidget<T> extends StatelessWidget {
           getInputDecoration(type: DecorationType.focused, context: context),
       labelStyle: TextStyleHelper.of(context).titleLarge22R,
       enabled: enabled ?? true,
-      hintText: hint ?? "",
-      labelText: label ?? "",
+      hintText: hint ?? '',
+      labelText: label ?? '',
       hintStyle: TextStyleHelper.of(context).titleSmall14M);
 
   @override
@@ -109,7 +109,7 @@ class CustomDropdownWidget<T> extends StatelessWidget {
         dropdownColor: ColorsPalette.of(context).backgroundColor,
         validator: validator,
         hint: Text(
-          hint ?? "",
+          hint ?? '',
           style: TextStyleHelper.of(context).titleSmall14M,
         ),
         autofocus: autoFocus ?? false,

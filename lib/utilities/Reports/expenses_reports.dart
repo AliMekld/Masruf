@@ -15,11 +15,11 @@ class ExpensesReportsBuilder {
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Divider(height: 0.5)),
           await PdfWidgets().getTableheader([
-            ReportModel(title: "الرقم", flex: 1),
-            ReportModel(title: "الاسم", flex: 1),
-            ReportModel(title: "المبلغ", flex: 1),
-            ReportModel(title: "التاريح", flex: 1),
-            ReportModel(title: "الفئه", flex: 1),
+            ReportModel(title: 'الرقم', flex: 1),
+            ReportModel(title: 'الاسم', flex: 1),
+            ReportModel(title: 'المبلغ', flex: 1),
+            ReportModel(title: 'التاريح', flex: 1),
+            ReportModel(title: 'الفئه', flex: 1),
           ]),
           await PdfWidgets().getReportBodyListView(
             List.generate(
@@ -30,12 +30,12 @@ class ExpensesReportsBuilder {
                         flex: 1,
                       ),
                       ReportModel(
-                        title: expensesList[index].expenseName ?? "",
+                        title: expensesList[index].expenseName ?? '',
                         flex: 1,
                       ),
                       ReportModel(
                         title:
-                            expensesList[index].expenseValue?.toString() ?? "",
+                            expensesList[index].expenseValue?.toString() ?? '',
                         flex: 1,
                       ),
                       ReportModel(

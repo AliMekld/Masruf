@@ -11,7 +11,7 @@ class PdfBuilder {
   ///
   static Future openDocument(File file) async {
     final url = file.path;
-    await OpenFile.open(url, type: "pdf");
+    await OpenFile.open(url, type: 'pdf');
   }
 
   ///
@@ -32,7 +32,7 @@ class PdfBuilder {
       build: (c) => [page],
       mainAxisAlignment: pw.MainAxisAlignment.start,
     ));
-    return saveDocument(name: "myExpense.pdf", pdf: pdf);
+    return saveDocument(name: 'myExpense.pdf', pdf: pdf);
   }
 
   ///
