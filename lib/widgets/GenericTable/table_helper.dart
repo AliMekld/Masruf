@@ -2,7 +2,7 @@
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import '../../core/theme/color_pallete.dart';
+import '../../core/theme/color_pallet.dart';
 
 class TableHelper<T> extends DataTableSource {
   final Function(bool value)? onSelect;
@@ -33,14 +33,14 @@ class TableHelper<T> extends DataTableSource {
       color: index.isEven
           ? WidgetStatePropertyAll(
               isSelected
-                  ? ColorsPalette.of(context).watingColor .withValues(alpha:0.2)
+                  ? ColorsPalette.of(context).waitingColor .withValues(alpha:0.2)
                   : ColorsPalette.of(context)
                       .secondaryTextColor
                       .withValues(alpha:0.4),
             )
           : WidgetStatePropertyAll(
               isSelected
-                  ? ColorsPalette.of(context).watingColor .withValues(alpha:0.2)
+                  ? ColorsPalette.of(context).waitingColor .withValues(alpha:0.2)
                   : ColorsPalette.of(context)
                       .secondaryTextColor
                       .withValues(alpha:0.8),

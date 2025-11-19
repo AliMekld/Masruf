@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/Language/app_localization.dart';
-import '../../../../core/theme/color_pallete.dart';
+import '../../../../core/theme/color_pallet.dart';
 import '../../../../core/theme/typography.dart';
 import '../../../../models/drop_down_model.dart';
-import '../../Model/categories_data_hadler.dart';
+import '../../Model/DataSource/categories_local_data_source.dart';
 import '../../../../utilities/constants/Strings.dart';
 import '../../../../utilities/extensions.dart';
 import '../../../../widgets/DialogsHelper/dialog_widget.dart';
@@ -15,11 +14,11 @@ import '../../../../widgets/cutom_button_widget.dart';
 
 class CategoryDialogDetailWidget extends StatefulWidget {
   final int? id;
-  final Function(DropdownModel) onEditCategory;
+  final Function(DropdownModel? model)? onInsertUpdateCategory;
   const CategoryDialogDetailWidget({
     super.key,
     this.id,
-    required this.onEditCategory,
+    this.onInsertUpdateCategory,
   });
 
   @override
@@ -39,12 +38,14 @@ class _CategoryDialogDetailWidgetState
     categoryNumberController = TextEditingController();
     categoryNameController = TextEditingController();
     categoryENameController = TextEditingController();
-    Future.microtask(() async => await getCategoryById());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) async => await getCategoryById());
   }
 
   Future getCategoryById() async {
     if (widget.id == null) return;
-    final result = await CategoriesDataHadler.getCategoryByID(widget.id!);
+    final result =
+        await CategoriesLocalDataSource().getCategoryByID(widget.id!);
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {
@@ -53,6 +54,7 @@ class _CategoryDialogDetailWidgetState
     });
     setState(() {});
   }
+
   DropdownModel? model;
   void setCategoryData(DropdownModel m) {
     categoryNumberController.text = m.id?.toString() ?? '';
@@ -63,17 +65,17 @@ class _CategoryDialogDetailWidgetState
 
   @override
   void dispose() {
-    super.dispose();
     categoryNumberController.dispose();
     categoryNameController.dispose();
     categoryENameController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.expenseDetails);
     return SizedBox(
-      height: 400.h,
+      height: 420.h,
       width: 400.w,
       child: Column(
         children: [
@@ -86,13 +88,12 @@ class _CategoryDialogDetailWidgetState
                 textAlign: TextAlign.start,
               ),
               IconButton(
-                  onPressed: () {
-                    context.pop();
-                  },
+                  onPressed: () => context.pop(),
                   icon: Icon(
                     Icons.cancel,
-                    color:
-                        ColorsPalette.of(context).errorColor .withValues(alpha:0.8),
+                    color: ColorsPalette.of(context)
+                        .errorColor
+                        .withValues(alpha: 0.8),
                     size: 32.r,
                   ))
             ],
@@ -130,14 +131,15 @@ class _CategoryDialogDetailWidgetState
             context: context,
             buttonTitle: Strings.confirm.tr,
             onTap: () {
-              model ??= DropdownModel();
+              model ??= const DropdownModel();
               model = model?.copyWith(
                 id: int.tryParse(categoryNumberController.text),
                 name: categoryNameController.text,
                 eName: categoryENameController.text,
-                // id:
               );
-              widget.onEditCategory(model!);
+              if (widget.onInsertUpdateCategory != null) {
+                widget.onInsertUpdateCategory!(model!);
+              }
               context.pop();
             },
           )

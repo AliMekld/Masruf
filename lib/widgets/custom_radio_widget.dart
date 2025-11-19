@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/Language/app_localization.dart';
-import '../core/theme/color_pallete.dart';
+import '../core/theme/color_pallet.dart';
 import '../core/theme/typography.dart';
 import '../utilities/extensions.dart';
 

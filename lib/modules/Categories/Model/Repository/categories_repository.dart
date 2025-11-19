@@ -5,8 +5,15 @@ import '../../../../models/drop_down_model.dart';
 
 abstract class CategoriesRepository{
   ///================>> GET CATEGORIES DATA
-  Future<Either<NetworkFailure, List<DropdownModel>>> getData();
+  Future<Either<Failure, List<DropdownModel>>> getData();
   ///================>> GET CATEGORY BY ID
   Future<Either<Exception, DropdownModel>> getCategoryByID(
       int id);
+  Future<Either<Exception, List<DropdownModel>>> onSearch({
+    required String key,
+    required Object? value,
+  });
+  Future<Either<Failure, DropdownModel>> insertCategory(DropdownModel model);
+  Future<Either<Failure, DropdownModel>> updateCategory({required DropdownModel model,required String key});
+
 }

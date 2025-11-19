@@ -55,10 +55,10 @@ class _SettingsDialogState extends State<SettingsDialog> {
                     )
                     .toList(),
                 onChanged: (v) async {
-                  await lang.changeLanguage(language: Locale(v!.name));
+                  await lang.changeLanguage(language: v);
                 },
-                selectedItem: Languages.values.firstWhereOrNull(
-                    (e) => e.name == lang.appLang.languageCode)),
+                selectedItem:
+                    Languages.values.firstWhereOrNull((e) => e == lang.state)),
             const Divider().addPaddingVertical(padding: 8.h),
             Text(
               Strings.theme.tr,
@@ -83,7 +83,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
                   theme.changeTheme(v ?? SystemBrightness.dark);
                 },
                 selectedItem: SystemBrightness.values
-                    .firstWhereOrNull((e) => e.name == theme.brightness?.name)),
+                    .firstWhereOrNull((e) => e == theme.state)),
           ],
         ),
       ),

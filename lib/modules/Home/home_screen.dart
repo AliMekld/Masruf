@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/theme/color_pallete.dart';
+import '../../core/theme/color_pallet.dart';
 import 'ScreenLayouts/m_home_screen.dart';
 import 'ScreenLayouts/s_home_screen.dart';
 import '../../utilities/constants/constants.dart';
@@ -15,16 +15,16 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with ResponsiveStatfullMixin {
+class _HomeScreenState extends State<HomeScreen>  {
   @override
   Widget build(BuildContext context) {
-    return responsiveBuild(
+    return const LargeHomeScreen(); /*responsiveBuild(
       largeScreen: const LargeHomeScreen(),
       mediumScreen: const MediumHomeScreen(),
       smallScreen: const SmallHomeScreen(),
     );
-  }
-}
+  }*/
+}}
 
 class CardWidget extends StatelessWidget {
   final double? height;

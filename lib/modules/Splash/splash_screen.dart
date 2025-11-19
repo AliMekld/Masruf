@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/Language/app_localization.dart';
-import '../../core/theme/color_pallete.dart';
+import '../../core/theme/color_pallet.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/constants/constants.dart';
 import '../../utilities/extensions.dart';

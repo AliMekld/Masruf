@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:state_extended/state_extended.dart';
 
 import '../../../../core/Language/language_provider.dart';
-import '../../../../core/theme/color_pallete.dart';
+import '../../../../core/theme/color_pallet.dart';
 import '../../../../core/theme/theme_provider.dart';
 import '../../../../core/theme/typography.dart';
 import '../../../../utilities/constants/Strings.dart';
@@ -105,10 +105,10 @@ class _LargAuthScreenState extends StateX<LargAuthScreen> {
                               onPressed: () async {
                                 if (isArabic(context)) {
                                   await languageProvider.changeLanguage(
-                                      language: const Locale('en'));
+                                      language: Languages.en);
                                 } else {
                                   await languageProvider.changeLanguage(
-                                      language: const Locale('ar'));
+                                      language: Languages.ar);
                                 }
                               },
                               icon: const Icon(Icons.language),

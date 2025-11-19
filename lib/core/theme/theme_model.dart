@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'color_pallete.dart';
+import 'color_pallet.dart';
 
 class ThemeModel extends ThemeExtension<ThemeModel> {
-  /// get defult theme from device
-  static ThemeModel get defultTheme =>
+  /// get default theme from device
+  static ThemeModel get defaultTheme =>
       SchedulerBinding.instance.platformDispatcher.platformBrightness ==
               Brightness.dark
-          ? ColorsPalette.dark()
-          : ColorsPalette.light();
+          ? ColorsPalette.darkTheme
+          : ColorsPalette.lightTheme;
 
   final bool isDark;
   final Color primaryColor;
@@ -21,7 +21,7 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
   final Color secondaryTextColor;
   final Color errorColor;
   final Color successColor;
-  final Color watingColor;
+  final Color waitingColor;
   final Color buttonColor;
   final Color buttonDisabledColor;
   final Color dividerColor;
@@ -41,7 +41,7 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
     required this.secondaryTextColor,
     required this.successColor,
     required this.surfaceColor,
-    required this.watingColor,
+    required this.waitingColor,
   });
   @override
   ThemeExtension<ThemeModel> copyWith({
@@ -57,7 +57,7 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
     Color? dividerColor,
     Color? iconColor,
     Color? successColor,
-    Color? watingColor,
+    Color? waitingColor,
   }) {
     return ThemeModel(
       isDark: isDark,
@@ -73,7 +73,7 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
       dividerColor: dividerColor ?? this.dividerColor,
       iconColor: iconColor ?? this.iconColor,
       successColor: successColor ?? this.successColor,
-      watingColor: watingColor ?? this.watingColor,
+      waitingColor: waitingColor ?? this.waitingColor,
     );
   }
 
@@ -96,7 +96,7 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
         secondaryTextColor: Color(json['secondaryTextColor']),
         successColor: Color(json['successColor']),
         surfaceColor: Color(json['surfaceColor']),
-        watingColor: Color(json['watingColor']),
+        waitingColor: Color(json['waitingColor']),
       );
   Map<String, dynamic> toJson() => {
         'isDark': isDark,
@@ -112,6 +112,6 @@ class ThemeModel extends ThemeExtension<ThemeModel> {
         'secondaryTextColor': secondaryTextColor.value,
         'successColor': successColor.value,
         'surfaceColor': surfaceColor.value,
-        'watingColor': watingColor.value,
+        'waitingColor': waitingColor.value,
       };
 }

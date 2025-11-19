@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../models/expense_model.dart';
 import '../../models/test_statistics_model.dart';
-import '../Categories/Model/categories_data_hadler.dart';
 import '../Expenses/expenses_data_hadler.dart';
 import 'home_dataHandler.dart';
-import '../../widgets/DialogsHelper/dialog_widget.dart';
 import 'package:state_extended/state_extended.dart';
 
 class HomeController extends StateXController {
@@ -27,16 +25,6 @@ class HomeController extends StateXController {
     setState(() {});
   }
 
-  Future<void> testAPI(BuildContext context) async {
-    final result = await CategoriesDataHadler.getData();
-    result.fold((l) {
-      debugPrint(l.model.message.toString());
-      DialogHelper.error(message: l.model.toString())
-          .errorDialog(context: context, message: l.model.statusMessage);
-    }, (r) {
-      debugPrint(r.toString());
-    });
-  }
 
   List<ExpensesModel> expensesList = [];
   bool isLoading = false;

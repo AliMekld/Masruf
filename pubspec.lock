@@ -313,6 +313,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.2"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      sha256: "567c64b3cb4cf82397aac55f4f0cbd3ca20d77c6c03bedbc4ceaddc08904aef7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   fake_async:
     dependency: transitive
     description:
@@ -1270,10 +1278,10 @@ packages:
     dependency: "direct main"
     description:
       name: state_extended
-      sha256: "39c50301b1e8d58a08116553919a04889d8f2c694557a536e387bc329473def2"
+      sha256: "4716037c713f60de25d6efa4330b89cf8d6804a700b3d4b82c44b819d305a6f2"
       url: "https://pub.dev"
     source: hosted
-    version: "5.8.0"
+    version: "5.11.0"
   stream_channel:
     dependency: transitive
     description:

@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/Language/app_localization.dart';
-import '../../core/theme/color_pallete.dart';
+import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
 import '../../models/drop_down_model.dart';
 import '../../models/expense_model.dart';
-import '../../modules/Categories/Model/categories_data_hadler.dart';
+import '../../modules/Categories/Model/DataSource/categories_local_data_source.dart';
 import '../../modules/Expenses/expenses_data_hadler.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/extensions.dart';
@@ -56,7 +56,7 @@ class _ExpensesDialogDetailWidgetState
   }
 
   Future getCategoryList() async {
-    final result = await CategoriesDataHadler.getCategoriesFromLocalDataBase();
+    final result = await CategoriesLocalDataSource.getCategoriesFromLocalDataBase();
     result.fold(
         (l) => DialogHelper.error(message: l.toString()).showDialog(context),
         (r) => categoryesList = r);

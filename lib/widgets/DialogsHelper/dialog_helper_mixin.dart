@@ -1,5 +1,5 @@
 import '../../core/Language/app_localization.dart';
-import '../../core/theme/color_pallete.dart';
+import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/constants/constants.dart';
@@ -173,7 +173,7 @@ mixin DialogsMixin {
                   padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color:
-                        ColorsPalette.of(context).watingColor .withValues(alpha:0.1),
+                        ColorsPalette.of(context).waitingColor .withValues(alpha:0.1),
                   ),
                   child: Text(
                     message,

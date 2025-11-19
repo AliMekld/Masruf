@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:state_extended/state_extended.dart';
 
 import '../../../../core/Language/language_provider.dart';
-import '../../../../core/theme/color_pallete.dart';
+import '../../../../core/theme/color_pallet.dart';
 import '../../../../core/theme/theme_provider.dart';
 
 import '../auth_controller.dart';

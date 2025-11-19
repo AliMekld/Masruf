@@ -13,23 +13,24 @@ class SharedPref {
   ///=======================>  K E Y S  <=================================//
   static const String _languageCode = 'language_code';
   static const String _appTheme = 'appTheme';
+  static const String _isDark = 'isDark';
   static const String _isFirstTimeOpenApp = 'isFirstTimeOpenApp';
   static const String _isLogin = 'isLogin';
   static const String _isSideBarExpanded = 'isSideBarExpanded';
 
   ///=====================> M E T H O D S <=================================//
   ///SET LANGUAGE
-  static Future<void> setLanguage({required String lan}) async {
-    await prefs.setString(_languageCode, lan);
-  }
+  static Future<void> setLanguage({required int lanId}) async =>
+      await prefs.setInt(_languageCode, lanId);
 
   ///GET LANGUAGE
-  static String? getLanguage() => prefs.getString(_languageCode) ?? '';
+  static Languages? getLanguage() =>
+      Languages.getFromId(prefs.getInt(_languageCode) ?? 1);
 
   ///SET THEME
-  static void setTheme({required ThemeModel theme}) {
-    prefs.setString(_appTheme, jsonEncode(theme.toJson()));
-  }
+  static void setTheme({required ThemeModel theme}) => prefs.setString(_appTheme, jsonEncode(theme.toJson()));
+  static void setIsDark({required bool isDark}) => prefs.setBool(_isDark, isDark);
+  static  bool get getIsDark => prefs.getBool(_isDark)??false;
 
   ///GET THEME
   static ThemeModel? getTheme() {
@@ -59,7 +60,7 @@ class SharedPref {
 
   /// GET IS FIRST TIME OPEN APP
   static bool getIsSideBarExpanded() {
-    return prefs.getBool(_isSideBarExpanded) ?? true;
+    return prefs.getBool(_isSideBarExpanded) ?? false;
   }
 
   /// SET IS LOGIN

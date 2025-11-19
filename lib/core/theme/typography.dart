@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Language/language_provider.dart';
-import 'color_pallete.dart';
+import 'color_pallet.dart';
 import '../../utilities/constants/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ class TextStyleHelper {
       fontFamily: Constants.notoSansKoufyFontFamily,
       fontSize: fontSize.sp,
       fontStyle: FontStyle.normal,
-      locale: Provider.of<LanguageProvider>(context, listen: false).appLang,
+      locale: Provider.of<LanguageProvider>(context, listen: false).appLanguage,
       fontWeight: fontWeight,
       color: ColorsPalette.of(context).primaryTextColor,
       overflow: TextOverflow.ellipsis,

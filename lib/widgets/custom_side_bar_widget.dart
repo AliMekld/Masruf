@@ -1,77 +1,66 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../core/Language/app_localization.dart';
-import '../core/theme/color_pallete.dart';
+import '../core/theme/color_pallet.dart';
 import '../core/theme/typography.dart';
 import '../modules/MainLayout/main_layout.dart';
+import '../modules/MainLayout/main_layout_cubit.dart';
 import '../utilities/constants/Strings.dart';
 import '../utilities/constants/constants.dart';
 import '../utilities/extensions.dart';
-import '../utilities/shared_pref.dart';
 import 'Dialogs/settings_dialog.dart';
 import 'DialogsHelper/dialog_widget.dart';
 
 import '../utilities/constants/assets.dart';
 
-// ignore: must_be_immutable
-class CustomNavigationRail extends StatefulWidget {
-  int currentIndex;
-  CustomNavigationRail({
+class CustomNavigationRail extends StatelessWidget {
+  const CustomNavigationRail({
     super.key,
-    required this.currentIndex,
   });
 
   @override
-  State<CustomNavigationRail> createState() => _CustomNavigationRailState();
-}
-
-class _CustomNavigationRailState extends State<CustomNavigationRail> with SingleTickerProviderStateMixin {
-  ValueNotifier<bool> isExpanded = ValueNotifier(SharedPref.getIsSideBarExpanded());
-  @override
   Widget build(BuildContext context) {
     AppLocalizations.of(context)?.translate(Strings.appName);
-    return AnimatedBuilder(
-      builder: (context, child) {
-        return AnimatedContainer(
-          decoration: BoxDecoration(
-              color: ColorsPalette.of(context).backgroundColor,
-              border: Border(
-                  left: isArabic(context)
-                      ? BorderSide(
-                          color: ColorsPalette.of(context).dividerColor,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        )
-                      : BorderSide.none)),
-          duration: const Duration(milliseconds: 150),
-          curve: Curves.easeInOut,
-          width: isExpanded.value ? 180.w : 80.w,
-          child:child,
-        );
-      }, animation: isExpanded,
-      child:  Column(
+    final bool isExpanded =
+        context.watch<MainLayoutCubit>().state.isExpanded ?? false;
+    final MainLayoutCubit con = context.read<MainLayoutCubit>();
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      padding: EdgeInsets.all(8.sp),
+      decoration: BoxDecoration(
+          color: ColorsPalette.of(context).backgroundColor,
+          border: Border(
+              left: isArabic(context)
+                  ? BorderSide(
+                      color: ColorsPalette.of(context).dividerColor,
+                      width: 1,
+                      style: BorderStyle.solid,
+                    )
+                  : BorderSide.none)),
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 16.h,
         children: [
-          16.0.heightBox,
           CircleAvatar(
-            radius: isExpanded.value ? 42 : 26,
+            radius: (isExpanded ? 42 : 26).sp,
             backgroundColor: ColorsPalette.of(context).dividerColor,
             child: InkWell(
               onTap: () {},
               child: CircleAvatar(
                 backgroundColor: ColorsPalette.of(context).surfaceColor,
-                // foregroundImage: const AssetImage(Assets.imagesHome),
-                radius: (isExpanded.value ? 40 : 24).sp,
+                radius: (isExpanded ? 40 : 24).sp,
                 child: SvgPicture.asset(
                   Assets.imagesProfile,
                   fit: BoxFit.cover,
-                  width: isExpanded.value ? 48.w : 24.w,
-                  height: isExpanded.value ? 48.h : 24.h,
+                  width: isExpanded ? 48.w : 24.w,
+                  height: isExpanded ? 48.h : 24.h,
                   colorFilter: ColorFilter.mode(
                     ColorsPalette.of(context).secondaryColor,
                     BlendMode.srcIn,
@@ -80,43 +69,39 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> with Single
               ),
             ),
           ),
-          16.0.heightBox,
           Text(
             isArabic(context) ? 'علي مقلد' : 'Ali Mekld',
             style: TextStyleHelper.of(context).bodyLarge16R.copyWith(
-              fontFamily: Constants.notoSansKoufyFontFamily,
-              fontSize: (isExpanded.value ? 16 : 12).sp,
-            ),
+                  fontFamily: Constants.notoSansKoufyFontFamily,
+                  fontSize: (isExpanded ? 16 : 12).sp,
+                ),
           ),
-          16.0.heightBox,
           Divider(
             thickness: 1,
             color: ColorsPalette.of(context).dividerColor,
           ),
-          16.0.heightBox,
           ...menuList.mapIndexed(
-                (i, e) => InkWell(
+            (i, e) => InkWell(
               borderRadius: Constants.kBorderRaduis8,
               onTap: () {
+                con.onChangeSelected(i);
                 context.goNamed(e.route);
-                currentIndex = i;
-                setState(() {});
               },
               child: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: Constants.kBorderRaduis8,
-                  color: currentIndex == i
+                  color: con.isCurrent(i)
                       ? ColorsPalette.of(context).primaryColor
                       : null,
                 ),
                 height: 56.h,
-                width: isExpanded.value ? 160.w : 40.w,
+                width: isExpanded ? 160.w : 40.w,
                 child: Row(
                   mainAxisSize:
-                  isExpanded.value ? MainAxisSize.max : MainAxisSize.min,
+                      isExpanded ? MainAxisSize.max : MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: isExpanded.value
+                  mainAxisAlignment: isExpanded
                       ? MainAxisAlignment.spaceBetween
                       : MainAxisAlignment.center,
                   children: [
@@ -125,21 +110,21 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> with Single
                       height: 20.h,
                       width: 20.w,
                       colorFilter: ColorFilter.mode(
-                        currentIndex == i
+                        con.isCurrent(i)
                             ? Colors.white
                             : ColorsPalette.of(context).secondaryTextColor,
                         BlendMode.srcIn,
                       ),
                     ),
-                    if (isExpanded.value) ...[
-                      16.0.widthBox,
+                    if (isExpanded) ...[
+                      16.w.widthBox,
                       Text(
                         e.title.tr,
                         style: TextStyleHelper.of(context)
                             .bodyMedium14R
                             .copyWith(
-                          color: currentIndex == i ? Colors.white70 : null,
-                        ),
+                              color: con.isCurrent(i) ? Colors.white70 : null,
+                            ),
                       ).expand,
                     ]
                   ],
@@ -151,10 +136,9 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> with Single
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               IconButton(
-                onPressed: () {
-                  const DialogHelper.customDialog(child: SettingsDialog())
-                      .showDialog(context);
-                },
+                onPressed: () =>
+                    const DialogHelper.customDialog(child: SettingsDialog())
+                        .showDialog(context),
                 icon: Icon(
                   Icons.settings,
                   size: 28,
@@ -163,16 +147,9 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> with Single
               ),
               24.h.heightBox,
               IconButton(
-                onPressed: () {
-                  setState(
-                        () {
-                      isExpanded.value = !isExpanded.value;
-                    },
-                  );
-                  SharedPref.setIsSideBarExpanded(value: isExpanded.value);
-                },
+                onPressed: () => con.onToggleExpanded(!isExpanded),
                 icon: Icon(
-                  isExpanded.value
+                  isExpanded
                       ? Icons.arrow_back_ios_new
                       : Icons.arrow_forward_ios_outlined,
                   color: ColorsPalette.of(context).primaryColor,

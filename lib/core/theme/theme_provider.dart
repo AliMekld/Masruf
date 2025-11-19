@@ -1,45 +1,36 @@
 import 'package:flutter/material.dart';
-import 'color_pallete.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'color_pallet.dart';
 import 'theme_model.dart';
 import '../../utilities/shared_pref.dart';
 
-class ThemeProvider extends ChangeNotifier {
-  ThemeModel get appTheme => _appTheme;
-  SystemBrightness? brightness;
-  static ThemeModel _appTheme = ThemeModel.defultTheme;
+class ThemeProvider extends Cubit<SystemBrightness> {
+  ThemeModel get appTheme => (state== SystemBrightness.dark
+      ? ColorsPalette.darkTheme
+      : ColorsPalette.lightTheme);
 
-  static ThemeData get _darkTheme => ThemeData.dark(
-        useMaterial3: true,
-      ).copyWith(extensions: <ThemeExtension<ThemeModel>>[_appTheme]);
-  static ThemeData get _lightTheme => ThemeData.light(
-        useMaterial3: true,
-      ).copyWith(extensions: <ThemeExtension<ThemeModel>>[_appTheme]);
 
-  ThemeData themeData = _appTheme.isDark ? _darkTheme : _lightTheme;
-  void fetchTheme() {
-    _appTheme = SharedPref.getTheme() ?? ThemeModel.defultTheme;
-    // notifyListeners();
-  }
+  static final ThemeModel _appTheme = ThemeModel.defaultTheme;
+
+  ThemeProvider()
+      : super(SharedPref.getIsDark
+            ? SystemBrightness.dark: SystemBrightness.light) ;
+
+  ThemeMode get themeMode => state == SystemBrightness.dark
+      ? ThemeMode.dark
+      : ThemeMode.light;
 
   void changeTheme(SystemBrightness brightness) {
-    switch (brightness) {
-      case SystemBrightness.dark:
-        _appTheme = ColorsPalette.dark();
-        this.brightness = brightness;
-        notifyListeners();
-        break;
-      case SystemBrightness.light:
-        _appTheme = ColorsPalette.light();
-        this.brightness = brightness;
-        notifyListeners();
-        break;
-    }
-    debugPrint(_appTheme.toJson().toString());
+    emit(brightness);
     SharedPref.setTheme(theme: _appTheme);
+    SharedPref.setIsDark(isDark: brightness.val);
   }
 }
 
 enum SystemBrightness {
-  light,
-  dark,
+  light(false),
+  dark(true);
+
+  final bool val;
+  const SystemBrightness(this.val);
 }

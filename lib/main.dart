@@ -1,29 +1,26 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/HiveLocalStorage/hive_helper.dart';
 import 'core/Language/language_provider.dart';
 import 'core/LocalDataBase/database_helper.dart';
-import 'core/theme/color_pallete.dart';
+import 'core/network_checker.dart';
+import 'core/theme/color_pallet.dart';
 import 'core/theme/theme_provider.dart';
 import 'utilities/git_it.dart';
 import 'utilities/router_config.dart';
-// ignore: depend_on_referenced_packages
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'widgets/app_settings_loader.dart';
-import 'package:provider/provider.dart';
 import 'core/Language/app_localization.dart';
-import 'core/network_checker.dart';
 import 'utilities/PDFHelper/pdf_widgets.dart';
 
 const Size mobileSize = Size(375, 812);
 const Size tabletSize = Size(768, 1024);
 const Size desktopSize = Size(1440, 900);
 const Size fullHdDesktopSize = Size(1920, 1024);
-/// todo replace state mange management by bloc
-/// todo fix this error  TooltipState is a SingleTickerProviderStateMixin but multiple tickers were created.
+
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveHelper.init();
@@ -50,17 +47,12 @@ void main(List<String> args) async {
     /// [initialize_database_helper]
     await DatabaseHelper().initDataBase();
   }
-  if (kIsWeb) {
-    usePathUrlStrategy();
-  }
-
   runApp(
-    MultiProvider(
+    MultiBlocProvider(
       providers: [
-        /// [initialize_providers]
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
-        ChangeNotifierProvider(create: (context) => LanguageProvider()),
-        ChangeNotifierProvider(create: (context) => NetworkCheckerProvider()),
+        BlocProvider(create: (context) => ThemeProvider()),
+        BlocProvider(create: (context) => LanguageProvider()),
+        BlocProvider(create: (context) => NetworkCheckerNotifier()),
       ],
       child: const EntryPoint(),
     ),
@@ -72,14 +64,6 @@ class EntryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeProvider>(context);
-    final lang = Provider.of<LanguageProvider>(context);
-
-    /// Fetching the theme and
-    /// language from the local storage [SHARED_PREFERENCES]
-    lang.fetchLocale();
-    theme.fetchTheme();
-
     return LayoutBuilder(builder: (context, constraints) {
       /// [RESPONSIVE_DESIGN_CONFIGURATION]
       Size? appSize;
@@ -101,19 +85,17 @@ class EntryPoint extends StatelessWidget {
           routerConfig: router,
 
           ///[PASSING_THEME]
-          theme: theme.themeData.copyWith(
-              cardColor: ColorsPalette.of(context).secondaryColor,
-              scaffoldBackgroundColor:
-                  ColorsPalette.of(context).backgroundColor,
-          ),
-
+          theme: ColorsPalette.light,
+          darkTheme: ColorsPalette.dark,
+          themeAnimationDuration: const Duration(microseconds: 300),
+          themeMode: context.watch<ThemeProvider>().themeMode,
           ///[OTHER_CONFIGURATION]
           debugShowCheckedModeBanner: false,
           scrollBehavior: MyCustomScrollBehavior(),
 
           ///[MULTI_LANGUAGE_CONFIGURATION]
           supportedLocales: Languages.values.map((e) => Locale(e.name)),
-          locale: lang.appLang,
+          locale: context.watch<LanguageProvider>().appLanguage,
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

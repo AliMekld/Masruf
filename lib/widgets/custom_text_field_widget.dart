@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/Language/app_localization.dart';
-import '../core/theme/color_pallete.dart';
+import '../core/theme/color_pallet.dart';
 import '../core/theme/typography.dart';
 import '../utilities/constants/Strings.dart';
 import 'package:provider/provider.dart';
@@ -171,7 +171,7 @@ class CustomTextFieldWidget extends StatelessWidget {
         validator: validator,
         textInputAction: textInputAction ?? TextInputAction.next,
         textDirection:
-            Provider.of<LanguageProvider>(context).appLang.languageCode == 'ar'
+        context.read<LanguageProvider>().state.name == 'ar'
                 ? TextDirection.rtl
                 : TextDirection.ltr,
         showCursor: true,

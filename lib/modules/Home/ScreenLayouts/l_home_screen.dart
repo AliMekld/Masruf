@@ -59,8 +59,7 @@ class _LargeHomeScreenState extends StateX<LargeHomeScreen> {
                 Strings.dashboard.tr,
                 style: TextStyleHelper.of(context).headlinelarge32R,
               ),
-              onPressed: () async {
-                await con.testAPI(context);
+              onPressed: ()  {
               },
             ),
             16.h.heightBox,

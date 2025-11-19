@@ -1,4 +1,4 @@
-import '../core/theme/color_pallete.dart';
+import '../core/theme/color_pallet.dart';
 import '../core/theme/typography.dart';
 import '../utilities/constants/Strings.dart';
 import '../utilities/constants/constants.dart';

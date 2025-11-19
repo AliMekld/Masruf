@@ -2,56 +2,60 @@ import 'dart:async';
 import 'dart:io';
 import 'error_model.dart';
 
-sealed class NetworkFailure implements Exception {
+sealed class Failure implements Exception {
   final ErrorModel model;
-  const NetworkFailure(this.model);
+  const Failure(this.model);
+}
+class CachingException extends Failure {
+  CachingException(super.model);
 }
 
-class ApiException extends NetworkFailure {
+
+class ApiException extends Failure {
   ApiException(super.model);
 }
 
-class NetworkException extends NetworkFailure {
+class NetworkException extends Failure {
   NetworkException(super.model);
 }
 
-class UnauthorizedException extends NetworkFailure {
+class UnauthorizedException extends Failure {
   UnauthorizedException(super.model);
 }
 
-class ForbiddenException extends NetworkFailure {
+class ForbiddenException extends Failure {
   ForbiddenException(super.model);
 }
 
-class NotFoundException extends NetworkFailure {
+class NotFoundException extends Failure {
   NotFoundException(super.model);
 }
 
-class ConflictException extends NetworkFailure {
+class ConflictException extends Failure {
   ConflictException(super.model);
 }
 
-class TooManyRequestsException extends NetworkFailure {
+class TooManyRequestsException extends Failure {
   TooManyRequestsException(super.model);
 }
 
-class ServiceUnavailableException extends NetworkFailure {
+class ServiceUnavailableException extends Failure {
   ServiceUnavailableException(super.model);
 }
 
-class RequestTimeoutException extends NetworkFailure {
+class RequestTimeoutException extends Failure {
   RequestTimeoutException(super.model);
 }
 
-class BadRequestException extends NetworkFailure {
+class BadRequestException extends Failure {
   BadRequestException(super.model);
 }
 
-class ServerException extends NetworkFailure {
+class ServerException extends Failure {
   ServerException(super.model);
 }
 
-class DecodingException extends NetworkFailure {
+class DecodingException extends Failure {
   DecodingException(super.model);
 }
 
