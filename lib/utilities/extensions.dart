@@ -59,10 +59,10 @@ extension DoubleExtension on double {
 }
 
 extension ContextExtensions on BuildContext {
-  bool get _isExpaded => SharedPref.getIsSideBarExpanded();
+  bool get _isExpanded => SharedPref.getIsSideBarExpanded();
   double get appWidth =>
-      MediaQuery.of(this).size.width.w + (_isExpaded ? 180.w : 80.w);
-
+      MediaQuery.of(this).size.width.w + (_isExpanded ? 180.w : 80.w);
+double get width=> MediaQuery.of(this).size.width;
   bool get isMobile => appWidth < 420.w;
   bool get isTablet => appWidth >= 420.w && appWidth <= 1024.w;
   bool get isTabletOrMobile => appWidth < 1024.w;

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'statistics_model.dart';
+part of '../modules/Home/Model/Models/statistics_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator

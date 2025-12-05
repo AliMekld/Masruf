@@ -23,25 +23,17 @@ class LoginController extends StateXController {
     });
   }
 
-  void togglePasswordVisability() {
+  void togglePasswordVisibility() {
     setState(() {
       isPasswordVisible = !isPasswordVisible;
     });
   }
 
-  void toggleConfirmPasswordVisability() {
+  void toggleConfirmPasswordVisibility() {
     setState(() {
       isConfirmPasswordVisible = !isConfirmPasswordVisible;
     });
   }
-
-  // @override
-  // dispose() {
-  //   super.dispose();
-  //   emailController.dispose();
-  //   passwordController.dispose();
-  //   confirmPasswordController.dispose();
-  // }
 
   String authMessage = '';
   bool isPasswordVisible = false;

@@ -44,7 +44,7 @@ class RegiserPart extends StatelessWidget {
           obscureText: !con.isPasswordVisible,
           suffix: Icon(
               con.isPasswordVisible ? Icons.visibility : Icons.visibility_off),
-          onSuffixTap: () => con.togglePasswordVisability(),
+          onSuffixTap: () => con.togglePasswordVisibility(),
           textInputType: TextInputType.visiblePassword,
           validator: (v) => Validator.validatePassword(v!),
           lableText: Strings.password.tr,
@@ -59,7 +59,7 @@ class RegiserPart extends StatelessWidget {
                 ? Icons.visibility
                 : Icons.visibility_off,
           ),
-          onSuffixTap: () => con.toggleConfirmPasswordVisability(),
+          onSuffixTap: () => con.toggleConfirmPasswordVisibility(),
           textInputType: TextInputType.visiblePassword,
           validator: (v) => Validator.validateConfirmPassword(
               con.passwordController.text.trim(), v!),

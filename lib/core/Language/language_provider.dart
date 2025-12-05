@@ -19,7 +19,7 @@ enum Languages {
 
 class LanguageProvider extends Cubit<Languages> {
   Locale get appLanguage => Locale(state.name);
-  LanguageProvider() : super(SharedPref.getLanguage() ?? Languages.en);
+  LanguageProvider() : super(SharedPref.getLanguage() ?? Languages.ar);
   Future changeLanguage({required Languages? language}) async {
     if (language == null) return;
     if (language == state) return;

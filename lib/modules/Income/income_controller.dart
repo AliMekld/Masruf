@@ -3,7 +3,6 @@ import '../../core/LocalDataBase/database_helper.dart';
 import '../../models/income_model.dart';
 import 'income_data_hadler.dart';
 import '../../widgets/DialogsHelper/dialog_widget.dart';
-import 'package:state_extended/state_extended.dart';
 
 import '../../core/LocalDataBase/sql_queries.dart';
 

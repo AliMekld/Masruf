@@ -64,15 +64,13 @@ class _SmallAuthScreenState extends StateX<SmallAuthScreen> {
                   height: 120.r,
                 ),
                 18.h.heightBox,
-                RepaintBoundary(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 500),
-                    switchInCurve: Curves.easeIn,
-                    switchOutCurve: Curves.easeOut,
-                    child: con.isLogin
-                        ? LoginPart(con: con, key: UniqueKey())
-                        : RegiserPart(con: con, key: UniqueKey()),
-                  ),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 500),
+                  switchInCurve: Curves.easeIn,
+                  switchOutCurve: Curves.easeOut,
+                  child: con.isLogin
+                      ? LoginPart(con: con, key: UniqueKey())
+                      : RegiserPart(con: con, key: UniqueKey()),
                 ),
               ]).withVerticalScroll,
             ),

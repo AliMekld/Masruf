@@ -51,7 +51,7 @@ class CategoriesBloc extends Bloc<CategoriesEvents, CategoriesState> {
     }
   }
 
-  void _onInsertCategory(
+  void _onInsertCategory(//////////
       InsertCategoryEvent event, Emitter<CategoriesState> emit) async {
     DropdownModel model = event.model;
     List<DropdownModel> tableList = state.categoriesList;

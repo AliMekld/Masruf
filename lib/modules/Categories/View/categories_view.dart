@@ -12,7 +12,6 @@ import '../../../widgets/tables/categories_table.dart';
 
 import '../../../utilities/constants/Strings.dart';
 import '../../../widgets/custom_drop_down_widget.dart';
-import '../Model/DataSource/categories_local_data_source.dart';
 import '../Model/Repository/categories_repository_imp.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -24,7 +23,7 @@ class CategoriesScreen extends StatelessWidget {
     AppLocalizations.of(context)?.translate(Strings.appName);
     return BlocProvider<CategoriesBloc>(
       create: (context) =>
-          CategoriesBloc(CategoriesLocalDataSource() /*CategoriesRepositoryImp(isConnected: context.read<NetworkCheckerNotifier>().isConnected)*/)..add(LoadCategoriesEvent()),
+          CategoriesBloc( CategoriesRepositoryImp(networkCheckerNotifier:  context.read<NetworkCheckerNotifier>()))..add(LoadCategoriesEvent()),
       child: BlocConsumer<CategoriesBloc, CategoriesState>(
         listener: (context, state) {},
         builder: (context, state) {

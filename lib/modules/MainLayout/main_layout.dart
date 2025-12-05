@@ -35,13 +35,13 @@ class MainLayout extends StatelessWidget {
     return BlocProvider(
       create: (context) => MainLayoutCubit(),
       child: BlocBuilder<MainLayoutCubit, MainLayoutState>(
-        buildWhen: (previous, current) => previous != current,
+        // buildWhen: (previous, current) => previous != current,
           builder: (context, state) {
         final con = context.read<MainLayoutCubit>();
 
         return Scaffold(
           backgroundColor: ColorsPalette.of(context).backgroundColor,
-          appBar: context.isTabletOrMobile
+          appBar: context.isMobile
               ? AppBar(
                   actions: [
                     IconButton(

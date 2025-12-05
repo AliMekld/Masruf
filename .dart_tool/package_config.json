@@ -399,7 +399,7 @@
     },
     {
       "name": "get_it",
-      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/get_it-8.0.3",
+      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/get_it-9.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -837,9 +837,9 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.3.3",
+      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.5.3",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.5"
     },
     {
       "name": "shared_preferences_android",
@@ -968,12 +968,6 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "state_extended",
-      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/state_extended-5.11.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "stream_channel",
       "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
@@ -1086,12 +1080,6 @@
       "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/universal_io-2.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "universal_platform",
-      "rootUri": "file:///C:/Users/RGB/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "url_launcher",

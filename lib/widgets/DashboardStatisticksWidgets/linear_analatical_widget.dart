@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
-import '../../models/statistics_model.dart';
+import '../../modules/Home/Model/Models/statistics_model.dart';
 import '../../utilities/extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

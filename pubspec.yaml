@@ -20,8 +20,7 @@ dependencies:
   flutter_svg: ^2.0.17
   # State management
   provider: ^6.1.2
-  syncfusion_flutter_charts: ^28.1.33
-  state_extended: ^5.5.0
+  syncfusion_flutter_charts: ^28.1.35
   data_table_2: ^2.5.15
   # Serializing models
   json_serializable: ^6.11.1
@@ -32,8 +31,8 @@ dependencies:
   sqflite:
   sqflite_common_ffi: ^2.3.4+3
   path_provider: ^2.1.5
-  shared_preferences: ^2.3.3
-  get_it: ^8.0.2
+  shared_preferences: ^2.5.3
+  get_it: ^9.1.0
   path: ^1.9.0
   dartz: ^0.10.1
   pdf: ^3.11.1
