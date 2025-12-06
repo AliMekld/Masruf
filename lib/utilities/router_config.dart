@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../modules/Categories/View/categories_view.dart';
+import '../modules/Expenses/View/expenses_screen.dart';
 import '../modules/Home/home_screen.dart';
-import '../modules/Income/income_screen.dart';
+import '../modules/Income/View/income_screen.dart';
 import '../modules/MainLayout/main_layout.dart';
 import '../modules/Profile/profile_screen.dart';
 import '../modules/Splash/splash_screen.dart';
-import '../modules/Expenses/expenses_screen.dart';
-import '../modules/auth/Auth/auth_screen.dart';
+import '../modules/auth/View/auth_screen.dart';
 
 final GoRouter _router = GoRouter(
   routes: [

@@ -1,40 +1,40 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../models/expense_model.dart';
-import '../../Expenses/expenses_data_hadler.dart';
+import '../../Expenses/Model/Models/expense_model.dart';
 import '../Model/Models/test_statistics_model.dart';
-import '../Model/home_dataHandler.dart';
+import '../Model/Repository/home_repository.dart';
+
 part 'home_state.dart';
 part 'home_event.dart';
-class HomeBloc extends Bloc<HomeEvents, HomeState > {
-  HomeBloc():super(const HomeState());
 
-  Future<void> getStatistics() async {
-    final result = await HomeDataHandler.getStatisticsData();
-    result.fold(
-      (l) {
-        debugPrint('from handle error in conroller $l ');
-      },
-      (r) {
-        statisticsModel = r;
-        debugPrint('${r.toJson()}');
-      },
-    );
+class HomeBloc extends Bloc<HomeEvents, HomeState> {
+  final HomeRepository _repo;
+
+  HomeBloc(this._repo) : super(const HomeState()) {
+    on<LoadHomeDataEvent>(_onLoadHomeData);
   }
-  handleListener(){}
-init(){
-  WidgetsBinding.instance.addPostFrameCallback((timeStamp) async{
-    await Future.wait([
-    getStatistics(),
-     getExpensesTableList(),
-    ]);
-  });
-}
 
-  Future getExpensesTableList(
+  Future<void> _onLoadHomeData(
+    LoadHomeDataEvent event,
+    Emitter<HomeState> emit,
   ) async {
-    final result = await ExpensesDataHadler.getExpensesFromLocalDataBase();
-    result.fold((l) {}, (r) =>  = r);
+    emit(state.copyWith(isLoading: true, errorMessage: null));
+
+    final statsResult = await _repo.getStatisticsData();
+    final expensesResult = await _repo.getExpensesTableList();
+
+    statsResult.fold(
+      (l) =>
+          emit(state.copyWith(errorMessage: l.model.message, isLoading: false)),
+      (r) => emit(state.copyWith(
+          statisticsModel: r, errorMessage: null, isLoading: false)),
+    );
+
+    expensesResult.fold(
+      (l) =>
+          emit(state.copyWith(errorMessage: l.model.message, isLoading: false)),
+      (r) => emit(state.copyWith(
+          expensesList: r, errorMessage: null, isLoading: false)),
+    );
   }
 }

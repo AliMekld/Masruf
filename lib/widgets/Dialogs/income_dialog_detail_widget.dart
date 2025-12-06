@@ -1,13 +1,15 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/Language/app_localization.dart';
+import '../../core/network_checker.dart';
 import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
-import '../../models/income_model.dart';
-import '../../modules/Income/income_data_hadler.dart';
+import '../../modules/Income/Model/Models/income_model.dart';
+import '../../modules/Income/Model/Repository/income_repository_imp.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/extensions.dart';
 import '../DialogsHelper/dialog_widget.dart';
@@ -45,7 +47,7 @@ class _IncomeDialogDetailWidgetState extends State<IncomeDialogDetailWidget> {
 
   Future getIncomeById() async {
     if (widget.id == null) return;
-    final result = await IncomeDataHadler.getIncomeByID(widget.id!);
+    final result = await IncomeRepositoryImp(networkCheckerNotifier: context.read<NetworkCheckerNotifier>()).getItemByID(widget.id!);
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {

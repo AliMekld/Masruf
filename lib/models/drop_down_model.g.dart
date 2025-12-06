@@ -7,21 +7,23 @@ part of 'drop_down_model.dart';
 // **************************************************************************
 
 abstract class _$DropdownModelCWProxy {
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// DropdownModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   DropdownModel call({
     int? id,
     String? name,
     String? eName,
-    bool? selected,
+    bool selected,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfDropdownModel.copyWith(...)`.
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfDropdownModel.copyWith(...)`.
 class _$DropdownModelCWProxyImpl implements _$DropdownModelCWProxy {
   const _$DropdownModelCWProxyImpl(this._value);
 
@@ -29,12 +31,13 @@ class _$DropdownModelCWProxyImpl implements _$DropdownModelCWProxy {
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// DropdownModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   DropdownModel call({
     Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
@@ -63,7 +66,8 @@ class _$DropdownModelCWProxyImpl implements _$DropdownModelCWProxy {
 }
 
 extension $DropdownModelCopyWith on DropdownModel {
-  /// Returns a callable class that can be used as follows: `instanceOfDropdownModel.copyWith(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfDropdownModel.copyWith(...)`.
   // ignore: library_private_types_in_public_api
   _$DropdownModelCWProxy get copyWith => _$DropdownModelCWProxyImpl(this);
 }

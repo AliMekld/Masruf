@@ -15,12 +15,13 @@ abstract class _$AppSettingsCWProxy {
 
   AppSettings schema(String? schema);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AppSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AppSettings(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AppSettings(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AppSettings call({
     String? appName,
     String? path,
@@ -29,32 +30,34 @@ abstract class _$AppSettingsCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAppSettings.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAppSettings.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAppSettings.copyWith(...)` or call `instanceOfAppSettings.copyWith.fieldName(value)` for a single field.
 class _$AppSettingsCWProxyImpl implements _$AppSettingsCWProxy {
   const _$AppSettingsCWProxyImpl(this._value);
 
   final AppSettings _value;
 
   @override
-  AppSettings appName(String? appName) => this(appName: appName);
+  AppSettings appName(String? appName) => call(appName: appName);
 
   @override
-  AppSettings path(String? path) => this(path: path);
+  AppSettings path(String? path) => call(path: path);
 
   @override
-  AppSettings host(String? host) => this(host: host);
+  AppSettings host(String? host) => call(host: host);
 
   @override
-  AppSettings schema(String? schema) => this(schema: schema);
+  AppSettings schema(String? schema) => call(schema: schema);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AppSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AppSettings(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AppSettings(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AppSettings call({
     Object? appName = const $CopyWithPlaceholder(),
     Object? path = const $CopyWithPlaceholder(),
@@ -83,7 +86,8 @@ class _$AppSettingsCWProxyImpl implements _$AppSettingsCWProxy {
 }
 
 extension $AppSettingsCopyWith on AppSettings {
-  /// Returns a callable class that can be used as follows: `instanceOfAppSettings.copyWith(...)` or like so:`instanceOfAppSettings.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAppSettings.copyWith(...)` or `instanceOfAppSettings.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AppSettingsCWProxy get copyWith => _$AppSettingsCWProxyImpl(this);
 }

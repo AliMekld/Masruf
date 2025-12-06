@@ -14,7 +14,7 @@ class StatisticsDetailModel {
   final double? totalValue;
   final List<StatisticsDetailModel> values;
 
-  StatisticsDetailModel({
+  const StatisticsDetailModel({
     this.id,
     this.lable,
     this.qty = 1,

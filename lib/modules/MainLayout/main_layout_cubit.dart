@@ -1,15 +1,18 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/network_checker.dart';
 import '../../utilities/shared_pref.dart';
 import '../../widgets/Dialogs/expenses_dialog_detail_widget.dart';
 import '../../widgets/Dialogs/income_dialog_detail_widget.dart';
 import '../../widgets/DialogsHelper/dialog_widget.dart';
 import '../Categories/Controller/categories_bloc.dart';
 import '../Categories/Model/DataSource/categories_local_data_source.dart';
+import '../Categories/Model/Repository/categories_repository_imp.dart';
 import '../Categories/View/Widgets/categoty_dialog_detail_widget.dart';
-import '../Expenses/expenses_controller.dart';
-import '../Income/income_controller.dart';
+import '../Expenses/Controller/expenses_bloc.dart';
+import '../Expenses/Model/Repository/expenses_repository_imp.dart';
+import '../Income/Controller/income_bloc.dart';
 
 class MainLayoutCubit extends Cubit<MainLayoutState> {
   MainLayoutCubit()
@@ -36,17 +39,20 @@ class MainLayoutCubit extends Cubit<MainLayoutState> {
 
     if (state.currentIndex == 1) {
       DialogHelper.customDialog(
-          child: ExpensesDialogDetailWidget(
-        onEditExpense: (model) =>
-            ExpensesController().onAddUpdateExpense(model),
-      )).showDialog(context);
+          child: BlocProvider.value(
+            value: ExpensesBloc(ExpensesRepositoryImp(networkCheckerNotifier: context.read<NetworkCheckerNotifier>())),
+           child:   ExpensesDialogDetailWidget(
+              onEditExpense: (model) =>
+         context.read<ExpensesBloc>().add(InsertExpenseEvent(model)),
+    ),
+          )).showDialog(context);
       return;
     }
     if (currentIndex == 2) {
       DialogHelper.customDialog(
           child: BlocProvider.value(
         value: CategoriesBloc(
-            CategoriesLocalDataSource() /*CategoriesRepositoryImp(isConnected: context.read<NetworkCheckerNotifier>().isConnected)*/),
+           CategoriesRepositoryImp(networkCheckerNotifier: context.read<NetworkCheckerNotifier>())),
         child: CategoryDialogDetailWidget(
           id: null,
           onInsertUpdateCategory: (model) {
@@ -61,7 +67,7 @@ class MainLayoutCubit extends Cubit<MainLayoutState> {
     if (currentIndex == 3) {
       DialogHelper.customDialog(
           child: IncomeDialogDetailWidget(
-        onEditIcome: (model) => IncomeController().onAddUpdateIncom(model),
+        onEditIcome: (model) => context.read<IncomeBloc>().add(InsertIncomeEvent(model)),
       )).showDialog(context);
       return;
     }

@@ -8,9 +8,9 @@ import '../../core/Language/app_localization.dart';
 import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
 import '../../models/drop_down_model.dart';
-import '../../models/expense_model.dart';
+import '../../modules/Expenses/Model/Models/expense_model.dart';
 import '../../modules/Categories/Model/DataSource/categories_local_data_source.dart';
-import '../../modules/Expenses/expenses_data_hadler.dart';
+import '../../modules/Expenses/Model/DataSource/expenses_local_data_source.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/extensions.dart';
 import '../DialogsHelper/dialog_widget.dart';
@@ -65,7 +65,7 @@ class _ExpensesDialogDetailWidgetState
 
   Future getExpenseById() async {
     if (widget.id == null) return;
-    final result = await ExpensesDataHadler.getItemByID(widget.id!);
+    final result = await ExpensesLocalDataSource().getItemByID(widget.id!);
     result.fold((l) {
       DialogHelper.error(message: l.toString()).showDialog(context);
     }, (r) {

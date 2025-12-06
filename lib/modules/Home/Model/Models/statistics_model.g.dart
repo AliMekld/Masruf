@@ -1,18 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../modules/Home/Model/Models/statistics_model.dart';
+part of 'statistics_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
 abstract class _$StatisticsDetailModelCWProxy {
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// StatisticsDetailModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   StatisticsDetailModel call({
     int? id,
     String? lable,
@@ -20,11 +21,12 @@ abstract class _$StatisticsDetailModelCWProxy {
     int? totalQty,
     double? value,
     double? totalValue,
-    List<StatisticsDetailModel>? values,
+    List<StatisticsDetailModel> values,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfStatisticsDetailModel.copyWith(...)`.
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfStatisticsDetailModel.copyWith(...)`.
 class _$StatisticsDetailModelCWProxyImpl
     implements _$StatisticsDetailModelCWProxy {
   const _$StatisticsDetailModelCWProxyImpl(this._value);
@@ -33,12 +35,13 @@ class _$StatisticsDetailModelCWProxyImpl
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// StatisticsDetailModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   StatisticsDetailModel call({
     Object? id = const $CopyWithPlaceholder(),
     Object? lable = const $CopyWithPlaceholder(),
@@ -82,7 +85,8 @@ class _$StatisticsDetailModelCWProxyImpl
 }
 
 extension $StatisticsDetailModelCopyWith on StatisticsDetailModel {
-  /// Returns a callable class that can be used as follows: `instanceOfStatisticsDetailModel.copyWith(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfStatisticsDetailModel.copyWith(...)`.
   // ignore: library_private_types_in_public_api
   _$StatisticsDetailModelCWProxy get copyWith =>
       _$StatisticsDetailModelCWProxyImpl(this);

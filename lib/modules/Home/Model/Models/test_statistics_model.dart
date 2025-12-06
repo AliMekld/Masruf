@@ -1,6 +1,7 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../modules/Home/Model/Models/statistics_model.dart';
+
+import 'statistics_model.dart';
 
 part 'test_statistics_model.g.dart';
 
@@ -14,7 +15,7 @@ class StatisticsModel {
   final DateTime? lastUpdated;
   final List<StatisticsDetailModel> detailslist;
 
-  StatisticsModel({
+  const StatisticsModel({
     this.id,
     this.lastUpdated,
     this.netSavings,

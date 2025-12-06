@@ -15,7 +15,7 @@ import '../../utilities/extensions.dart';
 import '../DialogsHelper/dialog_widget.dart';
 import '../GenericTable/table_helper.dart';
 import '../GenericTable/table_widget.dart';
-import '../../models/expense_model.dart';
+import '../../modules/Expenses/Model/Models/expense_model.dart';
 
 // ignore: must_be_immutable
 class CategoriesTable<T extends DropdownModel> extends StatefulWidget {

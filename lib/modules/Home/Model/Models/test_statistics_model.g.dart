@@ -7,23 +7,25 @@ part of 'test_statistics_model.dart';
 // **************************************************************************
 
 abstract class _$StatisticsModelCWProxy {
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// StatisticsModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   StatisticsModel call({
     int? id,
     DateTime? lastUpdated,
     double? netSavings,
     double? totalExpenses,
     double? totalIncome,
-    List<StatisticsDetailModel>? detailslist,
+    List<StatisticsDetailModel> detailslist,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfStatisticsModel.copyWith(...)`.
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfStatisticsModel.copyWith(...)`.
 class _$StatisticsModelCWProxyImpl implements _$StatisticsModelCWProxy {
   const _$StatisticsModelCWProxyImpl(this._value);
 
@@ -31,12 +33,13 @@ class _$StatisticsModelCWProxyImpl implements _$StatisticsModelCWProxy {
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// StatisticsModel(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   StatisticsModel call({
     Object? id = const $CopyWithPlaceholder(),
     Object? lastUpdated = const $CopyWithPlaceholder(),
@@ -76,7 +79,8 @@ class _$StatisticsModelCWProxyImpl implements _$StatisticsModelCWProxy {
 }
 
 extension $StatisticsModelCopyWith on StatisticsModel {
-  /// Returns a callable class that can be used as follows: `instanceOfStatisticsModel.copyWith(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfStatisticsModel.copyWith(...)`.
   // ignore: library_private_types_in_public_api
   _$StatisticsModelCWProxy get copyWith => _$StatisticsModelCWProxyImpl(this);
 }

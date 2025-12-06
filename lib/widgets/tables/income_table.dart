@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/Language/app_localization.dart';
 import '../../core/theme/color_pallet.dart';
 import '../../core/theme/typography.dart';
-import '../../models/income_model.dart';
+import '../../modules/Income/Model/Models/income_model.dart';
 import '../../utilities/constants/Strings.dart';
 import '../../utilities/extensions.dart';
 import '../Dialogs/income_dialog_detail_widget.dart';
@@ -67,7 +67,7 @@ class _IncomeTableState<T extends IncomeModel> extends State<IncomeTable<T>> {
       minWidth: getCulumnsList(context).length * 96.w,
       onSelectAll: (v) {
         widget.incomeList =
-            widget.incomeList.map((e) => e.copyWith(isSelected: v)).toList();
+            widget.incomeList.map((e) => e.copyWith(isSelected: v??false)).toList();
         setState(() {});
       },
       columnsList: getCulumnsList(context),

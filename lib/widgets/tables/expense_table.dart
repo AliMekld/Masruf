@@ -13,7 +13,7 @@ import '../Dialogs/expenses_dialog_detail_widget.dart';
 import '../DialogsHelper/dialog_widget.dart';
 import '../GenericTable/table_helper.dart';
 import '../GenericTable/table_widget.dart';
-import '../../models/expense_model.dart';
+import '../../modules/Expenses/Model/Models/expense_model.dart';
 
 // ignore: must_be_immutable
 class ExpenseTable<T extends ExpensesModel> extends StatefulWidget {
@@ -72,7 +72,7 @@ class _ExpenseTableState<T extends ExpensesModel>
       minWidth: getCulumnsList(context).length * 96.w,
       onSelectAll: (v) {
         widget.expensesList =
-            widget.expensesList.map((e) => e.copyWith(isSelected: v)).toList();
+            widget.expensesList.map((e) => e.copyWith(isSelected: v??false)).toList();
         setState(() {});
       },
       columnsList: getCulumnsList(context),

@@ -1,4 +1,4 @@
-import '../../models/expense_model.dart';
+import '../../modules/Expenses/Model/Models/expense_model.dart';
 import '../PDFHelper/pdf_widgets.dart';
 import '../../widgets/tables/expense_table.dart';
 import 'package:pdf/widgets.dart';
